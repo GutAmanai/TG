@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Ninject;
 using Ninject.Parameters;
-using br.infra.InjecaoDependencia;
+using br.infra.tg.InjecaoDependencia;
 
 namespace MvcApplicationExemplo.tg.App_Start
 {

@@ -1,8 +1,8 @@
 ﻿using Ninject;
 using Ninject.Modules;
 using Ninject.Parameters;
-using br.dominio.Repositorios;
-using br.persistencia.InjecaoDependencia;
+using br.dominio.tg.Repositorios;
+using br.persistencia.tg.InjecaoDependencia;
 
 namespace br.infra.tg.InjecaoDependencia
 {

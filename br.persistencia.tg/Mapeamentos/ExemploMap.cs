@@ -1,4 +1,4 @@
-﻿using br.dominio.Entidades;
+﻿using br.dominio.tg.Entidades;
 
 namespace br.persistencia.tg.Mapeamentos
 {

@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{8FC3D7DE-518E-4F19-844C-733343EA09ED}</ProjectGuid>
+    <ProjectGuid>{A6609F9C-C875-4D03-9488-7DD93716EB67}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>br.aplicacao.tg</RootNamespace>
@@ -47,13 +47,13 @@
     <Folder Include="DTO\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\br.dominio\br.dominio.csproj">
-      <Project>{4B7F86E4-78B1-4CE6-A76F-56F65552A2D5}</Project>
-      <Name>br.dominio</Name>
+    <ProjectReference Include="..\br.dominio.tg\br.dominio.tg.csproj">
+      <Project>{26F49F89-5A1A-4CFA-A790-801CAE64100B}</Project>
+      <Name>br.dominio.tg</Name>
     </ProjectReference>
-    <ProjectReference Include="..\br.persistencia\br.persistencia.csproj">
-      <Project>{CA731F10-C1A9-4C5C-9675-B4081055070A}</Project>
-      <Name>br.persistencia</Name>
+    <ProjectReference Include="..\br.persistencia.tg\br.persistencia.tg.csproj">
+      <Project>{EAFE708B-6C6C-445C-BB8F-D6C7CD0B82E1}</Project>
+      <Name>br.persistencia.tg</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

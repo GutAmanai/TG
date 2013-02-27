@@ -4,8 +4,8 @@ using System.Linq;
 using System.Linq.Expressions;
 using NHibernate;
 using NHibernate.Linq;
-using br.dominio.Entidades;
-using br.dominio.Repositorios;
+using br.dominio.tg.Entidades;
+using br.dominio.tg.Repositorios;
 
 namespace br.persistencia.tg.Repositorios
 {

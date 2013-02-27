@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using br.persistencia.Infra;
+using br.persistencia.tg.Infra;
 
 namespace br.banco.tg
 {

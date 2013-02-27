@@ -1,5 +1,5 @@
 ﻿using Ninject.Modules;
-using br.dominio.Repositorios;
+using br.dominio.tg.Repositorios;
 using br.persistencia.tg.Repositorios;
 
 namespace br.persistencia.tg.InjecaoDependencia

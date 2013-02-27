@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using br.dominio.Entidades;
-using br.dominio.Repositorios;
-using br.persistencia.Repositorios;
+﻿using System.Collections.Generic;
+using br.dominio.tg.Entidades;
+using br.dominio.tg.Repositorios;
+using br.persistencia.tg.Repositorios;
 
 namespace br.aplicacao.tg.Servicos
 {

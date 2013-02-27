@@ -6,7 +6,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{B1DCBB8F-58E3-4414-9B7B-4370CB74B7D3}</ProjectGuid>
+    <ProjectGuid>{1C3E4992-DEA3-4B59-989F-A9B2B8553D7B}</ProjectGuid>
     <ProjectTypeGuids>{E53F8FEA-EAE0-44A6-8774-FFD645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -34,12 +34,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\EntityFramework.4.1.10331.0\lib\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Ninject, Version=3.0.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL" />
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.3.0.1.10\lib\net40\Ninject.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -145,21 +146,21 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\br.aplicacao\br.aplicacao.csproj">
-      <Project>{8FC3D7DE-518E-4F19-844C-733343EA09ED}</Project>
-      <Name>br.aplicacao</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\br.dominio\br.dominio.csproj">
-      <Project>{4B7F86E4-78B1-4CE6-A76F-56F65552A2D5}</Project>
-      <Name>br.dominio</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\br.infra\br.infra.csproj">
-      <Project>{D43D08A8-9F01-4D6B-AB8F-6387E630DA6D}</Project>
-      <Name>br.infra</Name>
-    </ProjectReference>
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Home\Index.cshtml" />
+    <ProjectReference Include="..\br.aplicacao.tg\br.aplicacao.tg.csproj">
+      <Project>{A6609F9C-C875-4D03-9488-7DD93716EB67}</Project>
+      <Name>br.aplicacao.tg</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\br.dominio.tg\br.dominio.tg.csproj">
+      <Project>{26F49F89-5A1A-4CFA-A790-801CAE64100B}</Project>
+      <Name>br.dominio.tg</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\br.infra.tg\br.infra.tg.csproj">
+      <Project>{B15F1FA2-7C48-483D-9DC2-255174783CDA}</Project>
+      <Name>br.infra.tg</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
