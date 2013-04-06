@@ -9,7 +9,7 @@ namespace br.dominio.tg.Entidades
     {
         //Teste Gustavo.
         // teste 022
-        // Teste llalalalal
+        // Teste Commit
         public virtual string Nome { get; protected set; }
         public virtual DateTime Data { get; protected set; }
     }
