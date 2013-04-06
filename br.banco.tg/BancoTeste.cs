@@ -9,6 +9,7 @@ namespace br.banco.tg
         [TestMethod]
         public void gera_script()
         {
+            //teste git
             //DbHelper.GerarScriptDeCriacaoDoSchema(@"c:\produto-schema-eguru_");
             Assert.IsTrue(true);
         }
