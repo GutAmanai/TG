@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "br.aplicacao.tg", "br.aplicacao.tg\br.aplicacao.tg.csproj", "{A6609F9C-C875-4D03-9488-7DD93716EB67}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "br.banco.tg", "br.banco.tg\br.banco.tg.csproj", "{38CDB114-8EE4-4D13-B67B-E19D3AA2F641}"
@@ -12,11 +12,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "br.persistencia.tg", "br.persistencia.tg\br.persistencia.tg.csproj", "{EAFE708B-6C6C-445C-BB8F-D6C7CD0B82E1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcApplicationExemplo.tg", "MvcApplicationExemplo.tg\MvcApplicationExemplo.tg.csproj", "{1C3E4992-DEA3-4B59-989F-A9B2B8553D7B}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DA740618-26B6-4DD7-9FE2-C6D7EE15A826}"
-	ProjectSection(SolutionItems) = preProject
-		TesteGit.txt = TesteGit.txt
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
