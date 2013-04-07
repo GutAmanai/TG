@@ -7,7 +7,7 @@ namespace br.dominio.tg.Entidades
 {
     public class Exemplo : EntidadeBase
     {
-        //Tese agora foi!!!!
+        //Teste abc lalal
         public virtual string Nome { get; protected set; }
         public virtual DateTime Data { get; protected set; }
     }
