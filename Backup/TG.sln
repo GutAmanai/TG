@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "br.aplicacao.tg", "br.aplicacao.tg\br.aplicacao.tg.csproj", "{A6609F9C-C875-4D03-9488-7DD93716EB67}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "br.banco.tg", "br.banco.tg\br.banco.tg.csproj", "{38CDB114-8EE4-4D13-B67B-E19D3AA2F641}"
