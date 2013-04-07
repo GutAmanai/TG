@@ -8,6 +8,7 @@ namespace br.dominio.tg.Entidades
     public class Exemplo : EntidadeBase
     {
         //Teste 07/04
+        //dhouglas é muito gato
         public virtual string Nome { get; protected set; }
         public virtual DateTime Data { get; protected set; }
     }
