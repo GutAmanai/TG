@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>829072f7-127b-4b3a-891e-a0241e4ae676</ProjectGuid>
+    <ProjectGuid>{70160C62-8C12-4694-A6AB-B4AED67F8D8B}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>br.mobile.tg</RootNamespace>
