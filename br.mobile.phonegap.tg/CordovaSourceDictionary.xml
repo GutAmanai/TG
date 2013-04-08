@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- This file is auto-generated, do not edit! -jm -->
 <CordovaSourceDictionary>
+    <FilePath Value="www\assets\css\bootstrap-responsive.css"/>
+    <FilePath Value="www\assets\css\bootstrap-responsive.min.css"/>
+    <FilePath Value="www\assets\css\bootstrap.css"/>
+    <FilePath Value="www\assets\css\bootstrap.min.css"/>
+    <FilePath Value="www\assets\js\bootstrap.js"/>
+    <FilePath Value="www\assets\js\bootstrap.min.js"/>
+    <FilePath Value="www\cordova-2.5.0.js"/>
     <FilePath Value="www\img\logo.png"/>
     <FilePath Value="www\js\index.js"/>
+    <FilePath Value="www\mapa.html"/>
+    <FilePath Value="www\scanner.html"/>
+    <FilePath Value="www\splashscreen.html"/>
     <FilePath Value="www\css\index.css"/>
     <FilePath Value="www\index.html"/>
 </CordovaSourceDictionary>

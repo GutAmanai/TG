@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "br.aplicacao.tg", "br.aplicacao.tg\br.aplicacao.tg.csproj", "{A6609F9C-C875-4D03-9488-7DD93716EB67}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "br.banco.tg", "br.banco.tg\br.banco.tg.csproj", "{38CDB114-8EE4-4D13-B67B-E19D3AA2F641}"
@@ -14,6 +14,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcApplicationExemplo.tg", "MvcApplicationExemplo.tg\MvcApplicationExemplo.tg.csproj", "{1C3E4992-DEA3-4B59-989F-A9B2B8553D7B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "br.mobile.tg", "br.mobile.tg\br.mobile.tg.csproj", "{70160C62-8C12-4694-A6AB-B4AED67F8D8B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "br.mobile.phonegap.tg", "br.mobile.phonegap.tg\br.mobile.phonegap.tg.csproj", "{B5CC77F4-F397-474C-AC73-110104412FDF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +51,12 @@ Global
 		{70160C62-8C12-4694-A6AB-B4AED67F8D8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{70160C62-8C12-4694-A6AB-B4AED67F8D8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{70160C62-8C12-4694-A6AB-B4AED67F8D8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5CC77F4-F397-474C-AC73-110104412FDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5CC77F4-F397-474C-AC73-110104412FDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5CC77F4-F397-474C-AC73-110104412FDF}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{B5CC77F4-F397-474C-AC73-110104412FDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5CC77F4-F397-474C-AC73-110104412FDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5CC77F4-F397-474C-AC73-110104412FDF}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

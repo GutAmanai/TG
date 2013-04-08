@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <title>
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Le styles -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <style>
+      body { padding-top: 60px; /* 60px to make the container go all the way
+      to the bottom of the topbar */ }
+    </style>
+    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js">
+      </script>
+    <![endif]-->
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+    <style>
+    </style>
+
+      <script type="text/javascript">
+
+        function loader() {
+
+        var state = document.readyState;
+
+        if (state == 'loaded' || state == 'complete') {
+
+        run();
+
+        } else {
+
+        if (navigator.userAgent.indexOf('Browzr') > -1) {
+
+        setTimeout(run, 250);
+
+        } else {
+
+        document.addEventListener('deviceready',run,false);
+
+        }
+
+        }
+
+        }
+
+        function run() {
+        var win = function(position) {                          // Grab coordinates object from the Position object passed into success callback.
+        var coords = position.coords;
+        // Call for static google maps data - make sure you use your own Google Maps API key!
+        var url = "http://maps.google.com/maps/api/staticmap?center=" + coords.latitude + "," + coords.longitude + "&zoom=16&size=320x480&maptype=roadmap&key=AIzaSyBlAWk6_OlZrwr8fHEJxLK83mFsvnf93Y4&sensor=true";
+        document.getElementById('map').setAttribute('src',url);
+
+        var element = document.getElementById('texto');
+        element.innerHTML = 'Latitude: '           + position.coords.latitude              + '<br />' +
+        'Longitude: '          + position.coords.longitude             + '<br />' +
+        'Altitude: '           + position.coords.altitude              + '<br />' +
+        'Accuracy: '           + position.coords.accuracy              + '<br />' +
+        'Altitude Accuracy: '  + position.coords.altitudeAccuracy      + '<br />' +
+        'Heading: '            + position.coords.heading               + '<br />' +
+        'Speed: '              + position.coords.speed                 + '<br />' +
+        'Timestamp: '          +                                   position.timestamp          + '<br />';
+
+        };
+        var fail = function(e) {
+        alert('Can\'t retrieve position.\nError: ' + e);
+        };
+        navigator.geolocation.getCurrentPosition(win, fail);
+        }
+      </script>
+  </head>
+  <body onload="loader();">
+    <div class="control-group">
+    </div>
+    <div class="container-fluid">
+      <div class="well form">
+        <div>
+        </div>
+        <form>
+          <div class="control-group">
+            <label for="textinput1">
+              Codigo promoção
+            </label>
+            <input name="textinput1" type="">
+          </div>
+          <label for="textarea3">
+            Informações:
+          </label>
+          <div class="control-group">
+            <textarea name="textarea3"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="conteudo">        
+        <img id="map" />
+      </div>
+      <div class="control-group">
+      </div>
+    </div>
+
+    <style>
+
+      .conteudo {
+      border-style:solid;
+      border-color: #0772A1;
+      background-color: #926CD6;
+      color: white;
+      font-size: 20px;
+      padding: 10px;
+
+
+      }
+
+
+      .form {
+      border-style:solid;
+      border-width: 4px;
+      color: white;
+      border-color: #0772A1;
+      background-color: #926CD6;
+      }
+
+      .form label{
+      font-size: 20px;
+      }
+
+
+      .form form {
+      height: 120px;
+      }
+
+      #map {
+      border-style:solid;
+      border-color: #0772A1;
+      border-style:solid;
+      border-width:2px;
+      }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js">
+    </script>
+    <script src="assets/js/bootstrap.js">
+    </script>
+  </body>
+</html>
