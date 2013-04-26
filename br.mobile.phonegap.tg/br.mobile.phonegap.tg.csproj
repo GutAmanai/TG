@@ -180,6 +180,7 @@
     <Content Include="www\cordova-2.5.0.js" />
     <Content Include="www\img\logo.png" />
     <Content Include="www\js\index.js" />
+    <Content Include="www\lista.html" />
     <Content Include="www\mapa.html" />
     <Content Include="www\scanner.html" />
     <Content Include="www\splashscreen.html" />
