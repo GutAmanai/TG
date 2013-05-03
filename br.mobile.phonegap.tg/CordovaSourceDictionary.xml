@@ -10,6 +10,7 @@
     <FilePath Value="www\cordova-2.5.0.js"/>
     <FilePath Value="www\img\logo.png"/>
     <FilePath Value="www\js\index.js"/>
+    <FilePath Value="www\lista.html"/>
     <FilePath Value="www\mapa.html"/>
     <FilePath Value="www\scanner.html"/>
     <FilePath Value="www\splashscreen.html"/>
