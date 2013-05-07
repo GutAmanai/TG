@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>FileReader Example</title>    
+    
+    <script type="text/javascript" charset="utf-8">
+
+        // Wait for Cordova to load
+        //
+        function loader() {
+
+            var state = document.readyState;
+
+            if (state == 'loaded' || state == 'complete') {
+
+                showConfirm();
+
+            }
+            else {
+
+                if (navigator.userAgent.indexOf('Browzr') > -1) {
+
+                    setTimeout(run, 250);
+
+                }
+                else {
+
+                    document.addEventListener('deviceready', run, false);
+
+                }
+
+            }
+
+        }
+
+
+        
+
+        function run() {
+            navigator.notification.confirm(
+            'You are the winner!',  // message
+            onConfirm,              // callback to invoke with index of button pressed
+            'Game Over',            // title
+            'Restart,Exit'          // buttonLabels
+        );
+        }
+
+    </script>
+
+   
+  </head>
+  <body onload="loader();">
+    <h1>Example</h1>
+    <p>Read File</p>
+    <p class="place"></p>
+    <p><a href="#" onclick="showConfirm(); return false;">Show Confirm</a></p>
+  </body>
+</html>

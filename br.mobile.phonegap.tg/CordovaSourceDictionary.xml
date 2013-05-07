@@ -15,6 +15,7 @@
     <FilePath Value="www\bootstrap\js\bootstrap.min.js"/>
     <FilePath Value="www\cordova-2.5.0.js"/>
     <FilePath Value="www\css\listar-promocoes.css"/>
+    <FilePath Value="www\fileReader.html"/>
     <FilePath Value="www\img\logo.png"/>
     <FilePath Value="www\js\index.js"/>
     <FilePath Value="www\js\jquery-1.9.1.min.js"/>
@@ -22,6 +23,7 @@
     <FilePath Value="www\lista.html"/>
     <FilePath Value="www\listarPromocoes.html"/>
     <FilePath Value="www\mapa.html"/>
+    <FilePath Value="www\readme.txt"/>
     <FilePath Value="www\scanner.html"/>
     <FilePath Value="www\splashscreen.html"/>
     <FilePath Value="www\css\index.css"/>

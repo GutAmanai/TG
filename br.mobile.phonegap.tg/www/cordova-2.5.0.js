@@ -2,7 +2,7 @@
 
 // commit f50d20a87431c79a54572263729461883f611a53
 
-// File generated at :: Tue Feb 26 2013 18:28:19 GMT-0800 (Pacific Standard Time)
+// File generated at :: Tue Feb 26 2013 18:20:06 GMT-0800 (Pacific Standard Time)
 
 /*
  Licensed to the Apache Software Foundation (ASF) under one
@@ -6408,4 +6408,4 @@ window.cordova = require('cordova');
 }(window));
 
 
-})();
+})();var PhoneGap = cordova;

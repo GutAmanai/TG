@@ -33,29 +33,32 @@
 
         function loader() {
 
-        var state = document.readyState;
+            var state = document.readyState;
 
-        if (state == 'loaded' || state == 'complete') {
+            if (state == 'loaded' || state == 'complete') {
 
-        run();
+            run();
 
-        } else {
+            } 
+            else {
 
-        if (navigator.userAgent.indexOf('Browzr') > -1) {
+                if (navigator.userAgent.indexOf('Browzr') > -1) {
 
-        setTimeout(run, 250);
+                setTimeout(run, 250);
 
-        } else {
+                } 
+                else {
 
-        document.addEventListener('deviceready',run,false);
+                document.addEventListener('deviceready',run,false);
 
-        }
+                }
 
-        }
+           }
 
         }
 
         function run() {
+
         var win = function(position) {                          // Grab coordinates object from the Position object passed into success callback.
         var coords = position.coords;
         // Call for static google maps data - make sure you use your own Google Maps API key!
