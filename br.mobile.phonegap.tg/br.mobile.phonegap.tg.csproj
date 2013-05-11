@@ -167,10 +167,11 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="www\data.txt" />
     <Resource Include="ApplicationIcon.png" />
     <Content Include="config.xml" />
-    <Content Include="readme.txt" />
     <Content Include="resources\notification-beep.wav" />
+    <Content Include="www\arquivos\readme.txt" />
     <Content Include="www\assets\css\bootstrap-responsive.css" />
     <Content Include="www\assets\css\bootstrap-responsive.min.css" />
     <Content Include="www\assets\css\bootstrap.css" />
@@ -189,6 +190,7 @@
     <Content Include="www\bootstrap\js\bootstrap.min.js" />
     <Content Include="www\cordova-2.5.0.js" />
     <Content Include="www\css\listar-promocoes.css" />
+    <Content Include="www\example.html" />
     <Content Include="www\fileReader.html" />
     <Content Include="www\img\logo.png" />
     <Content Include="www\js\index.js" />

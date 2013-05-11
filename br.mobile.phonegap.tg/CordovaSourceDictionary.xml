@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- This file is auto-generated, do not edit! -jm -->
 <CordovaSourceDictionary>
+    <FilePath Value="www\data.txt"/>
+    <FilePath Value="www\arquivos\readme.txt"/>
     <FilePath Value="www\assets\css\bootstrap-responsive.css"/>
     <FilePath Value="www\assets\css\bootstrap-responsive.min.css"/>
     <FilePath Value="www\assets\css\bootstrap.css"/>
@@ -15,6 +17,7 @@
     <FilePath Value="www\bootstrap\js\bootstrap.min.js"/>
     <FilePath Value="www\cordova-2.5.0.js"/>
     <FilePath Value="www\css\listar-promocoes.css"/>
+    <FilePath Value="www\example.html"/>
     <FilePath Value="www\fileReader.html"/>
     <FilePath Value="www\img\logo.png"/>
     <FilePath Value="www\js\index.js"/>
