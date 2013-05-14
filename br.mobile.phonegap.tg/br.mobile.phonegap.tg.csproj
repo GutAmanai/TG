@@ -168,6 +168,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="www\data.txt" />
+    <Content Include="www\tela.html" />
     <Resource Include="ApplicationIcon.png" />
     <Content Include="config.xml" />
     <Content Include="resources\notification-beep.wav" />

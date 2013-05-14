@@ -2,6 +2,7 @@
 <!-- This file is auto-generated, do not edit! -jm -->
 <CordovaSourceDictionary>
     <FilePath Value="www\data.txt"/>
+    <FilePath Value="www\tela.html"/>
     <FilePath Value="www\arquivos\readme.txt"/>
     <FilePath Value="www\assets\css\bootstrap-responsive.css"/>
     <FilePath Value="www\assets\css\bootstrap-responsive.min.css"/>

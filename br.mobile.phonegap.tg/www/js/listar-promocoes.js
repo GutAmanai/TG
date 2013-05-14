@@ -24,12 +24,15 @@ function onDeviceReady() {
 			}
 			]
     }
-    geraLista(ex);
-    //lerArquivoTxt();
+    //geraLista(ex);
+     lerArquivoTxt();
 }
 
 function geraLista(data){
-	//comentario
+    //comentario
+    var e = data;
+    $('.place').append(e);   
+
 	for(var i in data.promocoes){		
 		$('.lista-promocoes').append('<li class="well">' +
 		'<div class="container corpo-promocoes">'+
@@ -81,7 +84,7 @@ function onResolveSuccess(fileEntry) {
 }
 
 function gotFS(fileSystem) {
-    fileSystem.root.getFile("/app/www/data.json", null, gotFileEntry, fail);
+    fileSystem.root.getFile("/app/www/data.txt", null, gotFileEntry, fail);
 }
 
 function gotFileEntry(fileEntry) {
