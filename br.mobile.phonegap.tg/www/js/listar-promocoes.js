@@ -59,11 +59,7 @@ function geraLista(data){
 					'<label>'+
 					//texto da promocao			
 					data.promocoes[i].Promocao+
-					'</label>'+
-					'<div class="btn-group">'+
-					'	<a href="#" class="btn"><i class="icon-thumbs-up"></i></a>'+
-					'	<a href="#" class="btn"><i class="icon-thumbs-down"></i></a>'+
-					'</div>'+
+					'</label>'+					
 				'</div>'+
 			'</div>'+
 		'</div>'+
@@ -92,7 +88,7 @@ function gotFileEntry(fileEntry) {
 }
 
 function gotFile(file) {
-    readDataUrl(file);
+    //readDataUrl(file);
     readAsText(file);
 }
 
