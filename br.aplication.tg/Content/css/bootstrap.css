@@ -4242,6 +4242,7 @@ a.thumbnail:hover {
   overflow: hidden;
   width: 100%;
   position: relative;
+  min-height: 450px;
 }
 .carousel .item {
   display: none;

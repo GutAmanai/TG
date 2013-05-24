@@ -73,3 +73,9 @@ textarea
 {
     display: none;
 }
+
+/* Home
+-----------------------------------------------------------*/
+.carousel-inner.home {
+    min-height: 450px;
+}
