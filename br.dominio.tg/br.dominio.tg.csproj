@@ -40,9 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entidades\Cliente.cs" />
+    <Compile Include="Entidades\ClientePromocao.cs" />
+    <Compile Include="Entidades\Consumidor.cs" />
     <Compile Include="Entidades\EntidadeBase.cs" />
     <Compile Include="Entidades\Exemplo.cs" />
     <Compile Include="Entidades\Interfaces\IEntidadeBase.cs" />
+    <Compile Include="Entidades\Promocao.cs" />
+    <Compile Include="Entidades\QualificacaoPromocao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorios\IRepositorioBase.cs" />
     <Compile Include="Repositorios\IRepositorioExemplo.cs" />
