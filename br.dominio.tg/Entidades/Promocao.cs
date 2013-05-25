@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace br.dominio.tg.Entidades
 {
-    public class Promocao
+    public class Promocao : EntidadeBase
     {
         public virtual string Nome { get; set; }
         public virtual DateTime DataEntrada { get; set; }

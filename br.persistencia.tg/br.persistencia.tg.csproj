@@ -58,7 +58,12 @@
     <Compile Include="Infra\FluentNHibernateConventions.cs" />
     <Compile Include="Infra\SessionFactory.cs" />
     <Compile Include="InjecaoDependencia\NinjectPersistencia.cs" />
+    <Compile Include="Mapeamentos\ClienteMap.cs" />
+    <Compile Include="Mapeamentos\ClientePromocaoMap.cs" />
+    <Compile Include="Mapeamentos\ConsumidorMap.cs" />
     <Compile Include="Mapeamentos\EntidadeBaseMap.cs" />
+    <Compile Include="Mapeamentos\PromocaoMap.cs" />
+    <Compile Include="Mapeamentos\QualificacaoPromocaoMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorios\IUnidadeDeTrabalho.cs" />
     <Compile Include="Repositorios\RepositorioBase.cs" />
