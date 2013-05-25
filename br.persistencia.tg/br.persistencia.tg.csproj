@@ -59,11 +59,9 @@
     <Compile Include="Infra\SessionFactory.cs" />
     <Compile Include="InjecaoDependencia\NinjectPersistencia.cs" />
     <Compile Include="Mapeamentos\EntidadeBaseMap.cs" />
-    <Compile Include="Mapeamentos\ExemploMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorios\IUnidadeDeTrabalho.cs" />
     <Compile Include="Repositorios\RepositorioBase.cs" />
-    <Compile Include="Repositorios\RepositorioExemplo.cs" />
     <Compile Include="Repositorios\UnidadeDeTrabalho.cs" />
   </ItemGroup>
   <ItemGroup>
