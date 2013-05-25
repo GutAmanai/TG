@@ -3,6 +3,7 @@
 <CordovaSourceDictionary>
     <FilePath Value="www\data.txt"/>
     <FilePath Value="www\tela.html"/>
+    <FilePath Value="www\listarPromocoes.html"/>
     <FilePath Value="www\arquivos\readme.txt"/>
     <FilePath Value="www\assets\css\bootstrap-responsive.css"/>
     <FilePath Value="www\assets\css\bootstrap-responsive.min.css"/>
@@ -24,8 +25,6 @@
     <FilePath Value="www\js\index.js"/>
     <FilePath Value="www\js\jquery-1.9.1.min.js"/>
     <FilePath Value="www\js\listar-promocoes.js"/>
-    <FilePath Value="www\lista.html"/>
-    <FilePath Value="www\listarPromocoes.html"/>
     <FilePath Value="www\mapa.html"/>
     <FilePath Value="www\readme.txt"/>
     <FilePath Value="www\scanner.html"/>

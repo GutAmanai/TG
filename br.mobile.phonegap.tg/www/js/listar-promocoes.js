@@ -3,35 +3,13 @@ function inicio() {
 }
 
 function onDeviceReady() {
-    var ex = { "promocoes": [
-			{
-			    "IdEmpresa": "1",
-			    "NomeEmpresa": "AOE II",
-			    "UrlEmpresa": "http://rocketdock.com/images/screenshots/Age-of-Empires-2.png",
-			    "UrlPromocao": "http://upload.wikimedia.org/wikipedia/en/6/6e/Age_of_Empires_II_-_The_Conquerors_Coverart.png",
-			    "Promocao": "Age of Empires II: The Conquerors Expansion (sometimes abbreviated to" +
-						"AoC or AoK: TC) is the expansion pack to the 1999 real-time strategy game" +
-						"Age of Empires II: The Age of Kings."
-			},
-			{
-			    "IdEmpresa": "2",
-			    "NomeEmpresa": "BF 3",
-			    "UrlEmpresa": "http://images.wikia.com/battlefield/images/archive/f/f5/20111013142529!Battlefield_3_Icon.png",
-			    "UrlPromocao": "http://wallpaperscraft.com/image/battlefield_3_game_name_soldier_army_15725_256x256.jpg",
-			    "Promocao": "Battlefield 3 is a first-person shooter video game developed by EA Digital" +
-						"Illusions CE and published by Electronic Arts. It is a direct sequel to" +
-						"2005's Battlefield 2, and the twelfth installment in the Battlefield franchise."
-			}
-			]
-    }
-    //geraLista(ex);
-     lerArquivoTxt();
+   
+    lerArquivoTxt();
+     
+    
 }
 
-function geraLista(data){
-    //comentario
-    var e = data;
-    $('.place').append(e);   
+function geraLista(data){          
 
 	for(var i in data.promocoes){		
 		$('.lista-promocoes').append('<li class="well">' +
@@ -40,7 +18,7 @@ function geraLista(data){
 			'<div class="titulo-empresa navbar-inner" id="titulo-empresa">'+
 				//imagem da empresa da promocao
 			'	<img src="'+data.promocoes[i].UrlEmpresa+'"'+
-				'width="40" height="10" class="pull-left">'+
+				' class="pull-left logo-promocao" id="id-url-empresa">'+
 				'<div class="container">'+
 				//nome da empresa
 			'		<a class="brand" href="#">'+data.promocoes[i].NomeEmpresa+'</a>'+
@@ -106,6 +84,7 @@ function readAsText(file) {
     reader.onloadend = function (evt) {
         console.log("Read as text");
         console.log(evt.target.result);
+        //chamada para gerar o html
         geraLista(evt.target.result);
     };
     reader.readAsText(file);

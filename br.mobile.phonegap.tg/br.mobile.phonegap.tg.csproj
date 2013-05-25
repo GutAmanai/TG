@@ -169,6 +169,7 @@
   <ItemGroup>
     <Content Include="www\data.txt" />
     <Content Include="www\tela.html" />
+    <Content Include="www\listarPromocoes.html" />
     <Resource Include="ApplicationIcon.png" />
     <Content Include="config.xml" />
     <Content Include="resources\notification-beep.wav" />
@@ -197,8 +198,6 @@
     <Content Include="www\js\index.js" />
     <Content Include="www\js\jquery-1.9.1.min.js" />
     <Content Include="www\js\listar-promocoes.js" />
-    <Content Include="www\lista.html" />
-    <Content Include="www\listarPromocoes.html" />
     <Content Include="www\mapa.html" />
     <Content Include="www\readme.txt" />
     <Content Include="www\scanner.html" />

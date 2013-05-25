@@ -2,17 +2,17 @@
     "promocoes": [
         {
             "IdEmpresa": "1",
-            "NomeEmpresa": "AOE II",
-            "UrlEmpresa": "http://rocketdock.com/images/screenshots/Age-of-Empires-2.png",
-            "UrlPromocao": "http://upload.wikimedia.org/wikipedia/en/6/6e/Age_of_Empires_II_-_The_Conquerors_Coverart.png",
-            "Promocao": "Age of Empires II: The Conquerors Expansion (sometimes abbreviated to AoC or AoK: TC) is the expansion pack to the 1999 real-time strategy game Age of Empires II: The Age of Kings."
+            "NomeEmpresa": "Submarino",
+            "UrlEmpresa": "https://s3.amazonaws.com/media.jetstrap.com/mR2FrQKeQg2Us3u4CWPB_submarino_logo.png",
+            "UrlPromocao": "https://s3.amazonaws.com/media.jetstrap.com/IZjLVWRQVqc7G8EDyEwe_20130521_submarino.jpg",
+            "Promocao": "Dia de eletrônicos, Sub Tek, o seu guia perfeito no mundo High-tech. Toda a loja de Eletrônicos com 10% de desconto."
         },
         {
             "IdEmpresa": "2",
-            "NomeEmpresa": "BF 3",
-            "UrlEmpresa": "http://images.wikia.com/battlefield/images/archive/f/f5/20111013142529!Battlefield_3_Icon.png",
-            "UrlPromocao": "http://wallpaperscraft.com/image/battlefield_3_game_name_soldier_army_15725_256x256.jpg",
-            "Promocao": "Battlefield 3 is a first-person shooter video game developed by EA Digital Illusions CE and published by Electronic Arts. It is a direct sequel to 2005's Battlefield 2, and the twelfth installment in the Battlefield franchise."
+            "NomeEmpresa": "Wine",
+            "UrlEmpresa": "https://s3.amazonaws.com/media.jetstrap.com/Ac6V1WzpRGSjEmPpQhJW_wine_logo.jpg",
+            "UrlPromocao": "https://s3.amazonaws.com/media.jetstrap.com/AuGv7oubRe2IiIwIvZH1_20130521_wine.jpg",
+            "Promocao": "Comprar vinho é na Wine.com.br, o melhor do vinho em suas mãos."
         }
     ]
 }
