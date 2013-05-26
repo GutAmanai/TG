@@ -41,7 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Servicos\ServicoCriptografia.cs" />
     <Compile Include="Servicos\ServicoExemplo.cs" />
+    <Compile Include="Servicos\ServicoUsuario.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DTO\" />
