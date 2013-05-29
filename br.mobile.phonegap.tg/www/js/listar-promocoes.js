@@ -2,17 +2,19 @@ function inicio() {
     document.addEventListener("deviceready", onDeviceReady, false);		 
 }
 
-function onDeviceReady() {
-   
-    lerArquivoTxt();
-     
-    
+function onDeviceReady() {   
+    lerArquivoTxt();         
+}
+
+function teste() {
+    var id = idPromocao;
+    $('.place').append(id);
 }
 
 function geraLista(data){          
 
-	for(var i in data.promocoes){		
-		$('.lista-promocoes').append('<li class="well">' +
+	for(var i in data.promocoes){
+	    $('.lista-promocoes').append('<li class="well">' +
 		'<div class="container corpo-promocoes">'+
 			'<!--Barra titulo empresa -->' +
 			'<div class="titulo-empresa navbar-inner" id="titulo-empresa">'+
@@ -26,7 +28,7 @@ function geraLista(data){
 			'</div>'+
 			'<!--Barra titulo empresa -->'+
 			'<!--Imagem da promocao -->'+
-			'<div class="imagem-promocao thumbnail" id="imagem-promocao">'+
+			'<div class="imagem-promocao thumbnail" id="idPromo' + data.promocoes[i].IdEmpresa + '">' +
 			//imagem da promocao
 			'	<img class="imagem" src="'+data.promocoes[i].UrlPromocao+'"'+
 			'	width="" height="">'+

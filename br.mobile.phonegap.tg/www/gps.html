@@ -33,36 +33,48 @@
     <style>
     </style>
   </head>
-  <body onload="inicio()">
-    <div id="header" class="">
+  <body>
+   <!--  <div id="header">
     	<img class="logo-empresa" src="https://s3.amazonaws.com/media.jetstrap.com/RSTg4xF2S7qEX6bIIJyM_ApplicationIcon4.png" width="70">
     	<div class="navbar navbar-fixed-top navbar menu-promocoes">
     		<div class="navbar-inner header">
     			<a class="btn pull-right"><i class="icon-refresh"></i></a>
-    			<a class="btn pull-right"><i class="icon-arrow-left"></i></a>
+    			<a class="btn pull-right"><i class="icon-user"></i></a>
     			<h class="pull-left">
     				VemKa
     			</h>
     		</div>
     	</div>
     </div>
+    -->
     <!-- NAV BAR TOPO -->
-    <!--Começo da lista -->
-    <div class="container conteudo">
-    	<ul class="nav nav-list lista-promocoes" id="id-ul">
-    		<!--Inicio dos itens -->               		    		
-    	</ul>
+    <div class="container">
+    	<div class="well">
+    		<!--Barra titulo empresa -->
+    		<div class="titulo-empresa navbar-inner" id="titulo-empresa">
+    			<img src="https://s3.amazonaws.com/media.jetstrap.com/mR2FrQKeQg2Us3u4CWPB_submarino_logo.png" width="40" height="" class="pull-left">
+    			<div class="container">
+    				<a class="brand titulo-empresa" href="#">Submarino</a>
+    			</div>
+    		</div>
+    		<!--Barra titulo empresa -->
+    		<div class="imagem-promocao thumbnail" id="imagem-promocao">
+    			<img class="imagem thumbnail" src="http://maps.googleapis.com/maps/api/staticmap?center=-15.800513,-47.91378&amp;zoom=11&amp;size=200x200&amp;sensor=false" width="" height="">
+    		</div>
+    		<span class="label">Endereço:</span>
+    	</div>
     </div>
     <!-- FIM DA LISTA -->
+    
     <!-- NAV BAR RODAPE -->
-    <div class="navbar navbar-fixed-bottom navbar footer-promocoes">
+    <!-- <div class="navbar navbar-fixed-bottom navbar footer-promocoes">
     	<div class="navbar-inner footer">
     		<img src="https://s3.amazonaws.com/media.jetstrap.com/TjMfuQpUSdSLrT1bJG8G_logoLotus.png" class="pull-left logo-lotus" width="47">
     		<span>Lotus Tecnologia ©2013. <br>Todos os direitos reservados.</span>
     	</div>
     </div>
-
-    <div class="place" id="testeID">        
+    -->
+    <div class="place" id="testeID">   ds     
     </div>
 
     <style>
@@ -122,7 +134,6 @@
           color:#fff;
           font-size: 35px;
           padding: 10px 0px 0px 90px;
-          
       }
       
       .navbar-inner.footer span
@@ -130,7 +141,7 @@
           padding: 0px 0px 0px 0px;
       }
       
-      .logo-empresa
+      .logo-empresa 
       {
           float: auto;
       }
@@ -167,31 +178,17 @@
           text-align:center;
           min-height: 238px;
       }
-    </style>   
+    </style>
+    
+    
     <script type="text/javascript">
         $(document).ready(function () {
             // correcao tamanho das imagens            
             $('.logo-url-empresa').width(40);
             $('.logo-empresa').width(70);
             $('.logo-lotus').width(47);
-            var idPromocao = 0;
-            $('ul').on('click', '.imagem-promocao', function () {
-                var id = $(this).attr('id');
-                idPromocao = id;
-                
-                //$('.place').append(ex);
-                /* $.ajax({
-                type: "POST",
-                url: "gps.html",
-                data: id
-                }).done(function (msg) {
-                $('.place').append(id);
-                });*/
-                //location = "gps.html";                
-                $('.conteudo').load('gps.html');
 
-            });
-
+            $('.place').append(idPromocao);
         });
     </script>
   </body>
