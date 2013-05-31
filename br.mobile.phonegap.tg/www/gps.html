@@ -6,6 +6,7 @@
     </script>
 	<script type="text/javascript" src="js\jquery-1.9.1.min.js"></script>
 	<script type="text/javascript" src="js\listar-promocoes.js"></script>
+    <script type="text/javascript" src="js\gps.js"></script>
     <script type="text/javascript" charset="utf-8" src="cordova-2.5.0.js"></script>    
     <title>
     </title>
@@ -48,20 +49,20 @@
     </div>
     -->
     <!-- NAV BAR TOPO -->
-    <div class="container">
+    <div class="container conteudo">
     	<div class="well">
     		<!--Barra titulo empresa -->
     		<div class="titulo-empresa navbar-inner" id="titulo-empresa">
-    			<img src="https://s3.amazonaws.com/media.jetstrap.com/mR2FrQKeQg2Us3u4CWPB_submarino_logo.png" width="40" height="" class="pull-left">
+    			<img id="imagem-empresa" src="" width="40" height="" class="pull-left">
     			<div class="container">
-    				<a class="brand titulo-empresa" href="#">Submarino</a>
+    				<a class="brand titulo-empresa" id="nome-empresa" href="#"></a>
     			</div>
     		</div>
     		<!--Barra titulo empresa -->
     		<div class="imagem-promocao thumbnail" id="imagem-promocao">
-    			<img class="imagem thumbnail" src="http://maps.googleapis.com/maps/api/staticmap?center=-15.800513,-47.91378&amp;zoom=11&amp;size=200x200&amp;sensor=false" width="" height="">
+    			<img class="imagem thumbnail" id="imagem-mapa" src="" width="" height="">
     		</div>
-    		<span class="label">Endereço:</span>
+    		<span class="label" id="endereco">Endereço:</span>
     	</div>
     </div>
     <!-- FIM DA LISTA -->
@@ -74,7 +75,7 @@
     	</div>
     </div>
     -->
-    <div class="place" id="testeID">   ds     
+    <div class="place" id="testeID">    
     </div>
 
     <style>
@@ -188,7 +189,18 @@
             $('.logo-empresa').width(70);
             $('.logo-lotus').width(47);
 
-            $('.place').append(idPromocao);
+            var data = localStorage.dataJSON;
+            for (var i in data.promocoes) {
+
+                if (data.promocoes[i].IdEmpresa == localStorage.idSelecionado) {
+                    $('#imagem-empresa').attr('src', data.promocoes[i].UrlEmpresa);
+                    $('#nome-empresa').replaceWith('<a class="brand titulo-empresa" id="nome-empresa" href="#">'+data.promocoes[i].NomeEmpresa+'</a>');
+                    $('#imagem-mapa').attr('src', data.promocoes[i].UrlMapa);
+                    $('#endereco').replaceWith('<span class="label" id="endereco">Endereço:'+data.promocoes[i].Endereco+'</span>');
+                }
+            }
+
+
         });
     </script>
   </body>

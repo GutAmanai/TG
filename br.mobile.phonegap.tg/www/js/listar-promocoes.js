@@ -2,17 +2,12 @@ function inicio() {
     document.addEventListener("deviceready", onDeviceReady, false);		 
 }
 
-function onDeviceReady() {   
-    lerArquivoTxt();         
+function onDeviceReady() {
+    lerArquivoTxt(); 
 }
 
-function teste() {
-    var id = idPromocao;
-    $('.place').append(id);
-}
-
-function geraLista(data){          
-
+function geraLista(data){
+    
 	for(var i in data.promocoes){
 	    $('.lista-promocoes').append('<li class="well">' +
 		'<div class="container corpo-promocoes">'+
@@ -28,7 +23,7 @@ function geraLista(data){
 			'</div>'+
 			'<!--Barra titulo empresa -->'+
 			'<!--Imagem da promocao -->'+
-			'<div class="imagem-promocao thumbnail" id="idPromo' + data.promocoes[i].IdEmpresa + '">' +
+			'<div class="imagem-promocao thumbnail" id="'+data.promocoes[i].IdEmpresa + '">' +
 			//imagem da promocao
 			'	<img class="imagem" src="'+data.promocoes[i].UrlPromocao+'"'+
 			'	width="" height="">'+
@@ -88,6 +83,7 @@ function readAsText(file) {
         console.log(evt.target.result);
         //chamada para gerar o html
         geraLista(evt.target.result);
+        localStorage.dataJSON = evt.target.result;
     };
     reader.readAsText(file);
 
