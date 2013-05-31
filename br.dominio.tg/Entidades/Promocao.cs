@@ -5,12 +5,12 @@ namespace br.dominio.tg.Entidades
 {
     public class Promocao : EntidadeBase
     {
-        public virtual string Nome { get; set; }
-        public virtual DateTime DataEntrada { get; set; }
-        public virtual string Descricao { get; set; }
-        public virtual string ImagemUrl { get; set; }
-        public virtual double Latitude { get; set; }
-        public virtual double Longitude { get; set; }
+        public virtual string Nome { get;  protected set; }
+        public virtual DateTime DataEntrada { get; protected set; }
+        public virtual string Descricao { get; protected set; }
+        public virtual string ImagemUrl { get; protected set; }
+        public virtual double Latitude { get; protected set; }
+        public virtual double Longitude { get; protected set; }
 
         private ICollection<ClientePromocao> _clientePromocao;
         public IEnumerable<ClientePromocao> ClientePromocao
