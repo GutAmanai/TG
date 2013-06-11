@@ -169,6 +169,7 @@
   <ItemGroup>
     <Content Include="www\data.txt" />
     <Content Include="www\gps.html" />
+    <Content Include="www\js\gps.js" />
     <Content Include="www\tela.html" />
     <Content Include="www\listarPromocoes.html" />
     <Resource Include="ApplicationIcon.png" />

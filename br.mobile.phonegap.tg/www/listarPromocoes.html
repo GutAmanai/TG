@@ -177,17 +177,9 @@
             var idPromocao = 0;
             $('ul').on('click', '.imagem-promocao', function () {
                 var id = $(this).attr('id');
-                idPromocao = id;
+                idPromocao = id;                             
+                localStorage.idSelecionado = idPromocao;
                 
-                //$('.place').append(ex);
-                /* $.ajax({
-                type: "POST",
-                url: "gps.html",
-                data: id
-                }).done(function (msg) {
-                $('.place').append(id);
-                });*/
-                //location = "gps.html";                
                 $('.conteudo').load('gps.html');
 
             });
