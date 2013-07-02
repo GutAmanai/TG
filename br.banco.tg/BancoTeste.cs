@@ -20,5 +20,12 @@ namespace br.banco.tg
             DbHelper.ExcluirBanco();
             DbHelper.CriarBanco();
         }
+
+        [TestMethod]
+        public void altera_estrutura()
+        {
+            DbHelper.AtualizarBanco();
+        }
+
     }
 }
