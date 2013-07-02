@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace br.aplicacao.tg.DTO
+{
+    public class DTOCliente
+    {
+        public string Nome { get; set; }
+        public DateTime DataEntrada { get; set; }
+        public string Documento { get; set; }
+        public string Responsavel { get; set; }
+        public string Email { get; set; }
+        public string Contato { get; set; }
+        public string FotoUrl { get; set; }
+        public string Senha { get; set; }
+    }
+}

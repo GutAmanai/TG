@@ -9,6 +9,8 @@ namespace br.persistencia.tg.InjecaoDependencia
         public override void Load()
         {
             Bind<IUnidadeDeTrabalho>().To<UnidadeDeTrabalho>();
+            Bind<IRepositorioCliente>().To<RepositorioCliente>();
+            Bind<IRepositorioConsumidor>().To<RepositorioConsumidor>();
         }
     }
 }

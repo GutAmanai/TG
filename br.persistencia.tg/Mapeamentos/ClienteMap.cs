@@ -15,9 +15,10 @@ namespace br.persistencia.tg.Mapeamentos
             Map(x => x.DataEntrada);
             Map(x => x.Documento);
             Map(x => x.Responsavel);
-            Map(x => x.Email);
+            Map(x => x.Email).Unique();
             Map(x => x.Contato);
             Map(x => x.FotoUrl);
+            Map(x => x.Senha);
 
             HasMany(x => x.ClientePromocao);
         }

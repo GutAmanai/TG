@@ -13,9 +13,14 @@ namespace br.dominio.tg.Entidades
         public virtual double Longitude { get; protected set; }
 
         private ICollection<ClientePromocao> _clientePromocao;
-        public IEnumerable<ClientePromocao> ClientePromocao
+        public virtual IEnumerable<ClientePromocao> ClientePromocao
         {
             get { return _clientePromocao; }
+        }
+
+        protected Promocao()
+        {
+            
         }
     }
 }

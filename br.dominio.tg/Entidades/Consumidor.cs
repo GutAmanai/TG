@@ -13,7 +13,7 @@ namespace br.dominio.tg.Entidades
         public virtual string Senha { get; protected set; }
 
         private ICollection<QualificacaoPromocao> _qualificacaoPromocao;
-        public IEnumerable<QualificacaoPromocao> QualificacaoPromocao
+        public virtual IEnumerable<QualificacaoPromocao> QualificacaoPromocao
         {
             get { return _qualificacaoPromocao; }
         }
@@ -26,11 +26,11 @@ namespace br.dominio.tg.Entidades
             _qualificacaoPromocao.Add(qualificacaoPromocao);
         }
 
-        public Consumidor()
+        protected Consumidor()
         {
         }
 
-        public Consumidor(string nome, string email, string contato, string senha)
+        public Consumidor(string nome, string email, string contato, string senha) :this()
         {
             this.Nome = nome;
             this.Email = email;

@@ -13,19 +13,25 @@ namespace br.dominio.tg.Entidades
         public virtual string Email { get; protected set; }
         public virtual string Contato { get; protected set; }
         public virtual string FotoUrl { get; protected set; }
+        public virtual string Senha { get; protected set; }
 
         private ICollection<ClientePromocao> _clientePromocao;
-        public IEnumerable<ClientePromocao> ClientePromocao
+        public virtual IEnumerable<ClientePromocao> ClientePromocao
         {
             get { return _clientePromocao; }
         }
 
-        public void AdicionarClientePromocao(ClientePromocao clientePromocao)
+        public virtual void AdicionarClientePromocao(ClientePromocao clientePromocao)
         {
             if(_clientePromocao == null)
                 _clientePromocao = new Collection<ClientePromocao>();
 
             _clientePromocao.Add(clientePromocao);
+        }
+
+        public Cliente()
+        {
+            
         }
     }
 }

@@ -9,7 +9,12 @@ namespace br.dominio.tg.Entidades
         public virtual bool Ativo { get; protected set; }
         public virtual DateTime DataExpiracao { get; protected set; }
 
-        public ClientePromocao(Cliente cliente, Promocao promocao)
+        protected ClientePromocao()
+        {
+            
+        }
+        
+        public ClientePromocao(Cliente cliente, Promocao promocao) : this()
         {
             this.Cliente = cliente;
             this.Promocao = promocao;

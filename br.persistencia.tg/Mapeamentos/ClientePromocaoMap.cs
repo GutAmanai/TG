@@ -11,7 +11,7 @@ namespace br.persistencia.tg.Mapeamentos
             References(x => x.Promocao);
 
             Map(x => x.DataExpiracao);
-            Map(x => x.DataExpiracao);
+            Map(x => x.Ativo);
         }
 
     }
