@@ -10,7 +10,7 @@ namespace br.banco.tg
         public void gera_script()
         {            
             //teste git SDS
-            //DbHelper.GerarScriptDeCriacaoDoSchema(@"c:\produto-schema-eguru_");
+            //DbHelper.GerarScriptDeCriacaoDoSchema(@"c:\produto-schema-");
             Assert.IsTrue(true);
         }
 
