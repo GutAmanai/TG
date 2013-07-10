@@ -7,9 +7,9 @@ using br.dominio.tg.Repositorios;
 
 namespace br.persistencia.tg.Repositorios
 {
-    public class RepositorioConsumidor : RepositorioBase<Consumidor>, IRepositorioConsumidor
+    public class RepositorioUsuario : RepositorioBase<Usuario>, IRepositorioUsuario
     {
-        public RepositorioConsumidor(IUnidadeDeTrabalho unidadeDeTrabalho) : base(unidadeDeTrabalho)
+        public RepositorioUsuario(IUnidadeDeTrabalho unidadeDeTrabalho) : base(unidadeDeTrabalho)
         {
         }
     }

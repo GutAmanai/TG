@@ -5,7 +5,7 @@ using System.Text;
 
 namespace br.aplicacao.tg.DTO
 {
-    public class DTOConsumidor
+    public class DTOUsuario
     {
         public string Nome { get; set; }
         public DateTime DataEntrada { get; set; }

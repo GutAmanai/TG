@@ -1,2 +1,12 @@
 ﻿body {
 }
+
+
+/* ---------------------------- Error ---------------------------------- */
+.error 
+{
+    display: none;
+    font-weight: lighter;
+    padding-bottom: 0px;
+    color: #b86056;
+}

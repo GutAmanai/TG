@@ -12,7 +12,7 @@ namespace br.persistencia.tg.Mapeamentos
         {
             Table("QualificacaoPromocao");
             References(x => x.ClientePromocao);
-            References(x => x.Consumidor);
+            References(x => x.Usuario);
             Map(x => x.Gostou);
             Map(x => x.DataEntrada);
         }

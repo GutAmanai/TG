@@ -29,7 +29,7 @@ namespace br.aplication.tg.Controllers
         {
             var dto = new JavaScriptSerializer().Deserialize<DTOCliente>(model);
 
-            if (_servicoCliente.ValidarUsuario(dto.Email, dto.Senha))
+            if (_servicoCliente.ValidarCliente(dto.Email, dto.Senha))
             {
                 FormsAuthentication.SetAuthCookie(dto.Email, false);
                 return RedirectToAction("Index", "Home");

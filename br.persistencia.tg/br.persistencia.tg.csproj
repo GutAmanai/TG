@@ -74,7 +74,7 @@
     <Compile Include="Repositorios\IUnidadeDeTrabalho.cs" />
     <Compile Include="Repositorios\RepositorioBase.cs" />
     <Compile Include="Repositorios\RepositorioCliente.cs" />
-    <Compile Include="Repositorios\RepositorioConsumidor.cs" />
+    <Compile Include="Repositorios\RepositorioUsuario.cs" />
     <Compile Include="Repositorios\UnidadeDeTrabalho.cs" />
   </ItemGroup>
   <ItemGroup>

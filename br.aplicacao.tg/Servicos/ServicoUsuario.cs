@@ -13,41 +13,41 @@ namespace br.aplicacao.tg.Servicos
     public class ServicoUsuario
     {
         private readonly IUnidadeDeTrabalho _unidadeDeTrabalho;
-        private readonly IRepositorioConsumidor _repositorioConsumidor;
+        private readonly IRepositorioUsuario _repositorioUsuario;
         private readonly ServicoCriptografia _servicoCriptografia;
 
         public ServicoUsuario(
                                 IUnidadeDeTrabalho unidadeDeTrabalho,
-                                IRepositorioConsumidor repositorioConsumidor
+                                IRepositorioUsuario repositorioUsuario
                              )
         {
             _unidadeDeTrabalho = unidadeDeTrabalho;
-            _repositorioConsumidor = repositorioConsumidor;
+            _repositorioUsuario = repositorioUsuario;
             _servicoCriptografia = new ServicoCriptografia();
         }
 
-        public DTOConsumidor CriarConsumidor(string stDtoComunicacao)
+        public DTOUsuario CriarUsuario(string stDtoComunicacao)
         {
-            DTOConsumidor objConsumidor;
+            DTOUsuario objUsuario;
 
             try
             {
-                objConsumidor = new JavaScriptSerializer().Deserialize<DTOConsumidor>(stDtoComunicacao);
+                objUsuario = new JavaScriptSerializer().Deserialize<DTOUsuario>(stDtoComunicacao);
 
-                if(!VerificaExistenciaUsuario(objConsumidor.Email))
+                if(!VerificaExistenciaUsuario(objUsuario.Email))
                 {
-                    var consumidor = new Consumidor(
-                                                        objConsumidor.Nome,
-                                                        objConsumidor.Email,
-                                                        objConsumidor.Contato,
-                                                        _servicoCriptografia.GetMD5Hash(objConsumidor.Senha).ToLower() 
+                    var consumidor = new Usuario(
+                                                        objUsuario.Nome,
+                                                        objUsuario.Email,
+                                                        objUsuario.Contato,
+                                                        _servicoCriptografia.GetMD5Hash(objUsuario.Senha).ToLower() 
                                                     );
                     
-                    _repositorioConsumidor.Adicionar(consumidor);
+                    _repositorioUsuario.Adicionar(consumidor);
                     _unidadeDeTrabalho.Salvar();
                 }
 
-                return ObterConsumidor(objConsumidor.Email);
+                return ObterUsuario(objUsuario.Email);
             }
             catch (Exception)
             {
@@ -56,29 +56,29 @@ namespace br.aplicacao.tg.Servicos
             }    
         }
 
-        public DTOConsumidor ObterConsumidor(string email)
+        public DTOUsuario ObterUsuario(string email)
         {
-            var consumidor = _repositorioConsumidor.ObterTodosOnde(x => x.Email == email).FirstOrDefault();
-            var dto = new DTOConsumidor()
+            var usuario = _repositorioUsuario.ObterTodosOnde(x => x.Email == email).FirstOrDefault();
+            var dto = new DTOUsuario()
             {
-                Contato = consumidor.Contato,
-                DataEntrada = consumidor.DataEntrada,
-                Email = consumidor.Email,
-                Nome = consumidor.Nome,
-                Senha = consumidor.Senha
+                Contato = usuario.Contato,
+                DataEntrada = usuario.DataEntrada,
+                Email = usuario.Email,
+                Nome = usuario.Nome,
+                Senha = usuario.Senha
             };
             return dto;
         }
 
         public bool VerificaExistenciaUsuario(string email)
         {
-            var consumidor = _repositorioConsumidor.ObterTodosOnde(x => x.Email == email).FirstOrDefault();
+            var consumidor = _repositorioUsuario.ObterTodosOnde(x => x.Email == email).FirstOrDefault();
             return consumidor != null;
         }
 
         public bool ValidarUsuario(string email, string senha)
         {
-            var consumidor = _repositorioConsumidor.ObterTodosOnde(x => x.Email == email).FirstOrDefault();
+            var consumidor = _repositorioUsuario.ObterTodosOnde(x => x.Email == email).FirstOrDefault();
 
             if (consumidor == null)
                 return false;

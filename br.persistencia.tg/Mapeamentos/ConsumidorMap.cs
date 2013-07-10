@@ -6,11 +6,11 @@ using br.dominio.tg.Entidades;
 
 namespace br.persistencia.tg.Mapeamentos
 {
-    public class ConsumidorMap: EntidadeBaseMap<Consumidor>
+    public class UsuarioMap: EntidadeBaseMap<Usuario>
     {
-        public ConsumidorMap()
+        public UsuarioMap()
         {
-            Table("Consumidor");
+            Table("Usuario");
 
             Map(x => x.Nome);
             Map(x => x.DataEntrada);

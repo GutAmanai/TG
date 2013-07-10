@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 
 namespace br.dominio.tg.Entidades
 {
-    public class Consumidor : EntidadeBase
+    public class Usuario : EntidadeBase
     {
         public virtual string Nome { get; protected set; }
         public virtual DateTime DataEntrada { get; protected set; }
@@ -26,11 +26,11 @@ namespace br.dominio.tg.Entidades
             _qualificacaoPromocao.Add(qualificacaoPromocao);
         }
 
-        protected Consumidor()
+        protected Usuario()
         {
         }
 
-        public Consumidor(string nome, string email, string contato, string senha) :this()
+        public Usuario(string nome, string email, string contato, string senha) :this()
         {
             this.Nome = nome;
             this.Email = email;

@@ -33,5 +33,40 @@ namespace br.dominio.tg.Entidades
         {
             
         }
+
+        public virtual void AdicionarNome(string nome)
+        {
+            this.Nome = nome;
+        }
+
+        public virtual void AdicionarEmail(string email)
+        {
+            this.Email = email;
+        }
+
+        public virtual void AdicionarDocumento(string cnpj)
+        {
+            this.Documento = cnpj;
+        }
+
+        public virtual void AdicionarDataEntrada(DateTime now)
+        {
+            this.DataEntrada = now;
+        }
+
+        public virtual void AdicionarContato(string contato)
+        {
+            this.Contato = contato;
+        }
+
+        public virtual void AdicionarSenha(string senha)
+        {
+            this.Senha = senha;
+        }
+
+        public virtual void AdicionarResponsavel(string responsavel)
+        {
+            this.Responsavel = responsavel;
+        }
     }
 }

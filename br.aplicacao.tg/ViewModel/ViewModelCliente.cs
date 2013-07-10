@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace br.aplicacao.tg.DTO
+﻿namespace br.aplicacao.tg.ViewModel
 {
-    public class DTOCliente
+    public class ViewModelCliente
     {
         public int IdCliente { get; set; }
         public string Nome { get; set; }
-        public DateTime DataEntrada { get; set; }
         public string Cnpj { get; set; }
         public string Responsavel { get; set; }
         public string Email { get; set; }

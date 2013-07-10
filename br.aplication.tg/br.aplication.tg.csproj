@@ -78,6 +78,7 @@
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\font-awesome-ie7.css" />
     <Content Include="Content\css\font-awesome.css" />
+    <Content Include="Content\css\geral.css" />
     <Content Include="Content\font\fontawesome-webfont.svg" />
     <Content Include="Content\img\content.png" />
     <Content Include="Content\img\glyphicons-halflings-white.png" />
@@ -121,6 +122,7 @@
     <Content Include="Scripts\bootstrap-alert.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\Cliente\cadastro-cliente.js" />
     <Content Include="Scripts\Home\home.js" />
     <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.5.1.js" />

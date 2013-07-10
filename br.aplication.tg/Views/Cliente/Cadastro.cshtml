@@ -1,43 +1,65 @@
-﻿@model dynamic
+﻿@model br.aplicacao.tg.ViewModel.ViewModelCliente
 
 @{
-    ViewBag.Title = "Login";
+    ViewBag.Title = "Cadastro";
     Layout = "../Shared/_Layout.cshtml";
 }
 
 @section head
 {
-    <script src="@Url.Content("~/Scripts/Login/login-cliente.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/Cliente/cadastro-cliente.js")" type="text/javascript"></script>
     <link href="@Url.Content("~/Content/css/geral.css")" rel="stylesheet" type="text/css" />
 }
 
 <div class="container">
+    <input type="hidden" id="id-cliente" value="@Model.IdCliente"/>
     <div class="page-header">
         <h1>Cadastro</h1>
     </div>
     <div class="row">
         <div class="cadastro">
             <div class="span6">
-                <label>Nome</label>            
-                <input type="text" class="input-xxlarge" name="nome" placeholder="Nome">
+                <div>
+                    <label>Nome</label>            
+                    <input type="text" class="input-xxlarge" id="nome" name="nome" placeholder="Nome" value="@Model.Nome">
+                    <span class="error error-nome alert alert-error"></span>
+                </div>
+                
+                <div>
+                    <label>CNPJ</label>            
+                    <input type="text" class="input-xxlarge" id="cnpj" name="cnpj" placeholder="CNPJ" value="@Model.Cnpj">
+                    <span class="error error-cnpj alert alert-error"></span>
+                </div>
+                
+                <div>
+                    <label>Responsável</label>            
+                    <input type="text" class="input-xxlarge" id="responsavel" name="responsavel" placeholder="Responsável (Nome)" value="@Model.Responsavel">
+                    <span class="error error-responsavel alert alert-error"></span>
+                </div>
 
-                <label>CNPJ</label>            
-                <input type="text" class="input-xxlarge" name="cnpj" placeholder="CNPJ">
-
-                <label>Responsável</label>            
-                <input type="text" class="input-xxlarge"  name="responsavel" placeholder="Responsável (Nome)">
-
-                <label>Email</label>
-                <input type="text" class="input-xxlarge" name="email" placeholder="Email">
-
-                <label>Telefone</label>
-                <input type="text" class="input-xxlarge" name="telefone" placeholder="Telefone">
-
-                <label>Senha</label>
-                <input type="password" class="input-xlarge" name="senha" placeholder="Senha">
-
-                <label>Confirmação da Senha</label>
-                <input type="password" class="input-xlarge" name="senha_confirmacao" placeholder="Confirmação da Senha">
+                <div>
+                    <label>Email</label>
+                    <input type="text" class="input-xxlarge" id="email" name="email" placeholder="Email" value="@Model.Email">
+                    <span class="error error-email alert alert-error"></span>
+                </div>
+                
+                <div>
+                    <label>Telefone</label>
+                    <input type="text" class="input-xxlarge" id="telefone" name="telefone" placeholder="Telefone" value="@Model.Contato">
+                    <span class="error error-telefone alert alert-error"></span>
+                </div>
+                
+                <div>
+                    <label>Senha</label>
+                    <input type="password" class="input-xlarge" id="senha" name="senha" placeholder="Senha" value="@Model.Senha">
+                    <span class="error error-senha alert alert-error"></span>
+                </div>
+                
+                <div>
+                    <label>Confirmação da Senha</label>
+                    <input type="password" class="input-xlarge" id="senha_confirmacao" name="senha_confirmacao" placeholder="Confirmação da Senha" value="@Model.Senha">
+                    <span class="error error-senha-comparacao alert alert-error"></span>
+                </div>
             </div>
             <div class="span4 well">
                 <label><strong>Foto</strong></label>
@@ -61,8 +83,10 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <input value="Salvar" class="btn btn-primary btn-small pull-right">
+    <div class="row-fluid">
+        <div class="span12">
+            <input value="Salvar" class="btn btn-primary btn-small pull-right salvar-cadastro">
+        </div>
     </div>   
     <br class="clearfix"/>
 </div>

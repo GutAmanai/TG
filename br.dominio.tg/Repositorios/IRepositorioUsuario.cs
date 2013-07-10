@@ -6,8 +6,7 @@ using br.dominio.tg.Entidades;
 
 namespace br.dominio.tg.Repositorios
 {
-    public interface IRepositorioConsumidor : IRepositorioBase<Consumidor>
+    public interface IRepositorioUsuario : IRepositorioBase<Usuario>
     {
-
     }
 }

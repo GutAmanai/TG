@@ -69,29 +69,39 @@ namespace br.persistencia.tg.Repositorios
 
         public virtual void Adicionar(T entidade)
         {
+            _unidadeDeTrabalho.Inicializar(); 
             Sessao.Save(entidade);
+            _unidadeDeTrabalho.Salvar();
         }
 
         public virtual void Adicionar(IEnumerable<T> entidades)
         {
+            _unidadeDeTrabalho.Inicializar(); 
             foreach (var entidade in entidades)
                 SessaoSemEstado.Insert(entidade);
+            _unidadeDeTrabalho.Salvar();
         }
 
         public virtual void Remover(T entidade)
         {
+            _unidadeDeTrabalho.Inicializar(); 
             Sessao.Delete(entidade);
+            _unidadeDeTrabalho.Salvar();
         }
 
         public virtual void Remover(IEnumerable<T> entidades)
         {
+            _unidadeDeTrabalho.Inicializar(); 
             foreach (var entidade in entidades)
                 SessaoSemEstado.Delete(entidade);
+            _unidadeDeTrabalho.Salvar();
         }
 
         public void Alterar(T entidade)
         {
+            _unidadeDeTrabalho.Inicializar(); 
             Sessao.Update(entidade);
+            _unidadeDeTrabalho.Salvar();
         }
     }
 }
