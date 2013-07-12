@@ -9,6 +9,12 @@
 {
     <script src="@Url.Content("~/Scripts/Cliente/cadastro-cliente.js")" type="text/javascript"></script>
     <link href="@Url.Content("~/Content/css/geral.css")" rel="stylesheet" type="text/css" />
+   
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/css/jquery.Jcrop.css")" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/css/crop.css")" />
+    <script type="text/javascript" src="@Url.Content("~/Scripts/ajaxupload.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.Jcrop.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/crop.js")"></script>
 }
 
 <div class="container">
@@ -66,18 +72,20 @@
                 <hr />
                 <div class="row">
                     <div class="row center-align">
-                        <img src="@ViewBag.ImagemUsuario" width="80" height="100" alt="Foto" id="fotoPreview" name="fotoPreview" class="foto-preview" style="text-align:center;"></img>
+                        <img src="@ViewBag.FotoCliente" width="160" height="200" alt="Foto" id="fotoPreview" name="fotoPreview" class="foto-preview" style="text-align:center;"></img>
                     </div>
         
                     <br style="clear: both;" />
                     <br style="clear: both;" />
                     <div id="buttons">
                         <div class="span0">
-                            <a href="javascript:void(0)" class="btn btn-crop btn-warning pull-left" id="foto-upload">Upload</a>
+                            <a href="javascript:void(0)" class="btn btn-crop btn-warning pull-left" id="upload-logo">Upload</a>
+                            <input type="hidden" id="temp-image" value=""/>  
+                            <input type="hidden" id="extension" value=""/>  
                         </div> 
-                        <div class="span0">
+@*                        <div class="span0">
                             <a class="btn btn-crop btn-warning pull-left" href="javascript:void(0)" id="remove-foto">Remover foto</a>
-                        </div>
+                        </div>*@
                     </div>
                 </div>                        
             </div>

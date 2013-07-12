@@ -83,9 +83,14 @@ namespace br.aplicacao.tg.Servicos
             }
         }
         
-        public Cliente ObterClientePorId(int id)
+        private Cliente ObterClientePorId(int id)
         {
             return _repositorioCliente.ObterPorId(id);
+        }
+        
+        private Cliente ObterClientePorEmail(string email)
+        {
+            return _repositorioCliente.ObterTodosOnde(x => x.Email == email).FirstOrDefault();
         }
 
         public ViewModelCliente ObterViewModelCliente(int id)
@@ -99,7 +104,7 @@ namespace br.aplicacao.tg.Servicos
                                 Cnpj = cliente.Documento,
                                 Contato = cliente.Contato,
                                 Email = cliente.Email,
-                                FotoUrl = RecuperaFotoCliente(cliente.Id),
+                                FotoUrl = "",
                                 Nome = cliente.Nome,
                                 Responsavel = cliente.Responsavel,
                                 Senha = cliente.Senha
@@ -111,26 +116,32 @@ namespace br.aplicacao.tg.Servicos
             }
         }
 
-        private string RecuperaFotoCliente(int id)
+        public ViewModelCliente ObterViewModelCliente(string email)
         {
-            //try
-            //{
-            //    var caminhoFotos = Server.MapPath("~/Arquivos/Fotos/" + id);
-            //    var arquivos = Directory.GetFiles(caminhoFotos);
-
-            //    if (arquivos.Count(a => Path.GetFileNameWithoutExtension(a) == usuario.Login.Cpf) > 0)
-            //    {
-            //        var foto = arquivos.FirstOrDefault(a => Path.GetFileNameWithoutExtension(a) == usuario.Login.Cpf);
-            //        return VirtualPathUtility.ToAbsolute("~/Arquivos/FotosUsuarios/" + usuario.Processo.Id + "/" + Path.GetFileName(foto));
-            //    }
-            //    return VirtualPathUtility.ToAbsolute("~/Content/images/default-user-avatar.png");
-            //}
-            //catch (Exception ex)
-            //{
-            //    return VirtualPathUtility.ToAbsolute("~/Content/images/default-user-avatar.png");
-            //}
-            return "jkhfsdhf";
+            var cliente = ObterClientePorEmail(email);
+            if (cliente != null)
+            {
+                return new ViewModelCliente()
+                {
+                    IdCliente = cliente.Id,
+                    Cnpj = cliente.Documento,
+                    Contato = cliente.Contato,
+                    Email = cliente.Email,
+                    FotoUrl = "",
+                    Nome = cliente.Nome,
+                    Responsavel = cliente.Responsavel,
+                    Senha = cliente.Senha
+                };
+            }
+            else
+            {
+                return new ViewModelCliente();
+            }
         }
 
+        public bool EmailIsExist(string email)
+        {
+            return ObterClientePorEmail(email) != null;
+        }
     }
 }

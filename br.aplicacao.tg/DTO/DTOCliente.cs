@@ -16,5 +16,7 @@ namespace br.aplicacao.tg.DTO
         public string Contato { get; set; }
         public string FotoUrl { get; set; }
         public string Senha { get; set; }
+        public string TempImg { get; set; }
+        public string Extension { get; set; }
     }
 }

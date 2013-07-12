@@ -71,14 +71,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Arquivos\Cliente\cliente-default.png" />
     <Content Include="Content\css\boot-business.css" />
     <Content Include="Content\css\bootstrap-responsive.css" />
     <Content Include="Content\css\bootstrap-responsive.min.css" />
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\crop.css" />
     <Content Include="Content\css\font-awesome-ie7.css" />
     <Content Include="Content\css\font-awesome.css" />
     <Content Include="Content\css\geral.css" />
+    <Content Include="Content\css\jquery.Jcrop.css" />
     <Content Include="Content\font\fontawesome-webfont.svg" />
     <Content Include="Content\img\content.png" />
     <Content Include="Content\img\glyphicons-halflings-white.png" />
@@ -116,6 +119,7 @@
     <Content Include="Content\themes\base\jquery.ui.theme.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\ajaxupload.js" />
     <Content Include="Scripts\Aplication\bootstrap.js" />
     <Content Include="Scripts\Aplication\bootstrap.min.js" />
     <Content Include="Scripts\Aplication\jquery.min.js" />
@@ -123,6 +127,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\Cliente\cadastro-cliente.js" />
+    <Content Include="Scripts\crop.js" />
     <Content Include="Scripts\Home\home.js" />
     <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.5.1.js" />
@@ -132,6 +137,11 @@
     <Content Include="Scripts\jquery-ui-1.8.11.js" />
     <Content Include="Scripts\jquery-ui-1.8.11.min.js" />
     <Content Include="Scripts\jquery.alerts.js" />
+    <Content Include="Scripts\jquery.fileupload-fp.js" />
+    <Content Include="Scripts\jquery.fileupload-ui.js" />
+    <Content Include="Scripts\jquery.fileupload.js" />
+    <Content Include="Scripts\jquery.Jcrop.min.js" />
+    <Content Include="Scripts\jquery.mask.min.js" />
     <Content Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -161,6 +171,9 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Arquivos\Cliente\Min\" />
+    <Folder Include="Arquivos\Cliente\Normal\" />
+    <Folder Include="Arquivos\Temp\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
