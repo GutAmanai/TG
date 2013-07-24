@@ -41,7 +41,7 @@ namespace br.aplicacao.tg.Servicos
             if (consumidor == null)
                 return false;
 
-            if (consumidor.Senha.ToLower() == _servicoCriptografia.GetMD5Hash(senha).ToLower())
+            if (consumidor.Senha.ToLower() == _servicoCriptografia.Encrypt(senha).ToLower())
                 return true;
 
             return false;
@@ -60,7 +60,7 @@ namespace br.aplicacao.tg.Servicos
                     cliente.AdicionarDataEntrada(DateTime.Now);
                     cliente.AdicionarContato(dtoCliente.Contato);
                     cliente.AdicionarResponsavel(dtoCliente.Responsavel);
-                    cliente.AdicionarSenha(_servicoCriptografia.GetMD5Hash(dtoCliente.Senha));
+                    cliente.AdicionarSenha(_servicoCriptografia.Encrypt(dtoCliente.Senha));
                     _repositorioCliente.Alterar(cliente);
                 }
                 else // Inclusao
@@ -72,7 +72,7 @@ namespace br.aplicacao.tg.Servicos
                     cliente.AdicionarDataEntrada(DateTime.Now);
                     cliente.AdicionarContato(dtoCliente.Contato);
                     cliente.AdicionarResponsavel(dtoCliente.Responsavel);
-                    cliente.AdicionarSenha(_servicoCriptografia.GetMD5Hash(dtoCliente.Senha));
+                    cliente.AdicionarSenha(_servicoCriptografia.Encrypt(dtoCliente.Senha));
                     _repositorioCliente.Adicionar(cliente);
                 }
                 return true;
@@ -107,7 +107,7 @@ namespace br.aplicacao.tg.Servicos
                                 FotoUrl = "",
                                 Nome = cliente.Nome,
                                 Responsavel = cliente.Responsavel,
-                                Senha = cliente.Senha
+                                Senha = _servicoCriptografia.Decrypt(cliente.Senha)
                             };
             }
             else
@@ -130,7 +130,7 @@ namespace br.aplicacao.tg.Servicos
                     FotoUrl = "",
                     Nome = cliente.Nome,
                     Responsavel = cliente.Responsavel,
-                    Senha = cliente.Senha
+                    Senha = _servicoCriptografia.Decrypt(cliente.Senha)
                 };
             }
             else

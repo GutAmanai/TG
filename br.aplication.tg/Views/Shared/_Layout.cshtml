@@ -44,9 +44,16 @@
                                         <li><a href="#">VemKa</a></li>
                                     </ul>                  
                                 </li>
-                                @*<li><a href="#">Entre em contato</a></li>*@
-                                <li><a href="@Url.Action("Cadastro", "Cliente")">Cadastre-se</a></li>
-                                <li><a href="@(Url.Action("Index", "Login"))">Login</a></li>
+                                @if(!HttpContext.Current.User.Identity.IsAuthenticated)
+                                {
+                                    <li><a href="@Url.Action("Cadastro", "Cliente")">Cadastre-se</a></li>
+                                    <li><a href="@(Url.Action("Index", "Login"))">Login</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="@(Url.Action("LogOff", "Login"))">Sair</a></li>
+                                    <li><a>Bem vindo! - @HttpContext.Current.User.Identity.Name</a></li>
+                                }
                             </ul>
                         </div>
                     </div>

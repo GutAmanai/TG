@@ -40,7 +40,7 @@ namespace br.aplicacao.tg.Servicos
                                                         objUsuario.Nome,
                                                         objUsuario.Email,
                                                         objUsuario.Contato,
-                                                        _servicoCriptografia.GetMD5Hash(objUsuario.Senha).ToLower() 
+                                                        _servicoCriptografia.Encrypt(objUsuario.Senha).ToLower() 
                                                     );
                     
                     _repositorioUsuario.Adicionar(consumidor);
@@ -65,7 +65,7 @@ namespace br.aplicacao.tg.Servicos
                 DataEntrada = usuario.DataEntrada,
                 Email = usuario.Email,
                 Nome = usuario.Nome,
-                Senha = usuario.Senha
+                Senha = _servicoCriptografia.Decrypt(usuario.Senha)
             };
             return dto;
         }
@@ -83,7 +83,7 @@ namespace br.aplicacao.tg.Servicos
             if (consumidor == null)
                 return false;
 
-            if (consumidor.Senha.ToLower() == _servicoCriptografia.GetMD5Hash(senha).ToLower())
+            if (consumidor.Senha.ToLower() == _servicoCriptografia.Encrypt(senha).ToLower())
                 return true;
 
             return false;

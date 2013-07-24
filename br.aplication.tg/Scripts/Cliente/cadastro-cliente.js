@@ -124,12 +124,17 @@ var cadastroCliente = {
                 $(".error-email").show("fast");
                 retorno = false;
             } else {
-                if (cadastroCliente.EmailIsExist(dados.Email)) {
+                if ($("#alteracao").val() != 'True' && cadastroCliente.EmailIsExist(dados.Email)) {
                     $(".error-email").html("Email já existente");
                     $(".error-email").show("fast");
                     retorno = false;
                 }
             }
+        }
+
+        if ($("#alteracao").val() != 'True' && $("#temp-image").val() == "") {
+            alert("Atenção", "Informe uma imagem");
+            retorno = false;
         }
 
         if (dados.Telefone == "") {

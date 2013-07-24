@@ -10,3 +10,7 @@
     padding-bottom: 0px;
     color: #b86056;
 }
+
+.menu .thumbnail img {
+    width: 50%;
+}

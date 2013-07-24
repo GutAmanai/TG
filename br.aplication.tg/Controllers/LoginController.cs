@@ -25,19 +25,24 @@ namespace br.aplication.tg.Controllers
             return View();
         }
 
-        public ActionResult Logar(string model)
+        public ActionResult Logar(string email, string senha)
         {
-            var dto = new JavaScriptSerializer().Deserialize<DTOCliente>(model);
-
-            if (_servicoCliente.ValidarCliente(dto.Email, dto.Senha))
+            if (_servicoCliente.ValidarCliente(email, senha))
             {
-                FormsAuthentication.SetAuthCookie(dto.Email, false);
-                return RedirectToAction("Index", "Home");
+                var cliente = _servicoCliente.ObterViewModelCliente(email);
+                FormsAuthentication.SetAuthCookie(cliente.Nome, false);
+                return Json(true);
             }
             else
             {
-                return Json("O e-mail ou a sua senha está inválida!");
+                return Json(false);
             }
+        }
+
+        public ActionResult LogOff()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Home");
         }
 
     }

@@ -24,10 +24,19 @@ namespace br.aplication.tg.Controllers
             ServicoCliente = Fabrica.Instancia.Obter<ServicoCliente>();
         }
 
-        public ActionResult Cadastro(int id = 0)
+        public ActionResult Cadastro()
         {
+            ViewBag.Alterar = false;
+            ViewBag.FotoCliente = RecuperaFotoCliente(0);
+            return View(ServicoCliente.ObterViewModelCliente(0));
+        }
+
+        [Authorize]
+        public ActionResult Alterar(int id)
+        {
+            ViewBag.Alterar = true;
             ViewBag.FotoCliente = RecuperaFotoCliente(id);
-            return View(ServicoCliente.ObterViewModelCliente(id));
+            return View("Cadastro",ServicoCliente.ObterViewModelCliente(id));
         }
 
         public ActionResult Salvar(string configuracao)
@@ -57,24 +66,26 @@ namespace br.aplication.tg.Controllers
         #region Salvar Imagem
         private bool SalvarImagemFinal(int idCliente, string tempImg, string extension)
         {
-            var caminhoFotosMin = Server.MapPath("~/Arquivos/Cliente/Min/");
-            var caminhoFotosNormal = Server.MapPath("~/Arquivos/Cliente/Normal/");
-            var caminhoFotosTemp = Server.MapPath("~/Arquivos/Temp/");
+            if(!string.IsNullOrEmpty(tempImg))
+            {
+                var caminhoFotosMin = Server.MapPath("~/Arquivos/Cliente/Min/");
+                var caminhoFotosNormal = Server.MapPath("~/Arquivos/Cliente/Normal/");
+                var caminhoFotosTemp = Server.MapPath("~/Arquivos/Temp/");
                 
-            var arquivos = Directory.GetFiles(caminhoFotosTemp);
+                var arquivos = Directory.GetFiles(caminhoFotosTemp);
             
-            var filePath = "";
-            if (arquivos.Count(a => Path.GetFileNameWithoutExtension(a) == tempImg) > 0)
-                filePath = arquivos.FirstOrDefault(a => Path.GetFileNameWithoutExtension(a) == tempImg);
+                var filePath = "";
+                if (arquivos.Count(a => Path.GetFileNameWithoutExtension(a) == tempImg) > 0)
+                    filePath = arquivos.FirstOrDefault(a => Path.GetFileNameWithoutExtension(a) == tempImg);
 
-            string filePathMin = string.Format("{0}{1}{2}", caminhoFotosMin, idCliente, extension);
-            string filePathNormal = string.Format("{0}{1}{2}", caminhoFotosNormal, idCliente, extension);
+                string filePathMin = string.Format("{0}{1}{2}", caminhoFotosMin, idCliente, extension);
+                string filePathNormal = string.Format("{0}{1}{2}", caminhoFotosNormal, idCliente, extension);
 
-            var img = Image.FromFile(filePath);
+                var img = Image.FromFile(filePath);
 
-            ResizeImagem(img, 48, 48, filePathMin, extension);
-            ResizeImagem(img, img.Height, img.Width, filePathNormal, extension);
-
+                ResizeImagem(img, 48, 48, filePathMin, extension);
+                ResizeImagem(img, img.Height, img.Width, filePathNormal, extension);
+            }
             return true;
         }
 
