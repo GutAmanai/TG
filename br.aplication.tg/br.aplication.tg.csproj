@@ -65,6 +65,7 @@
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\PromocaoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -72,6 +73,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Arquivos\Cliente\cliente-default.png" />
+    <Content Include="Arquivos\Promocao\Min\10.jpg" />
+    <Content Include="Arquivos\Promocao\Min\9.jpg" />
+    <Content Include="Arquivos\Promocao\Normal\10.jpg" />
+    <Content Include="Arquivos\Promocao\Normal\9.jpg" />
+    <Content Include="Arquivos\Promocao\promocao-default.png" />
     <Content Include="Content\css\boot-business.css" />
     <Content Include="Content\css\bootstrap-responsive.css" />
     <Content Include="Content\css\bootstrap-responsive.min.css" />
@@ -194,6 +200,7 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Cliente\Cadastro.cshtml" />
     <Content Include="Views\Home\MenuVemKa.cshtml" />
+    <Content Include="Views\Promocao\Cadastro.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\br.aplicacao.tg\br.aplicacao.tg.csproj">

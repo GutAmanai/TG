@@ -14,40 +14,40 @@ using br.infra.tg.InjecaoDependencia;
 
 namespace br.aplication.tg.Controllers
 {
-    public class ClienteController : Controller
+    public class PromocaoController : Controller
     {
         public JavaScriptSerializer js = new JavaScriptSerializer();
-        public ServicoCliente ServicoCliente;
+        public ServicoPromocao servicoPromocao;
 
-        public ClienteController()
+        public PromocaoController()
         {
-            ServicoCliente = Fabrica.Instancia.Obter<ServicoCliente>();
+            servicoPromocao = Fabrica.Instancia.Obter<ServicoPromocao>();
         }
 
         public ActionResult Cadastro()
         {
             ViewBag.Alterar = false;
-            ViewBag.FotoCliente = RecuperaFotoCliente(0);
-            return View(ServicoCliente.ObterViewModelCliente(0));
+            ViewBag.Imagem = RecuperaImagem(0);
+            return View(servicoPromocao.ObterViewModelPromocao(0));
         }
 
         [Authorize]
         public ActionResult Alterar(int id)
         {
             ViewBag.Alterar = true;
-            ViewBag.FotoCliente = RecuperaFotoCliente(id);
-            return View("Cadastro",ServicoCliente.ObterViewModelCliente(id));
+            ViewBag.Imagem = RecuperaImagem(id);
+            return View("Cadastro", servicoPromocao.ObterViewModelPromocao(id));
         }
 
         public ActionResult Salvar(string configuracao)
         {
             try
             {
-                var dtoCliente = js.Deserialize<DTOCliente>(configuracao);
-                if (ServicoCliente.SalvarCliente(dtoCliente))
+                var dtoPromocao = js.Deserialize<DTOPromocao>(configuracao);
+                if (servicoPromocao.SalvarPromocao(dtoPromocao))
                 {
-                    var cliente = ServicoCliente.ObterViewModelCliente(dtoCliente.Email);
-                    this.SalvarImagemFinal(cliente.IdCliente, dtoCliente.TempImg, dtoCliente.Extension);
+                    var promocao = servicoPromocao.ObterViewModelPromocao(dtoPromocao.IdPromocao);
+                    this.SalvarImagemFinal(promocao.IdPromocao, dtoPromocao.TempImg, dtoPromocao.Extension);
                     return Json(true);
                 }
                 return Json(false);
@@ -58,18 +58,18 @@ namespace br.aplication.tg.Controllers
             }
         }
 
-        public ActionResult EmailIsExist(string email)
-        {
-            return ServicoCliente.EmailIsExist(email) ? Json(true) : Json(false);
-        }
+        //public ActionResult EmailIsExist(string email)
+        //{
+        //    return ServicoCliente.EmailIsExist(email) ? Json(true) : Json(false);
+        //}
 
         #region Salvar Imagem
-        private bool SalvarImagemFinal(int idCliente, string tempImg, string extension)
+        private bool SalvarImagemFinal(int idPromocao, string tempImg, string extension)
         {
             if(!string.IsNullOrEmpty(tempImg))
             {
-                var caminhoFotosMin = Server.MapPath("~/Arquivos/Cliente/Min/");
-                var caminhoFotosNormal = Server.MapPath("~/Arquivos/Cliente/Normal/");
+                var caminhoFotosMin = Server.MapPath("~/Arquivos/Promocao/Min/");
+                var caminhoFotosNormal = Server.MapPath("~/Arquivos/Promocao/Normal/");
                 var caminhoFotosTemp = Server.MapPath("~/Arquivos/Temp/");
                 
                 var arquivos = Directory.GetFiles(caminhoFotosTemp);
@@ -78,8 +78,8 @@ namespace br.aplication.tg.Controllers
                 if (arquivos.Count(a => Path.GetFileNameWithoutExtension(a) == tempImg) > 0)
                     filePath = arquivos.FirstOrDefault(a => Path.GetFileNameWithoutExtension(a) == tempImg);
 
-                string filePathMin = string.Format("{0}{1}{2}", caminhoFotosMin, idCliente, extension);
-                string filePathNormal = string.Format("{0}{1}{2}", caminhoFotosNormal, idCliente, extension);
+                string filePathMin = string.Format("{0}{1}{2}", caminhoFotosMin, idPromocao, extension);
+                string filePathNormal = string.Format("{0}{1}{2}", caminhoFotosNormal, idPromocao, extension);
 
                 var img = Image.FromFile(filePath);
 
@@ -90,7 +90,7 @@ namespace br.aplication.tg.Controllers
         }
 
         [HttpPost]
-        public ActionResult UploadLogo(string ext = "", string tempName = "")
+        public ActionResult UploadImagem(string ext = "", string tempName = "")
         {
             if (Request.Files.Count > 0)
             {
@@ -175,27 +175,25 @@ namespace br.aplication.tg.Controllers
             }
         }
 
-        private string RecuperaFotoCliente(int idCliente)
+        private string RecuperaImagem(int idPromocao)
         {
             try
             {
-                var caminhoFotos = Server.MapPath("~/Arquivos/Cliente/Normal/");
+                var caminhoFotos = Server.MapPath("~/Arquivos/Promocao/Normal/");
                 var arquivos = Directory.GetFiles(caminhoFotos);
 
-                if (arquivos.Count(a => Path.GetFileNameWithoutExtension(a) == idCliente.ToString()) > 0)
+                if (arquivos.Count(a => Path.GetFileNameWithoutExtension(a) == idPromocao.ToString()) > 0)
                 {
-                    var foto = arquivos.FirstOrDefault(a => Path.GetFileNameWithoutExtension(a) == idCliente.ToString());
-                    return VirtualPathUtility.ToAbsolute("~/Arquivos/Cliente/Normal/" + Path.GetFileName(foto));
+                    var foto = arquivos.FirstOrDefault(a => Path.GetFileNameWithoutExtension(a) == idPromocao.ToString());
+                    return VirtualPathUtility.ToAbsolute("~/Arquivos/Promocao/Normal/" + Path.GetFileName(foto));
                 }
-                return VirtualPathUtility.ToAbsolute("~/Arquivos/Cliente/cliente-default.png");
+                return VirtualPathUtility.ToAbsolute("~/Arquivos/Promocao/promocao-default.png");
             }
             catch (Exception)
             {
-                return VirtualPathUtility.ToAbsolute("~/Arquivos/Cliente/cliente-default.png");
+                return VirtualPathUtility.ToAbsolute("~/Arquivos/Promocao/promocao-default.png");
             }
         }
-
         #endregion
     }
-
 }

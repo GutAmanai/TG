@@ -1,0 +1,77 @@
+﻿@model br.aplicacao.tg.ViewModel.ViewModelPromocao
+
+@{
+    ViewBag.Title = "Cadastro";
+    Layout = "../Shared/_Layout.cshtml";
+}
+
+@section head
+{
+    <script src="@Url.Content("~/Scripts/Cliente/cadastro-cliente.js")" type="text/javascript"></script>
+    <link href="@Url.Content("~/Content/css/geral.css")" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/css/jquery.Jcrop.css")" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/css/crop.css")" />
+    <script type="text/javascript" src="@Url.Content("~/Scripts/ajaxupload.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.Jcrop.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/crop.js")"></script>
+}
+
+<div class="container">
+    <input type="hidden" id="id-cliente" value="@Model.IdCliente"/>
+    <input type="hidden" id="id-promocao" value="@Model.IdPromocao"/>
+    <input type="hidden" id="alteracao" value="@ViewBag.Alterar"/>
+    <div class="page-header">
+        <h1>Cadastro de Promoção</h1>
+    </div>
+    <div class="row">
+        <div class="cadastro">
+            <div class="span6">
+                <div>
+                    <label>Nome</label>            
+                    <input type="text" class="input-xxlarge" id="nome" name="nome" placeholder="Nome" value="@Model.Nome">
+                    <span class="error error-nome alert alert-error"></span>
+                </div>
+                
+                <div>
+                    <label>Data de Entrada</label>            
+                    <input type="text" class="input-xxlarge" id="dataentrada" name="dataentrada" placeholder="Data de Entrada" value="@Model.DataEntrada">
+                    <span class="error error-cnpj alert alert-error"></span>
+                </div>
+                
+                <div>
+                    <label>Descrição</label>            
+                    <input type="text" class="input-xxlarge" id="descricao" name="descricao" placeholder="Descrição" value="@Model.Descricao">
+                    <span class="error error-responsavel alert alert-error"></span>
+                </div>
+            </div>
+            <div class="span4 well">
+                <label><strong>Imagem da Promoção</strong></label>
+                <hr />
+                <div class="row">
+                    <div class="row center-align">
+                        <img src="@ViewBag.Imagem" width="160" height="200" alt="Imagem da Promoção" id="imagemPreview" name="imagemPreview" class="imagem-preview" style="text-align:center;"></img>
+                    </div>
+                    <br style="clear: both;" />
+                    <br style="clear: both;" />
+                    <div id="buttons">
+                        <div class="span0">
+                            <a href="javascript:void(0)" class="btn btn-crop btn-warning pull-left" id="upload-imagem">Upload</a>
+                            <input type="hidden" id="temp-image" value=""/>  
+                            <input type="hidden" id="extension" value=""/>  
+                        </div> 
+                        <div class="span0">
+                            <a class="btn btn-crop btn-warning pull-left" href="javascript:void(0)" id="remove-imagem">Remover foto</a>
+                        </div>
+                    </div>
+                </div>                        
+            </div>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span12">
+            <input value="Salvar" class="btn btn-primary btn-small pull-right salvar-cadastro">
+        </div>
+    </div>   
+    <br class="clearfix"/>
+</div>
+
