@@ -55,7 +55,7 @@ namespace br.aplicacao.tg.Servicos
                 {
                     var cliente = ObterClientePorId(dtoCliente.IdCliente);
                     cliente.AdicionarNome(dtoCliente.Nome);
-                    cliente.AdicionarEmail(dtoCliente.Email);
+                    cliente.AdicionarEmail(dtoCliente.Email.ToLower());
                     cliente.AdicionarDocumento(dtoCliente.Cnpj);
                     cliente.AdicionarDataEntrada(DateTime.Now);
                     cliente.AdicionarContato(dtoCliente.Contato);
@@ -67,7 +67,7 @@ namespace br.aplicacao.tg.Servicos
                 {
                     var cliente = new Cliente();
                     cliente.AdicionarNome(dtoCliente.Nome);
-                    cliente.AdicionarEmail(dtoCliente.Email);
+                    cliente.AdicionarEmail(dtoCliente.Email.ToLower());
                     cliente.AdicionarDocumento(dtoCliente.Cnpj);
                     cliente.AdicionarDataEntrada(DateTime.Now);
                     cliente.AdicionarContato(dtoCliente.Contato);
@@ -136,6 +136,29 @@ namespace br.aplicacao.tg.Servicos
             else
             {
                 return new ViewModelCliente();
+            }
+        }
+
+        public DTOCliente ObterDTOCliente(string email)
+        {
+            var cliente = ObterClientePorEmail(email);
+            if (cliente != null)
+            {
+                return new DTOCliente()
+                {
+                    IdCliente = cliente.Id,
+                    Cnpj = cliente.Documento,
+                    Contato = cliente.Contato,
+                    Email = cliente.Email,
+                    FotoUrl = "",
+                    Nome = cliente.Nome,
+                    Responsavel = cliente.Responsavel,
+                    Senha = _servicoCriptografia.Decrypt(cliente.Senha)
+                };
+            }
+            else
+            {
+                return new DTOCliente();
             }
         }
 

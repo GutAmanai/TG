@@ -30,6 +30,7 @@ namespace br.aplication.tg.Controllers
             if (_servicoCliente.ValidarCliente(email, senha))
             {
                 var cliente = _servicoCliente.ObterViewModelCliente(email);
+                Session.Add("DTOLogin",_servicoCliente.ObterDTOCliente(email));
                 FormsAuthentication.SetAuthCookie(cliente.Nome, false);
                 return Json(true);
             }
