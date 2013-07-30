@@ -54,7 +54,10 @@
     <Compile Include="Servicos\ServicoPromocao.cs" />
     <Compile Include="Servicos\ServicoUsuario.cs" />
     <Compile Include="ViewModel\ViewModelCliente.cs" />
+<<<<<<< HEAD
     <Compile Include="ViewModel\ViewModelClientePromocao.cs" />
+=======
+>>>>>>> 47705b7795900e27bfa15414de724a854feacc31
     <Compile Include="ViewModel\ViewModelPromocao.cs" />
   </ItemGroup>
   <ItemGroup />

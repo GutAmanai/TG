@@ -18,20 +18,21 @@ namespace br.aplicacao.tg.Servicos
     {
         private readonly IUnidadeDeTrabalho _unidadeDeTrabalho;
         private readonly IRepositorioPromocao _repositorioPromocao;
+
+        public ServicoPromocao(
+                                IUnidadeDeTrabalho unidadeDeTrabalho,
+                                IRepositorioPromocao repositorioPromocao
+                             )
+        {
         private readonly ServicoCriptografia _servicoCriptografia;
         private readonly IRepositorioCliente _repositorioCliente;
 
         public ServicoPromocao(
                                 IUnidadeDeTrabalho unidadeDeTrabalho,
-                                IRepositorioPromocao repositorioPromocao,
                                 IRepositorioCliente repositorioCliente
                              )
-        {
-
             _unidadeDeTrabalho = unidadeDeTrabalho;
             _repositorioPromocao = repositorioPromocao;
-            _repositorioCliente = repositorioCliente;
-            _servicoCriptografia = new ServicoCriptografia();
         }
 
         public bool ValidarPromocao(string nome)
@@ -46,6 +47,13 @@ namespace br.aplicacao.tg.Servicos
 
         public bool SalvarPromocao(DTOPromocao dtoPromocao)
         {
+            _unidadeDeTrabalho = unidadeDeTrabalho;
+            _servicoCriptografia = new ServicoCriptografia();
+            _repositorioCliente = repositorioCliente;
+        }
+
+
+
             try
             {
                 if (dtoPromocao.IdPromocao != 0) // Edicao
@@ -89,9 +97,9 @@ namespace br.aplicacao.tg.Servicos
                 return new  ViewModelPromocao()
                             {
                                 IdPromocao = promocao.Id,
-                                //IdCliente = promocao.ClientePromocao.FirstOrDefault(x => x.Promocao.Id == promocao.Id).Cliente.Id,
+                                IdCliente = promocao.ClientePromocao.FirstOrDefault(x => x.Promocao.Id == promocao.Id).Cliente.Id,
                                 Descricao = promocao.Descricao,
-                                //Imagem = "",
+                                Imagem = "",
                                 Nome = promocao.Nome
                             };
             }
