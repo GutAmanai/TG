@@ -18,9 +18,34 @@ namespace br.dominio.tg.Entidades
             get { return _clientePromocao; }
         }
 
-        protected Promocao()
+        public Promocao()
         {
             
+        }
+
+        public virtual void AdicionarNome(string nome)
+        {
+            this.Nome = nome;
+        }
+
+        public virtual void AdicionarDataEntrada(DateTime now)
+        {
+            this.DataEntrada = now;
+        }
+
+        public virtual void AdicionarDescricao(string descricao)
+        {
+            this.Descricao = descricao;
+        }
+
+        public virtual void AdicionarLatitude(double latitude)
+        {
+            this.Latitude = latitude;
+        }
+
+        public virtual void AdicionarLongitude(double longitude)
+        {
+            this.Longitude = longitude;
         }
     }
 }

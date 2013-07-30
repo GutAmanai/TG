@@ -40,7 +40,8 @@
     <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
     <XapFilename>br.mobile.phonegap.tg.xap</XapFilename>
     <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
-    <SilverlightAppEntry>br.mobile.phonegap.tg.App</SilverlightAppEntry>
+    <SilverlightAppEntry>
+    </SilverlightAppEntry>
     <ValidateXaml>true</ValidateXaml>
     <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
   </PropertyGroup>

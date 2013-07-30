@@ -126,7 +126,7 @@ namespace br.aplication.tg.Controllers
             {
                 return SalvarImagem(imagem, maxLargura, maxAltura, RecuperaFormatoImagem(formatoImagem), pastaDestino);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw new Exception("Erro ao redimensionar a imagem");
             }
@@ -189,7 +189,7 @@ namespace br.aplication.tg.Controllers
                 }
                 return VirtualPathUtility.ToAbsolute("~/Arquivos/Cliente/cliente-default.png");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return VirtualPathUtility.ToAbsolute("~/Arquivos/Cliente/cliente-default.png");
             }

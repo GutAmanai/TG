@@ -56,6 +56,7 @@
     <Compile Include="ViewModel\ViewModelCliente.cs" />
     <Compile Include="ViewModel\ViewModelClientePromocao.cs" />
     <Compile Include="ViewModel\ViewModelPromocao.cs" />
+    <Compile Include="ViewModel\ViewModelPromocao.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
