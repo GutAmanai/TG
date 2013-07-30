@@ -31,6 +31,13 @@ namespace br.aplication.tg.Controllers
             return View(servicoPromocao.ObterViewModelPromocao(0));
         }
 
+        public ActionResult Index()
+        {
+            ViewBag.Alterar = false;
+            ViewBag.Imagem = RecuperaImagem(0);
+            return View();
+        }
+
         [Authorize]
         public ActionResult Alterar(int id)
         {
