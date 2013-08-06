@@ -1,94 +1,172 @@
 ﻿@model br.aplicacao.tg.ViewModel.ViewModelCliente
-
 @{
     ViewBag.Title = "Cadastro";
     Layout = "../Shared/_Layout.cshtml";
 }
-
 @section head
 {
     <script src="@Url.Content("~/Scripts/Cliente/cadastro-cliente.js")" type="text/javascript"></script>
     <link href="@Url.Content("~/Content/css/geral.css")" rel="stylesheet" type="text/css" />
-   
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/css/jquery.Jcrop.css")" />
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/css/crop.css")" />
     <script type="text/javascript" src="@Url.Content("~/Scripts/ajaxupload.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.Jcrop.min.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/crop.js")"></script>
-}
+    @*-------------------------Google Maps------------------------------------------------------*@
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    
+    <script type="text/javascript">
+        var map;
+        var markers = [];
+        var teste;
+        
+        $(function () {
+            initialize();
+        });
 
+        function initialize() {
+            var latlng = new google.maps.LatLng(-23.546, -46.638);
+            var options = { zoom: 14, center: latlng, mapTypeId: google.maps.MapTypeId.ROADMAP };
+            map = new google.maps.Map(document.getElementById("map_canvas"), options);
+            
+            google.maps.event.trigger(map, 'resize');
+
+            google.maps.event.addListener(map, 'click', function (event) {
+                addMarker(event.latLng);
+            });
+        }
+
+        function addMarker(location) {
+            teste = location;
+            deleteOverlays();
+            var marker = new google.maps.Marker({
+                position: location,
+                map: map
+            });
+
+            var infowindow = new google.maps.InfoWindow({
+                content: 'Sua Localização ficará aqui!'
+            });            
+            infowindow.open(map, marker);
+            markers.push(marker);
+
+            $("#latitude").val(location.lat());
+            $("#longetude").val(location.lng());
+        }
+
+        function setAllMap(map) {
+            for (var i = 0; i < markers.length; i++) {
+                markers[i].setMap(map);
+            }
+        }
+
+        function clearOverlays() {
+            setAllMap(null);
+        }
+
+        function showOverlays() {
+            setAllMap(map);
+        }
+
+        function deleteOverlays() {
+            clearOverlays();
+            markers = [];
+        }
+    </script>
+
+    <style type="text/css">
+        #map_canvas
+        {
+            height: 80%;
+        }
+        
+        .mapa
+        {
+            height: 400px;
+        }
+    </style>
+}
 <div class="container">
     <input type="hidden" id="id-cliente" value="@Model.IdCliente"/>
     <input type="hidden" id="alteracao" value="@ViewBag.Alterar"/>
     <div class="page-header">
-        <h1>Cadastro</h1>
+        <h1>
+            Cadastro</h1>
     </div>
     <div class="row">
         <div class="cadastro">
             <div class="span6">
                 <div>
-                    <label>Nome</label>            
+                    <label>
+                        Nome</label>
                     <input type="text" class="input-xxlarge" id="nome" name="nome" placeholder="Nome" value="@Model.Nome">
                     <span class="error error-nome alert alert-error"></span>
                 </div>
-                
                 <div>
-                    <label>CNPJ</label>            
+                    <label>
+                        CNPJ</label>
                     <input type="text" class="input-xxlarge" id="cnpj" name="cnpj" placeholder="CNPJ" value="@Model.Cnpj">
                     <span class="error error-cnpj alert alert-error"></span>
                 </div>
-                
                 <div>
-                    <label>Responsável</label>            
+                    <label>
+                        Responsável</label>
                     <input type="text" class="input-xxlarge" id="responsavel" name="responsavel" placeholder="Responsável (Nome)" value="@Model.Responsavel">
                     <span class="error error-responsavel alert alert-error"></span>
                 </div>
-
                 <div>
-                    <label>Email</label>
+                    <label>
+                        Email</label>
                     <input type="text" class="input-xxlarge" id="email" name="email" placeholder="Email" value="@Model.Email">
                     <span class="error error-email alert alert-error"></span>
                 </div>
-                
                 <div>
-                    <label>Telefone</label>
+                    <label>
+                        Telefone</label>
                     <input type="text" class="input-xxlarge" id="telefone" name="telefone" placeholder="Telefone" value="@Model.Contato">
                     <span class="error error-telefone alert alert-error"></span>
                 </div>
-                
                 <div>
-                    <label>Senha</label>
+                    <label>
+                        Senha</label>
                     <input type="password" class="input-xlarge" id="senha" name="senha" placeholder="Senha" value="@Model.Senha">
                     <span class="error error-senha alert alert-error"></span>
                 </div>
-                
                 <div>
-                    <label>Confirmação da Senha</label>
+                    <label>
+                        Confirmação da Senha</label>
                     <input type="password" class="input-xlarge" id="senha_confirmacao" name="senha_confirmacao" placeholder="Confirmação da Senha" value="@Model.Senha">
                     <span class="error error-senha-comparacao alert alert-error"></span>
                 </div>
             </div>
             <div class="span4 well">
-                <label><strong>Foto</strong></label>
+                <label>
+                    <strong>Foto</strong></label>
                 <hr />
                 <div class="row">
                     <div class="row center-align">
                         <img src="@ViewBag.FotoCliente" width="160" height="200" alt="Foto" id="fotoPreview" name="fotoPreview" class="foto-preview" style="text-align:center;"></img>
                     </div>
-        
                     <br style="clear: both;" />
                     <br style="clear: both;" />
                     <div id="buttons">
                         <div class="span0">
-                            <a href="javascript:void(0)" class="btn btn-crop btn-warning pull-left" id="upload-logo">Upload</a>
-                            <input type="hidden" id="temp-image" value=""/>  
-                            <input type="hidden" id="extension" value=""/>  
-                        </div> 
-@*                        <div class="span0">
+                            <a href="javascript:void(0)" class="btn btn-crop btn-warning pull-left" id="upload-logo">
+                                Upload</a>
+                            <input type="hidden" id="temp-image" value="" />
+                            <input type="hidden" id="extension" value="" />
+                        </div>
+                        @*                        <div class="span0">
                             <a class="btn btn-crop btn-warning pull-left" href="javascript:void(0)" id="remove-foto">Remover foto</a>
                         </div>*@
                     </div>
-                </div>                        
+                </div>
+            </div>
+            <div class="span12 well mapa">
+                <input type="hidden" id="latitude" value="" />
+                <input type="hidden" id="longetude" value="" />
+                <div id="map_canvas" style="width: 100%; height: 100%">
+                </div>
             </div>
         </div>
     </div>
@@ -96,11 +174,6 @@
         <div class="span12">
             <input value="Salvar" class="btn btn-primary btn-small pull-right salvar-cadastro">
         </div>
-    </div>   
-    <br class="clearfix"/>
+    </div>
+    <br class="clearfix" />
 </div>
-
-
-
-
-

@@ -61,6 +61,8 @@ namespace br.aplicacao.tg.Servicos
                     cliente.AdicionarContato(dtoCliente.Contato);
                     cliente.AdicionarResponsavel(dtoCliente.Responsavel);
                     cliente.AdicionarSenha(_servicoCriptografia.Encrypt(dtoCliente.Senha));
+                    cliente.AdicionarLatitude(dtoCliente.Latitude);
+                    cliente.AdicionarLongitude(dtoCliente.Longitude);
                     _repositorioCliente.Alterar(cliente);
                 }
                 else // Inclusao
@@ -72,6 +74,8 @@ namespace br.aplicacao.tg.Servicos
                     cliente.AdicionarDataEntrada(DateTime.Now);
                     cliente.AdicionarContato(dtoCliente.Contato);
                     cliente.AdicionarResponsavel(dtoCliente.Responsavel);
+                    cliente.AdicionarLatitude(dtoCliente.Latitude);
+                    cliente.AdicionarLongitude(dtoCliente.Longitude);
                     cliente.AdicionarSenha(_servicoCriptografia.Encrypt(dtoCliente.Senha));
                     _repositorioCliente.Adicionar(cliente);
                 }

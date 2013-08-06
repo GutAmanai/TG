@@ -54,8 +54,7 @@ namespace br.aplicacao.tg.Servicos
                     promocao.AdicionarNome(dtoPromocao.Nome);
                     promocao.AdicionarDescricao(dtoPromocao.Descricao);
                     promocao.AdicionarDataEntrada(DateTime.Now);
-                    promocao.AdicionarLatitude(dtoPromocao.Latitude);
-                    promocao.AdicionarLongitude(dtoPromocao.Longitude);
+
                     _repositorioPromocao.Alterar(promocao);
                 }
                 else // Inclusao
@@ -64,8 +63,6 @@ namespace br.aplicacao.tg.Servicos
                     promocao.AdicionarNome(dtoPromocao.Nome);
                     promocao.AdicionarDescricao(dtoPromocao.Descricao);
                     promocao.AdicionarDataEntrada(DateTime.Now);
-                    promocao.AdicionarLatitude(dtoPromocao.Latitude);
-                    promocao.AdicionarLongitude(dtoPromocao.Longitude);
                     _repositorioPromocao.Adicionar(promocao);
                 }
                 return true;

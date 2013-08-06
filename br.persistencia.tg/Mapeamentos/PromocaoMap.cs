@@ -16,9 +16,6 @@ namespace br.persistencia.tg.Mapeamentos
             Map(x => x.DataEntrada);
             Map(x => x.Descricao);
             Map(x => x.ImagemUrl);
-            Map(x => x.Latitude);
-            Map(x => x.Longitude);
-
             HasMany(x => x.ClientePromocao);
         }
     }
