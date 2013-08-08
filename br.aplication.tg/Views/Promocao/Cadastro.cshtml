@@ -7,7 +7,7 @@
 
 @section head
 {
-    <script src="@Url.Content("~/Scripts/Cliente/cadastro-cliente.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/Promocao/cadastro-promocao.js")" type="text/javascript"></script>
     <link href="@Url.Content("~/Content/css/geral.css")" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/css/jquery.Jcrop.css")" />
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/css/crop.css")" />
@@ -32,11 +32,17 @@
                 </div>
                 
                 <div>
-                    <label>Data de Entrada</label>            
-                    <input type="text" class="input-xxlarge" id="dataentrada" name="dataentrada" placeholder="Data de Entrada" value="@Model.DataEntrada">
-                    <span class="error error-cnpj alert alert-error"></span>
+                    <label>Data de Liberação</label>            
+                    <input type="text" class="input-xxlarge" id="dataliberacao" name="dataentrada" placeholder="Data de Liberação" value="@Model.DataLiberacao">
+                    <span class="error error-data alert alert-error"></span>
                 </div>
                 
+                <div>
+                    <label>Data de Expiração</label>            
+                    <input type="text" class="input-xxlarge" id="dataexpiracao" name="dataexpiracao" placeholder="Data de Expiração" value="@Model.DataExpiracao">
+                    <span class="error error-data alert alert-error"></span>
+                </div>
+
                 <div>
                     <label>Descrição</label>            
                     <input type="text" class="input-xxlarge" id="descricao" name="descricao" placeholder="Descrição" value="@Model.Descricao">

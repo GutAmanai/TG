@@ -54,7 +54,7 @@ namespace br.aplicacao.tg.Servicos
                     promocao.AdicionarNome(dtoPromocao.Nome);
                     promocao.AdicionarDescricao(dtoPromocao.Descricao);
                     promocao.AdicionarDataEntrada(DateTime.Now);
-
+                    promocao.AdicionarDataLiberacao(dtoPromocao.DataLiberacao);
                     _repositorioPromocao.Alterar(promocao);
                 }
                 else // Inclusao
@@ -63,6 +63,7 @@ namespace br.aplicacao.tg.Servicos
                     promocao.AdicionarNome(dtoPromocao.Nome);
                     promocao.AdicionarDescricao(dtoPromocao.Descricao);
                     promocao.AdicionarDataEntrada(DateTime.Now);
+                    promocao.AdicionarDataLiberacao(dtoPromocao.DataLiberacao);
                     _repositorioPromocao.Adicionar(promocao);
                 }
                 return true;
@@ -72,7 +73,7 @@ namespace br.aplicacao.tg.Servicos
                 return false;
             }
         }
-        
+
         private Promocao ObterPromocaoPorId(int id)
         {
             return _repositorioPromocao.ObterPorId(id);
@@ -81,16 +82,18 @@ namespace br.aplicacao.tg.Servicos
         public ViewModelPromocao ObterViewModelPromocao(int id)
         {
             var promocao = ObterPromocaoPorId(id);
-            if(promocao != null)
+            if (promocao != null)
             {
-                return new  ViewModelPromocao()
-                            {
-                                IdPromocao = promocao.Id,
-                                //IdCliente = promocao.ClientePromocao.FirstOrDefault(x => x.Promocao.Id == promocao.Id).Cliente.Id,
-                                Descricao = promocao.Descricao,
-                                //Imagem = "",
-                                Nome = promocao.Nome
-                            };
+                return new ViewModelPromocao()
+                {
+                    IdPromocao = promocao.Id,
+                    DataEntrada = promocao.DataEntrada,
+                    DataLiberacao = promocao.DataLiberacao,
+                    DataExpiracao = promocao.DataExpiracao,
+                    ImagemUrl = promocao.ImagemUrl,
+                    Descricao = promocao.Descricao,
+                    Nome = promocao.Nome
+                };
             }
             else
             {

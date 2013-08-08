@@ -77,11 +77,6 @@ namespace br.aplication.tg.Controllers
                 });
         }
 
-        //public ActionResult EmailIsExist(string email)
-        //{
-        //    return ServicoCliente.EmailIsExist(email) ? Json(true) : Json(false);
-        //}
-
         #region Salvar Imagem
         private bool SalvarImagemFinal(int idPromocao, string tempImg, string extension)
         {

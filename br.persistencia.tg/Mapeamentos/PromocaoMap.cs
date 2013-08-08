@@ -14,8 +14,11 @@ namespace br.persistencia.tg.Mapeamentos
 
             Map(x => x.Nome);
             Map(x => x.DataEntrada);
+            Map(x => x.DataLiberacao);
+            Map(x => x.DataExpiracao);
             Map(x => x.Descricao);
             Map(x => x.ImagemUrl);
+
             HasMany(x => x.ClientePromocao);
         }
     }
