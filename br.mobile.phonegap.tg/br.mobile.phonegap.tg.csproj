@@ -40,8 +40,7 @@
     <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
     <XapFilename>br.mobile.phonegap.tg.xap</XapFilename>
     <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
-    <SilverlightAppEntry>
-    </SilverlightAppEntry>
+    <SilverlightAppEntry>br.mobile.phonegap.tg.App</SilverlightAppEntry>
     <ValidateXaml>true</ValidateXaml>
     <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
   </PropertyGroup>
@@ -171,8 +170,9 @@
     <Content Include="www\data.txt" />
     <Content Include="www\gps.html" />
     <Content Include="www\js\gps.js" />
+    <Content Include="www\post.html" />
     <Content Include="www\tela.html" />
-    <Content Include="www\listarPromocoes.html" />
+    <Content Include="www\index.html" />
     <Resource Include="ApplicationIcon.png" />
     <Content Include="config.xml" />
     <Content Include="resources\notification-beep.wav" />
@@ -218,7 +218,7 @@
     </Content>
     <None Include="BuildManifestProcessor.js" />
     <Content Include="www\css\index.css" />
-    <Content Include="www\index.html">
+    <Content Include="www\oldindex.html">
       <SubType>Designer</SubType>
     </Content>
     <None Include="cordova\debug.bat" />
