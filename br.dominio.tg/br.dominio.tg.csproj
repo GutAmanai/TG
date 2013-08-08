@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entidades\Cliente.cs" />
+    <Compile Include="Entidades\ClienteLocalizacao.cs" />
     <Compile Include="Entidades\ClientePromocao.cs" />
     <Compile Include="Entidades\Consumidor.cs" />
     <Compile Include="Entidades\EntidadeBase.cs" />

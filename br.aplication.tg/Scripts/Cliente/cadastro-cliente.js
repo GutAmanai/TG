@@ -1,5 +1,6 @@
 ﻿$(function () {
     cadastroCliente.init();
+    googleMaps.initialize();
 });
 
 var guia;
@@ -209,3 +210,63 @@ var cadastroCliente = {
     }
 
 };
+
+var googleMaps = {
+       
+        map : new Object(),
+        markers : new Array(),
+        localizacoes : new Array(),
+
+        initialize : function() {
+            var latlng = new google.maps.LatLng(-23.546, -46.638);
+            var options = { zoom: 14, center: latlng, mapTypeId: google.maps.MapTypeId.ROADMAP };
+            googleMaps.map = new google.maps.Map(document.getElementById("map_canvas"), options);
+
+            google.maps.event.trigger(googleMaps.map, 'resize');
+
+            google.maps.event.addListener(googleMaps.map, 'click', function (event) {
+                googleMaps.addMarker(event.latLng);
+            });
+        }
+
+        ,addMarker : function(location) {
+            googleMaps.deleteOverlays();
+            var marker = new google.maps.Marker({
+                position: location,
+                map: googleMaps.map
+            });
+
+            var infowindow = new google.maps.InfoWindow({
+                content: 'Sua Localização ficará aqui!'
+            });
+            infowindow.open(googleMaps.map, marker);
+            googleMaps.markers.push(marker);
+
+            localizacoes.push(
+                                {
+                                    Latitude : location.lat(),
+                                    Longitude : location.lng()
+                                }
+                            );
+        }
+
+        , setAllMap : function(map) {
+            for (var i = 0; i < googleMaps.markers.length; i++) {
+                googleMaps.markers[i].setMap(map);
+            }
+        }
+
+        , clearOverlays : function() {
+            googleMaps.setAllMap(null);
+        }
+
+        ,showOverlays : function() {
+            googleMaps.setAllMap(googleMaps.map);
+        }
+
+        ,deleteOverlays : function() {
+            googleMaps.clearOverlays();
+            markers = new  Array();
+            localizacoes = new Array();
+        }
+}

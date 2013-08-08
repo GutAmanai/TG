@@ -19,10 +19,8 @@ namespace br.persistencia.tg.Mapeamentos
             Map(x => x.Contato);
             Map(x => x.FotoUrl).Nullable();
             Map(x => x.Senha);
-            Map(x => x.Latitude);
-            Map(x => x.Longitude);
-
             HasMany(x => x.ClientePromocao);
+            HasMany(x => x.ClienteLocalizacao);
         }
     }
 }

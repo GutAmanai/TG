@@ -18,7 +18,11 @@ namespace br.aplicacao.tg.DTO
         public string Senha { get; set; }
         public string TempImg { get; set; }
         public string Extension { get; set; }
-        public double Latitude { get; set; }
-        public double Longitude { get; set; }
+        public List<DTOLocalizacao> Localizacoes { get; set; }
+
+        public DTOCliente()
+        {
+            this.Localizacoes = new List<DTOLocalizacao>();
+        }
     }
 }

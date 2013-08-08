@@ -14,13 +14,17 @@ namespace br.dominio.tg.Entidades
         public virtual string Contato { get; protected set; }
         public virtual string FotoUrl { get; protected set; }
         public virtual string Senha { get; protected set; }
-        public virtual double Latitude { get; protected set; }
-        public virtual double Longitude { get; protected set; }
 
         private ICollection<ClientePromocao> _clientePromocao;
         public virtual IEnumerable<ClientePromocao> ClientePromocao
         {
             get { return _clientePromocao; }
+        }
+
+        private ICollection<ClienteLocalizacao> _clienteLocalizacao;
+        public virtual IEnumerable<ClienteLocalizacao> ClienteLocalizacao
+        {
+            get { return _clienteLocalizacao; }
         }
 
         public virtual void AdicionarClientePromocao(ClientePromocao clientePromocao)
@@ -71,14 +75,18 @@ namespace br.dominio.tg.Entidades
             this.Responsavel = responsavel;
         }
 
-        public virtual void AdicionarLatitude(double latitude)
+        public virtual void RemoverLocalizacao()
         {
-            this.Latitude = latitude;
+            if(this._clienteLocalizacao == null)
+                this._clienteLocalizacao = new Collection<ClienteLocalizacao>();
+            this._clienteLocalizacao.Clear();
         }
 
-        public virtual void AdicionarLongitude(double longitude)
+        public virtual void AdicionarLocalizacao(ClienteLocalizacao clienteLocalizacao)
         {
-            this.Longitude = longitude;
+            if (this._clienteLocalizacao == null)
+                this._clienteLocalizacao = new Collection<ClienteLocalizacao>();
+            this._clienteLocalizacao.Add(clienteLocalizacao);
         }
     }
 }

@@ -65,6 +65,7 @@
     <Compile Include="Infra\FluentNHibernateConventions.cs" />
     <Compile Include="Infra\SessionFactory.cs" />
     <Compile Include="InjecaoDependencia\NinjectPersistencia.cs" />
+    <Compile Include="Mapeamentos\ClienteLocalizacaoMap.cs" />
     <Compile Include="Mapeamentos\ClienteMap.cs" />
     <Compile Include="Mapeamentos\ClientePromocaoMap.cs" />
     <Compile Include="Mapeamentos\ConsumidorMap.cs" />
