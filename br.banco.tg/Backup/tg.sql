@@ -60,10 +60,10 @@ CREATE TABLE `promocao` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `Nome` varchar(100) NOT NULL,
   `DataEntrada` datetime NOT NULL,
+  `DataLiberacao` datetime NOT NULL,
+  `DataExpiracao` datetime NOT NULL,
   `Descricao` varchar(100) NOT NULL,
   `ImagemUrl` varchar(100) NOT NULL,
-  `Latitude` double NOT NULL,
-  `Longitude` double NOT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

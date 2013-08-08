@@ -33,7 +33,7 @@ $(document).ready(function () {
 });
 
 
-var cadastroCliente = {
+var cadastroPromocao = {
 
     init: function () {
         cadastroPromocao.bind();
@@ -98,16 +98,10 @@ var cadastroCliente = {
             retorno = false;
         }
 
-        if (dados.Senha == "") {
-            $(".error-senha").html("Informe uma senha");
-            $(".error-senha").show("fast");
+        if (dados.Descricao == "") {
+            $(".error-sedescricaonha").html("Informe uma descrição");
+            $(".error-descricao").show("fast");
             retorno = false;
-        } else {
-            if (dados.Senha != dados.SenhaConfirmacao) {
-                $(".error-senha-comparacao").html("Senha não são validas");
-                $(".error-senha-comparacao").show("fast");
-                retorno = false;
-            }
         }
 
         return retorno;
@@ -122,7 +116,7 @@ var cadastroCliente = {
             async: false,
             success: function (data) {
                 if (data) {
-                    alert("Cadastro feito com sucesso!");
+                    alert("Promoção salva com sucesso!");
                 }
                 else {
                     alert("Não foi possível salvar!");
