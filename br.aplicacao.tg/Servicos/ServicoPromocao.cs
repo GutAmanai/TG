@@ -90,14 +90,18 @@ namespace br.aplicacao.tg.Servicos
                     DataEntrada = promocao.DataEntrada,
                     DataLiberacao = promocao.DataLiberacao,
                     DataExpiracao = promocao.DataExpiracao,
-                    ImagemUrl = promocao.ImagemUrl,
+                    ImagemUrl = "",
                     Descricao = promocao.Descricao,
                     Nome = promocao.Nome
                 };
             }
             else
             {
-                return new ViewModelPromocao();
+                return new ViewModelPromocao()
+                {
+                    DataLiberacao = DateTime.Today,
+                    DataExpiracao = DateTime.Today.AddDays(2).AddSeconds(-1)
+                };
             }
         }
     }

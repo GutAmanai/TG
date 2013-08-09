@@ -1,10 +1,8 @@
 ﻿@model br.aplicacao.tg.ViewModel.ViewModelPromocao
-
 @{
     ViewBag.Title = "Cadastro";
     Layout = "../Shared/_Layout.cshtml";
 }
-
 @section head
 {
     <script src="@Url.Content("~/Scripts/Promocao/cadastro-promocao.js")" type="text/javascript"></script>
@@ -15,42 +13,45 @@
     <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.Jcrop.min.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/crop.js")"></script>
 }
-
 <div class="container">
     <input type="hidden" id="id-promocao" value="@Model.IdPromocao"/>
+    <input type="hidden" id="id-cliente" />
     <input type="hidden" id="alteracao" value="@ViewBag.Alterar"/>
     <div class="page-header">
-        <h1>Cadastro de Promoção</h1>
+        <h1>
+            Cadastro de Promoção</h1>
     </div>
     <div class="row">
         <div class="cadastro">
             <div class="span6">
                 <div>
-                    <label>Nome</label>            
+                    <label>
+                        Nome</label>
                     <input type="text" class="input-xxlarge" id="nome" name="nome" placeholder="Nome" value="@Model.Nome" />
                     <span class="error error-nome alert alert-error"></span>
                 </div>
-                
                 <div>
-                    <label>Data de Liberação</label>            
-                    <input type="text" class="input-xxlarge" id="dataliberacao" name="dataentrada" placeholder="Data de Liberação" value="@Model.DataLiberacao" />
+                    <label>
+                        Data de Liberação</label>
+                    <input type="text" class="input-xxlarge" id="dataliberacao" name="dataliberacao" placeholder="Data de Liberação" value="@Model.DataLiberacao" />
                     <span class="error error-data alert alert-error"></span>
                 </div>
-                
                 <div>
-                    <label>Data de Expiração</label>            
+                    <label>
+                        Data de Expiração</label>
                     <input type="text" class="input-xxlarge" id="dataexpiracao" name="dataexpiracao" placeholder="Data de Expiração" value="@Model.DataExpiracao" />
                     <span class="error error-data alert alert-error"></span>
                 </div>
-
                 <div>
-                    <label>Descrição</label>            
+                    <label>
+                        Descrição</label>
                     <input type="text" class="input-xxlarge" id="descricao" name="descricao" placeholder="Descrição" value="@Model.Descricao" />
                     <span class="error error-descricao alert alert-error"></span>
                 </div>
             </div>
             <div class="span4 well">
-                <label><strong>Imagem da Promoção</strong></label>
+                <label>
+                    <strong>Imagem da Promoção</strong></label>
                 <hr />
                 <div class="row">
                     <div class="row center-align">
@@ -60,15 +61,16 @@
                     <br style="clear: both;" />
                     <div id="buttons">
                         <div class="span0">
-                            <a href="javascript:void(0)" class="btn btn-crop btn-warning pull-left" id="upload-imagem">Upload</a>
-                            <input type="hidden" id="temp-image" value=""/>  
-                            <input type="hidden" id="extension" value=""/>  
-                        </div> 
-                        <div class="span0">
-                            <a class="btn btn-crop btn-warning pull-left" href="javascript:void(0)" id="remove-imagem">Remover foto</a>
+                            <a href="javascript:void(0)" class="btn btn-crop btn-warning pull-left" id="upload-imagem">
+                                Upload</a>
+                            <input type="hidden" id="temp-image" value="" />
+                            <input type="hidden" id="extension" value="" />
                         </div>
+                        @*<div class="span0">
+                            <a class="btn btn-crop btn-warning pull-left" href="javascript:void(0)" id="remove-imagem">Remover foto</a>
+                        </div>*@
                     </div>
-                </div>                        
+                </div>
             </div>
         </div>
     </div>
@@ -76,7 +78,6 @@
         <div class="span12">
             <input value="Salvar" class="btn btn-primary btn-small pull-right salvar-cadastro" />
         </div>
-    </div>   
-    <br class="clearfix"/>
+    </div>
+    <br class="clearfix" />
 </div>
-

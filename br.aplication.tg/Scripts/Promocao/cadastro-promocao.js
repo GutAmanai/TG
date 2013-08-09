@@ -37,7 +37,6 @@ var cadastroPromocao = {
 
     init: function () {
         cadastroPromocao.bind();
-        cadastroPromocao.mask();
     }
 
     , bind: function () {
@@ -60,6 +59,7 @@ var cadastroPromocao = {
         var configuracao =
         {
             IdPromocao: $("#id-promocao").val(),
+            IdCliente: $("#id-cliente").val()
             Nome: $("#nome").val(),
             DataLiberacao: $("#dataliberacao").val(),
             DataExpiracao: $("#dataexpiracao").val(),

@@ -188,7 +188,7 @@
   <ItemGroup>
     <Folder Include="Arquivos\Cliente\Min\" />
     <Folder Include="Arquivos\Cliente\Normal\" />
-    <Folder Include="Arquivos\Temp\" />
+    <Folder Include="Arquivos\Temp\Promocao\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
