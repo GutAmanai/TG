@@ -1,10 +1,4 @@
 
-// correcao tamanho das imagens          
-// --------------------------------------------------------------------------------
-// --------------------------------------------------------------------------------  
-$('.logo-url-empresa').width(40);
-$('.logo-empresa').width(70);
-$('.logo-lotus').width(47);
 var idPromocao = 0;
 
 $('ul').on('click', '.imagem-promocao', function () {

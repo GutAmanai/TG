@@ -1,5 +1,11 @@
 function inicio() {
-    document.addEventListener("deviceready", onDeviceReady, false);		 
+    document.addEventListener("deviceready", onDeviceReady, false);
+    // correcao tamanho das imagens          
+    // --------------------------------------------------------------------------------
+    // --------------------------------------------------------------------------------  
+    $('.logo-url-empresa').width(40);
+    $('.logo-empresa').width(70);
+    $('.logo-lotus').width(47);	 
 }
 
 function onDeviceReady() {
