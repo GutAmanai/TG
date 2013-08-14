@@ -1,18 +1,16 @@
 ﻿@model dynamic
-
 @{
     ViewBag.Title = "Menu";
     Layout = "../Shared/_Layout.cshtml";
 }
-
 @section head
 {
     <link href="@Url.Content("~/Content/css/geral.css")" rel="stylesheet" type="text/css" />
 }
-
 <div class="container">
     <div class="page-header">
-        <h2>Menu - VemKa</h2>
+        <h2>
+            Menu - VemKa</h2>
     </div>
     <div class="row-fluid menu">
         <ul class="thumbnails">
@@ -20,10 +18,12 @@
                 <div class="thumbnail">
                     <img src=@Url.Content("~/Content/img/adicionar.png") alt="Adicionar Promoções" />
                     <div class="caption">
-                        <h3>Adicionar Promoções</h3>
+                        <h3>
+                            Adicionar Promoções</h3>
                         <p>
-                            Aqui você poderá adicionar diversas promoções a sua empresa, configurando liberação e expiração de cada promoção.
-                            Todas as promoções apontam para sua localização. Aguarde, mais novidades em breve!
+                            Aqui você poderá adicionar diversas promoções a sua empresa, configurando liberação
+                            e expiração de cada promoção. Todas as promoções apontam para sua localização. Aguarde,
+                            mais novidades em breve!
                         </p>
                     </div>
                     <div class="widget-footer">
@@ -37,11 +37,12 @@
                 <div class="thumbnail">
                     <img src=@Url.Content("~/Content/img/relatorio.png") alt="Adicionar Promoções" />
                     <div class="caption">
-                        <h3>Relatório</h3>
+                        <h3>
+                            Relatório</h3>
                         <p>
-                            Que tal analisar como anda seu negócio?
-                            <b>Em breve</b>, você verá quem está curtindo suas promoções.
-                            Podendo utilizar as informações aqui dispostas para melhor se planejar e chamar a atenção de seus clientes!
+                            Que tal analisar como anda seu negócio? <b>Em breve</b>, você verá quem está curtindo
+                            suas promoções. Podendo utilizar as informações aqui dispostas para melhor se planejar
+                            e chamar a atenção de seus clientes!
                         </p>
                     </div>
                     <div class="widget-footer">
@@ -52,6 +53,5 @@
                 </div>
             </li>
         </ul>
-    </div>    
+    </div>
 </div>
-

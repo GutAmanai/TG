@@ -65,17 +65,17 @@ namespace br.aplication.tg.Controllers
             }
         }
 
-        //public ActionResult ListarPromocao(double longitude, double latitude)
-        //{
-        //    return Json(new
-        //        {
-        //            IdEmpresa = 1,
-        //            NomeEmpresa = "Empresa00",
-        //            UrlEmpresa = "www.urlEmpresa/empresa.jpg",
-        //            UrlPromocao = "www.urlPropaganda/empresa.jpg",
-        //            Promocao = "Façalalalal"
-        //        });
-        //}
+        public ActionResult ListarPromocao()
+        {
+            return this.Jsonp(new
+                {
+                    IdEmpresa = 1,
+                    NomeEmpresa = "Empresa00",
+                    UrlEmpresa = "www.urlEmpresa/empresa.jpg",
+                    UrlPromocao = "www.urlPropaganda/empresa.jpg",
+                    Promocao = "Façalalalal"
+                });
+        }
 
         #region Salvar Imagem
         private bool SalvarImagemFinal(int idPromocao, string tempImg, string extension)

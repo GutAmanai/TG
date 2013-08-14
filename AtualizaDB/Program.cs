@@ -1,4 +1,5 @@
 ﻿using br.persistencia.tg.Infra;
+using System;
 
 namespace AtualizaDB
 {
@@ -8,6 +9,12 @@ namespace AtualizaDB
         {
             DbHelper.ExcluirBanco();
             DbHelper.CriarBanco();
+            Console.Write("Criação realizada");
+            Console.ReadKey();
+            DbHelper.AtualizarBanco();
+
+            Console.Write("Atualização Finalizada");
+            Console.ReadKey();
         }
     }
 }

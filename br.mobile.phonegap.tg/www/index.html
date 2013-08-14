@@ -1,224 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-  
-  <head>
-    <script src="assets/js/bootstrap.js">
-    </script>
-	<script type="text/javascript" src="js\jquery-1.9.1.min.js"></script>
-	<script type="text/javascript" src="js\listar-promocoes.js"></script>
-    <script type="text/javascript" charset="utf-8" src="cordova-2.5.0.js"></script>    
-    <title>
-    </title>
+<head>
+    <!-- Scripts -->
+    <script type="text/javascript" src="assets/js/bootstrap.js"></script>
+    <script type="text/javascript" src="js\jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="js\listar-promocoes.js"></script>
+    <script type="text/javascript" src="js\jquery.mobile-1.1.0.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="cordova-2.5.0.js"></script>
+    <script type="text/javascript" src="js\listar-promocoes-ajustar.js"></script>
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <!-- Le styles -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
-    <style>
-      body { padding-top: 60px; /* 60px to make the container go all the way
-      to the bottom of the topbar */ }
-    </style>
+    
+    <!-- styles -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet"> 
     <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js">
-      </script>
-    <![endif]-->
-    <!-- Le fav and touch icons -->
+    <link href="css/listar-promocoes.css" rel="stylesheet">
+
     <link rel="shortcut icon" href="assets/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
-    <style>
-    </style>
-  </head>
-  <body onload="inicio()">
+</head>
+
+<body onload="inicio()">
     <div id="header" class="">
-    	<img class="logo-empresa" src="https://s3.amazonaws.com/media.jetstrap.com/RSTg4xF2S7qEX6bIIJyM_ApplicationIcon4.png" width="70">
-    	<div class="navbar navbar-fixed-top navbar menu-promocoes">
-    		<div class="navbar-inner header">
-    			<a class="btn pull-right"><i class="icon-refresh"></i></a>
-    			<a class="btn pull-right"><i class="icon-arrow-left"></i></a>
-    			<h class="pull-left">
+        <img class="logo-empresa" src="img\logoVemKa.png"
+            width="70">
+        <div class="navbar navbar-fixed-top navbar menu-promocoes">
+            <div class="navbar-inner header">
+                <a class="btn pull-right" id="atualizar-promocao"><i class="icon-refresh"></i></a>
+                <a class="btn pull-right"><i class="icon-arrow-left"></i></a>
+                <h class="pull-left">
     				VemKa
     			</h>
-    		</div>
-    	</div>
+            </div>
+        </div>
     </div>
     <!-- NAV BAR TOPO -->
     <!--Começo da lista -->
     <div class="container conteudo">
-    	<ul class="nav nav-list lista-promocoes" id="id-ul">
-    		<!--Inicio dos itens -->               		    		
-    	</ul>
+        <ul class="nav nav-list lista-promocoes" id="id-ul">
+            <!--Inicio dos itens -->
+        </ul>
     </div>
     <!-- FIM DA LISTA -->
     <!-- NAV BAR RODAPE -->
     <div class="navbar navbar-fixed-bottom navbar footer-promocoes">
-    	<div class="navbar-inner footer">
-    		<img src="https://s3.amazonaws.com/media.jetstrap.com/TjMfuQpUSdSLrT1bJG8G_logoLotus.png" class="pull-left logo-lotus" width="47">
-    		<span>Lotus Tecnologia ©2013. <br>Todos os direitos reservados.</span>
-    	</div>
+        <div class="navbar-inner footer">
+            <img src="img\logoLotus.png"
+                class="pull-left logo-lotus" width="47">
+            <span>Lotus Tecnologia
+                <br>
+                Todos os direitos reservados.</span>
+        </div>
     </div>
-
-    <div class="place" id="testeID">     
-    </div>
-
-    <style>
-      body {
-          padding-top: 5px;
-          background-color: #E9B93A;
-        }
-      
-      .titulo-empresa h3{
-          margin-left:100px;
-          font-size: 200%;
-      }
-      
-      .titulo-empresa{
-          padding-left:10px;
-          padding-right:10px;
-          font-family: inherit;
-          font-weight: bold;
-          
-      }
-      
-      .imagem-promocao {       
-          margin:20px;
-      }
-      
-      .texto-promocao {
-          
-      }
-      
-      .texto-promocao.textarea {
-          position: relative;
-          left: 30px;
-      }
-      
-      .span4 {
-          
-          margin-bottom:40px;
-      }
-      
-      .menu-promocoes{
-          margin-top:-60px;
-      }
-      
-      .navbar-inner.header
-      {
-          background: #54443D;
-          background-image: linear-gradient(to bottom, #54443D, #54443D);
-      }
-      
-      .btn.pull-right
-      {
-          margin: 5px 1px 0px 1px;
-      }
-      
-      .navbar-inner.header h
-      {
-          color:#fff;
-          font-size: 35px;
-          padding: 10px 0px 0px 90px;
-          
-      }
-      
-      .navbar-inner.footer span
-      {
-          padding: 0px 0px 0px 0px;
-      }
-      
-      .logo-empresa
-      {
-          float: auto;
-      }
-      
-      .navbar-inner.footer
-      {
-          background: #54443D;
-          color: #fff;
-          text-align: center;
-      }
-      
-      .corpo-promocoes{
-          padding: 0px 0px;
-      }
-      
-      .footer-promocoes{
-          
-      }
-      
-      .nav.nav-list.lista-promocoes {
-      padding: 0px;
-      }
-      
-      #titulo-empresa {
-          margin: -20px -20px 10px;
-          border-radius: 5px 5px 0 0;
-          line-height: 40px;
-      }
-      #titulo-empresa img {
-          margin: 4px 0 0;
-      }
-      .thumbnail {
-          padding: 0;
-          text-align:center;
-          min-height: 238px;
-      }
-    </style>   
-    <script type="text/javascript">
-        $(document).ready(function () {
-            // correcao tamanho das imagens            
-            $('.logo-url-empresa').width(40);
-            $('.logo-empresa').width(70);
-            $('.logo-lotus').width(47);
-            var idPromocao = 0;
-            $('ul').on('click', '.imagem-promocao', function () {
-                var id = $(this).attr('id');
-                idPromocao = id;
-                localStorage.idSelecionado = idPromocao;
-                $('.conteudo').load('gps.html');
-            });
-            //recuperar valor de latitude e longitude
-            var win = function (position) {
-                $('.place').append('Longitude:' + position.coords.longitude);
-                $('.place').append('Latitude:' + position.coords.latitude);
-            };
-            var fail = function (e) {
-                alert('Can\'t retrieve position.\nError: ' + e);
-            };
-            navigator.geolocation.getCurrentPosition(win, fail);
-            //Post para servidor
-            $.ajax({
-                type: "POST",
-                dataType: "JSON",
-                url: "http://localhost:1772/Promocao/ListarPromocao",
-                data: { latitude: 2, longitude: 3 },
-                async: false,
-                success: function (data) {
-                    if (data) {
-                        alert("Cadastro feito com sucesso!");
-                    }
-                    else {
-                        alert("Não foi possível salvar!");
-                    }
-                },
-                failure: function (msg, status) {
-                    alert("Não foi possível salvar!");
-                },
-                error: function (msg, status) {
-                    $('.place').append(msg + status);
-                    alert("Não foi possível salvar!");
-                },
-                complete: function () {
-
-                }
-            });
-
-
-        });
-    </script>
-  </body>
+    <div class="place" id="testeID">
+    </div>       
+</body>
 </html>

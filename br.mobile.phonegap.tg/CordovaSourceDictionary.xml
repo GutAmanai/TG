@@ -3,7 +3,9 @@
 <CordovaSourceDictionary>
     <FilePath Value="www\data.txt"/>
     <FilePath Value="www\gps.html"/>
+    <FilePath Value="www\js\listar-promocoes-ajustar.js"/>
     <FilePath Value="www\js\gps.js"/>
+    <FilePath Value="www\js\jquery.mobile-1.1.0.min.js"/>
     <FilePath Value="www\post.html"/>
     <FilePath Value="www\tela.html"/>
     <FilePath Value="www\index.html"/>
