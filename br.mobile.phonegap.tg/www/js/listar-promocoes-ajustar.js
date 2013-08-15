@@ -1,34 +1,18 @@
 
-var idPromocao = 0;
-
-// direciona para mapa
-$('ul').on('click', '.imagem-promocao', function () {
-    var id = $(this).attr('id');
-    idPromocao = id;
-    localStorage.idSelecionado = idPromocao;
-    $('.conteudo').load('gps.html');
-});
-
-//recuperar valor de latitude e longitude
-function recuperarPosicaoGPS(){        
-        var win = function (position) {
-           localStorage.latitude = position.coords.latitude;
-           localStorage.longitude = position.coords.longitude;
-    };
-
-    var fail = function (e) {
-        alert('Can\'t retrieve position.\nError: ' + e);
-    };
-        
-    navigator.geolocation.getCurrentPosition(win, fail);
-}
-
-
 // ------------- Parte de chamada para o sistema ----------------------------------
 // --------------------------------------------------------------------------------
 // --------------------------------------------------------------------------------
 $(document).ready(function () {
     recuperarPosicaoGPS();
+    // direciona para mapa
+    $('ul').on('click', '.imagem-promocao', function () {
+        var idPromocao = 0;
+        var id = $(this).attr('id');
+        idPromocao = id;
+        localStorage.idSelecionado = idPromocao;
+        $('.conteudo').load('gps.html');
+    });
+
     $("#atualizar-promocao").click(function () {
         handleClick();
     });
@@ -57,7 +41,8 @@ function handleClick() {
         crossDomain: true,
         success: function (res) {
             //$(".conteudo").html(JSON.stringify(res));
-            //alert(JSON.stringify(res));            
+            //alert(JSON.stringify(res));
+            mantemJson(res);
             geraLista(res);
         },
         error: function (e) {
@@ -69,6 +54,20 @@ function handleClick() {
         }
     });
 
+}
+
+//recuperar valor de latitude e longitude
+function recuperarPosicaoGPS() {
+    var win = function (position) {
+        localStorage.latitude = position.coords.latitude;
+        localStorage.longitude = position.coords.longitude;
+    };
+
+    var fail = function (e) {
+        alert('Can\'t retrieve position.\nError: ' + e);
+    };
+
+    navigator.geolocation.getCurrentPosition(win, fail);
 }
 
 function geraLista(data) {
@@ -105,5 +104,9 @@ function geraLista(data) {
 		'</div>' +
 	'</li>');
     }
-    
+
+}
+
+function mantemJson(json) {
+    localStorage.dataJSON = json;
 }

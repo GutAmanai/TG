@@ -167,6 +167,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="www\css\mapa.css" />
     <Content Include="www\data.txt" />
     <Content Include="www\gps.html" />
     <Content Include="www\img\logoVemKa.png" />

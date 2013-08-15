@@ -6,7 +6,7 @@
     </script>
 	<script type="text/javascript" src="js\jquery-1.9.1.min.js"></script>
 	<script type="text/javascript" src="js\listar-promocoes.js"></script>
-    <script type="text/javascript" src="js\gps.js"></script>
+    <!--<script type="text/javascript" src="js\gps.js"></script> -->
     <script type="text/javascript" charset="utf-8" src="cordova-2.5.0.js"></script>    
     <title>
     </title>
@@ -59,9 +59,12 @@
     			</div>
     		</div>
     		<!--Barra titulo empresa -->
-    		<div class="imagem-promocao thumbnail" id="imagem-promocao">
+            <!-- MAPA --
+    		<div class="imagem-promocao thumbnail" id="imagem-promocao">                
     			<img class="imagem thumbnail" id="imagem-mapa" src="" width="" height="">
     		</div>
+            -->
+            <iframe src="mapa.html"  height="400" width="250"></iframe>
     		<span class="label" id="endereco">Endereço:</span>
     	</div>
     </div>
@@ -76,6 +79,7 @@
     </div>
     -->
     <div class="place" id="testeID">    
+    
     </div>
 
     <style>
@@ -192,10 +196,10 @@
             var data = localStorage.dataJSON;
             for (var i in data.promocoes) {
 
-                if (data.promocoes[i].IdEmpresa == localStorage.idSelecionado) {
+                if (data.promocoes[i].IdEmpresa == localStorage.idSelecionado) {                    
                     $('#imagem-empresa').attr('src', data.promocoes[i].UrlEmpresa);
                     $('#nome-empresa').replaceWith('<a class="brand titulo-empresa" id="nome-empresa" href="#">'+data.promocoes[i].NomeEmpresa+'</a>');
-                    $('#imagem-mapa').attr('src', data.promocoes[i].UrlMapa);
+                    //$('#imagem-mapa').attr('src', data.promocoes[i].UrlMapa);
                     $('#endereco').replaceWith('<span class="label" id="endereco">Endereço:'+data.promocoes[i].Endereco+'</span>');
                 }
             }
