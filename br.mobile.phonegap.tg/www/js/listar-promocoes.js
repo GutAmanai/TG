@@ -9,7 +9,7 @@ function inicio() {
 }
 
 function onDeviceReady() {
-    lerArquivoTxt(); 
+    //lerArquivoTxt(); 
 }
 
 function geraLista(data){
