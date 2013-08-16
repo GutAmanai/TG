@@ -76,6 +76,7 @@ var cadastroCliente = {
     }
 
     , recuperarDados: function () {
+        
         var configuracao =
         {
             IdCliente: $("#id-cliente").val(),
@@ -87,7 +88,8 @@ var cadastroCliente = {
             Senha: $("#senha").val(),
             SenhaConfirmacao: $("#senha_confirmacao").val(),
             TempImg: $("#temp-image").val(),
-            Extension: $("#extension").val()
+            Extension: $("#extension").val(),
+            Localizacoes: googleMaps.localizacoes
         };
 
         return configuracao;
@@ -134,7 +136,7 @@ var cadastroCliente = {
         }
 
         if ($("#alteracao").val() != 'True' && $("#temp-image").val() == "") {
-            alert("Atenção", "Informe uma imagem");
+            alert("Informe uma imagem");
             retorno = false;
         }
 
@@ -154,6 +156,11 @@ var cadastroCliente = {
                 $(".error-senha-comparacao").show("fast");
                 retorno = false;
             }
+        }
+
+        if (dados.Localizacoes.length == 0) {
+            alert("Informe uma localização");
+            retorno = false;
         }
 
         return retorno;
@@ -212,61 +219,57 @@ var cadastroCliente = {
 };
 
 var googleMaps = {
-       
-        map : new Object(),
-        markers : new Array(),
-        localizacoes : new Array(),
 
-        initialize : function() {
-            var latlng = new google.maps.LatLng(-23.546, -46.638);
-            var options = { zoom: 14, center: latlng, mapTypeId: google.maps.MapTypeId.ROADMAP };
-            googleMaps.map = new google.maps.Map(document.getElementById("map_canvas"), options);
+    map: new Object(),
+    markers: new Array(),
+    localizacoes: new Array(),
 
-            google.maps.event.trigger(googleMaps.map, 'resize');
+    initialize: function () {
+        var latlng = new google.maps.LatLng(-23.546, -46.638);
+        var options = { zoom: 14, center: latlng, mapTypeId: google.maps.MapTypeId.ROADMAP };
+        googleMaps.map = new google.maps.Map(document.getElementById("map_canvas"), options);
 
-            google.maps.event.addListener(googleMaps.map, 'click', function (event) {
-                googleMaps.addMarker(event.latLng);
-            });
+        google.maps.event.trigger(googleMaps.map, 'resize');
+
+        google.maps.event.addListener(googleMaps.map, 'click', function (event) {
+            googleMaps.addMarker(event.latLng);
+        });
+    }
+
+    , addMarker: function (location) {
+        googleMaps.deleteOverlays();
+
+        var marker = new google.maps.Marker({
+            position: location,
+            map: googleMaps.map
+        });
+
+        var infowindow = new google.maps.InfoWindow({
+            content: 'Sua Localização ficará aqui!'
+        });
+
+        infowindow.open(googleMaps.map, marker);
+        googleMaps.markers.push(marker);
+        googleMaps.localizacoes.push({ Latitude: location.lat(), Longitude: location.lng() });
+    }
+
+    , setAllMap: function (map) {
+        for (var i = 0; i < googleMaps.markers.length; i++) {
+            googleMaps.markers[i].setMap(map);
         }
+    }
 
-        ,addMarker : function(location) {
-            googleMaps.deleteOverlays();
-            var marker = new google.maps.Marker({
-                position: location,
-                map: googleMaps.map
-            });
+    , clearOverlays: function () {
+        googleMaps.setAllMap(null);
+    }
 
-            var infowindow = new google.maps.InfoWindow({
-                content: 'Sua Localização ficará aqui!'
-            });
-            infowindow.open(googleMaps.map, marker);
-            googleMaps.markers.push(marker);
+    , showOverlays: function () {
+        googleMaps.setAllMap(googleMaps.map);
+    }
 
-            localizacoes.push(
-                                {
-                                    Latitude : location.lat(),
-                                    Longitude : location.lng()
-                                }
-                            );
-        }
-
-        , setAllMap : function(map) {
-            for (var i = 0; i < googleMaps.markers.length; i++) {
-                googleMaps.markers[i].setMap(map);
-            }
-        }
-
-        , clearOverlays : function() {
-            googleMaps.setAllMap(null);
-        }
-
-        ,showOverlays : function() {
-            googleMaps.setAllMap(googleMaps.map);
-        }
-
-        ,deleteOverlays : function() {
-            googleMaps.clearOverlays();
-            markers = new  Array();
-            localizacoes = new Array();
-        }
+    , deleteOverlays: function () {
+        googleMaps.clearOverlays();
+        googleMaps.markers = new Array();
+        googleMaps.localizacoes = new Array();
+    }
 }

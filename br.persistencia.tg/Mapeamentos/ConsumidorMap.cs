@@ -11,14 +11,12 @@ namespace br.persistencia.tg.Mapeamentos
         public UsuarioMap()
         {
             Table("Usuario");
-
             Map(x => x.Nome);
             Map(x => x.DataEntrada);
             Map(x => x.Email).Unique();
             Map(x => x.Contato);
             Map(x => x.Senha);
-
-            HasMany(x => x.QualificacaoPromocao);
+            HasMany<QualificacaoPromocao>(x => x.QualificacaoPromocao).Cascade.AllDeleteOrphan();
         }
     }
 }

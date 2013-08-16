@@ -11,10 +11,10 @@ namespace br.persistencia.tg.Mapeamentos
         public QualificacaoPromocaoMap()
         {
             Table("QualificacaoPromocao");
-            References(x => x.ClientePromocao);
-            References(x => x.Usuario);
             Map(x => x.Gostou);
             Map(x => x.DataEntrada);
+            References(x => x.ClientePromocao);
+            References(x => x.Usuario);
         }
     }
 }

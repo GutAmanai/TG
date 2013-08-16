@@ -1,0 +1,156 @@
+﻿
+    
+alter table ClienteLocalizacao  drop foreign key FK_ClienteLocalizacao_Cliente
+
+
+    
+alter table ClientePromocao  drop foreign key FK_ClientePromocao_Cliente
+
+
+    
+alter table ClientePromocao  drop foreign key FKD9910AFCE30B568E
+
+
+    
+alter table QualificacaoPromocao  drop foreign key FK88673F6347ECA03D
+
+
+    
+alter table QualificacaoPromocao  drop foreign key FK_QualificacaoPromocao_Usuario
+
+
+    drop table if exists ClienteLocalizacao
+
+    drop table if exists Cliente
+
+    drop table if exists ClientePromocao
+
+    drop table if exists Promocao
+
+    drop table if exists QualificacaoPromocao
+
+    drop table if exists Usuario
+
+    
+alter table ClienteLocalizacao  drop foreign key FK_ClienteLocalizacao_Cliente
+
+
+    
+alter table ClientePromocao  drop foreign key FK_ClientePromocao_Cliente
+
+
+    
+alter table ClientePromocao  drop foreign key FKD9910AFCE30B568E
+
+
+    
+alter table QualificacaoPromocao  drop foreign key FK88673F6347ECA03D
+
+
+    
+alter table QualificacaoPromocao  drop foreign key FK_QualificacaoPromocao_Usuario
+
+
+    drop table if exists ClienteLocalizacao
+
+    drop table if exists Cliente
+
+    drop table if exists ClientePromocao
+
+    drop table if exists Promocao
+
+    drop table if exists QualificacaoPromocao
+
+    drop table if exists Usuario
+
+    create table ClienteLocalizacao (
+        Id INTEGER NOT NULL AUTO_INCREMENT,
+       DataEntrada DATETIME not null,
+       Latitude DOUBLE not null,
+       Longitude DOUBLE not null,
+       IdCliente INTEGER,
+       primary key (Id)
+    )
+
+    create table Cliente (
+        Id INTEGER NOT NULL AUTO_INCREMENT,
+       Nome VARCHAR(100) not null,
+       DataEntrada DATETIME not null,
+       Documento VARCHAR(100) not null,
+       Responsavel VARCHAR(100) not null,
+       Email VARCHAR(100) not null unique,
+       Contato VARCHAR(100) not null,
+       FotoUrl VARCHAR(100),
+       Senha VARCHAR(100) not null,
+       primary key (Id)
+    )
+
+    create table ClientePromocao (
+        Id INTEGER NOT NULL AUTO_INCREMENT,
+       DataExpiracao DATETIME not null,
+       Ativo TINYINT(1) not null,
+       IdCliente INTEGER,
+       IdPromocao INTEGER,
+       primary key (Id)
+    )
+
+    create table Promocao (
+        Id INTEGER NOT NULL AUTO_INCREMENT,
+       Nome VARCHAR(100) not null,
+       DataEntrada DATETIME not null,
+       DataLiberacao DATETIME not null,
+       DataExpiracao DATETIME not null,
+       Descricao VARCHAR(100) not null,
+       ImagemUrl VARCHAR(100) not null,
+       primary key (Id)
+    )
+
+    create table QualificacaoPromocao (
+        Id INTEGER NOT NULL AUTO_INCREMENT,
+       Gostou TINYINT(1) not null,
+       DataEntrada DATETIME not null,
+       IdClientePromocao INTEGER,
+       IdUsuario INTEGER,
+       primary key (Id)
+    )
+
+    create table Usuario (
+        Id INTEGER NOT NULL AUTO_INCREMENT,
+       Nome VARCHAR(100) not null,
+       DataEntrada DATETIME not null,
+       Email VARCHAR(100) not null unique,
+       Contato VARCHAR(100) not null,
+       Senha VARCHAR(100) not null,
+       primary key (Id)
+    )
+
+    alter table ClienteLocalizacao 
+        add index (IdCliente), 
+        add constraint FK_ClienteLocalizacao_Cliente 
+        foreign key (IdCliente) 
+        references Cliente (Id)
+
+    alter table ClientePromocao 
+        add index (IdCliente), 
+        add constraint FK_ClientePromocao_Cliente 
+        foreign key (IdCliente) 
+        references Cliente (Id)
+
+    alter table ClientePromocao 
+        add index (IdPromocao), 
+        add constraint FKD9910AFCE30B568E 
+        foreign key (IdPromocao) 
+        references Promocao (Id)
+
+    alter table QualificacaoPromocao 
+        add index (IdClientePromocao), 
+        add constraint FK88673F6347ECA03D 
+        foreign key (IdClientePromocao) 
+        references ClientePromocao (Id)
+
+    alter table QualificacaoPromocao 
+        add index (IdUsuario), 
+        add constraint FK_QualificacaoPromocao_Usuario 
+        foreign key (IdUsuario) 
+        references Usuario (Id)
+

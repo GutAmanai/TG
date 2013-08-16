@@ -19,8 +19,8 @@ namespace br.persistencia.tg.Mapeamentos
             Map(x => x.Contato);
             Map(x => x.FotoUrl).Nullable();
             Map(x => x.Senha);
-            HasMany(x => x.ClientePromocao);
-            HasMany(x => x.ClienteLocalizacao);
+            HasMany<ClienteLocalizacao>(x => x.ClienteLocalizacao).Cascade.AllDeleteOrphan();
+            HasMany<ClientePromocao>(x => x.ClientePromocao).Cascade.AllDeleteOrphan();
         }
     }
 }
