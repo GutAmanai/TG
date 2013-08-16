@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- This file is auto-generated, do not edit! -jm -->
 <CordovaSourceDictionary>
+    <FilePath Value="www\css\mapa.css"/>
     <FilePath Value="www\data.txt"/>
     <FilePath Value="www\gps.html"/>
     <FilePath Value="www\img\logoVemKa.png"/>
