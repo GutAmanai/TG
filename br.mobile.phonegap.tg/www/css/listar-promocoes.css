@@ -68,7 +68,7 @@ body
     padding: 0px 0px 0px 0px;
 }
         
-.logo-empresa
+.logo-app
 {
     float: auto;
 }
@@ -111,7 +111,10 @@ body
     min-height: 238px;
 }
 
-
+.conteudo
+{
+    min-height:355px;
+}
 
 
 

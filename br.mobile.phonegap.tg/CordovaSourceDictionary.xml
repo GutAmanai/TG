@@ -8,6 +8,7 @@
     <FilePath Value="www\js\listar-promocoes-ajustar.js"/>
     <FilePath Value="www\js\gps.js"/>
     <FilePath Value="www\js\jquery.mobile-1.1.0.min.js"/>
+    <FilePath Value="www\js\listar-promocoes.js"/>
     <FilePath Value="www\post.html"/>
     <FilePath Value="www\tela.html"/>
     <FilePath Value="www\index.html"/>
@@ -32,7 +33,6 @@
     <FilePath Value="www\fileReader.html"/>
     <FilePath Value="www\js\index.js"/>
     <FilePath Value="www\js\jquery-1.9.1.min.js"/>
-    <FilePath Value="www\js\listar-promocoes.js"/>
     <FilePath Value="www\mapa.html"/>
     <FilePath Value="www\readme.txt"/>
     <FilePath Value="www\scanner.html"/>
