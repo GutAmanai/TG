@@ -7,7 +7,7 @@
         link.css('color', 'white');
     });
 
-    $('.carousel').carousel({
-        interval: 4000
+    $(".carousel").carousel({
+        interval: 400
     });
 });

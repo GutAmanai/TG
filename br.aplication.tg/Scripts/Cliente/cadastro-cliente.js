@@ -76,7 +76,7 @@ var cadastroCliente = {
     }
 
     , recuperarDados: function () {
-        
+
         var configuracao =
         {
             IdCliente: $("#id-cliente").val(),
@@ -136,7 +136,7 @@ var cadastroCliente = {
         }
 
         if ($("#alteracao").val() != 'True' && $("#temp-image").val() == "") {
-            alert("Informe uma imagem");
+            jAlert('Informe uma imagem!', 'Atenção');
             retorno = false;
         }
 
@@ -159,7 +159,7 @@ var cadastroCliente = {
         }
 
         if (dados.Localizacoes.length == 0) {
-            alert("Informe uma localização");
+            jAlert('Informe uma localização!', 'Atenção');
             retorno = false;
         }
 
@@ -184,17 +184,19 @@ var cadastroCliente = {
             async: false,
             success: function (data) {
                 if (data) {
-                    alert("Cadastro feito com sucesso!");
+                    jAlert('Cadastro feito com sucesso! Faça o login.', 'Atenção', function (event) {
+                        window.location = baseUrl + "Login/index";
+                    });
                 }
                 else {
-                    alert("Não foi possível salvar!");
+                    jAlert('Não foi possível salvar!', 'Atenção');
                 }
             },
             failure: function (msg, status) {
-                alert("Não foi possível salvar!");
+                jAlert('Não foi possível salvar!', 'Atenção');
             },
             error: function (msg, status) {
-                alert("Não foi possível salvar!");
+                jAlert('Não foi possível salvar!', 'Atenção');
             },
             complete: function () {
             }

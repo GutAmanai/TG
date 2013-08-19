@@ -47,6 +47,7 @@
     <Compile Include="DTO\DTOUsuario.cs" />
     <Compile Include="DTO\DTOPromocao.cs" />
     <Compile Include="DTO\DTOQualificacaoPromocao.cs" />
+    <Compile Include="Helper\PageExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Servicos\ServicoCliente.cs" />
     <Compile Include="Servicos\ServicoCriptografia.cs" />
@@ -58,7 +59,9 @@
     <Compile Include="ViewModel\ViewModelClientePromocao.cs" />
     <Compile Include="ViewModel\ViewModelPromocao.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="NewFolder1\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\br.dominio.tg\br.dominio.tg.csproj">
       <Project>{26F49F89-5A1A-4CFA-A790-801CAE64100B}</Project>

@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Web;
 using br.aplicacao.tg.DTO;
 using br.aplicacao.tg.ViewModel;
 using br.dominio.tg.Entidades;
@@ -96,66 +93,41 @@ namespace br.aplicacao.tg.Servicos
                 return false;
             }
         }
+
+        public ViewModelCliente ObterViewModelCliente(int id)
+        {
+            return ObterViewModelCliente(ObterClientePorId(id));
+        }
         
+        public ViewModelCliente ObterViewModelCliente(string email)
+        {
+            return ObterViewModelCliente(ObterClientePorEmail(email));
+        }
+
+        public DTOCliente ObterDTOCliente(string email)
+        {
+            return ObterDtoCliente(ObterClientePorEmail(email));
+        }
+
+        public bool EmailIsExist(string email)
+        {
+            return ObterClientePorEmail(email) != null;
+        }
+
+
+
         private Cliente ObterClientePorId(int id)
         {
             return _repositorioCliente.ObterPorId(id);
         }
-        
+
         private Cliente ObterClientePorEmail(string email)
         {
             return _repositorioCliente.ObterTodosOnde(x => x.Email == email).FirstOrDefault();
         }
 
-        public ViewModelCliente ObterViewModelCliente(int id)
+        private DTOCliente ObterDtoCliente(Cliente cliente)
         {
-            var cliente = ObterClientePorId(id);
-            if(cliente != null)
-            {
-                return new  ViewModelCliente()
-                            {
-                                IdCliente = cliente.Id,
-                                Cnpj = cliente.Documento,
-                                Contato = cliente.Contato,
-                                Email = cliente.Email,
-                                FotoUrl = "",
-                                Nome = cliente.Nome,
-                                Responsavel = cliente.Responsavel,
-                                Senha = _servicoCriptografia.Decrypt(cliente.Senha)
-                            };
-            }
-            else
-            {
-                return new ViewModelCliente();
-            }
-        }
-
-        public ViewModelCliente ObterViewModelCliente(string email)
-        {
-            var cliente = ObterClientePorEmail(email);
-            if (cliente != null)
-            {
-                return new ViewModelCliente()
-                {
-                    IdCliente = cliente.Id,
-                    Cnpj = cliente.Documento,
-                    Contato = cliente.Contato,
-                    Email = cliente.Email,
-                    FotoUrl = "",
-                    Nome = cliente.Nome,
-                    Responsavel = cliente.Responsavel,
-                    Senha = _servicoCriptografia.Decrypt(cliente.Senha)
-                };
-            }
-            else
-            {
-                return new ViewModelCliente();
-            }
-        }
-
-        public DTOCliente ObterDTOCliente(string email)
-        {
-            var cliente = ObterClientePorEmail(email);
             if (cliente != null)
             {
                 return new DTOCliente()
@@ -167,18 +139,40 @@ namespace br.aplicacao.tg.Servicos
                     FotoUrl = "",
                     Nome = cliente.Nome,
                     Responsavel = cliente.Responsavel,
-                    Senha = _servicoCriptografia.Decrypt(cliente.Senha)
+                    Senha = _servicoCriptografia.Decrypt(cliente.Senha),
+                    Localizacoes = ObterLocalizacao(cliente)
                 };
             }
-            else
-            {
-                return new DTOCliente();
-            }
+            return new DTOCliente();
         }
 
-        public bool EmailIsExist(string email)
+        private ViewModelCliente ObterViewModelCliente(Cliente cliente)
         {
-            return ObterClientePorEmail(email) != null;
+            if (cliente != null)
+            {
+                return new ViewModelCliente()
+                {
+                    IdCliente = cliente.Id,
+                    Cnpj = cliente.Documento,
+                    Contato = cliente.Contato,
+                    Email = cliente.Email,
+                    FotoUrl = "",
+                    Nome = cliente.Nome,
+                    Responsavel = cliente.Responsavel,
+                    Senha = _servicoCriptografia.Decrypt(cliente.Senha),
+                    Localizacoes = ObterLocalizacao(cliente)
+                };
+            }
+            return new ViewModelCliente();
+        }
+
+        public List<DTOLocalizacao> ObterLocalizacao(Cliente cliente)
+        {
+            var localicacoes = new List<DTOLocalizacao>();
+            if (cliente.ClienteLocalizacao != null)
+                if (cliente.ClienteLocalizacao.Any())
+                    localicacoes.AddRange(cliente.ClienteLocalizacao.Select(x => new DTOLocalizacao(x.Id, x.Latitude, x.Longitude)));
+            return localicacoes;
         }
     }
 }

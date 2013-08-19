@@ -22,7 +22,6 @@ namespace br.aplicacao.tg.ViewModel
         {
             this.Localizacoes = new List<DTOLocalizacao>();
         }
-
         public string LocalizacoesToJson()
         {
             return js.Serialize(Localizacoes);

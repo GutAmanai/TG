@@ -74,11 +74,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Arquivos\Cliente\cliente-default.png" />
+    <Content Include="Arquivos\Promocao\icon_image.png" />
     <Content Include="Arquivos\Promocao\Min\10.jpg" />
     <Content Include="Arquivos\Promocao\Min\9.jpg" />
     <Content Include="Arquivos\Promocao\Normal\10.jpg" />
     <Content Include="Arquivos\Promocao\Normal\9.jpg" />
-    <Content Include="Arquivos\Promocao\promocao-default.png" />
     <Content Include="Content\css\boot-business.css" />
     <Content Include="Content\css\bootstrap-responsive.css" />
     <Content Include="Content\css\bootstrap-responsive.min.css" />
@@ -132,17 +132,17 @@
     <Content Include="Content\themes\base\jquery.ui.tabs.css" />
     <Content Include="Content\themes\base\jquery.ui.theme.css" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
+    <Content Include="Content\css\Site.css" />
     <Content Include="Scripts\ajaxupload.js" />
     <Content Include="Scripts\Aplication\bootstrap.js" />
     <Content Include="Scripts\Aplication\bootstrap.min.js" />
+    <Content Include="Scripts\Aplication\geral.js" />
     <Content Include="Scripts\Aplication\jquery.min.js" />
     <Content Include="Scripts\bootstrap-alert.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\Cliente\cadastro-cliente.js" />
     <Content Include="Scripts\crop.js" />
-    <Content Include="Scripts\Home\home.js" />
     <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.5.1.js" />
     <Content Include="Scripts\jquery-1.5.1.min.js" />
@@ -156,6 +156,7 @@
     <Content Include="Scripts\jquery.fileupload.js" />
     <Content Include="Scripts\jquery.Jcrop.min.js" />
     <Content Include="Scripts\jquery.mask.min.js" />
+    <Content Include="Scripts\jquery.ui.draggable.js" />
     <Content Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -193,6 +194,7 @@
     <Folder Include="Arquivos\Cliente\Normal\" />
     <Folder Include="Arquivos\Temp\Promocao\" />
     <Folder Include="Models\" />
+    <Folder Include="Scripts\Home\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

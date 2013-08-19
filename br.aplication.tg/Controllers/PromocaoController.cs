@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -9,7 +8,6 @@ using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using br.aplicacao.tg.DTO;
 using br.aplicacao.tg.Servicos;
-using br.aplicacao.tg.ViewModel;
 using br.infra.tg.InjecaoDependencia;
 
 namespace br.aplication.tg.Controllers
@@ -215,11 +213,11 @@ namespace br.aplication.tg.Controllers
                     var foto = arquivos.FirstOrDefault(a => Path.GetFileNameWithoutExtension(a) == idPromocao.ToString());
                     return VirtualPathUtility.ToAbsolute("~/Arquivos/Promocao/Normal/" + Path.GetFileName(foto));
                 }
-                return VirtualPathUtility.ToAbsolute("~/Arquivos/Promocao/promocao-default.png");
+                return VirtualPathUtility.ToAbsolute("~/Arquivos/Promocao/icon_image.png");
             }
             catch (Exception)
             {
-                return VirtualPathUtility.ToAbsolute("~/Arquivos/Promocao/promocao-default.png");
+                return VirtualPathUtility.ToAbsolute("~/Arquivos/Promocao/icon_image.png");
             }
         }
         #endregion
