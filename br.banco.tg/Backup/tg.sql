@@ -77,3 +77,46 @@ CREATE TABLE `clientepromocao` (
 # Data for table "clientepromocao"
 #
 
+
+#
+# Source for table "usuario"
+#
+
+DROP TABLE IF EXISTS `usuario`;
+CREATE TABLE `usuario` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Nome` varchar(100) NOT NULL,
+  `DataEntrada` datetime NOT NULL,
+  `Email` varchar(100) NOT NULL,
+  `Contato` varchar(100) NOT NULL,
+  `Senha` varchar(100) NOT NULL,
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `Email` (`Email`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+#
+# Data for table "usuario"
+#
+
+
+#
+# Source for table "qualificacaopromocao"
+#
+
+DROP TABLE IF EXISTS `qualificacaopromocao`;
+CREATE TABLE `qualificacaopromocao` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Gostou` tinyint(1) NOT NULL,
+  `DataEntrada` datetime NOT NULL,
+  `IdClientePromocao` int(11) DEFAULT NULL,
+  `IdUsuario` int(11) DEFAULT NULL,
+  PRIMARY KEY (`Id`),
+  KEY `IdClientePromocao` (`IdClientePromocao`),
+  KEY `IdUsuario` (`IdUsuario`),
+  CONSTRAINT `FK_QualificacaoPromocao_Usuario` FOREIGN KEY (`IdUsuario`) REFERENCES `usuario` (`Id`),
+  CONSTRAINT `FK88673F6347ECA03D` FOREIGN KEY (`IdClientePromocao`) REFERENCES `clientepromocao` (`Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+#
+# Data for table "qualificacaopromocao"
+#
