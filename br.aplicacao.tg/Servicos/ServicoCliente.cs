@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using br.aplicacao.tg.DTO;
-using br.aplicacao.tg.ViewModel;
 using br.dominio.tg.Entidades;
 using br.dominio.tg.Repositorios;
 using br.persistencia.tg.Repositorios;
@@ -94,14 +93,9 @@ namespace br.aplicacao.tg.Servicos
             }
         }
 
-        public ViewModelCliente ObterViewModelCliente(int id)
+        public DTOCliente ObterDTOCliente(int id)
         {
-            return ObterViewModelCliente(ObterClientePorId(id));
-        }
-        
-        public ViewModelCliente ObterViewModelCliente(string email)
-        {
-            return ObterViewModelCliente(ObterClientePorEmail(email));
+            return ObterDtoCliente(ObterClientePorId(id));
         }
 
         public DTOCliente ObterDTOCliente(string email)
@@ -113,8 +107,6 @@ namespace br.aplicacao.tg.Servicos
         {
             return ObterClientePorEmail(email) != null;
         }
-
-
 
         private Cliente ObterClientePorId(int id)
         {
@@ -144,26 +136,6 @@ namespace br.aplicacao.tg.Servicos
                 };
             }
             return new DTOCliente();
-        }
-
-        private ViewModelCliente ObterViewModelCliente(Cliente cliente)
-        {
-            if (cliente != null)
-            {
-                return new ViewModelCliente()
-                {
-                    IdCliente = cliente.Id,
-                    Cnpj = cliente.Documento,
-                    Contato = cliente.Contato,
-                    Email = cliente.Email,
-                    FotoUrl = "",
-                    Nome = cliente.Nome,
-                    Responsavel = cliente.Responsavel,
-                    Senha = _servicoCriptografia.Decrypt(cliente.Senha),
-                    Localizacoes = ObterLocalizacao(cliente)
-                };
-            }
-            return new ViewModelCliente();
         }
 
         public List<DTOLocalizacao> ObterLocalizacao(Cliente cliente)

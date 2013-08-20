@@ -1,16 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Web;
 using br.aplicacao.tg.DTO;
 using br.dominio.tg.Repositorios;
 using br.persistencia.tg.Repositorios;
-using br.aplicacao.tg.ViewModel;
 using br.dominio.tg.Entidades;
-using br.dominio.tg.Repositorios;
-using br.persistencia.tg.Repositorios;
 
 namespace br.aplicacao.tg.Servicos
 {
@@ -20,28 +14,21 @@ namespace br.aplicacao.tg.Servicos
         private readonly IRepositorioPromocao _repositorioPromocao;
         private readonly ServicoCriptografia _servicoCriptografia;
         private readonly IRepositorioCliente _repositorioCliente;
+        private readonly IRepositorioClientePromocao _repositorioClientePromocao;
 
         public ServicoPromocao(
                                 IUnidadeDeTrabalho unidadeDeTrabalho,
                                 IRepositorioPromocao repositorioPromocao,
-                                IRepositorioCliente repositorioCliente
+                                IRepositorioCliente repositorioCliente,
+                                IRepositorioClientePromocao repositorioClientePromocao
                              )
         {
 
             _unidadeDeTrabalho = unidadeDeTrabalho;
             _repositorioPromocao = repositorioPromocao;
             _repositorioCliente = repositorioCliente;
+            _repositorioClientePromocao = repositorioClientePromocao;
             _servicoCriptografia = new ServicoCriptografia();
-        }
-
-        public bool ValidarPromocao(string nome)
-        {
-            var promocao = _repositorioPromocao.ObterTodosOnde(x => x.Nome == nome).FirstOrDefault();
-
-            if (promocao == null)
-                return false;
-
-            return false;
         }
 
         public bool SalvarPromocao(DTOPromocao dtoPromocao)
@@ -79,30 +66,75 @@ namespace br.aplicacao.tg.Servicos
             return _repositorioPromocao.ObterPorId(id);
         }
 
-        public ViewModelPromocao ObterViewModelPromocao(int id)
+        private Cliente ObterClientePorId(int id)
         {
-            var promocao = ObterPromocaoPorId(id);
-            if (promocao != null)
+            return _repositorioCliente.ObterPorId(id);
+        }
+
+        public DTORetornoPesquisaPromocao ObterDTOPromocao(DTOPesquisaPromocao pesquisaPromocao)
+        {
+            int NPaginas = 0;
+            int NLinhas = 0;
+
+            var listaPromocoes =
+                _repositorioClientePromocao
+                .ObterTodosOndeLazy(x => x.Cliente.Id == pesquisaPromocao.IdCliente)
+                .Page(
+                        pesquisaPromocao.NPagina,
+                        pesquisaPromocao.QtdPagina,
+                        x => x.DataExpiracao,
+                        true,
+                        out NLinhas,
+                        out NPaginas
+                    ).ToList();
+
+
+            var clientePromocao = new DTORetornoPesquisaPromocao();
+            clientePromocao.IdCliente = pesquisaPromocao.IdCliente;
+            clientePromocao.NLinhas = NLinhas;
+            clientePromocao.NPaginas = NPaginas;
+            clientePromocao.Localizacoes = listaPromocoes.SelectMany(x => ObterLocalizacao(x.Cliente.ClienteLocalizacao)).ToList();
+            clientePromocao.Promocao = listaPromocoes.Select(ObterPromocao).ToList();
+            return clientePromocao;
+        }
+
+        private IEnumerable<DTOLocalizacao> ObterLocalizacao(IEnumerable<ClienteLocalizacao> clienteLocalizacao)
+        {
+            foreach (var localizacao in clienteLocalizacao)
             {
-                return new ViewModelPromocao()
-                {
-                    IdPromocao = promocao.Id,
-                    DataEntrada = promocao.DataEntrada,
-                    DataLiberacao = promocao.DataLiberacao,
-                    DataExpiracao = promocao.DataExpiracao,
-                    ImagemUrl = "",
-                    Descricao = promocao.Descricao,
-                    Nome = promocao.Nome
-                };
+                yield return new DTOLocalizacao
+                                 {
+                                     IdLocalizacao = localizacao.Id,
+                                     Latitude = localizacao.Latitude,
+                                     Longitude = localizacao.Longitude
+                                 };
             }
-            else
+        }
+
+        public DTOPromocao ObterPromocao(ClientePromocao clientePromocao)
+        {
+            return new DTOPromocao
             {
-                return new ViewModelPromocao()
-                {
-                    DataLiberacao = DateTime.Today,
-                    DataExpiracao = DateTime.Today.AddDays(2).AddSeconds(-1)
-                };
-            }
+                IdPromocao = clientePromocao.Promocao.Id,
+                Nome = clientePromocao.Promocao.Nome,
+                Ativo = clientePromocao.Ativo,
+                DataCadastro = clientePromocao.Promocao.DataEntrada,
+                DataLiberacao = clientePromocao.DataLiberacao,
+                DataExpiracao = clientePromocao.DataExpiracao,
+                Descricao = clientePromocao.Promocao.Descricao,
+                ImagemUrl = "",
+                TempImg = ""
+            };
+        }
+
+        public DTOLocalizacao ObterLocalizacao(ClienteLocalizacao clienteLocalizacao)
+        {
+            return new DTOLocalizacao
+            {
+                IdLocalizacao = clienteLocalizacao.Id,
+                Latitude = clienteLocalizacao.Latitude,
+                Longitude = clienteLocalizacao.Longitude
+            };
         }
     }
 }

@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Web.Script.Serialization;
 
 namespace br.aplicacao.tg.DTO
 {
     public class DTOCliente
     {
+        private JavaScriptSerializer js = new JavaScriptSerializer();
         public int IdCliente { get; set; }
         public string Nome { get; set; }
         public DateTime DataEntrada { get; set; }
@@ -23,6 +25,11 @@ namespace br.aplicacao.tg.DTO
         public DTOCliente()
         {
             this.Localizacoes = new List<DTOLocalizacao>();
+        }
+        
+        public string LocalizacoesToJson()
+        {
+            return js.Serialize(Localizacoes);
         }
     }
 }

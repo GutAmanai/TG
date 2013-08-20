@@ -15,46 +15,44 @@ namespace br.aplication.tg.Controllers
     public class PromocaoController : Controller
     {
         public JavaScriptSerializer js = new JavaScriptSerializer();
-        public ServicoPromocao servicoPromocao;
+        public ServicoPromocao _ServicoPromocao;
 
         public PromocaoController()
         {
-            servicoPromocao = Fabrica.Instancia.Obter<ServicoPromocao>();
+            _ServicoPromocao = Fabrica.Instancia.Obter<ServicoPromocao>();
+        }
+
+        public DTOCliente ObterDtoLogin()
+        {
+            return (DTOCliente) Session["DTOLogin"];
         }
 
         public ActionResult Cadastro()
         {
-            ViewBag.Alterar = false;
             ViewBag.Imagem = RecuperaImagem(0);
-            return View(servicoPromocao.ObterViewModelPromocao(0));
-        }
-
-        public ActionResult Index()
-        {
-            ViewBag.Alterar = false;
-            ViewBag.Imagem = RecuperaImagem(0);
+            ViewBag.IdCliente = 1; //ObterDtoLogin().IdCliente;
             return View();
         }
 
-        [Authorize]
-        public ActionResult Alterar(int id)
-        {
-            ViewBag.Alterar = true;
-            ViewBag.Imagem = RecuperaImagem(id);
-            return View("Cadastro", servicoPromocao.ObterViewModelPromocao(id));
-        }
+        //[Authorize]
+        //public ActionResult Alterar(int id)
+        //{
+        //    ViewBag.Alterar = true;
+        //    ViewBag.Imagem = RecuperaImagem(id);
+        //    return View("Cadastro", _ServicoPromocao.ObterDTOPromocao(id));
+        //}
 
         public ActionResult Salvar(string configuracao)
         {
             try
             {
-                var dtoPromocao = js.Deserialize<DTOPromocao>(configuracao);
-                if (servicoPromocao.SalvarPromocao(dtoPromocao))
-                {
-                    var promocao = servicoPromocao.ObterViewModelPromocao(dtoPromocao.IdPromocao);
-                    this.SalvarImagemFinal(promocao.IdPromocao, dtoPromocao.TempImg, dtoPromocao.Extension);
-                    return Json(true);
-                }
+                //var dtoPromocao = js.Deserialize<DTOPromocao>(configuracao);
+                //if (servicoPromocao.SalvarPromocao(dtoPromocao))
+                //{
+                //    var promocao = servicoPromocao.ObterDTOPromocao(dtoPromocao.IdPromocao);
+                //    this.SalvarImagemFinal(promocao., dtoPromocao.TempImg, dtoPromocao.Extension);
+                //    return Json(true);
+                //}
                 return Json(false);
             }
             catch (Exception)
@@ -63,6 +61,14 @@ namespace br.aplication.tg.Controllers
             }
         }
 
+        public ActionResult PesquisarPromocao(string dtoPesquisa)
+        {
+            var dto = js.Deserialize<DTOPesquisaPromocao>(dtoPesquisa);
+            return Json(_ServicoPromocao.ObterDTOPromocao(dto));
+        }
+
+        #region PhoneGap Requisição
+        
         public ActionResult ListarPromocao(double latitude, double longitude)
         {
 
@@ -88,6 +94,8 @@ namespace br.aplication.tg.Controllers
 }
             });
         }
+
+        #endregion 
 
         #region Salvar Imagem
         private bool SalvarImagemFinal(int idPromocao, string tempImg, string extension)

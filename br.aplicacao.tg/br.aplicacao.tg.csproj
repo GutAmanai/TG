@@ -42,8 +42,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DTO\DTOCliente.cs" />
+    <Compile Include="DTO\DTOClientePromocao.cs" />
     <Compile Include="DTO\DTOComunicacaoRetorno.cs" />
     <Compile Include="DTO\DTOLocalizacao.cs" />
+    <Compile Include="DTO\DTOPesquisaPromocao.cs" />
+    <Compile Include="DTO\DTORetornoPesquisaPromocao.cs" />
     <Compile Include="DTO\DTOUsuario.cs" />
     <Compile Include="DTO\DTOPromocao.cs" />
     <Compile Include="DTO\DTOQualificacaoPromocao.cs" />
@@ -55,9 +58,6 @@
     <Compile Include="Servicos\ServicoGeral.cs" />
     <Compile Include="Servicos\ServicoPromocao.cs" />
     <Compile Include="Servicos\ServicoUsuario.cs" />
-    <Compile Include="ViewModel\ViewModelCliente.cs" />
-    <Compile Include="ViewModel\ViewModelClientePromocao.cs" />
-    <Compile Include="ViewModel\ViewModelPromocao.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="NewFolder1\" />
