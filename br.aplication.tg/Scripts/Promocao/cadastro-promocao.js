@@ -5,7 +5,6 @@
 var guia;
 var __ext;
 
-
 $(document).ready(function () {
     guia = $("#nome-imagem").val();
     new Ajax_upload($("#upload-imagem")[0], {
@@ -37,6 +36,7 @@ var cadastroPromocao = {
 
     init: function () {
         cadastroPromocao.bind();
+        cadastroPromocao.pesquisaInicial();
     }
 
     , bind: function () {
@@ -59,7 +59,7 @@ var cadastroPromocao = {
         var configuracao =
         {
             IdPromocao: $("#id-promocao").val(),
-            IdCliente: $("#id-cliente").val()
+            IdCliente: $("#id-cliente").val(),
             Nome: $("#nome").val(),
             DataLiberacao: $("#dataliberacao").val(),
             DataExpiracao: $("#dataexpiracao").val(),
@@ -132,4 +132,79 @@ var cadastroPromocao = {
             }
         });
     }
+
+    , pesquisaInicial: function () {
+        var idCliente = $("#id-cliente").val();
+        var nPagina = 1;
+        var nome = "";
+        var descricao = "";
+        var pesquisa = cadastroPromocao.obterPesquisa(idCliente, nPagina, nome, descricao);
+        cadastroPromocao.obterListagem(pesquisa);
+    }
+
+    , pesquisaPaginada: function (pagina) {
+        var idCliente = $("#id-cliente").val();
+        var nPagina = pagina;
+        var nome = "";
+        var descricao = "";
+        var pesquisa = cadastroPromocao.obterPesquisa(idCliente, nPagina, nome, descricao);
+        cadastroPromocao.obterListagem(pesquisa);
+    }
+
+    , obterPesquisa: function (idcliente, nPagina, nome, descricao) {
+        var pesquisa =
+        {
+            IdCliente: idcliente,
+            NPagina: nPagina,
+            QtdPagina: 10,
+            Nome: nome,
+            Descricao: descricao
+        };
+        return pesquisa;
+    }
+
+    , obterListagem: function (pesquisa) {
+
+        $.ajax({
+            type: "POST",
+            dataType: "JSON",
+            url: baseUrl + "Promocao/PesquisarPromocao",
+            data: { dtoPesquisa: JSON.stringify(pesquisa), r: (new Date().getTime()) },
+            async: false,
+            success: function (data) {
+                if (data) {
+
+                    $(".table.promocao tbody tr").empty();
+
+                    if (data.Localizacoes.length > 0) {
+                        $(".table.promocao").find("tbody").append($("#promocao-pesquisa-template").render(data.Localizacoes));
+                        cadastroPromocao.adicionarPaginacao(data.NPaginas);
+                    }
+                    else {
+                        $(".table.promocao").find("tbody").append($("#promocao-pesquisa-sem-registro-template").render({}));
+                        $('.pagination').hide("fast");
+                    }
+                }
+            },
+            failure: function (msg, status) {
+                jAlert("Não foi possível salvar!", "Atenção");
+            },
+            error: function (msg, status) {
+                jAlert("Não foi possível salvar!", "Atenção");
+            },
+            complete: function () {
+            }
+        });
+    }
+
+    , adicionarPaginacao: function (nPagina) {
+        $(".pagination input[type='text']").attr("data-max-page", nPagina);
+
+        $('.pagination').jqPagination({
+            paged: function (pagina) {
+                cadastroPromocao.pesquisaPaginada(pagina);
+            }
+        });
+    }
+
 };

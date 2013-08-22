@@ -89,6 +89,7 @@
     <Content Include="Content\css\font-awesome-ie7.css" />
     <Content Include="Content\css\font-awesome.css" />
     <Content Include="Content\css\geral.css" />
+    <Content Include="Content\css\jqpagination.css" />
     <Content Include="Content\css\jquery.Jcrop.css" />
     <Content Include="Content\font\fontawesome-webfont.svg" />
     <Content Include="Content\img\adicionar.png" />
@@ -155,6 +156,7 @@
     <Content Include="Scripts\jquery.fileupload-ui.js" />
     <Content Include="Scripts\jquery.fileupload.js" />
     <Content Include="Scripts\jquery.Jcrop.min.js" />
+    <Content Include="Scripts\jquery.jqpagination.min.js" />
     <Content Include="Scripts\jquery.mask.min.js" />
     <Content Include="Scripts\jquery.ui.draggable.js" />
     <Content Include="Scripts\jquery.validate-vsdoc.js" />

@@ -6,29 +6,30 @@
 @section head
 {
     <script src="@Url.Content("~/Scripts/Promocao/cadastro-promocao.js")" type="text/javascript"></script>
-    <link href="@Url.Content("~/Content/css/geral.css")" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/css/jquery.Jcrop.css")" />
-    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/css/crop.css")" />
     <script type="text/javascript" src="@Url.Content("~/Scripts/ajaxupload.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.Jcrop.min.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/crop.js")"></script>
     
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/css/jquery.Jcrop.css")" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/css/crop.css")" />
     
     <script id="promocao-pesquisa-template" type="text/x-jsrender">
-        <tr rel="{{:IdEmpresa}}">
-            <td class="id-empresa">{{:IdEmpresa}}</td>
+        <tr rel="{{:IdPromocao}}">
             <td class="nome">{{:Nome}}</td>
-            <td class="nome-fantasia">{{:NomeFantasia}}</td>
-            <td class="website">{{:WebSite}}</td>
-            <td class="cnpj">{{:Cnpj}}</td>
+            <td class="ativo">{{:Ativo}}</td>
+            <td class="descricao">{{:Descricao}}</td>
+            <td class="data-expiracao">{{:DataExpiracao}}</td>
+            <td class="data-liberacao">{{:DataLiberacao}}</td>
+            <td class="imagem">
+                <img src="{{:ImagemUrl}}" width="30" height="30" alt="Imagem da Promoção" name="Imagem da Promoção" class="imagem-preview" style="text-align:center;" />
+            </td>
             <td ><a href="#" class="alterar">Alterar</a></td>
-            <td ><a href="#" class="contatos">Contatos</a></td>
         </tr>
     </script>
     
     <script id="promocao-pesquisa-sem-registro-template" type="text/x-jsrender">
-        <tr rel="">
-            <td>{{:Msg}}</td>
+        <tr>
+            <td>Você não possui promoção, adicione!</td>
             <td></td>
             <td></td>
             <td></td>
@@ -100,8 +101,8 @@
             <h1>Minhas Promoções</h1>
         </div>
 
-        <div class="row tabela-promocao">
-            <table class="table empresas">
+        <div class="row">
+            <table class="table promocao">
                 <thead>
                     <tr>
                         <th>Nome</th>
@@ -115,6 +116,14 @@
                 <tbody>
                 </tbody>
             </table>
+            
+            <div class="pagination min">
+                <a href="#" class="first" data-action="first">«</a>
+                <a href="#" class="previous" data-action="previous">‹</a>
+                <input type="text" readonly="readonly" data-max-page="40" />
+                <a href="#" class="next" data-action="next">›</a>
+                <a href="#" class="last" data-action="last">»</a>
+            </div>
         </div>
 
     </div>
