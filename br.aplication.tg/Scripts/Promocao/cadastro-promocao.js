@@ -53,6 +53,23 @@ var cadastroPromocao = {
                 $(this).next(".error").hide("fast");
             }
         });
+
+        $('div.btn-group').each(function () {
+            var group = $(this);
+            var form = group.parents('.container').eq(0);
+            var name = group.attr('data-toggle-name');
+            var hidden = $('input[name="' + name + '"]', form);
+            $('button', group).each(function () {
+                var button = $(this);
+                button.live('click', function () {
+                    hidden.val($(this).val());
+                });
+                if (button.val() == hidden.val()) {
+                    button.addClass('active');
+                }
+            });
+        });
+
     }
 
     , recuperarDados: function () {

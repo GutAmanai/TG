@@ -166,6 +166,8 @@
     <Content Include="Scripts\Login\login-cliente.js" />
     <Content Include="Scripts\modernizr-1.7.js" />
     <Content Include="Scripts\modernizr-1.7.min.js" />
+    <Content Include="Scripts\Overlay\jquery.blockUI.js" />
+    <Content Include="Scripts\Overlay\overlay.js" />
     <Content Include="Scripts\Promocao\cadastro-promocao.js" />
     <Content Include="Scripts\Promocao\jquery.dataTables.js" />
     <Content Include="Web.config">
@@ -211,7 +213,6 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Cliente\Cadastro.cshtml" />
     <Content Include="Views\Home\MenuVemKa.cshtml" />
-    <Content Include="Views\Promocao\Index.cshtml" />
     <Content Include="Views\Promocao\Cadastro.cshtml" />
   </ItemGroup>
   <ItemGroup>

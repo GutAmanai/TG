@@ -9,8 +9,6 @@ namespace br.banco.tg
         [TestMethod]
         public void gera_script()
         {            
-            //teste git SDS
-            //DbHelper.GerarScriptDeCriacaoDoSchema(@"c:\produto-schema-");
             Assert.IsTrue(true);
         }
 
