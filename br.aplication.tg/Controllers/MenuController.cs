@@ -6,11 +6,12 @@ using System.Web.Mvc;
 
 namespace br.aplication.tg.Controllers
 {
-    public class HomeController : Controller
+    public class MenuController : Controller
     {
-        public ActionResult Index()
+        [Authorize]
+        public ActionResult Menuvemka(int idCliente)
         {
-            return View();
+            return View(idCliente);
         }
     }
 }

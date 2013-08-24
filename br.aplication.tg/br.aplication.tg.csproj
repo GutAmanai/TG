@@ -65,6 +65,7 @@
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\PromocaoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -169,7 +170,6 @@
     <Content Include="Scripts\Overlay\jquery.blockUI.js" />
     <Content Include="Scripts\Overlay\overlay.js" />
     <Content Include="Scripts\Promocao\cadastro-promocao.js" />
-    <Content Include="Scripts\Promocao\jquery.dataTables.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -214,6 +214,7 @@
     <Content Include="Views\Cliente\Cadastro.cshtml" />
     <Content Include="Views\Home\MenuVemKa.cshtml" />
     <Content Include="Views\Promocao\Cadastro.cshtml" />
+    <Content Include="Views\Menu\Menuvemka.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\br.aplicacao.tg\br.aplicacao.tg.csproj">

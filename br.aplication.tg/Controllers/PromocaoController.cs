@@ -22,16 +22,10 @@ namespace br.aplication.tg.Controllers
             _ServicoPromocao = Fabrica.Instancia.Obter<ServicoPromocao>();
         }
 
-        public DTOCliente ObterDtoLogin()
+        public ActionResult Cadastro(int idCliente)
         {
-            return (DTOCliente) Session["DTOLogin"];
-        }
-
-        public ActionResult Cadastro()
-        {
-            ViewBag.Imagem = RecuperaImagem(0);
-            ViewBag.IdCliente = 1; //ObterDtoLogin().IdCliente;
-            return View();
+            ViewBag.Imagem = RecuperaImagem(idCliente);
+            return View(idCliente);
         }
 
         //[Authorize]
@@ -46,14 +40,14 @@ namespace br.aplication.tg.Controllers
         {
             try
             {
-                //var dtoPromocao = js.Deserialize<DTOPromocao>(configuracao);
+                var dtoPromocao = js.Deserialize<DTOPromocao>(configuracao);
                 //if (servicoPromocao.SalvarPromocao(dtoPromocao))
                 //{
                 //    var promocao = servicoPromocao.ObterDTOPromocao(dtoPromocao.IdPromocao);
                 //    this.SalvarImagemFinal(promocao., dtoPromocao.TempImg, dtoPromocao.Extension);
                 //    return Json(true);
                 //}
-                return Json(false);
+                return Json(true);
             }
             catch (Exception)
             {

@@ -1,6 +1,6 @@
-﻿$(document).ready(function () {
+﻿$(document).ready(function() {
     loginCliente.Init();
-})
+});
 
 var loginCliente = {
 
@@ -23,17 +23,17 @@ var loginCliente = {
         var senha = $(".senha").val();
 
         if (email.trim() == "") {
-            alert("Atenção", "Informe seu email");
+            jAlert("Informe seu email", "Atenção");
             returno = false;
         } else {
             if (!loginCliente.IsEmail(email)) {
-                alert("Atenção", "Informe um email valido");
+                jAlert("Informe um email valido", "Atenção");
                 returno = false;
             }
         }
 
         if (senha.trim() == "") {
-            alert("Atenção", "Informe sua senha");
+            jAlert("Informe sua senha", "Atenção");
             returno = false;
         }
 
@@ -48,10 +48,10 @@ var loginCliente = {
             data: { email: $(".email").val(), senha: $(".senha").val(), r: (new Date().getTime()) },
             async: false,
             success: function (data) {
-                if (data) {
-                    window.location = baseUrl + "Home/MenuVemKa";
+                if (data.autorizado) {
+                    window.location = baseUrl + "Menu/Menuvemka/?idCliente=" + data.IdCliente;
                 } else {
-                    alert("Atenção", "Informações inválidas!");
+                    jAlert("Informações inválidas!", "Atenção");
                 }
             }
         });

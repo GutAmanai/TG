@@ -41,7 +41,7 @@ namespace br.aplicacao.tg.Servicos
                     promocao.AdicionarNome(dtoPromocao.Nome);
                     promocao.AdicionarDescricao(dtoPromocao.Descricao);
                     promocao.AdicionarDataEntrada(DateTime.Now);
-                    promocao.AdicionarDataLiberacao(dtoPromocao.DataLiberacao);
+                    promocao.AdicionarDataLiberacao(dtoPromocao.DataLiberacaoToDate);
                     _repositorioPromocao.Alterar(promocao);
                 }
                 else // Inclusao
@@ -50,7 +50,7 @@ namespace br.aplicacao.tg.Servicos
                     promocao.AdicionarNome(dtoPromocao.Nome);
                     promocao.AdicionarDescricao(dtoPromocao.Descricao);
                     promocao.AdicionarDataEntrada(DateTime.Now);
-                    promocao.AdicionarDataLiberacao(dtoPromocao.DataLiberacao);
+                    promocao.AdicionarDataLiberacao(dtoPromocao.DataLiberacaoToDate);
                     _repositorioPromocao.Adicionar(promocao);
                 }
                 return true;
@@ -118,9 +118,9 @@ namespace br.aplicacao.tg.Servicos
                 IdPromocao = clientePromocao.Promocao.Id,
                 Nome = clientePromocao.Promocao.Nome,
                 Ativo = clientePromocao.Ativo,
-                DataCadastro = clientePromocao.Promocao.DataEntrada,
-                DataLiberacao = clientePromocao.DataLiberacao,
-                DataExpiracao = clientePromocao.DataExpiracao,
+                DataCadastro = clientePromocao.Promocao.DataEntrada.ToString(),
+                DataLiberacao = clientePromocao.DataLiberacao.ToString(),
+                DataExpiracao = clientePromocao.DataExpiracao.ToString(),
                 Descricao = clientePromocao.Promocao.Descricao,
                 ImagemUrl = "",
                 TempImg = ""

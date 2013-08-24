@@ -11,7 +11,7 @@ var overlay = {
             opacity: .5,
             color: '#fff'
         },
-        message: '<h1>Por favor, aguarde...</h1>'
+        message: '<h4>Por favor, aguarde...</h4>'
     },
 
     init: function () {

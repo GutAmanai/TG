@@ -1,35 +1,40 @@
 ﻿$(function () {
     cadastroPromocao.init();
+    updateImagem.inicializar();
 });
 
-var guia;
-var __ext;
+var updateImagem = {
+    guia: new Object(),
+    __ext: new Object(),
 
-$(document).ready(function () {
-    guia = $("#nome-imagem").val();
-    new Ajax_upload($("#upload-imagem")[0], {
-        action: baseUrl + "Promocao/UploadImagem",
-        data: { 'tempName': guia },
-        onSubmit: function (file, ext) {
-            this.setData({ 'tempName': guia, 'ext': ext });
-            if (!(ext && /^(jpg|png|jpeg|bmp|gif)$/.test(ext))) {
-                jAlert("Selecione apenas os formatos de imagem: JPG, JPEG, PNG, BMP ou GIF.", "Atenção!");
-                return false;
-            } else {
-                __ext = ext;
-            }
-        }
-        , onComplete: function (file, response) {
-            var spl = response.split("|");
-            var img = baseUrl + "Arquivos/Temp/" + spl[0] + spl[1] + "?x=" + spl[2];
-            var imgDownload = baseUrl + "Arquivos/Temp/" + spl[0] + spl[1] + "?v=" + new Date().getMilliseconds();
-            $("#imagemPreview").attr("src", img);
-            $("#temp-image").val(spl[0]);
-            $("#extension").val(spl[1]);
-        }
-    });
-    $("#upload-imagem").click();
-});
+    inicializar: function() {
+        $(document).ready(function() {
+            guia = $("#nome-imagem").val();
+            new Ajax_upload($("#upload-imagem")[0], {
+                action: baseUrl + "Promocao/UploadImagem",
+                data: { 'tempName': guia },
+                onSubmit: function(file, ext) {
+                    this.setData({ 'tempName': updateImagem.guia, 'ext': ext });
+                    if (!(ext && /^(jpg|png|jpeg|bmp|gif)$/.test(ext))) {
+                        jAlert("Selecione apenas os formatos de imagem: JPG, JPEG, PNG, BMP ou GIF.", "Atenção!");
+                        return false;
+                    } else {
+                        updateImagem.__ext = ext;
+                    }
+                },
+                onComplete: function(file, response) {
+                    var spl = response.split("|");
+                    var img = baseUrl + "Arquivos/Temp/" + spl[0] + spl[1] + "?x=" + spl[2];
+                    var imgDownload = baseUrl + "Arquivos/Temp/" + spl[0] + spl[1] + "?v=" + new Date().getMilliseconds();
+                    $("#imagemPreview").attr("src", img);
+                    $("#temp-image").val(spl[0]);
+                    $("#extension").val(spl[1]);
+                }
+            });
+            $("#upload-imagem").click();
+        });
+    }
+};
 
 
 var cadastroPromocao = {
@@ -55,10 +60,12 @@ var cadastroPromocao = {
         });
 
         $('div.btn-group').each(function () {
+
             var group = $(this);
             var form = group.parents('.container').eq(0);
             var name = group.attr('data-toggle-name');
             var hidden = $('input[name="' + name + '"]', form);
+
             $('button', group).each(function () {
                 var button = $(this);
                 button.live('click', function () {
@@ -78,9 +85,10 @@ var cadastroPromocao = {
             IdPromocao: $("#id-promocao").val(),
             IdCliente: $("#id-cliente").val(),
             Nome: $("#nome").val(),
+            Descricao: $("#descricao").val(),
             DataLiberacao: $("#dataliberacao").val(),
             DataExpiracao: $("#dataexpiracao").val(),
-            Descricao: $("#descricao").val(),
+            Ativo: ($("#promocao-ativa").val() == 1),
             TempImg: $("#temp-image").val(),
             Extension: $("#extension").val()
         };
@@ -98,28 +106,34 @@ var cadastroPromocao = {
             retorno = false;
         }
 
-        if ($("#alteracao").val() != 'True' && $("#temp-image").val() == "") {
-            alert("Atenção", "Informe uma imagem");
-            retorno = false;
-        }
-
         if (dados.DataLiberacao == "") {
-            $(".error-data").html("Informe uma data de liberação da promoção");
-            $(".error-data").show("fast");
+            $(".error-data-liberacao").html("Informe uma data de liberação da promoção");
+            $(".error-data-liberacao").show("fast");
             retorno = false;
         }
 
         if (dados.DataExpiracao == "") {
-            $(".error-data").html("Informe uma data de expiração da promoção");
-            $(".error-data").show("fast");
+            $(".error-data-expiracao").html("Informe uma data de expiração da promoção");
+            $(".error-data-expiracao").show("fast");
             retorno = false;
         }
 
         if (dados.Descricao == "") {
-            $(".error-sedescricaonha").html("Informe uma descrição");
+            $(".error-descricao").html("Informe uma descrição");
             $(".error-descricao").show("fast");
             retorno = false;
         }
+
+        if (dados.Ativo == "") {
+            $(".error-promocao-ativa").html("Informe status da promoção");
+            $(".error-promocao-ativa").show("fast");
+            retorno = false;
+        }
+
+//        if ($("#alteracao").val() != 'True' && $("#temp-image").val() == "") {
+//            jAlert("Informe uma imagem", "Atenção");
+//            retorno = false;
+//        }
 
         return retorno;
     }
@@ -133,17 +147,17 @@ var cadastroPromocao = {
             async: false,
             success: function (data) {
                 if (data) {
-                    alert("Promoção salva com sucesso!");
+                    jAlert("Promoção salva com sucesso!", "Atenção");
                 }
                 else {
-                    alert("Não foi possível salvar!");
+                    jAlert("Não foi possível salvar!","Atenção");
                 }
             },
             failure: function (msg, status) {
-                alert("Não foi possível salvar!");
+                jAlert("Não foi possível salvar!", "Atenção");
             },
             error: function (msg, status) {
-                alert("Não foi possível salvar!");
+                jAlert("Não foi possível salvar!", "Atenção");
             },
             complete: function () {
             }
