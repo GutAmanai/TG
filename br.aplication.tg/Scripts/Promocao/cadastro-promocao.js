@@ -42,6 +42,7 @@ var cadastroPromocao = {
     init: function () {
         cadastroPromocao.bind();
         cadastroPromocao.pesquisaInicial();
+        cadastroPromocao.mascara();
     }
 
     , bind: function () {
@@ -68,7 +69,7 @@ var cadastroPromocao = {
 
             $('button', group).each(function () {
                 var button = $(this);
-                button.live('click', function () {
+                button.on('click', function () {
                     hidden.val($(this).val());
                 });
                 if (button.val() == hidden.val()) {
@@ -76,6 +77,35 @@ var cadastroPromocao = {
                 }
             });
         });
+
+    }
+
+    , mascara: function () {
+
+        $("#dataexpiracao, #dataliberacao").datetimepicker({
+            closeText: 'Fechar',
+            prevText: '&#x3c;Anterior',
+            nextText: 'Pr&oacute;ximo&#x3e;',
+            currentText: 'Hoje',
+            monthNames: ['Janeiro', 'Fevereiro', 'Mar&ccedil;o', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+            monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+            dayNames: ['Domingo', 'Segunda-feira', 'Ter&ccedil;a-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sabado'],
+            dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
+            dayNamesMin: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
+            weekHeader: 'Sm',
+            dateFormat: 'dd/mm/yy',
+            firstDay: 0,
+            showMonthAfterYear: false,
+            yearSuffix: '',
+            timeText: 'Tempo',
+            hourText: 'Hora',
+            minuteText: 'Minuto',
+            timeFormat: 'HH:mm',
+            stepHour: 1,
+            stepMinute: 5,
+            showAnim: 'slide',
+            showButtonPanel : false
+        });        
 
     }
 
@@ -130,10 +160,10 @@ var cadastroPromocao = {
             retorno = false;
         }
 
-//        if ($("#alteracao").val() != 'True' && $("#temp-image").val() == "") {
-//            jAlert("Informe uma imagem", "Atenção");
-//            retorno = false;
-//        }
+        //        if ($("#alteracao").val() != 'True' && $("#temp-image").val() == "") {
+        //            jAlert("Informe uma imagem", "Atenção");
+        //            retorno = false;
+        //        }
 
         return retorno;
     }
@@ -150,7 +180,7 @@ var cadastroPromocao = {
                     jAlert("Promoção salva com sucesso!", "Atenção");
                 }
                 else {
-                    jAlert("Não foi possível salvar!","Atenção");
+                    jAlert("Não foi possível salvar!", "Atenção");
                 }
             },
             failure: function (msg, status) {

@@ -59,9 +59,7 @@
     <Compile Include="Servicos\ServicoPromocao.cs" />
     <Compile Include="Servicos\ServicoUsuario.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="NewFolder1\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\br.dominio.tg\br.dominio.tg.csproj">
       <Project>{26F49F89-5A1A-4CFA-A790-801CAE64100B}</Project>

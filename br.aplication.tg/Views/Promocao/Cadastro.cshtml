@@ -53,6 +53,15 @@
             
             <div class="span6">
                 <div>
+                    <label>Ativo</label>                    
+                    <div class="btn-group" data-toggle-name="promocao-ativa" data-toggle="buttons-radio" >                    
+                        <button type="button" value="1" class="btn" data-toggle="promocao-ativa">Ativo</button>
+                        <button type="button" value="0" class="btn" data-toggle="promocao-ativa">Desativado</button>                        
+                    </div>
+                    <input type="hidden" id="promocao-ativa" name="promocao-ativa" value="1" />
+                    <span class="error error-promocao-ativa alert alert-error"></span>
+                </div>      
+                <div>
                     <label>Nome</label>
                     <input type="text" class="input-xxlarge" id="nome" name="nome" placeholder="Nome" value=""/>
                     <span class="error error-nome alert alert-error"></span>
@@ -72,16 +81,6 @@
                     <input type="text" class="input-xxlarge" id="dataexpiracao" name="dataexpiracao" placeholder="Data de Expiração" value=""/>
                     <span class="error error-data-expiracao alert alert-error"></span>
                 </div>
-                                
-                <div>
-                    <label>Ativo</label>                    
-                    <div class="btn-group" data-toggle-name="promocao-ativa" data-toggle="buttons-radio" >                    
-                        <button type="button" value="1" class="btn" data-toggle="promocao-ativa">Ativo</button>
-                        <button type="button" value="0" class="btn" data-toggle="promocao-ativa">Desativado</button>                        
-                    </div>
-                    <input type="hidden" id="promocao-ativa" name="promocao-ativa" value="1" />
-                    <span class="error error-promocao-ativa alert alert-error"></span>
-                </div>                
             </div>
 
             <div class="span5 well">
