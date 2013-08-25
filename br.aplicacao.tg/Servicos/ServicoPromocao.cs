@@ -35,24 +35,34 @@ namespace br.aplicacao.tg.Servicos
         {
             try
             {
+                var cliente = _repositorioCliente.ObterPorId(dtoPromocao.IdCliente);
+
+                //_unidadeDeTrabalho.Inicializar();
                 if (dtoPromocao.IdPromocao != 0) // Edicao
                 {
-                    var promocao = ObterPromocaoPorId(dtoPromocao.IdPromocao);
-                    promocao.AdicionarNome(dtoPromocao.Nome);
-                    promocao.AdicionarDescricao(dtoPromocao.Descricao);
-                    promocao.AdicionarDataEntrada(DateTime.Now);
-                    promocao.AdicionarDataLiberacao(dtoPromocao.DataLiberacaoToDate);
-                    _repositorioPromocao.Alterar(promocao);
+                    var clientePromocao =_repositorioClientePromocao.ObterTodosOnde(x => x.Cliente.Id == dtoPromocao.IdCliente && x.Promocao.Id == dtoPromocao.IdCliente).FirstOrDefault();
+                    clientePromocao.Promocao.AdicionarNome(dtoPromocao.Nome);
+                    clientePromocao.Promocao.AdicionarDescricao(dtoPromocao.Descricao);
+                    clientePromocao.AdicionarDataLiberacao(dtoPromocao.DataLiberacaoToDate);
+                    clientePromocao.AdicionarDataExpiracao(dtoPromocao.DataExpiracaoToDate);
+                    clientePromocao.AdicionarStatus(dtoPromocao.Ativo);
+                    _repositorioClientePromocao.Alterar(clientePromocao);
                 }
                 else // Inclusao
                 {
                     var promocao = new Promocao();
                     promocao.AdicionarNome(dtoPromocao.Nome);
                     promocao.AdicionarDescricao(dtoPromocao.Descricao);
-                    promocao.AdicionarDataEntrada(DateTime.Now);
-                    promocao.AdicionarDataLiberacao(dtoPromocao.DataLiberacaoToDate);
-                    _repositorioPromocao.Adicionar(promocao);
+
+                    var clientePromocao = new ClientePromocao(cliente, promocao);
+                    clientePromocao.AdicionarDataLiberacao(dtoPromocao.DataLiberacaoToDate);
+                    clientePromocao.AdicionarDataExpiracao(dtoPromocao.DataExpiracaoToDate);
+                    clientePromocao.AdicionarStatus(dtoPromocao.Ativo);
+                    
+                    cliente.AdicionarClientePromocao(clientePromocao);
+                    _repositorioCliente.Alterar(cliente);
                 }
+                //_unidadeDeTrabalho.Salvar();
                 return true;
             }
             catch (Exception)
@@ -65,7 +75,7 @@ namespace br.aplicacao.tg.Servicos
         {
             return _repositorioPromocao.ObterPorId(id);
         }
-
+        
         private Cliente ObterClientePorId(int id)
         {
             return _repositorioCliente.ObterPorId(id);
@@ -116,6 +126,7 @@ namespace br.aplicacao.tg.Servicos
             return new DTOPromocao
             {
                 IdPromocao = clientePromocao.Promocao.Id,
+                IdCliente = clientePromocao.Cliente.Id,
                 Nome = clientePromocao.Promocao.Nome,
                 Ativo = clientePromocao.Ativo,
                 DataCadastro = clientePromocao.Promocao.DataEntrada.ToString(),

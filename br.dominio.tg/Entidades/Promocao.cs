@@ -7,8 +7,6 @@ namespace br.dominio.tg.Entidades
     {
         public virtual string Nome { get; protected set; }
         public virtual DateTime DataEntrada { get; protected set; }
-        public virtual DateTime DataLiberacao { get; protected set; }
-        public virtual DateTime DataExpiracao { get; protected set; }
         public virtual string Descricao { get; protected set; }
         public virtual string ImagemUrl { get; protected set; }
 
@@ -20,27 +18,12 @@ namespace br.dominio.tg.Entidades
 
         public Promocao()
         {
-
+            this.DataEntrada = DateTime.Now;
         }
 
         public virtual void AdicionarNome(string nome)
         {
             this.Nome = nome;
-        }
-
-        public virtual void AdicionarDataEntrada(DateTime now)
-        {
-            this.DataEntrada = now;
-        }
-
-        public virtual void AdicionarDataLiberacao(DateTime liberacao)
-        {
-            this.DataEntrada = liberacao;
-        }
-
-        public virtual void AdicionarDataExpiracao(DateTime expiracao)
-        {
-            this.DataEntrada = expiracao;
         }
 
         public virtual void AdicionarDescricao(string descricao)

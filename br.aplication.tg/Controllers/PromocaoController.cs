@@ -41,12 +41,12 @@ namespace br.aplication.tg.Controllers
             try
             {
                 var dtoPromocao = js.Deserialize<DTOPromocao>(configuracao);
-                //if (servicoPromocao.SalvarPromocao(dtoPromocao))
-                //{
-                //    var promocao = servicoPromocao.ObterDTOPromocao(dtoPromocao.IdPromocao);
-                //    this.SalvarImagemFinal(promocao., dtoPromocao.TempImg, dtoPromocao.Extension);
-                //    return Json(true);
-                //}
+                if (_ServicoPromocao.SalvarPromocao(dtoPromocao))
+                {
+                    //var promocao = servicoPromocao.ObterDTOPromocao(dtoPromocao.IdPromocao);
+                    //this.SalvarImagemFinal(promocao., dtoPromocao.TempImg, dtoPromocao.Extension);
+                    return Json(true);
+                }
                 return Json(true);
             }
             catch (Exception)

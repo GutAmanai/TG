@@ -7,10 +7,14 @@ namespace br.persistencia.tg.Mapeamentos
         public ClientePromocaoMap()
         {
             Table("ClientePromocao");
+            
+            Map(x => x.DataLiberacao);
             Map(x => x.DataExpiracao);
+            Map(x => x.DataEntrada);
             Map(x => x.Ativo);
+
             References(x => x.Cliente);
-            References(x => x.Promocao);
+            References(x => x.Promocao).Cascade.SaveUpdate();
         }
 
     }

@@ -16,14 +16,14 @@
     <script id="promocao-pesquisa-template" type="text/x-jsrender">
         <tr rel="{{:IdPromocao}}">
             <td class="nome">{{:Nome}}</td>
-            <td class="ativo">{{:Ativo}}</td>
+            <td class="ativo" rel="{{:Ativo}}" >{{:AtivoToString}}</td>
             <td class="descricao">{{:Descricao}}</td>
-            <td class="data-expiracao">{{:DataExpiracao}}</td>
-            <td class="data-liberacao">{{:DataLiberacao}}</td>
+            <td class="data-liberacao">{{:DataLiberacaoFormatada}}</td>
+            <td class="data-expiracao">{{:DataExpiracaoFormatada}}</td>            
             <td class="imagem">
                 <img src="{{:ImagemUrl}}" width="30" height="30" alt="Imagem da Promoção" name="Imagem da Promoção" class="imagem-preview" style="text-align:center;" />
             </td>
-            <td ><a href="#" class="alterar">Alterar</a></td>
+            <td><a href="#" class="alterar">Alterar</a></td>
         </tr>
     </script>
     

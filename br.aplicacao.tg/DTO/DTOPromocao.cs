@@ -26,5 +26,20 @@ namespace br.aplicacao.tg.DTO
             get { return DateTime.Parse(DataExpiracao); }    
         }
 
+        public string AtivoToString
+        {
+            get { return Ativo ? "Ativo" : "Desativado"; }
+        }
+
+        public string DataLiberacaoFormatada
+        {
+            get { return DataLiberacao.ToString().Replace("/", "-"); }
+        }
+
+        public string DataExpiracaoFormatada
+        {
+            get { return DataExpiracao.ToString().Replace("/", "-"); }
+        }
+
     }
 }

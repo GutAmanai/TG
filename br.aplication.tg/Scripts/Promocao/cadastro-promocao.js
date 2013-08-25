@@ -60,6 +60,13 @@ var cadastroPromocao = {
             }
         });
 
+        $("input[type='text']").on("change", function () {
+            if ($(this).next(".error").length > 0) {
+                $(this).next(".error").empty();
+                $(this).next(".error").hide("fast");
+            }
+        });
+
         $('div.btn-group').each(function () {
 
             var group = $(this);
@@ -77,7 +84,37 @@ var cadastroPromocao = {
                 }
             });
         });
+    }
 
+    , bindAlterar: function () {
+
+        $(".alterar").on("click", function () {
+
+            var tr = $(this).parents("tr");
+            var promocao =
+            {
+                IdPromocao: tr.eq(0).attr("rel"),
+                IdCliente: $("#id-cliente").val(),
+                Nome: tr.find(".nome").html(),
+                Descricao: tr.find(".descricao").html(),
+                DataLiberacao: tr.find(".data-liberacao").html(),
+                DataExpiracao: tr.find(".data-expiracao").html(),
+                Ativo: tr.find(".ativo").attr("rel"),
+                TempImg: "",
+                Extension: ""
+            };
+
+            $("#id-promocao").val(promocao.IdPromocao);
+            $("#id-cliente").val(promocao.IdCliente);
+            $("#nome").val(promocao.Nome);
+            $("#descricao").val(promocao.Descricao);
+            $("#dataliberacao").val(promocao.DataLiberacao);
+            $("#dataexpiracao").val(promocao.DataExpiracao);
+            $("#promocao-ativa").val(promocao.Ativo);
+            $("#temp-image").val("");
+            $("#extension").val("");
+
+        });
     }
 
     , mascara: function () {
@@ -93,20 +130,29 @@ var cadastroPromocao = {
             dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
             dayNamesMin: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
             weekHeader: 'Sm',
-            dateFormat: 'dd/mm/yy',
+            dateFormat: 'dd-mm-yy',
             firstDay: 0,
             showMonthAfterYear: false,
             yearSuffix: '',
             timeText: 'Tempo',
             hourText: 'Hora',
             minuteText: 'Minuto',
-            timeFormat: 'HH:mm',
+            timeFormat: 'HH:mm:ss',
             stepHour: 1,
             stepMinute: 5,
             showAnim: 'slide',
-            showButtonPanel : false
-        });        
+            showButtonPanel: false,
+            secondText: 'Segundos',
+            stepSecond: 20,
+            showSecond: false
+        });
 
+    }
+
+    , parseDate: function (s) {
+        var re = /^(\d\d)-(\d\d)-(\d{4}) (\d\d):(\d\d):(\d\d)$/;
+        var m = re.exec(s);
+        return m ? new Date(m[3], m[2] - 1, m[1], m[4], m[5], m[6]) : null;
     }
 
     , recuperarDados: function () {
@@ -136,16 +182,38 @@ var cadastroPromocao = {
             retorno = false;
         }
 
+        var dataExpiracao = cadastroPromocao.parseDate(dados.DataExpiracao);
+        var dataLiberacao = cadastroPromocao.parseDate(dados.DataLiberacao);
+
         if (dados.DataLiberacao == "") {
             $(".error-data-liberacao").html("Informe uma data de liberação da promoção");
             $(".error-data-liberacao").show("fast");
             retorno = false;
+        } else {
+            if (dataLiberacao == null) {
+                $(".error-data-liberacao").html("Informe uma data de liberação da promoção");
+                $(".error-data-liberacao").show("fast");
+                retorno = false;
+            }
         }
 
         if (dados.DataExpiracao == "") {
             $(".error-data-expiracao").html("Informe uma data de expiração da promoção");
             $(".error-data-expiracao").show("fast");
             retorno = false;
+        } else {
+            if (dataExpiracao == null) {
+                $(".error-data-expiracao").html("Informe uma data de expiração da promoção");
+                $(".error-data-expiracao").show("fast");
+                retorno = false;
+            }
+        }
+
+        if (dataExpiracao != null && dataLiberacao != null) {
+            if (dataLiberacao >= dataExpiracao) {
+                jAlert("A data de liberação deve ser menor que a data de expiração", "Atenção");
+                retorno = false;
+            }
         }
 
         if (dados.Descricao == "") {
@@ -238,8 +306,9 @@ var cadastroPromocao = {
                     $(".table.promocao tbody tr").empty();
 
                     if (data.Localizacoes.length > 0) {
-                        $(".table.promocao").find("tbody").append($("#promocao-pesquisa-template").render(data.Localizacoes));
+                        $(".table.promocao").find("tbody").append($("#promocao-pesquisa-template").render(data.Promocao));
                         cadastroPromocao.adicionarPaginacao(data.NPaginas);
+                        cadastroPromocao.bindAlterar();
                     }
                     else {
                         $(".table.promocao").find("tbody").append($("#promocao-pesquisa-sem-registro-template").render({}));
