@@ -4,28 +4,24 @@
 });
 
 var updateImagem = {
-    guia: new Object(),
-    __ext: new Object(),
 
-    inicializar: function() {
-        $(document).ready(function() {
-            guia = $("#nome-imagem").val();
+    inicializar: function () {
+        $(document).ready(function () {
             new Ajax_upload($("#upload-imagem")[0], {
                 action: baseUrl + "Promocao/UploadImagem",
-                data: { 'tempName': guia },
-                onSubmit: function(file, ext) {
-                    this.setData({ 'tempName': updateImagem.guia, 'ext': ext });
+                data: { 'tempName': "" },
+                onSubmit: function (file, ext) {
+                    this.setData({ 'tempName': "", 'ext': ext });
                     if (!(ext && /^(jpg|png|jpeg|bmp|gif)$/.test(ext))) {
                         jAlert("Selecione apenas os formatos de imagem: JPG, JPEG, PNG, BMP ou GIF.", "Atenção!");
                         return false;
-                    } else {
-                        updateImagem.__ext = ext;
                     }
                 },
-                onComplete: function(file, response) {
+                onComplete: function (file, response) {
+                    alert(response);
                     var spl = response.split("|");
-                    var img = baseUrl + "Arquivos/Temp/" + spl[0] + spl[1] + "?x=" + spl[2];
-                    var imgDownload = baseUrl + "Arquivos/Temp/" + spl[0] + spl[1] + "?v=" + new Date().getMilliseconds();
+                    var img = baseUrl + "Arquivos/Promocao/Temp/" + spl[0] + spl[1] + "?x=" + spl[2];
+                    var imgDownload = baseUrl + "Arquivos/Promocao/Temp/" + spl[0] + spl[1] + "?v=" + new Date().getMilliseconds();
                     $("#imagemPreview").attr("src", img);
                     $("#temp-image").val(spl[0]);
                     $("#extension").val(spl[1]);

@@ -22,19 +22,13 @@ namespace br.aplication.tg.Controllers
             _ServicoPromocao = Fabrica.Instancia.Obter<ServicoPromocao>();
         }
 
-        public ActionResult Cadastro(int idCliente)
+        #region Cadastro de Promoção
+
+        public ActionResult Cadastro(int idCliente, int idPromocao = 0)
         {
-            ViewBag.Imagem = RecuperaImagem(idCliente);
+            ViewBag.Imagem = RecuperaImagem(idCliente, idPromocao);
             return View(idCliente);
         }
-
-        //[Authorize]
-        //public ActionResult Alterar(int id)
-        //{
-        //    ViewBag.Alterar = true;
-        //    ViewBag.Imagem = RecuperaImagem(id);
-        //    return View("Cadastro", _ServicoPromocao.ObterDTOPromocao(id));
-        //}
 
         public ActionResult Salvar(string configuracao)
         {
@@ -61,8 +55,10 @@ namespace br.aplication.tg.Controllers
             return Json(_ServicoPromocao.ObterDTOPromocao(dto));
         }
 
+        #endregion
+
         #region PhoneGap Requisição
-        
+
         public ActionResult ListarPromocao(double latitude, double longitude)
         {
 
@@ -92,7 +88,7 @@ namespace br.aplication.tg.Controllers
         #endregion 
 
         #region Salvar Imagem
-        private bool SalvarImagemFinal(int idPromocao, string tempImg, string extension)
+        private bool SalvarImagemFinal(int idCliente, int idPromocao, string tempImg, string extension)
         {
             if(!string.IsNullOrEmpty(tempImg))
             {
@@ -111,8 +107,8 @@ namespace br.aplication.tg.Controllers
 
                 var img = Image.FromFile(filePath);
 
-                ResizeImagem(img, 48, 48, filePathMin, extension);
-                ResizeImagem(img, img.Height, img.Width, filePathNormal, extension);
+                SalvarImagem(img, 48, 48, RecuperaFormatoImagem(extension), filePathMin);
+                SalvarImagem(img, img.Height, img.Width, RecuperaFormatoImagem(extension), filePathNormal);
             }
             return true;
         }
@@ -122,7 +118,7 @@ namespace br.aplication.tg.Controllers
         {
             if (Request.Files.Count > 0)
             {
-                string tempPath = Server.MapPath("~/Arquivos/Temp/");
+                string tempPath = Server.MapPath("~/Arquivos/Promocao/Temp/");
 
                 var stream = Request.Files[0].InputStream;
                 byte[] file = new byte[stream.Length];
@@ -141,30 +137,19 @@ namespace br.aplication.tg.Controllers
                 string filePath = string.Format("{0}{1}{2}", tempPath, tempName, extension);
 
                 var imagem = Image.FromStream(stream);
-                var img = ResizeImagem(imagem, imagem.Height, imagem.Width, filePath, ext);
+                var img = SalvarImagem(imagem, imagem.Height, imagem.Width, RecuperaFormatoImagem(ext), filePath);
 
                 return Content(string.Format("{0}|{1}|{2}", tempName, extension, DateTime.Now.Ticks));
             }
             return Content("");
         }
 
-        private Image ResizeImagem(Image imagem, int maxAltura, int maxLargura, string pastaDestino, string formatoImagem)
-        {
-            try
-            {
-                return SalvarImagem(imagem, maxLargura, maxAltura, RecuperaFormatoImagem(formatoImagem), pastaDestino);
-            }
-            catch (Exception)
-            {
-                throw new Exception("Erro ao redimensionar a imagem");
-            }
-        }
-
-        private Image SalvarImagem(Image imagem, int widthFinal, int heightFinal, ImageFormat formatoImagem, string pastaDestino)
+        // Fazer um DTO para salvar a imagem - passar via parametro
+        private Image SalvarImagem(Image imagem, int maxLargura, int maxAltura, ImageFormat formatoImagem, string pastaDestino)
         {
             imagem.RotateFlip(RotateFlipType.Rotate180FlipNone);
             imagem.RotateFlip(RotateFlipType.Rotate180FlipNone);
-            var imagemArrumada = imagem.GetThumbnailImage(widthFinal, heightFinal, null, IntPtr.Zero);
+            var imagemArrumada = imagem.GetThumbnailImage(maxLargura, maxAltura, null, IntPtr.Zero);
             Image img;
             using (var mStream = new MemoryStream())
             {
@@ -203,7 +188,7 @@ namespace br.aplication.tg.Controllers
             }
         }
 
-        private string RecuperaImagem(int idPromocao)
+        private string RecuperaImagem(int idCliente, int idPromocao)
         {
             try
             {
