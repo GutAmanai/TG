@@ -236,6 +236,20 @@ var googleMaps = {
         google.maps.event.addListener(googleMaps.map, 'click', function (event) {
             googleMaps.addMarker(event.latLng);
         });
+
+        googleMaps.inicializaMapaAlterar();
+    }
+
+    , inicializaMapaAlterar: function () {
+        var strJsonLocalizacao = $("#localizacoes-json").val();
+        if (strJsonLocalizacao.length > 0) {
+            var localizacao = JSON.parse(strJsonLocalizacao);
+
+            $.each(localizacao, function (key, value) {
+                var latlng = new google.maps.LatLng($(this).Latitude, $(this).Longitude);
+                googleMaps.addMarker(latlng);
+            });
+        }
     }
 
     , addMarker: function (location) {
