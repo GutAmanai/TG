@@ -54,7 +54,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Servicos\ServicoCliente.cs" />
     <Compile Include="Servicos\ServicoCriptografia.cs" />
-    <Compile Include="Servicos\ServicoExemplo.cs" />
     <Compile Include="Servicos\ServicoGeral.cs" />
     <Compile Include="Servicos\ServicoPromocao.cs" />
     <Compile Include="Servicos\ServicoUsuario.cs" />
