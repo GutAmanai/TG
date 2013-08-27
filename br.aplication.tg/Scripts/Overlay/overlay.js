@@ -1,4 +1,4 @@
-$(function () {
+$(document).ready(function () {
     overlay.init();
 });
 
@@ -15,24 +15,24 @@ var overlay = {
     },
 
     init: function () {
-        
-        $(document).ajaxStart(function () {
+
+        $(document).ajaxStart(function (e, xhr, opt) {
             $.blockUI(overlay.objetoOverlay);
         });
 
-        $(document).ajaxSend(function () {
+        $(document).ajaxSend(function (e, xhr, opt) {
             $.blockUI(overlay.objetoOverlay);
         });
 
-        $(document).ajaxStop(function () {
+        $(document).ajaxStop(function (e, xhr, opt) {
             $.unblockUI();
         });
 
-        $(document).ajaxSuccess(function () {
+        $(document).ajaxSuccess(function (e, xhr, opt) {
             $.unblockUI();
         });
 
-        $(document).ajaxComplete(function () {
+        $(document).ajaxComplete(function (e, xhr, opt) {
             $.unblockUI();
         });
     },
