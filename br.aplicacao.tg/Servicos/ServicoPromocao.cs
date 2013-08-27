@@ -31,16 +31,16 @@ namespace br.aplicacao.tg.Servicos
             _servicoCriptografia = new ServicoCriptografia();
         }
 
-        public bool SalvarPromocao(DTOPromocao dtoPromocao)
+        public DTOPromocao SalvarPromocao(DTOPromocao dtoPromocao)
         {
             try
             {
                 var cliente = _repositorioCliente.ObterPorId(dtoPromocao.IdCliente);
+                ClientePromocao clientePromocao;
 
-                //_unidadeDeTrabalho.Inicializar();
                 if (dtoPromocao.IdPromocao != 0) // Edicao
                 {
-                    var clientePromocao =_repositorioClientePromocao.ObterTodosOnde(x => x.Cliente.Id == dtoPromocao.IdCliente && x.Promocao.Id == dtoPromocao.IdCliente).FirstOrDefault();
+                    clientePromocao =_repositorioClientePromocao.ObterTodosOnde(x => x.Cliente.Id == dtoPromocao.IdCliente && x.Promocao.Id == dtoPromocao.IdCliente).FirstOrDefault();
                     clientePromocao.Promocao.AdicionarNome(dtoPromocao.Nome);
                     clientePromocao.Promocao.AdicionarDescricao(dtoPromocao.Descricao);
                     clientePromocao.AdicionarDataLiberacao(dtoPromocao.DataLiberacaoToDate);
@@ -54,7 +54,7 @@ namespace br.aplicacao.tg.Servicos
                     promocao.AdicionarNome(dtoPromocao.Nome);
                     promocao.AdicionarDescricao(dtoPromocao.Descricao);
 
-                    var clientePromocao = new ClientePromocao(cliente, promocao);
+                    clientePromocao = new ClientePromocao(cliente, promocao);
                     clientePromocao.AdicionarDataLiberacao(dtoPromocao.DataLiberacaoToDate);
                     clientePromocao.AdicionarDataExpiracao(dtoPromocao.DataExpiracaoToDate);
                     clientePromocao.AdicionarStatus(dtoPromocao.Ativo);
@@ -62,12 +62,12 @@ namespace br.aplicacao.tg.Servicos
                     cliente.AdicionarClientePromocao(clientePromocao);
                     _repositorioCliente.Alterar(cliente);
                 }
-                //_unidadeDeTrabalho.Salvar();
-                return true;
+
+                return ObterPromocaoPorClientePromocao(clientePromocao);
             }
             catch (Exception)
             {
-                return false;
+                return null;
             }
         }
 
@@ -104,7 +104,7 @@ namespace br.aplicacao.tg.Servicos
             clientePromocao.NLinhas = NLinhas;
             clientePromocao.NPaginas = NPaginas;
             clientePromocao.Localizacoes = listaPromocoes.SelectMany(x => ObterLocalizacao(x.Cliente.ClienteLocalizacao)).ToList();
-            clientePromocao.Promocao = listaPromocoes.Select(ObterPromocao).ToList();
+            clientePromocao.Promocao = listaPromocoes.Select(ObterPromocaoPorClientePromocao).ToList();
             return clientePromocao;
         }
 
@@ -121,7 +121,7 @@ namespace br.aplicacao.tg.Servicos
             }
         }
 
-        public DTOPromocao ObterPromocao(ClientePromocao clientePromocao)
+        public DTOPromocao ObterPromocaoPorClientePromocao(ClientePromocao clientePromocao)
         {
             return new DTOPromocao
             {

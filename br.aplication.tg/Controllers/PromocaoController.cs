@@ -14,19 +14,22 @@ namespace br.aplication.tg.Controllers
 {
     public class PromocaoController : Controller
     {
-        public JavaScriptSerializer js = new JavaScriptSerializer();
-        public ServicoPromocao _ServicoPromocao;
+        public JavaScriptSerializer Js;
+        public ServicoPromocao ServicoPromocao;
+        public ServicoImagem ServicoImagem;
 
         public PromocaoController()
         {
-            _ServicoPromocao = Fabrica.Instancia.Obter<ServicoPromocao>();
+            ServicoPromocao = Fabrica.Instancia.Obter<ServicoPromocao>();
+            ServicoImagem = new ServicoImagem();
+            Js = new JavaScriptSerializer();
         }
 
         #region Cadastro de Promoção
 
         public ActionResult Cadastro(int idCliente, int idPromocao = 0)
         {
-            ViewBag.Imagem = RecuperaImagem(idCliente, idPromocao);
+            ViewBag.Imagem = ServicoImagem.RecuperaImagemPromocao(idCliente, idPromocao);
             return View(idCliente);
         }
 
@@ -34,14 +37,14 @@ namespace br.aplication.tg.Controllers
         {
             try
             {
-                var dtoPromocao = js.Deserialize<DTOPromocao>(configuracao);
-                if (_ServicoPromocao.SalvarPromocao(dtoPromocao))
+                var dtoPromocao = Js.Deserialize<DTOPromocao>(configuracao);
+                var dtoPromocaoSalva = ServicoPromocao.SalvarPromocao(dtoPromocao);
+                if (dtoPromocaoSalva != null)
                 {
-                    //var promocao = servicoPromocao.ObterDTOPromocao(dtoPromocao.IdPromocao);
-                    //this.SalvarImagemFinal(promocao., dtoPromocao.TempImg, dtoPromocao.Extension);
+                    ServicoImagem.SalvarImagemFinalPromocao(dtoPromocaoSalva.IdCliente, dtoPromocaoSalva.IdPromocao, dtoPromocao.TempImg, dtoPromocao.Extension);
                     return Json(true);
                 }
-                return Json(true);
+                return Json(false);
             }
             catch (Exception)
             {
@@ -51,8 +54,8 @@ namespace br.aplication.tg.Controllers
 
         public ActionResult PesquisarPromocao(string dtoPesquisa)
         {
-            var dto = js.Deserialize<DTOPesquisaPromocao>(dtoPesquisa);
-            return Json(_ServicoPromocao.ObterDTOPromocao(dto));
+            var dto = Js.Deserialize<DTOPesquisaPromocao>(dtoPesquisa);
+            return Json(ServicoPromocao.ObterDTOPromocao(dto));
         }
 
         #endregion
@@ -88,30 +91,6 @@ namespace br.aplication.tg.Controllers
         #endregion 
 
         #region Salvar Imagem
-        private bool SalvarImagemFinal(int idCliente, int idPromocao, string tempImg, string extension)
-        {
-            if(!string.IsNullOrEmpty(tempImg))
-            {
-                var caminhoFotosMin = Server.MapPath("~/Arquivos/Promocao/Min/");
-                var caminhoFotosNormal = Server.MapPath("~/Arquivos/Promocao/Normal/");
-                var caminhoFotosTemp = Server.MapPath("~/Arquivos/Temp/");
-                
-                var arquivos = Directory.GetFiles(caminhoFotosTemp);
-            
-                var filePath = "";
-                if (arquivos.Count(a => Path.GetFileNameWithoutExtension(a) == tempImg) > 0)
-                    filePath = arquivos.FirstOrDefault(a => Path.GetFileNameWithoutExtension(a) == tempImg);
-
-                string filePathMin = string.Format("{0}{1}{2}", caminhoFotosMin, idPromocao, extension);
-                string filePathNormal = string.Format("{0}{1}{2}", caminhoFotosNormal, idPromocao, extension);
-
-                var img = Image.FromFile(filePath);
-
-                SalvarImagem(img, 48, 48, RecuperaFormatoImagem(extension), filePathMin);
-                SalvarImagem(img, img.Height, img.Width, RecuperaFormatoImagem(extension), filePathNormal);
-            }
-            return true;
-        }
 
         [HttpPost]
         public ActionResult UploadImagem(string ext = "", string tempName = "")
@@ -137,76 +116,20 @@ namespace br.aplication.tg.Controllers
                 string filePath = string.Format("{0}{1}{2}", tempPath, tempName, extension);
 
                 var imagem = Image.FromStream(stream);
-                var img = SalvarImagem(imagem, imagem.Height, imagem.Width, RecuperaFormatoImagem(ext), filePath);
 
+                var dtoImagemNormal = new DTOImagem();
+                dtoImagemNormal.Imagem = imagem;
+                dtoImagemNormal.MaxLargura = imagem.Height;
+                dtoImagemNormal.MaxAltura = imagem.Width;
+                dtoImagemNormal.FormatoImagem =  ServicoImagem.RecuperaFormatoImagem(extension);
+                dtoImagemNormal.PastaDestino = filePath;
+
+                ServicoImagem.SalvarImagem(dtoImagemNormal);
                 return Content(string.Format("{0}|{1}|{2}", tempName, extension, DateTime.Now.Ticks));
             }
             return Content("");
         }
-
-        // Fazer um DTO para salvar a imagem - passar via parametro
-        private Image SalvarImagem(Image imagem, int maxLargura, int maxAltura, ImageFormat formatoImagem, string pastaDestino)
-        {
-            imagem.RotateFlip(RotateFlipType.Rotate180FlipNone);
-            imagem.RotateFlip(RotateFlipType.Rotate180FlipNone);
-            var imagemArrumada = imagem.GetThumbnailImage(maxLargura, maxAltura, null, IntPtr.Zero);
-            Image img;
-            using (var mStream = new MemoryStream())
-            {
-                imagemArrumada.Save(mStream, formatoImagem);
-                var imagemEmBytes = mStream.ToArray();
-                using (var fileStream = new FileStream(pastaDestino, FileMode.Create, FileAccess.Write))
-                {
-                    img = Image.FromStream(mStream);
-                    fileStream.Write(imagemEmBytes, 0, imagemEmBytes.Length);
-                    fileStream.Close();
-                }
-            }
-            return img;
-        }
-
-        private ImageFormat RecuperaFormatoImagem(string formatoImagem)
-        {
-            switch (formatoImagem.ToLower())
-            {
-                case "jpg":
-                case ".jpg":
-                case "jpeg":
-                case ".jpeg":
-                    return ImageFormat.Jpeg;
-                case "png":
-                case ".png":
-                    return ImageFormat.Png;
-                case "bmp":
-                case ".bmp":
-                    return ImageFormat.Bmp;
-                case "gif":
-                case ".gif":
-                    return ImageFormat.Gif;
-                default:
-                    return null;
-            }
-        }
-
-        private string RecuperaImagem(int idCliente, int idPromocao)
-        {
-            try
-            {
-                var caminhoFotos = Server.MapPath("~/Arquivos/Promocao/Normal/");
-                var arquivos = Directory.GetFiles(caminhoFotos);
-
-                if (arquivos.Count(a => Path.GetFileNameWithoutExtension(a) == idPromocao.ToString()) > 0)
-                {
-                    var foto = arquivos.FirstOrDefault(a => Path.GetFileNameWithoutExtension(a) == idPromocao.ToString());
-                    return VirtualPathUtility.ToAbsolute("~/Arquivos/Promocao/Normal/" + Path.GetFileName(foto));
-                }
-                return VirtualPathUtility.ToAbsolute("~/Arquivos/Promocao/icon_image.png");
-            }
-            catch (Exception)
-            {
-                return VirtualPathUtility.ToAbsolute("~/Arquivos/Promocao/icon_image.png");
-            }
-        }
+        
         #endregion
     }
 }

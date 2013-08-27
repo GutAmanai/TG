@@ -106,9 +106,17 @@ var cadastroPromocao = {
             $("#descricao").val(promocao.Descricao);
             $("#dataliberacao").val(promocao.DataLiberacao);
             $("#dataexpiracao").val(promocao.DataExpiracao);
-            $("#promocao-ativa").val(promocao.Ativo);
+            $("#alteracao").val("True"); 
             $("#temp-image").val("");
             $("#extension").val("");
+
+            if (promocao.Ativo == 'true') {
+                $(".btn.ativo").click();
+            } else {
+                $(".btn.desativado").click();
+            }
+
+
 
         });
     }
@@ -224,10 +232,10 @@ var cadastroPromocao = {
             retorno = false;
         }
 
-        //        if ($("#alteracao").val() != 'True' && $("#temp-image").val() == "") {
-        //            jAlert("Informe uma imagem", "Atenção");
-        //            retorno = false;
-        //        }
+        if ($("#alteracao").val() != 'True' && $("#temp-image").val() == "") {
+            jAlert("Informe uma imagem", "Atenção");
+            retorno = false;
+        }
 
         return retorno;
     }
