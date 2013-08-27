@@ -15,6 +15,7 @@ namespace br.aplicacao.tg.Servicos
         private readonly ServicoCriptografia _servicoCriptografia;
         private readonly IRepositorioCliente _repositorioCliente;
         private readonly IRepositorioClientePromocao _repositorioClientePromocao;
+        private readonly ServicoImagem ServicoImagem;
 
         public ServicoPromocao(
                                 IUnidadeDeTrabalho unidadeDeTrabalho,
@@ -29,6 +30,7 @@ namespace br.aplicacao.tg.Servicos
             _repositorioCliente = repositorioCliente;
             _repositorioClientePromocao = repositorioClientePromocao;
             _servicoCriptografia = new ServicoCriptografia();
+            ServicoImagem = new ServicoImagem(); 
         }
 
         public DTOPromocao SalvarPromocao(DTOPromocao dtoPromocao)
@@ -133,7 +135,7 @@ namespace br.aplicacao.tg.Servicos
                 DataLiberacao = clientePromocao.DataLiberacao.ToString(),
                 DataExpiracao = clientePromocao.DataExpiracao.ToString(),
                 Descricao = clientePromocao.Promocao.Descricao,
-                ImagemUrl = "",
+                ImagemUrl = ServicoImagem.RecuperaImagemPromocao(clientePromocao.Cliente.Id, clientePromocao.Promocao.Id),
                 TempImg = ""
             };
         }
