@@ -41,7 +41,7 @@ function chamadaServidor(latitude, longitude) {
         data: { latitude: latitude, longitude: longitude },
         crossDomain: true,
         success: function (res) {
-            $('#place').append('sucesso');               
+            $('#place').append('sucesso' + res.promocoes[1].Latitude);               
             listarPromocoes.geraLista(res);
         },
         error: function (xhr, ajaxOptions, thrownError) {
@@ -86,7 +86,7 @@ var listarPromocoes = {
                 //$.mobile.changePage("../gps.html", { transition: "slideup", changeHash: false });
                 //$.mobile.changePage("gps2.html"); 
                 //window.location = "gps2.html";
-                $('.conteudo').load('gps2.html');
+                $('.conteudo').load('gps.html');
             })
 
         $("#atualizar-promocao").click(function () {

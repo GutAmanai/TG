@@ -62,7 +62,7 @@ namespace br.aplication.tg.Controllers
 
         #region PhoneGap Requisição
 
-        public ActionResult ListarPromocao(double latitude, double longitude)
+        public ActionResult ListarPromocao(string latitude, string longitude)
         {
 
             return this.Jsonp(new
@@ -74,7 +74,8 @@ namespace br.aplication.tg.Controllers
                     UrlPromocao = "https://s3.amazonaws.com/media.jetstrap.com/IZjLVWRQVqc7G8EDyEwe_20130521_submarino.jpg",
                     Promocao = "Dia de eletrônicos, Sub Tek, o seu guia perfeito no mundo High-tech. Toda a loja de Eletrônicos com 10% de desconto. Dia de eletrônicos, Sub Tek, o seu guia perfeito no mundo High-tech. Toda a loja de Eletrônicos com 10% de desconto. Dia de eletrônicos, Sub Tek, o seu guia perfeito no mundo High-tech. Toda a loja de Eletrônicos com 10% de desconto.",
                     Endereco = "Rua santa ifigênia, 2526",
-                    UrlMapa = "http://maps.googleapis.com/maps/api/staticmap?center=-15.800513,-47.91378&zoom=11&size=200x200&sensor=false"
+                    Latitude = latitude,
+                    Longitude = longitude
                 }, 
                 new {IdEmpresa = "2" ,
                     NomeEmpresa = "Wine", 
@@ -82,7 +83,8 @@ namespace br.aplication.tg.Controllers
                     UrlPromocao = "https://s3.amazonaws.com/media.jetstrap.com/AuGv7oubRe2IiIwIvZH1_20130521_wine.jpg",
                     Promocao = "Comprar vinho é na Wine.com.br, o melhor do vinho em suas mãos.",
                     Endereco = "Rua augusta, 1582",
-                    UrlMapa = "http://maps.googleapis.com/maps/api/staticmap?center=-10.800513,-47.91378&zoom=11&size=200x200&sensor=false"
+                    Latitude = latitude,
+                    Longitude = longitude
                 }
 }
             });
