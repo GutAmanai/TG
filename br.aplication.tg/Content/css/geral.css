@@ -1,7 +1,6 @@
 ﻿body {
 }
 
-
 /* ---------------------------- Error ---------------------------------- */
 .error 
 {
@@ -13,4 +12,21 @@
 
 .menu .thumbnail img {
     width: 50%;
+}
+
+/* ---------------------------- Google Maps ---------------------------------- */
+#map_canvas{
+    height: 80%;
+}
+        
+.mapa{
+    height: 400px;
+}
+
+.btn-group .btn {
+    width: 100px;
+}
+
+.page-header.segundo {
+    margin-top: 50px;
 }

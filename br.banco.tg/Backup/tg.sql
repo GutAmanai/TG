@@ -1,4 +1,4 @@
-﻿# Host: localhost  (Version: 6.0.3-alpha-community)
+# Host: localhost  (Version: 6.0.3-alpha-community)
 # Date: 2013-07-29 23:11:40
 # Generator: MySQL-Front 5.3  (Build 4.4)
 
@@ -21,6 +21,8 @@ CREATE TABLE `cliente` (
   `Contato` varchar(100) NOT NULL,
   `FotoUrl` varchar(100) DEFAULT NULL,
   `Senha` varchar(100) NOT NULL,
+  `Longitude` double NOT NULL,
+  `Latitude` double NOT NULL,
   PRIMARY KEY (`Id`),
   UNIQUE KEY `Email` (`Email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -30,25 +32,6 @@ CREATE TABLE `cliente` (
 #
 
 
-#
-# Source for table "consumidor"
-#
-
-DROP TABLE IF EXISTS `consumidor`;
-CREATE TABLE `consumidor` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT,
-  `Nome` varchar(100) NOT NULL,
-  `DataEntrada` datetime NOT NULL,
-  `Email` varchar(100) NOT NULL,
-  `Contato` varchar(100) NOT NULL,
-  `Senha` varchar(100) NOT NULL,
-  PRIMARY KEY (`Id`),
-  UNIQUE KEY `Email` (`Email`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-#
-# Data for table "consumidor"
-#
 
 
 #
@@ -137,4 +120,3 @@ CREATE TABLE `qualificacaopromocao` (
 #
 # Data for table "qualificacaopromocao"
 #
-

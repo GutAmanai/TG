@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace br.aplicacao.tg.Helper
+namespace br.aplicacao
 {
     public static class PageExtension
     {

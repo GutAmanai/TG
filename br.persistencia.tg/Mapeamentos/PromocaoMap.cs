@@ -11,12 +11,13 @@ namespace br.persistencia.tg.Mapeamentos
         public PromocaoMap()
         {
             Table("Promocao");
+            
             Map(x => x.Nome);
             Map(x => x.DataEntrada);
-            Map(x => x.DataLiberacao);
-            Map(x => x.DataExpiracao);
             Map(x => x.Descricao);
-            Map(x => x.ImagemUrl);
+            Map(x => x.ImagemUrl).Nullable();
+
+            HasMany(x => x.ClientePromocao).Cascade.AllDeleteOrphan();
         }
     }
 }

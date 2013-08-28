@@ -49,6 +49,7 @@
     <Compile Include="Entidades\Promocao.cs" />
     <Compile Include="Entidades\QualificacaoPromocao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorios\IRepositorioClientePromocao.cs" />
     <Compile Include="Repositorios\IRepositorioPromocao.cs" />
     <Compile Include="Repositorios\IRepositorioBase.cs" />
     <Compile Include="Repositorios\IRepositorioCliente.cs" />

@@ -149,11 +149,11 @@ var crop = {
         jcrop_api.destroy();
     },
     addEvents: function () {
-        this.btnSalvar.die("click").live("click", function () {
+        this.btnSalvar.on("click", function () {
             crop.salvarCrop();
         });
 
-        this.btnCancelar.die("click").live("click", function () {
+        this.btnCancelar.on("click", function () {
             crop.cancelarCrop();
         });
     }

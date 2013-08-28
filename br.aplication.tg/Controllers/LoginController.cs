@@ -29,14 +29,14 @@ namespace br.aplication.tg.Controllers
         {
             if (_servicoCliente.ValidarCliente(email, senha))
             {
-                var cliente = _servicoCliente.ObterViewModelCliente(email);
+                var cliente = _servicoCliente.ObterDTOCliente(email);
                 Session.Add("DTOLogin",_servicoCliente.ObterDTOCliente(email));
                 FormsAuthentication.SetAuthCookie(cliente.Nome, false);
-                return Json(true);
+                return Json(new { IdCliente = cliente.IdCliente, autorizado = true });
             }
             else
             {
-                return Json(false);
+                return Json(new { IdCliente = 0, autorizado = false });
             }
         }
 

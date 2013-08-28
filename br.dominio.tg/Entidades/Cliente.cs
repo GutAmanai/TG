@@ -87,6 +87,6 @@ namespace br.dominio.tg.Entidades
             if (this._clienteLocalizacao == null)
                 this._clienteLocalizacao = new Collection<ClienteLocalizacao>();
             this._clienteLocalizacao.Add(clienteLocalizacao);
-        }
+        }   
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -9,7 +8,6 @@ using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using br.aplicacao.tg.DTO;
 using br.aplicacao.tg.Servicos;
-using br.aplicacao.tg.ViewModel;
 using br.infra.tg.InjecaoDependencia;
 
 namespace br.aplication.tg.Controllers
@@ -28,7 +26,7 @@ namespace br.aplication.tg.Controllers
         {
             ViewBag.Alterar = false;
             ViewBag.FotoCliente = RecuperaFotoCliente(0);
-            return View(ServicoCliente.ObterViewModelCliente(0));
+            return View(ServicoCliente.ObterDTOCliente(0));
         }
 
         [Authorize]
@@ -36,7 +34,7 @@ namespace br.aplication.tg.Controllers
         {
             ViewBag.Alterar = true;
             ViewBag.FotoCliente = RecuperaFotoCliente(id);
-            return View("Cadastro",ServicoCliente.ObterViewModelCliente(id));
+            return View("Cadastro",ServicoCliente.ObterDTOCliente(id));
         }
 
         public ActionResult Salvar(string configuracao)
@@ -46,7 +44,7 @@ namespace br.aplication.tg.Controllers
                 var dtoCliente = js.Deserialize<DTOCliente>(configuracao);
                 if (ServicoCliente.SalvarCliente(dtoCliente))
                 {
-                    var cliente = ServicoCliente.ObterViewModelCliente(dtoCliente.Email);
+                    var cliente = ServicoCliente.ObterDTOCliente(dtoCliente.Email);
                     this.SalvarImagemFinal(cliente.IdCliente, dtoCliente.TempImg, dtoCliente.Extension);
                     return Json(true);
                 }
