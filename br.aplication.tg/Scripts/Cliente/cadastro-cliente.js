@@ -189,7 +189,7 @@ var cadastroCliente = {
                             window.location = baseUrl + "Login/index";
                         });
                     } else {
-                        jAlert('Cadastro feito com sucesso! Acesse as área administrativa.', 'Atenção', function (event) {
+                        jAlert('Alteração feita com sucesso! Acesse as área administrativa.', 'Atenção', function (event) {
                             window.location = baseUrl + "Menu/Menuvemka/?idCliente=" + $("#id-cliente").val();
                         });                        
                     }

@@ -75,8 +75,13 @@
                                         </ul>                  
                                     </li>                                                                       
                                     
-                                    <li><a href="@(Url.Action("LogOff", "Login"))">Sair</a></li>
-                                    <li><a>Bem vindo, @HttpContext.Current.User.Identity.Name</a></li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">@HttpContext.Current.User.Identity.Name<b class="caret"></b></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="@(Url.Action("Alterar", "Cliente"))">Meu cadastro</a></li>
+                                            <li><a href="@(Url.Action("LogOff", "Login"))">Sair</a></li>
+                                        </ul>                  
+                                    </li>
                                 }
                             </ul>
                         </div>
