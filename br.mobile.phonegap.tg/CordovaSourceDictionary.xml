@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- This file is auto-generated, do not edit! -jm -->
 <CordovaSourceDictionary>
+    <FilePath Value="www\css\gps.css"/>
     <FilePath Value="www\css\mapa.css"/>
     <FilePath Value="www\data.txt"/>
     <FilePath Value="www\gps.html"/>
+    <FilePath Value="www\gps2.html"/>
     <FilePath Value="www\img\logoVemKa.png"/>
     <FilePath Value="www\img\logoLotus.png"/>
-    <FilePath Value="www\js\listar-promocoes-ajustar.js"/>
+    <FilePath Value="www\js\jquery.mobile-1.3.2.min.js"/>
     <FilePath Value="www\js\gps.js"/>
     <FilePath Value="www\js\jquery.mobile-1.1.0.min.js"/>
     <FilePath Value="www\js\listar-promocoes.js"/>
