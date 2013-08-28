@@ -184,9 +184,15 @@ var cadastroCliente = {
             async: false,
             success: function (data) {
                 if (data) {
-                    jAlert('Cadastro feito com sucesso! Faça o login.', 'Atenção', function (event) {
-                        window.location = baseUrl + "Login/index";
-                    });
+                    if ($("#alteracao").val() != 'True'){
+                        jAlert('Cadastro feito com sucesso! Faça o login.', 'Atenção', function (event) {
+                            window.location = baseUrl + "Login/index";
+                        });
+                    } else {
+                        jAlert('Cadastro feito com sucesso! Acesse as área administrativa.', 'Atenção', function (event) {
+                            window.location = baseUrl + "Menu/Menuvemka/?idCliente=" + $("#id-cliente").val();
+                        });                        
+                    }
                 }
                 else {
                     jAlert('Não foi possível salvar!', 'Atenção');
@@ -244,9 +250,8 @@ var googleMaps = {
         var strJsonLocalizacao = $("#localizacoes-json").val();
         if (strJsonLocalizacao.length > 0) {
             var localizacao = JSON.parse(strJsonLocalizacao);
-
             $.each(localizacao, function (key, value) {
-                var latlng = new google.maps.LatLng($(this).Latitude, $(this).Longitude);
+                var latlng = new google.maps.LatLng(parseFloat(value.Latitude), parseFloat(value.Longitude));
                 googleMaps.addMarker(latlng);
             });
         }
