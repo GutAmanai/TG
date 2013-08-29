@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using br.aplicacao.tg.DTO;
 using br.aplicacao.tg.Servicos;
+using br.dominio.tg.ObjetoValor;
 using br.infra.tg.InjecaoDependencia;
 
 namespace br.aplication.tg.Controllers
@@ -88,6 +89,11 @@ namespace br.aplication.tg.Controllers
                 }
 }
             });
+        }
+
+        public ActionResult ListarPromocao(double latitude, double longitude)
+        {
+            return this.Jsonp(ServicoPromocao.ObterLocalizacaoMobile(new Posicao() {Latitude = latitude, Longitude = longitude}));
         }
 
         #endregion 

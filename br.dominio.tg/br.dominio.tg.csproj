@@ -48,7 +48,9 @@
     <Compile Include="Entidades\Interfaces\IEntidadeBase.cs" />
     <Compile Include="Entidades\Promocao.cs" />
     <Compile Include="Entidades\QualificacaoPromocao.cs" />
+    <Compile Include="ObjetoValor\Posicao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorios\IRepositorioClienteLocalizacao.cs" />
     <Compile Include="Repositorios\IRepositorioClientePromocao.cs" />
     <Compile Include="Repositorios\IRepositorioPromocao.cs" />
     <Compile Include="Repositorios\IRepositorioBase.cs" />
@@ -56,9 +58,7 @@
     <Compile Include="Repositorios\IRepositorioUsuario.cs" />
     <Compile Include="Repositorios\IUnidadeTrabalho.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ObjetoValor\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="ClassDiagramDominio.cd" />
   </ItemGroup>

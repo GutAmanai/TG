@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -49,16 +50,19 @@
     <Compile Include="DTO\DTOImagem.cs" />
     <Compile Include="DTO\DTOLocalizacao.cs" />
     <Compile Include="DTO\DTOPesquisaPromocao.cs" />
+    <Compile Include="DTO\DTOPromocaoMobile.cs" />
     <Compile Include="DTO\DTORetornoPesquisaPromocao.cs" />
     <Compile Include="DTO\DTOUsuario.cs" />
     <Compile Include="DTO\DTOPromocao.cs" />
     <Compile Include="DTO\DTOQualificacaoPromocao.cs" />
+    <Compile Include="Helper\Haversine.cs" />
     <Compile Include="Helper\PageExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Servicos\ServicoCliente.cs" />
     <Compile Include="Servicos\ServicoCriptografia.cs" />
     <Compile Include="Servicos\ServicoGeral.cs" />
     <Compile Include="Servicos\ServicoImagem.cs" />
+    <Compile Include="Servicos\ServicoLocalizacao.cs" />
     <Compile Include="Servicos\ServicoPromocao.cs" />
     <Compile Include="Servicos\ServicoUsuario.cs" />
   </ItemGroup>

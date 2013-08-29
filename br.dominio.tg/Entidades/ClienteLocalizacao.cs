@@ -1,4 +1,5 @@
 ﻿using System;
+using br.dominio.tg.ObjetoValor;
 
 namespace br.dominio.tg.Entidades
 {
@@ -8,6 +9,10 @@ namespace br.dominio.tg.Entidades
         public virtual DateTime DataEntrada { get; protected set; }
         public virtual double Latitude { get; protected set; }
         public virtual double Longitude { get; protected set; }
+        public virtual Posicao Posicao
+        { 
+            get { return new Posicao(){Latitude = Latitude, Longitude = Longitude}; }
+        }
 
         public ClienteLocalizacao()
         {

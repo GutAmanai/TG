@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using br.aplicacao.tg.DTO;
+using br.dominio.tg.ObjetoValor;
 using br.dominio.tg.Repositorios;
 using br.persistencia.tg.Repositorios;
 using br.dominio.tg.Entidades;
@@ -12,16 +14,17 @@ namespace br.aplicacao.tg.Servicos
     {
         private readonly IUnidadeDeTrabalho _unidadeDeTrabalho;
         private readonly IRepositorioPromocao _repositorioPromocao;
-        private readonly ServicoCriptografia _servicoCriptografia;
         private readonly IRepositorioCliente _repositorioCliente;
         private readonly IRepositorioClientePromocao _repositorioClientePromocao;
+        private readonly IRepositorioClienteLocalizacao _repositorioClienteLocalizacao;
         private readonly ServicoImagem ServicoImagem;
 
         public ServicoPromocao(
                                 IUnidadeDeTrabalho unidadeDeTrabalho,
                                 IRepositorioPromocao repositorioPromocao,
                                 IRepositorioCliente repositorioCliente,
-                                IRepositorioClientePromocao repositorioClientePromocao
+                                IRepositorioClientePromocao repositorioClientePromocao,
+                                IRepositorioClienteLocalizacao repositorioClienteLocalizacao
                              )
         {
 
@@ -29,7 +32,7 @@ namespace br.aplicacao.tg.Servicos
             _repositorioPromocao = repositorioPromocao;
             _repositorioCliente = repositorioCliente;
             _repositorioClientePromocao = repositorioClientePromocao;
-            _servicoCriptografia = new ServicoCriptografia();
+            _repositorioClienteLocalizacao = repositorioClienteLocalizacao;
             ServicoImagem = new ServicoImagem(); 
         }
 
@@ -148,6 +151,31 @@ namespace br.aplicacao.tg.Servicos
                 Latitude = clienteLocalizacao.Latitude,
                 Longitude = clienteLocalizacao.Longitude
             };
+        }
+
+        public List<DTOPromocaoMobile> ObterLocalizacaoMobile(Posicao posicaoMobile)
+        {
+            var distanciaMax = Convert.ToDouble(ConfigurationManager.AppSettings["Distancia"]);
+            var liClienteLocalizacao = _repositorioClienteLocalizacao.ObterTodosOnde( x => Haversine.Distance(posicaoMobile, x.Posicao, DistanceUnit.Kilometros) <= distanciaMax).ToList();
+            return liClienteLocalizacao.SelectMany(ObterPromocaoPorClientePromocao).ToList();
+        }
+
+        private List<DTOPromocaoMobile> ObterPromocaoPorClientePromocao(ClienteLocalizacao clienteLocalizacao)
+        {
+            if(!clienteLocalizacao.Cliente.ClientePromocao.Any())
+                return new List<DTOPromocaoMobile>();
+
+            return clienteLocalizacao.Cliente.ClientePromocao.Select(x => new DTOPromocaoMobile()
+                                                                       {
+                                                                           IdEmpresa = x.Cliente.Id,
+                                                                           UrlEmpresa = "",
+                                                                           UrlPromocao = ServicoImagem.RecuperaImagemPromocao(x.Cliente.Id, x.Promocao.Id),
+                                                                           NomeEmpresa = x.Cliente.Nome,
+                                                                           NomePromocao = x.Promocao.Nome,
+                                                                           DescricaoPromocao = x.Promocao.Descricao,
+                                                                           Latitude = clienteLocalizacao.Latitude,
+                                                                           Longitude = clienteLocalizacao.Longitude
+                                                                       }).ToList();
         }
     }
 }

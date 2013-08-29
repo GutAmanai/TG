@@ -225,6 +225,10 @@
       <Project>{A6609F9C-C875-4D03-9488-7DD93716EB67}</Project>
       <Name>br.aplicacao.tg</Name>
     </ProjectReference>
+    <ProjectReference Include="..\br.dominio.tg\br.dominio.tg.csproj">
+      <Project>{26F49F89-5A1A-4CFA-A790-801CAE64100B}</Project>
+      <Name>br.dominio.tg</Name>
+    </ProjectReference>
     <ProjectReference Include="..\br.infra.tg\br.infra.tg.csproj">
       <Project>{B15F1FA2-7C48-483D-9DC2-255174783CDA}</Project>
       <Name>br.infra.tg</Name>
