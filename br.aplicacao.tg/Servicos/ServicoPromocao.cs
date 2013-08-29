@@ -42,7 +42,7 @@ namespace br.aplicacao.tg.Servicos
 
                 if (dtoPromocao.IdPromocao != 0) // Edicao
                 {
-                    clientePromocao =_repositorioClientePromocao.ObterTodosOnde(x => x.Cliente.Id == dtoPromocao.IdCliente && x.Promocao.Id == dtoPromocao.IdCliente).FirstOrDefault();
+                    clientePromocao =_repositorioClientePromocao.ObterTodosOnde(x => x.Cliente.Id == dtoPromocao.IdCliente && x.Promocao.Id == dtoPromocao.IdPromocao).FirstOrDefault();
                     clientePromocao.Promocao.AdicionarNome(dtoPromocao.Nome);
                     clientePromocao.Promocao.AdicionarDescricao(dtoPromocao.Descricao);
                     clientePromocao.AdicionarDataLiberacao(dtoPromocao.DataLiberacaoToDate);

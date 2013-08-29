@@ -42,6 +42,6 @@ var overlay = {
     },
 
     close: function () {
-        $.blockUI(overlay.objetoOverlay);
+        $.unblockUI();
     }
 }

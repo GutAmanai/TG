@@ -17,13 +17,13 @@ namespace br.aplicacao.tg.Servicos
         {
             try
             {
-                var caminhoFotos = Path.GetFullPath(VirtualPathUtility.ToAbsolute("~/Arquivos/Promocao/Normal/"));
+                var caminhoFotos = HttpContext.Current.Request.PhysicalApplicationPath + "\\Arquivos\\Promocao\\Normal\\" + idCliente + "\\";
                 var arquivos = Directory.GetFiles(caminhoFotos);
 
                 if (arquivos.Count(a => Path.GetFileNameWithoutExtension(a) == idPromocao.ToString()) > 0)
                 {
                     var foto = arquivos.FirstOrDefault(a => Path.GetFileNameWithoutExtension(a) == idPromocao.ToString());
-                    return VirtualPathUtility.ToAbsolute("~/Arquivos/Promocao/Normal/" + Path.GetFileName(foto));
+                    return VirtualPathUtility.ToAbsolute("~/Arquivos/Promocao/Normal/"+ idCliente + "/" + Path.GetFileName(foto));
                 }
                 return VirtualPathUtility.ToAbsolute("~/Arquivos/Promocao/icon_image.png");
             }
@@ -37,13 +37,9 @@ namespace br.aplicacao.tg.Servicos
         {
             if (!string.IsNullOrEmpty(tempImg))
             {
-                //var caminhoFotosMin = Server.MapPath("~/Arquivos/Promocao/Min/" + idCliente + "/" + idPromocao);
-                //var caminhoFotosNormal = Server.MapPath("~/Arquivos/Promocao/Normal/" + idCliente + "/" + idPromocao);
-                //var caminhoFotosTemp = Server.MapPath("~/Arquivos/Promocao/Temp/");
-
-                var caminhoFotosMin = Path.GetFullPath(VirtualPathUtility.ToAbsolute("~/Arquivos/Promocao/Min/" + idCliente + "/" + idPromocao));
-                var caminhoFotosNormal = Path.GetFullPath(VirtualPathUtility.ToAbsolute("~/Arquivos/Promocao/Normal/" + idCliente + "/" + idPromocao));
-                var caminhoFotosTemp = Path.GetFullPath(VirtualPathUtility.ToAbsolute("~/Arquivos/Promocao/Temp/"));
+                var caminhoFotosMin = HttpContext.Current.Request.PhysicalApplicationPath + "\\Arquivos\\Promocao\\Min\\" + idCliente + "\\";
+                var caminhoFotosNormal = HttpContext.Current.Request.PhysicalApplicationPath + "\\Arquivos\\Promocao\\Normal\\" + idCliente + "\\";
+                var caminhoFotosTemp = HttpContext.Current.Request.PhysicalApplicationPath + "\\Arquivos\\Promocao\\Temp\\";
 
                 var arquivos = Directory.GetFiles(caminhoFotosTemp);
 
@@ -61,6 +57,7 @@ namespace br.aplicacao.tg.Servicos
                 dtoImagemNormal.MaxLargura = img.Height;
                 dtoImagemNormal.MaxAltura = img.Width;
                 dtoImagemNormal.FormatoImagem = RecuperaFormatoImagem(extension);
+                dtoImagemNormal.PastaDestinoRaiz = caminhoFotosNormal;
                 dtoImagemNormal.PastaDestino = filePathNormal;
 
                 var dtoImagemMin = new DTOImagem();
@@ -68,6 +65,7 @@ namespace br.aplicacao.tg.Servicos
                 dtoImagemMin.MaxLargura = 48;
                 dtoImagemMin.MaxAltura = 48;
                 dtoImagemMin.FormatoImagem = RecuperaFormatoImagem(extension);
+                dtoImagemMin.PastaDestinoRaiz = caminhoFotosMin;
                 dtoImagemMin.PastaDestino = filePathMin;
 
                 SalvarImagem(dtoImagemNormal);
@@ -86,6 +84,14 @@ namespace br.aplicacao.tg.Servicos
             {
                 imagemArrumada.Save(mStream, dtoImagem.FormatoImagem);
                 var imagemEmBytes = mStream.ToArray();
+
+                if(dtoImagem.PastaDestinoRaiz != null)
+                {
+                    bool isExists = Directory.Exists(dtoImagem.PastaDestinoRaiz);
+                    if (!isExists)
+                        Directory.CreateDirectory(dtoImagem.PastaDestinoRaiz);
+                }
+
                 using (var fileStream = new FileStream(dtoImagem.PastaDestino, FileMode.Create, FileAccess.Write))
                 {
                     img = Image.FromStream(mStream);

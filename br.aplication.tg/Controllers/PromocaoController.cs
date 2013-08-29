@@ -124,6 +124,7 @@ namespace br.aplication.tg.Controllers
                 dtoImagemNormal.MaxLargura = imagem.Height;
                 dtoImagemNormal.MaxAltura = imagem.Width;
                 dtoImagemNormal.FormatoImagem =  ServicoImagem.RecuperaFormatoImagem(extension);
+                dtoImagemNormal.PastaDestinoRaiz = tempPath;
                 dtoImagemNormal.PastaDestino = filePath;
 
                 ServicoImagem.SalvarImagem(dtoImagemNormal);

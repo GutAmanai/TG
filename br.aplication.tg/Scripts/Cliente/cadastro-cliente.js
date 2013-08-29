@@ -12,6 +12,9 @@ $(document).ready(function () {
     new Ajax_upload($("#upload-logo")[0], {
         action: baseUrl + "Cliente/UploadLogo",
         data: { 'tempName': guia },
+        beforeSend: function () {
+            overlay.open();
+        },
         onSubmit: function (file, ext) {
             this.setData({ 'tempName': guia, 'ext': ext });
             if (!(ext && /^(jpg|png|jpeg|bmp|gif)$/.test(ext))) {
@@ -182,6 +185,9 @@ var cadastroCliente = {
             url: baseUrl + "Cliente/Salvar",
             data: { configuracao: JSON.stringify(cadastroCliente.recuperarDados()), r: (new Date().getTime()) },
             async: false,
+            beforeSend: function () {
+                overlay.open();
+            },
             success: function (data) {
                 if (data) {
                     if ($("#alteracao").val() != 'True'){
@@ -217,6 +223,9 @@ var cadastroCliente = {
             url: baseUrl + "Cliente/EmailIsExist",
             data: { email: email, r: (new Date().getTime()) },
             async: false,
+            beforeSend: function () {
+                overlay.open();
+            },
             success: function (data) {
                 retorno = data;
             }

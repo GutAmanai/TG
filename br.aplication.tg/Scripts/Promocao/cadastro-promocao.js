@@ -10,6 +10,9 @@ var updateImagem = {
             new Ajax_upload($("#upload-imagem")[0], {
                 action: baseUrl + "Promocao/UploadImagem",
                 data: { 'tempName': "" },
+                beforeSend: function () {
+                    overlay.open();
+                },
                 onSubmit: function (file, ext) {
                     this.setData({ 'tempName': "", 'ext': ext });
                     if (!(ext && /^(jpg|png|jpeg|bmp|gif)$/.test(ext))) {
@@ -18,13 +21,13 @@ var updateImagem = {
                     }
                 },
                 onComplete: function (file, response) {
-                    alert(response);
                     var spl = response.split("|");
                     var img = baseUrl + "Arquivos/Promocao/Temp/" + spl[0] + spl[1] + "?x=" + spl[2];
                     var imgDownload = baseUrl + "Arquivos/Promocao/Temp/" + spl[0] + spl[1] + "?v=" + new Date().getMilliseconds();
                     $("#imagemPreview").attr("src", img);
                     $("#temp-image").val(spl[0]);
                     $("#extension").val(spl[1]);
+                    overlay.close();
                 }
             });
             $("#upload-imagem").click();
@@ -84,18 +87,19 @@ var cadastroPromocao = {
 
     , bindAlterar: function () {
 
-        $(".alterar").on("click", function () {
+        $(".alterar").on("click", function (e) {
 
             var tr = $(this).parents("tr");
             var promocao =
             {
-                IdPromocao: tr.eq(0).attr("rel"),
+                IdPromocao: tr.attr("rel"),
                 IdCliente: $("#id-cliente").val(),
                 Nome: tr.find(".nome").html(),
                 Descricao: tr.find(".descricao").html(),
                 DataLiberacao: tr.find(".data-liberacao").html(),
                 DataExpiracao: tr.find(".data-expiracao").html(),
                 Ativo: tr.find(".ativo").attr("rel"),
+                ImagemPreview: tr.find(".imagem-preview").attr('src'),
                 TempImg: "",
                 Extension: ""
             };
@@ -106,17 +110,16 @@ var cadastroPromocao = {
             $("#descricao").val(promocao.Descricao);
             $("#dataliberacao").val(promocao.DataLiberacao);
             $("#dataexpiracao").val(promocao.DataExpiracao);
-            $("#alteracao").val("True"); 
+            $("#alteracao").val("True");
             $("#temp-image").val("");
             $("#extension").val("");
+            $("#imagemPreview").attr('src', promocao.ImagemPreview);
 
             if (promocao.Ativo == 'true') {
                 $(".btn.ativo").click();
             } else {
                 $(".btn.desativado").click();
             }
-
-
 
         });
     }
@@ -226,7 +229,7 @@ var cadastroPromocao = {
             retorno = false;
         }
 
-        if (dados.Ativo == "") {
+        if ($("#promocao-ativa").val() == "") {
             $(".error-promocao-ativa").html("Informe status da promoção");
             $(".error-promocao-ativa").show("fast");
             retorno = false;
@@ -247,9 +250,14 @@ var cadastroPromocao = {
             url: baseUrl + "Promocao/Salvar",
             data: { configuracao: JSON.stringify(cadastroPromocao.recuperarDados()), r: (new Date().getTime()) },
             async: false,
+            beforeSend: function () {
+                overlay.open();
+            },
             success: function (data) {
                 if (data) {
-                    jAlert("Promoção salva com sucesso!", "Atenção");
+                    jAlert("Promoção salva com sucesso!", "Atenção", function () {
+                        location.reload();
+                    });
                 }
                 else {
                     jAlert("Não foi possível salvar!", "Atenção");
@@ -262,6 +270,7 @@ var cadastroPromocao = {
                 jAlert("Não foi possível salvar!", "Atenção");
             },
             complete: function () {
+                overlay.close();
             }
         });
     }
@@ -304,6 +313,9 @@ var cadastroPromocao = {
             url: baseUrl + "Promocao/PesquisarPromocao",
             data: { dtoPesquisa: JSON.stringify(pesquisa), r: (new Date().getTime()) },
             async: false,
+            beforeSend: function () {
+                overlay.open();
+            },
             success: function (data) {
                 if (data) {
 
@@ -327,6 +339,7 @@ var cadastroPromocao = {
                 jAlert("Não foi possível salvar!", "Atenção");
             },
             complete: function () {
+                overlay.close();
             }
         });
     }
