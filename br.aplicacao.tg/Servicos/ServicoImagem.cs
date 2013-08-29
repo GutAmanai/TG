@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Web;
+using System.Web.Mvc;
 using br.aplicacao.tg.DTO;
 
 namespace br.aplicacao.tg.Servicos
@@ -30,6 +31,26 @@ namespace br.aplicacao.tg.Servicos
             catch (Exception)
             {
                 return VirtualPathUtility.ToAbsolute("~/Arquivos/Promocao/icon_image.png");
+            }
+        }
+
+        public string RecuperaImagemCliente(int idCliente)
+        {
+            try
+            {
+                var caminhoFotos = HttpContext.Current.Request.PhysicalApplicationPath + "\\Arquivos\\Cliente\\Normal\\";
+                var arquivos = Directory.GetFiles(caminhoFotos);
+
+                if (arquivos.Count(a => Path.GetFileNameWithoutExtension(a) == idCliente.ToString()) > 0)
+                {
+                    var foto = arquivos.FirstOrDefault(a => Path.GetFileNameWithoutExtension(a) == idCliente.ToString());
+                    return VirtualPathUtility.ToAbsolute("~/Arquivos/Cliente/Normal/" + Path.GetFileName(foto));
+                }
+                return VirtualPathUtility.ToAbsolute("~/Arquivos/Cliente/cliente-default.png");
+            }
+            catch (Exception)
+            {
+                return VirtualPathUtility.ToAbsolute("~/Arquivos/Cliente/cliente-default.png");
             }
         }
 
@@ -124,6 +145,15 @@ namespace br.aplicacao.tg.Servicos
                     return null;
             }
         }
+    }
 
+    public static class UrlExtensions
+    {
+        public static string AbsoluteContent(this UrlHelper url, string contentPath)
+        {
+            var requestUrl = url.RequestContext.HttpContext.Request.Url;
+            return string.Format("{0}{1}", requestUrl.GetLeftPart(UriPartial.Authority),url.Content(contentPath));
+        }
     }
 }
+

@@ -168,7 +168,7 @@ namespace br.aplicacao.tg.Servicos
             return clienteLocalizacao.Cliente.ClientePromocao.Select(x => new DTOPromocaoMobile()
                                                                        {
                                                                            IdEmpresa = x.Cliente.Id,
-                                                                           UrlEmpresa = "",
+                                                                           UrlEmpresa = ServicoImagem.RecuperaImagemCliente(x.Cliente.Id),
                                                                            UrlPromocao = ServicoImagem.RecuperaImagemPromocao(x.Cliente.Id, x.Promocao.Id),
                                                                            NomeEmpresa = x.Cliente.Nome,
                                                                            NomePromocao = x.Promocao.Nome,
