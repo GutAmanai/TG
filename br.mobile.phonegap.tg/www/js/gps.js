@@ -47,7 +47,7 @@ function discoverGPS() {
 =============Fill place information===================
 */
 function preencheDadosLugar(){
-    var data = localStorage.dataJSON;
+    var data = window.localStorage.getItem("dadosJson")
 
     for (var i in data.promocoes) {
 

@@ -90,12 +90,12 @@ namespace br.aplication.tg.Controllers
 }
             });
         }
-
+        /*
         public ActionResult ListarPromocao(double latitude, double longitude)
         {
             return this.Jsonp(ServicoPromocao.ObterLocalizacaoMobile(new Posicao() {Latitude = latitude, Longitude = longitude}));
         }
-
+        */
         #endregion 
 
         #region Salvar Imagem

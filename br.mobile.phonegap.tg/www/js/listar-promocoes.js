@@ -4,12 +4,11 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 $(document).ready(function () {
     listarPromocoes.init();
-    $.support.cors = true; 
+    
 
 });
 
-function onDeviceReady() {
-    $.mobile.showPageLoadingMsg();
+function onDeviceReady() {    
     recuperarPosicaoGPS();
     $('#place').append(localStorage.getItem("latitude"));
     chamadaServidor(window.localStorage.getItem("latitude"), window.localStorage.getItem("latitude"));    
@@ -31,8 +30,14 @@ function recuperarPosicaoGPS() {
 }
 
 function chamadaServidor(latitude, longitude) {
-    var url = 'http://localhost:9999/Promocao/ListarPromocao';    
-
+    var url = 'http://localhost:9999/Promocao/ListarPromocao';
+    $(function () {
+        $("#mensagem-carregando").dialog({
+            height: 140,
+            dialogClass: "no-close",
+            modal: true
+        });
+    });
     $.ajax({
         type: 'GET',
         url: url,
@@ -41,8 +46,11 @@ function chamadaServidor(latitude, longitude) {
         data: { latitude: latitude, longitude: longitude },
         crossDomain: true,
         success: function (res) {
-            $('#place').append('sucesso' + res.promocoes[1].Latitude);               
+            $('#place').append('sucesso');
+            $('#mensagem-carregando').dialog("destroy");
+            $('#mensagem-carregando').css("display", "none");
             listarPromocoes.geraLista(res);
+
         },
         error: function (xhr, ajaxOptions, thrownError) {
             $('#place').append('error');
