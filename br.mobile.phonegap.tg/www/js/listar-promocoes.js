@@ -4,29 +4,27 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 $(document).ready(function () {
     listarPromocoes.init();
+    $('#mensagem-carregando').css("display", "none");
+    $('#mensagem-erro').css("display", "none");
+    $('#mensagem-conexao').css("display", "none");
     
-
 });
 
 function onDeviceReady() {   
-    recuperarPosicaoGPS();
-    $('#place').append(localStorage.getItem("latitude"));
+    recuperarPosicaoGPS();    
     if (statusInternet(checkConnection()) == true) {
-        chamadaServidor(window.localStorage.getItem("latitude"), window.localStorage.getItem("latitude"));
+        chamadaServidor(window.localStorage.getItem("latitude"), window.localStorage.getItem("longitude"));
     }
-    else { 
+    else {
         //Mensagem de falta de conexao
+        $(function () {
+            $("#mensagem-conexao").dialog({
+                height: 140,
+                modal: true
+            });
+        });
     }
-
-    
-    /* Teste BD
-    window.localStorage.setItem("key", "MEU DADO");
-    var value = window.localStorage.getItem("key");
-    $('#place').append('valor:' + value);
-    /*
-    FIM TESTE BD   
-    SUCESSO - PASSA PARA OUTRA PAGINA! 31/08/2013
-    */
+       
 }
 
 function statusInternet(states) {
@@ -85,26 +83,26 @@ function chamadaServidor(latitude, longitude) {
         dataType: 'jsonp',
         data: { latitude: latitude, longitude: longitude },
         crossDomain: true,
+        global: true,
         success: function (res) {
             $('#place').append('sucesso');
             $('#mensagem-carregando').dialog("destroy");
             $('#mensagem-carregando').css("display", "none");
-
             window.localStorage.setItem("dadosJson", JSON.stringify(res))
             listarPromocoes.geraLista(res);
 
         },
-        error: function (xhr, ajaxOptions, thrownError) {
-            $('#place').append('error');
-            $('#place').append('xhr' + xhr.status);
-            $('#place').append('' + thrownError);
-            $("#ajax_error").html(e.message);
-            console.log(e.message);
-
+        error: function (xhr, ajaxOptions, thrownError) {            
+            $('#mensagem-carregando').dialog("destroy");        
+            $(function () {
+                $("#mensagem-erro").dialog({
+                    height: 140,                    
+                    modal: true
+                });
+            });
         },
         complete: function (data) {
-            $('#place').append('cplete');
-            console.log(e.message);
+            $('#place').append('cplete');            
         }
     });
 }

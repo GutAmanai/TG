@@ -53,7 +53,7 @@ function preencheDadosLugar() {
         if (data.promocoes[i].IdEmpresa == idSelec) {
             $('#imagem-empresa').attr('src', data.promocoes[i].UrlEmpresa);
             $('#nome-empresa').replaceWith('<a class="brand titulo-empresa" id="nome-empresa" href="#">' + data.promocoes[i].NomeEmpresa + '</a>');            
-            $('#endereco').replaceWith('<span class="label" id="endereco">Endereço:' + data.promocoes[i].Endereco + '</span>');
+            $('#endereco').append(data.promocoes[i].Endereco);
         }
     }
 }
