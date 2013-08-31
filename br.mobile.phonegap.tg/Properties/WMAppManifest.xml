@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2009/deployment" AppPlatformVersion="7.1">
-  <App xmlns="" ProductID="{e0042a7c-00e7-436c-93fd-c3f3663c27f6}" Title="br.mobile.phonegap.tg" 
+  <App xmlns="" ProductID="{e0042a7c-00e7-436c-93fd-c3f3663c27f6}" Title="VemKa" 
        RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal"  
-       Author="br.mobile.phonegap.tg author" 
+       Author="TG" 
        BitsPerPixel="32" 
        Description="Apache Cordova for Windows Phone 7"
        Publisher="br.mobile.phonegap.tg">
     
-    <IconPath IsRelative="true" IsResource="false">ApplicationIcon.png</IconPath>
+    <IconPath IsRelative="true" IsResource="false">LogoMenu.jpg</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_IDENTITY_DEVICE" />
       <Capability Name="ID_CAP_IDENTITY_USER" />
@@ -33,7 +33,7 @@
         <TemplateType5>
           <BackgroundImageURI IsRelative="true" IsResource="false">Background.png</BackgroundImageURI>
           <Count>0</Count>
-          <Title>br.mobile.phonegap.tg</Title>
+          <Title>VemKa</Title>
         </TemplateType5>
       </PrimaryToken>
     </Tokens>
