@@ -1,14 +1,14 @@
 
 $(document).ready(function () {    
     imageFix();
-    addListeners();    
+    addListeners();
+    $('.place').append('document ready');
 });
 
 function onDeviceReady() {
-    var data = localStorage.dataJSON;
-    var latitude = data.promocoes[1].Latitude;
-
-    $('.place').append('ssa' + localStorage.getItem("latitude"));
+    /*$('.place').append('device ready');
+    var value = window.localStorage.getItem("dadosJson");
+    $('#place').append('valor:' + value.promocoes[1].Promocao);   */     
     preencheDadosLugar();
     CoordMapType();
 }
@@ -46,12 +46,11 @@ function discoverGPS() {
 /*
 =============Fill place information===================
 */
-function preencheDadosLugar(){
-    var data = window.localStorage.getItem("dadosJson")
-
-    for (var i in data.promocoes) {
-
-        if (data.promocoes[i].IdEmpresa == localStorage.idSelecionado) {
+function preencheDadosLugar() {
+    var data = JSON.parse(window.localStorage.getItem("dadosJson"));        
+    var idSelec = window.localStorage.getItem("idSelecionado");    
+    for (i = 0; i < data.promocoes.length; i++) {
+        if (data.promocoes[i].IdEmpresa == idSelec) {
             $('#imagem-empresa').attr('src', data.promocoes[i].UrlEmpresa);
             $('#nome-empresa').replaceWith('<a class="brand titulo-empresa" id="nome-empresa" href="#">' + data.promocoes[i].NomeEmpresa + '</a>');            
             $('#endereco').replaceWith('<span class="label" id="endereco">Endereço:' + data.promocoes[i].Endereco + '</span>');

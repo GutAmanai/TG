@@ -8,17 +8,56 @@ $(document).ready(function () {
 
 });
 
-function onDeviceReady() {    
+function onDeviceReady() {   
     recuperarPosicaoGPS();
     $('#place').append(localStorage.getItem("latitude"));
-    chamadaServidor(window.localStorage.getItem("latitude"), window.localStorage.getItem("latitude"));    
+    if (statusInternet(checkConnection()) == true) {
+        chamadaServidor(window.localStorage.getItem("latitude"), window.localStorage.getItem("latitude"));
+    }
+    else { 
+        //Mensagem de falta de conexao
+    }
+
+    
+    /* Teste BD
+    window.localStorage.setItem("key", "MEU DADO");
+    var value = window.localStorage.getItem("key");
+    $('#place').append('valor:' + value);
+    /*
+    FIM TESTE BD   
+    SUCESSO - PASSA PARA OUTRA PAGINA! 31/08/2013
+    */
+}
+
+function statusInternet(states) {
+    var status = true;
+    var networkState = navigator.connection.type;
+    $('#place').append('status internet: ' + states[networkState]);
+    if (states[networkState] == "No network connection") {
+        status = false;
+    }
+    return status;
+}
+
+function checkConnection() {
+    var networkState = navigator.connection.type;
+
+    var states = {};
+    states[Connection.UNKNOWN] = 'Unknown connection';
+    states[Connection.ETHERNET] = 'Ethernet connection';
+    states[Connection.WIFI] = 'WiFi connection';
+    states[Connection.CELL_2G] = 'Cell 2G connection';
+    states[Connection.CELL_3G] = 'Cell 3G connection';
+    states[Connection.CELL_4G] = 'Cell 4G connection';
+    states[Connection.NONE] = 'No network connection';   
+    return states;
 }
 
 
 function recuperarPosicaoGPS() {
         var win = function (position) {
-            localStorage.setItem("latitude", position.coords.latitude);
-            localStorage.setItem("longitude", position.coords.longitude);
+            window.localStorage.setItem("latitude", position.coords.latitude);
+            window.localStorage.setItem("longitude", position.coords.longitude);
                                   
         };
 
@@ -50,6 +89,8 @@ function chamadaServidor(latitude, longitude) {
             $('#place').append('sucesso');
             $('#mensagem-carregando').dialog("destroy");
             $('#mensagem-carregando').css("display", "none");
+
+            window.localStorage.setItem("dadosJson", JSON.stringify(res))
             listarPromocoes.geraLista(res);
 
         },
@@ -67,6 +108,8 @@ function chamadaServidor(latitude, longitude) {
         }
     });
 }
+
+
 
 
 var listarPromocoes = {
@@ -90,12 +133,10 @@ var listarPromocoes = {
                 var idPromocao = 0;
                 var id = $(this).attr('id');
                 idPromocao = id;
-                localStorage.idSelecionado = idPromocao;
-
-                //$.mobile.changePage("../gps.html", { transition: "slideup", changeHash: false });
-                //$.mobile.changePage("gps2.html"); 
-                //window.location = "gps2.html";
-                $('.conteudo').load('gps.html');
+                window.localStorage.setItem("idSelecionado", id);
+                window.localStorage.idSelecionado = idPromocao;
+                window.location = "gps.html";
+                
             })
 
         $("#atualizar-promocao").click(function () {
@@ -136,7 +177,7 @@ var listarPromocoes = {
 		    '</div>' +
 	    '</li>');
         }
-    }        
+    }
 }
 
 

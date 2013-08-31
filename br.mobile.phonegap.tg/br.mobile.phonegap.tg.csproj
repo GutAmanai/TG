@@ -172,7 +172,7 @@
     <Content Include="www\css\mapa.css" />
     <Content Include="www\data.txt" />
     <Content Include="www\gps.html" />
-    <Content Include="www\gps2.html" />
+    <Content Include="www\img\ajax-loader.gif" />
     <Content Include="www\img\logoVemKa.png" />
     <Content Include="www\img\logoLotus.png" />
     <Content Include="www\js\jquery-2.0.3.min.js" />

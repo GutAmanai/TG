@@ -27,7 +27,7 @@ namespace br.aplication.tg
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
             );
 
-            routes.Add("ImagesRoute", new Route("Arquivos/{filename}",new ImageRouteHandler()));
+           // routes.Add("ImagesRoute", new Route("Arquivos/{filename}",new ImageRouteHandler()));
 
         }
 
