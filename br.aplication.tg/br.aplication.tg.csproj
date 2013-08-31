@@ -70,6 +70,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="helper\ImageRouteHandler.cs" />
     <Compile Include="helper\JsonpResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -97,7 +98,7 @@
     <Content Include="Content\img\adicionar.png" />
     <Content Include="Content\img\breezi_placeit_Promocoes.png" />
     <Content Include="Content\img\content.png" />
-    <Content Include="Content\img\LogoLotusTecnologia.jpg" />
+    <Content Include="Content\img\LotusTecnologia.png" />
     <Content Include="Content\img\scrum.jpg" />
     <Content Include="Content\img\vemka.jpg" />
     <Content Include="Content\img\glyphicons-halflings-white.png" />

@@ -42,6 +42,13 @@ var cadastroCliente = {
     init: function () {
         cadastroCliente.bind();
         cadastroCliente.mask();
+        cadastroCliente.cnpjAlterar();
+    }
+
+    , cnpjAlterar: function () {
+        if ($("#alteracao").val() == 'True') {
+            $("#cnpj").attr("disabled", "disabled");
+        }
     }
 
     , mask: function () {
@@ -109,9 +116,15 @@ var cadastroCliente = {
         }
 
         if (dados.Cnpj == "") {
-            $(".error-cnpj").html("Informe um cnpj");
+            $(".error-cnpj").html("Informe um CNPJ");
             $(".error-cnpj").show("fast");
             retorno = false;
+        } else {
+            if (!cnpj.validar(dados.Cnpj)) {
+                $(".error-cnpj").html("CNPJ inválido!");
+                $(".error-cnpj").show("fast");
+                retorno = false;
+            }
         }
 
         if (dados.Responsavel == "") {
@@ -190,14 +203,14 @@ var cadastroCliente = {
             },
             success: function (data) {
                 if (data) {
-                    if ($("#alteracao").val() != 'True'){
+                    if ($("#alteracao").val() != 'True') {
                         jAlert('Cadastro feito com sucesso! Faça o login.', 'Atenção', function (event) {
                             window.location = baseUrl + "Login/index";
                         });
                     } else {
                         jAlert('Alteração feita com sucesso! Acesse as área administrativa.', 'Atenção', function (event) {
                             window.location = baseUrl + "Menu/Menuvemka/?idCliente=" + $("#id-cliente").val();
-                        });                        
+                        });
                     }
                 }
                 else {
@@ -236,37 +249,34 @@ var cadastroCliente = {
 };
 
 var googleMaps = {
-
     map: new Object(),
     markers: new Array(),
     localizacoes: new Array(),
 
-    initialize: function () {
+    initialize: function() {
         var latlng = new google.maps.LatLng(-23.546, -46.638);
         var options = { zoom: 14, center: latlng, mapTypeId: google.maps.MapTypeId.ROADMAP };
         googleMaps.map = new google.maps.Map(document.getElementById("map_canvas"), options);
 
         google.maps.event.trigger(googleMaps.map, 'resize');
 
-        google.maps.event.addListener(googleMaps.map, 'click', function (event) {
+        google.maps.event.addListener(googleMaps.map, 'click', function(event) {
             googleMaps.addMarker(event.latLng);
         });
 
         googleMaps.inicializaMapaAlterar();
-    }
-
-    , inicializaMapaAlterar: function () {
+    },
+    inicializaMapaAlterar: function() {
         var strJsonLocalizacao = $("#localizacoes-json").val();
         if (strJsonLocalizacao.length > 0) {
             var localizacao = JSON.parse(strJsonLocalizacao);
-            $.each(localizacao, function (key, value) {
+            $.each(localizacao, function(key, value) {
                 var latlng = new google.maps.LatLng(parseFloat(value.Latitude), parseFloat(value.Longitude));
                 googleMaps.addMarker(latlng);
             });
         }
-    }
-
-    , addMarker: function (location) {
+    },
+    addMarker: function(location) {
         googleMaps.deleteOverlays();
 
         var marker = new google.maps.Marker({
@@ -281,25 +291,75 @@ var googleMaps = {
         infowindow.open(googleMaps.map, marker);
         googleMaps.markers.push(marker);
         googleMaps.localizacoes.push({ Latitude: location.lat(), Longitude: location.lng() });
-    }
-
-    , setAllMap: function (map) {
+    },
+    setAllMap: function(map) {
         for (var i = 0; i < googleMaps.markers.length; i++) {
             googleMaps.markers[i].setMap(map);
         }
-    }
-
-    , clearOverlays: function () {
+    },
+    clearOverlays: function() {
         googleMaps.setAllMap(null);
-    }
-
-    , showOverlays: function () {
+    },
+    showOverlays: function() {
         googleMaps.setAllMap(googleMaps.map);
-    }
-
-    , deleteOverlays: function () {
+    },
+    deleteOverlays: function() {
         googleMaps.clearOverlays();
         googleMaps.markers = new Array();
         googleMaps.localizacoes = new Array();
+    }
+};
+
+var cnpj = {
+
+    validar: function (cnpj) {
+        cnpj = cnpj.replace(/[^\d]+/g, '');
+
+        if (cnpj == '') return false;
+
+        if (cnpj.length != 14)
+            return false;
+
+        if (cnpj == "00000000000000" ||
+        cnpj == "11111111111111" ||
+        cnpj == "22222222222222" ||
+        cnpj == "33333333333333" ||
+        cnpj == "44444444444444" ||
+        cnpj == "55555555555555" ||
+        cnpj == "66666666666666" ||
+        cnpj == "77777777777777" ||
+        cnpj == "88888888888888" ||
+        cnpj == "99999999999999")
+            return false;
+
+        // Valida DVs
+        var tamanho = cnpj.length - 2;
+        var numeros = cnpj.substring(0, tamanho);
+        var digitos = cnpj.substring(tamanho);
+        var soma = 0;
+        var pos = tamanho - 7;
+        for (i = tamanho; i >= 1; i--) {
+            soma += numeros.charAt(tamanho - i) * pos--;
+            if (pos < 2)
+                pos = 9;
+        }
+        var resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+        if (resultado != digitos.charAt(0))
+            return false;
+
+        tamanho = tamanho + 1;
+        numeros = cnpj.substring(0, tamanho);
+        soma = 0;
+        pos = tamanho - 7;
+        for (var i = tamanho; i >= 1; i--) {
+            soma += numeros.charAt(tamanho - i) * pos--;
+            if (pos < 2)
+                pos = 9;
+        }
+        resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+        if (resultado != digitos.charAt(1))
+            return false;
+
+        return true;
     }
 }

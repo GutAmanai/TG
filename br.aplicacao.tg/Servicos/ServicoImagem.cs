@@ -16,6 +16,8 @@ namespace br.aplicacao.tg.Servicos
 
         public string RecuperaImagemPromocao(int idCliente, int idPromocao)
         {
+            var urlSistema = HttpContext.Current.Request.Url.ToString().Replace(HttpContext.Current.Request.Url.PathAndQuery, "");
+
             try
             {
                 var caminhoFotos = HttpContext.Current.Request.PhysicalApplicationPath + "\\Arquivos\\Promocao\\Normal\\" + idCliente + "\\";
@@ -24,18 +26,20 @@ namespace br.aplicacao.tg.Servicos
                 if (arquivos.Count(a => Path.GetFileNameWithoutExtension(a) == idPromocao.ToString()) > 0)
                 {
                     var foto = arquivos.FirstOrDefault(a => Path.GetFileNameWithoutExtension(a) == idPromocao.ToString());
-                    return VirtualPathUtility.ToAbsolute("~/Arquivos/Promocao/Normal/"+ idCliente + "/" + Path.GetFileName(foto));
+                    return urlSistema + "/Arquivos/Promocao/Normal/" + idCliente + "/" + Path.GetFileName(foto);
                 }
-                return VirtualPathUtility.ToAbsolute("~/Arquivos/Promocao/icon_image.png");
+                return urlSistema + "/Arquivos/Promocao/icon_image.png";
             }
             catch (Exception)
             {
-                return VirtualPathUtility.ToAbsolute("~/Arquivos/Promocao/icon_image.png");
+                return urlSistema + "/Arquivos/Promocao/icon_image.png";
             }
         }
 
         public string RecuperaImagemCliente(int idCliente)
         {
+            var urlSistema = HttpContext.Current.Request.Url.ToString().Replace(HttpContext.Current.Request.Url.PathAndQuery, "");
+
             try
             {
                 var caminhoFotos = HttpContext.Current.Request.PhysicalApplicationPath + "\\Arquivos\\Cliente\\Normal\\";
@@ -44,13 +48,13 @@ namespace br.aplicacao.tg.Servicos
                 if (arquivos.Count(a => Path.GetFileNameWithoutExtension(a) == idCliente.ToString()) > 0)
                 {
                     var foto = arquivos.FirstOrDefault(a => Path.GetFileNameWithoutExtension(a) == idCliente.ToString());
-                    return VirtualPathUtility.ToAbsolute("~/Arquivos/Cliente/Normal/" + Path.GetFileName(foto));
+                    return urlSistema + "/Arquivos/Cliente/Normal/" + Path.GetFileName(foto);
                 }
-                return VirtualPathUtility.ToAbsolute("~/Arquivos/Cliente/cliente-default.png");
+                return urlSistema + "/Arquivos/Cliente/cliente-default.png";
             }
             catch (Exception)
             {
-                return VirtualPathUtility.ToAbsolute("~/Arquivos/Cliente/cliente-default.png");
+                return urlSistema + "~/Arquivos/Cliente/cliente-default.png";
             }
         }
 

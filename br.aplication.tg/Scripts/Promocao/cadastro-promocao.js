@@ -333,10 +333,10 @@ var cadastroPromocao = {
                 }
             },
             failure: function (msg, status) {
-                jAlert("Não foi possível salvar!", "Atenção");
+                jAlert("Não possivel fazer a pesquisa!", "Atenção");
             },
             error: function (msg, status) {
-                jAlert("Não foi possível salvar!", "Atenção");
+                jAlert("Não possivel fazer a pesquisa!", "Atenção");
             },
             complete: function () {
                 overlay.close();
