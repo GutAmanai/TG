@@ -38,6 +38,7 @@ function chamadaServidor(latitude, longitude) {
             modal: true
         });
     });
+    $('li').remove();
     $.ajax({
         type: 'GET',
         url: url,
