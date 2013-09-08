@@ -1,75 +1,78 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
-<head>
-    <!-- Scripts -->
-    <script type="text/javascript" src="assets/js/bootstrap.js"></script>
-    <script type="text/javascript" src="js\jquery-1.9.1.min.js"></script>    
-    <script type="text/javascript" charset="utf-8" src="cordova-2.5.0.js"></script>        
-    <script type="text/javascript" src="js\listar-promocoes.js"></script>    
-    <script type="text/javascript" src="js/jquery-ui-1.10.3.custom.min.js"></script>
-       
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-    
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <!-- styles -->
-    
-    <link href="assets/css/bootstrap.css" rel="stylesheet"> 
-    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
-    <link href="css/listar-promocoes.css" rel="stylesheet">
-    <link href="css/jquery-ui-1.10.3.custom.min.css" rel="stylesheet">
+        <!-- Scripts -->
+        <script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>    
+        <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+        <script type="text/javascript" src="http://maps.google.com/maps/api/js?v=3&sensor=false&language=en"></script>
+        <script type="text/javascript" src="assets/js/bootstrap.js"></script>
+        <script type="text/javascript" charset="utf-8" src="cordova-2.5.0.js"></script>
+        <script type="text/javascript" src="js/jquery-ui-1.10.3.custom.min.js"></script>
+        <script type="text/javascript" src="js/listar-promocoes.js"></script>    
 
-    <link rel="shortcut icon" href="assets/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
-</head>
-<body onload="inicio()">
-    <div id="header" class="">
-        <img class="logo-app" src="img/logoVemKa.png"
-            width="70">
-        <div class="navbar navbar-fixed-top navbar menu-promocoes">
-            <div class="navbar-inner header">
-                <a class="btn pull-right" id="atualizar-promocao"><i class="icon-refresh"></i></a>
-                <a class="btn pull-right"><i class="icon-arrow-left"></i></a>
-                <h class="pull-left">
-    				VemKa
-    			</h>
+        <!-- styles -->
+        <link href="assets/css/bootstrap.css" rel="stylesheet"> 
+        <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+        <link href="css/listar-promocoes.css" rel="stylesheet">
+        <link href="css/jquery-ui-1.10.3.custom.min.css" rel="stylesheet">
+
+        <link rel="shortcut icon" href="assets/ico/favicon.ico">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+    </head>
+    <body onload="inicio()">
+        <div id="header" class="">
+            <img class="logo-app" src="img/logoVemKa.png"
+                 width="70">
+            <div class="navbar navbar-fixed-top navbar menu-promocoes">
+                <div class="navbar-inner header">
+                    <a class="btn pull-right" id="atualizar-promocao"><i class="icon-refresh"></i></a>
+                    <!--<a class="btn pull-right"><i class="icon-arrow-left"></i></a>-->
+                    <h class="pull-left">
+                        VemKa
+                    </h>
+                </div>
             </div>
         </div>
-    </div>
-    <!-- NAV BAR TOPO -->
-    <!--Começo da lista -->
-    <div class="container conteudo">
-        <ul class="nav nav-list lista-promocoes" id="id-ul">
-            <!--Inicio dos itens -->
-        </ul>
-    </div>
-    <!-- FIM DA LISTA -->
-    <!-- NAV BAR RODAPE -->
-    <div class="navbar navbar-fixed-bottom navbar footer-promocoes">
-        <div class="navbar-inner footer">
-            <img src="img/logoLotus.png"
-                class="pull-left logo-lotus" width="47">
-            <span>Lotus Tecnologia
-                <br>
-                Todos os direitos reservados.</span>
+        <!-- NAV BAR TOPO -->
+        <!--Começo da lista -->
+        <div class="container conteudo">
+            <ul class="nav nav-list lista-promocoes" id="id-ul">
+                <!--Inicio dos itens -->
+            </ul>
         </div>
-    </div>      
-    <div id="place">
-    <p></p>
-    </div>
+        <!-- FIM DA LISTA -->
+        <!-- NAV BAR RODAPE -->
+        <div class="navbar navbar-fixed-bottom navbar footer-promocoes">
+            <div class="navbar-inner footer">
+                <img src="img/logoLotus.png"
+                     class="pull-left logo-lotus" width="47">
+                <span>Lotus Tecnologia
+                    <br>
+                    Todos os direitos reservados.</span>
+            </div>
+        </div>      
+        <div id="place">
+            <p></p>
+        </div>
     
-    <div id="mensagem-carregando">
-    <p>Carregando<img  src="img/ajax-loader.gif"/> </p>    
-    </div>
-    <div id="mensagem-erro">
-    <p>Erro de comunicação com servidor!</p>    
-    </div>
-    <div id="mensagem-conexao">
-    <p>Sem conexão de internet!</p>    
-    </div>
-</body>
+<!--        <div id="mensagem-carregando">
+            <p>Carregando<img  src="img/ajax-loader.gif"/> </p>    
+        </div>
+        <div id="mensagem-erro">
+            <p>Erro de comunicação com servidor!</p>    
+        </div>
+        <div id="mensagem-conexao">
+            <p>Sem conexão de internet!</p>    
+        </div>-->
+        
+        <input type="text" id="mensagem"/>
+
+    </body>
 </html>
+

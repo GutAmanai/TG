@@ -210,7 +210,6 @@
     <Content Include="www\example.html" />
     <Content Include="www\fileReader.html" />
     <Content Include="www\js\index.js" />
-    <Content Include="www\js\jquery-1.9.1.min.js" />
     <Content Include="www\mapa.html" />
     <Content Include="www\readme.txt" />
     <Content Include="www\scanner.html" />

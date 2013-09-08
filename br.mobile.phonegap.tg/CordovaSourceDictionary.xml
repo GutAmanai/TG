@@ -36,7 +36,6 @@
     <FilePath Value="www\example.html"/>
     <FilePath Value="www\fileReader.html"/>
     <FilePath Value="www\js\index.js"/>
-    <FilePath Value="www\js\jquery-1.9.1.min.js"/>
     <FilePath Value="www\mapa.html"/>
     <FilePath Value="www\readme.txt"/>
     <FilePath Value="www\scanner.html"/>

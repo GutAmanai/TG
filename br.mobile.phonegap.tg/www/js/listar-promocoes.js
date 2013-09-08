@@ -1,31 +1,36 @@
-document.addEventListener("deviceready", onDeviceReady, false);
-
-
-
-$(document).ready(function () {
+document.addEventListener("deviceready", function () {
     listarPromocoes.init();
-    $('#mensagem-carregando').css("display", "none");
-    $('#mensagem-erro').css("display", "none");
-    $('#mensagem-conexao').css("display", "none");
-    
-});
+    gps.obterPosicao();
+}, true);
 
-function onDeviceReady() {   
-    recuperarPosicaoGPS();    
-    if (statusInternet(checkConnection()) == true) {
-        chamadaServidor(window.localStorage.getItem("latitude"), window.localStorage.getItem("longitude"));
-    }
-    else {
-        //Mensagem de falta de conexao
-        $(function () {
-            $("#mensagem-conexao").dialog({
-                height: 140,
-                modal: true
-            });
-        });
-    }
-       
-}
+//$(document).ready(function () {
+    
+//    $('#mensagem-carregando').css("display", "none");
+//    $('#mensagem-erro').css("display", "none");
+//    $('#mensagem-conexao').css("display", "none");
+    
+//});
+
+//function onDeviceReady() {
+//    $("#mensagem").html("onDeviceReady()");
+//    listarPromocoes.init();
+
+
+//    recuperarPosicaoGPS();    
+//    if (statusInternet(checkConnection()) == true) {
+//        chamadaServidor(window.localStorage.getItem("latitude"), window.localStorage.getItem("longitude"));
+//    }
+//    else {
+//        //Mensagem de falta de conexao
+//        $(function () {
+//            $("#mensagem-conexao").dialog({
+//                height: 140,
+//                modal: true
+//            });
+//        });
+//    }
+//       
+//}
 
 function statusInternet(states) {
     var status = true;
@@ -66,116 +71,170 @@ function recuperarPosicaoGPS() {
         navigator.geolocation.getCurrentPosition(win, fail);
 }
 
-function chamadaServidor(latitude, longitude) {
-    var url = 'http://localhost:9999/Promocao/ListarPromocao';
-    $(function () {
-        $("#mensagem-carregando").dialog({
-            height: 140,
-            dialogClass: "no-close",
-            modal: true
-        });
-    });
-    $('li').remove();
-    $.ajax({
-        type: 'GET',
-        url: url,
-        contentType: "application/json",
-        dataType: 'jsonp',
-        data: { latitude: latitude, longitude: longitude },
-        crossDomain: true,
-        global: true,
-        success: function (res) {
-            $('#place').append('sucesso');
-            $('#mensagem-carregando').dialog("destroy");
-            $('#mensagem-carregando').css("display", "none");
-            window.localStorage.setItem("dadosJson", JSON.stringify(res))
-            listarPromocoes.geraLista(res);
-
-        },
-        error: function (xhr, ajaxOptions, thrownError) {            
-            $('#mensagem-carregando').dialog("destroy");        
-            $(function () {
-                $("#mensagem-erro").dialog({
-                    height: 140,                    
-                    modal: true
-                });
-            });
-        },
-        complete: function (data) {
-            $('#place').append('cplete');            
-        }
-    });
-}
-
-
+//function chamadaServidor(latitude, longitude) {
+//    var url = 'http://localhost:9999/Promocao/ListarPromocao';
+//    $(function () {
+//        $("#mensagem-carregando").dialog({
+//            height: 140,
+//            dialogClass: "no-close",
+//            modal: true
+//        });
+//    });
+//    $('li').remove();
+//    $.ajax({
+//        type: 'GET',
+//        url: url,
+//        contentType: "application/json",
+//        dataType: 'jsonp',
+//        data: { latitude: latitude, longitude: longitude },
+//        crossDomain: true,
+//        global: true,
+//        success: function (res) {
+//            $('#place').append('sucesso');
+//            $('#mensagem-carregando').dialog("destroy");
+//            $('#mensagem-carregando').css("display", "none");
+//            window.localStorage.setItem("dadosJson", JSON.stringify(res));
+//            listarPromocoes.geraLista(res);
+//        },
+//        error: function (xhr, ajaxOptions, thrownError) {
+//            $('#mensagem-carregando').dialog("destroy");
+//            $(function () {
+//                $("#mensagem-erro").dialog({
+//                    height: 140,
+//                    modal: true
+//                });
+//            });
+//        },
+//        complete: function (data) {
+//            $('#place').append('cplete');
+//        }
+//    });
+//}
 
 
 var listarPromocoes = {
-
     init: function () {
-        //listarPromocoes.mobileInit();
         listarPromocoes.bind();
-
     },
 
-    mobileInit: function () {
-        document.addEventListener("deviceready", appReady, false);
-        $(document).bind("mobileinit", function () {
-            $.mobile.allowCrossDomainPages = true;
-        })
-    },
+    //    mobileInit: function() {
+    //        document.addEventListener("deviceready", appReady, false);
+    //        $(document).bind("mobileinit", function() {
+    //            $.mobile.allowCrossDomainPages = true;
+    //        });
+    //    },
 
     bind: function () {
-        $('ul').on('click', '.imagem-promocao',
-            function () {
-                var idPromocao = 0;
-                var id = $(this).attr('id');
-                idPromocao = id;
-                window.localStorage.setItem("idSelecionado", id);
-                window.localStorage.idSelecionado = idPromocao;
-                window.location = "gps.html";
-                
-            })
+        $('ul').on('click', '.imagem-promocao', function () {
+            var idPromocao = 0;
+            var id = $(this).attr('id');
+            idPromocao = id;
+            window.localStorage.setItem("idSelecionado", id);
+            window.localStorage.idSelecionado = idPromocao;
+            window.location = "gps.html";
+        });
 
         $("#atualizar-promocao").click(function () {
-            chamadaServidor();
-        })
-    },
+            listarPromocoes.chamadaServidor(gps.latitude, gps.longitude);
+        });
+    }
 
-    geraLista: function (data) {
+    , chamadaServidor: function (latitude, longitude) {
+
+        var url = 'http://localhost:9999/Promocao/ListarPromocao';
+
+        //        $(function () {
+        //            $("#mensagem-carregando").dialog({
+        //                height: 140,
+        //                dialogClass: "no-close",
+        //                modal: true
+        //            });
+        //        });
+
+        $('li').remove();
+
+        $.ajax({
+            type: 'GET',
+            url: url,
+            contentType: "application/json",
+            dataType: 'jsonp',
+            data: { latitude: latitude, longitude: longitude },
+            crossDomain: true,
+            global: true,
+            success: function (res) {
+                $('#place').append('sucesso');
+                $('#mensagem-carregando').dialog("destroy");
+                $('#mensagem-carregando').css("display", "none");
+                window.localStorage.setItem("dadosJson", JSON.stringify(res));
+                listarPromocoes.geraLista(res);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                $('#mensagem-carregando').dialog("destroy");
+                $(function () {
+                    $("#mensagem-erro").dialog({
+                        height: 140,
+                        modal: true
+                    });
+                });
+            },
+            complete: function (data) {
+                $('#place').append('cplete');
+            }
+        });
+    }
+
+    , geraLista: function (data) {
         for (i = 0; i < data.promocoes.length; i++) {
             $('.lista-promocoes').append('<li class="well">' +
-		    '<div class="container corpo-promocoes">' +
-			    '<!--Barra titulo empresa -->' +
-			    '<div class="titulo-empresa navbar-inner" id="titulo-empresa">' +
+                '<div class="container corpo-promocoes">' +
+                '<!--Barra titulo empresa -->' +
+                '<div class="titulo-empresa navbar-inner" id="titulo-empresa">' +
             //imagem da empresa da promocao
-			    '	<img src="' + data.promocoes[i].UrlEmpresa + '"' +
-				    ' class="pull-left logo-promocao" id="id-url-empresa">' +
-				    '<div class="container">' +
+                '	<img src="' + data.promocoes[i].UrlEmpresa + '"' +
+                ' class="pull-left logo-promocao" id="id-url-empresa">' +
+                '<div class="container">' +
             //nome da empresa
-			    '		<a class="brand" href="#">' + data.promocoes[i].NomeEmpresa + '</a>' +
-			    '	</div>' +
-			    '</div>' +
-			    '<!--Barra titulo empresa -->' +
-			    '<!--Imagem da promocao -->' +
-			    '<div class="imagem-promocao thumbnail" id="' + data.promocoes[i].IdEmpresa + '">' +
+                '		<a class="brand" href="#">' + data.promocoes[i].NomeEmpresa + '</a>' +
+                '	</div>' +
+                '</div>' +
+                '<!--Barra titulo empresa -->' +
+                '<!--Imagem da promocao -->' +
+                '<div class="imagem-promocao thumbnail" id="' + data.promocoes[i].IdEmpresa + '">' +
             //imagem da promocao
-			    '	<img class="imagem" src="' + data.promocoes[i].UrlPromocao + '"' +
-			    '	width="" height="">' +
-			    '</div>' +
-			    '<!--Imagem da promocao -->' +
-			    '<div class="control-group">' +
-				    '<div class="controls">' +
-					    '<label>' +
+                '	<img class="imagem" src="' + data.promocoes[i].UrlPromocao + '"' +
+                '	width="" height="">' +
+                '</div>' +
+                '<!--Imagem da promocao -->' +
+                '<div class="control-group">' +
+                '<div class="controls">' +
+                '<label>' +
             //texto da promocao			
-					    data.promocoes[i].Promocao +
-					    '</label>' +
-				    '</div>' +
-			    '</div>' +
-		    '</div>' +
-	    '</li>');
+                data.promocoes[i].Promocao +
+                '</label>' +
+                '</div>' +
+                '</div>' +
+                '</div>' +
+                '</li>');
         }
     }
-}
+};
 
 
+var gps = {
+    latitude: 0.0,
+    longitude: 0.0,
+
+    obterPosicao: function () {
+        navigator.geolocation.getCurrentPosition(gps.localizacaoSuccesso, gps.localizacaoError);
+    },
+    inicializar: function (lat, lon) {
+        gps.latitude = lat;
+        gps.longitude = lon;
+    },
+    localizacaoError: function (error) {
+        gps.inicializar(-23.546, -46.638);
+    },
+    localizacaoSuccesso: function (position) {
+        gps.inicializar(position.coords.latitude, position.coords.longitude);
+    }
+};
