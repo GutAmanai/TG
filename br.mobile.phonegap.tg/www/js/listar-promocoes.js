@@ -115,6 +115,7 @@ function recuperarPosicaoGPS() {
 var listarPromocoes = {
     init: function () {
         listarPromocoes.bind();
+        listarPromocoes.chamadaServidor(gps.latitude, gps.longitude);
     },
 
     //    mobileInit: function() {
@@ -153,6 +154,8 @@ var listarPromocoes = {
 
         $('li').remove();
 
+        overlay.open();
+
         $.ajax({
             type: 'GET',
             url: url,
@@ -179,42 +182,36 @@ var listarPromocoes = {
             },
             complete: function (data) {
                 $('#place').append('cplete');
+                overlay.close();
             }
         });
     }
 
     , geraLista: function (data) {
-        for (i = 0; i < data.promocoes.length; i++) {
-            $('.lista-promocoes').append('<li class="well">' +
+        for (i = 0; i < data.length; i++) {
+            $('.lista-promocoes').
+                append(
+                '<li class="well">' +
                 '<div class="container corpo-promocoes">' +
-                '<!--Barra titulo empresa -->' +
                 '<div class="titulo-empresa navbar-inner" id="titulo-empresa">' +
-            //imagem da empresa da promocao
-                '	<img src="' + data.promocoes[i].UrlEmpresa + '"' +
-                ' class="pull-left logo-promocao" id="id-url-empresa">' +
+                '<img src="' + data[i].UrlEmpresa + '"' + 'class="pull-left logo-promocao" id="id-url-empresa">' +
                 '<div class="container">' +
-            //nome da empresa
-                '		<a class="brand" href="#">' + data.promocoes[i].NomeEmpresa + '</a>' +
+                '		<a class="brand" href="#">' + data[i].NomeEmpresa + '</a>' +
                 '	</div>' +
                 '</div>' +
-                '<!--Barra titulo empresa -->' +
-                '<!--Imagem da promocao -->' +
-                '<div class="imagem-promocao thumbnail" id="' + data.promocoes[i].IdEmpresa + '">' +
-            //imagem da promocao
-                '	<img class="imagem" src="' + data.promocoes[i].UrlPromocao + '"' +
+                '<div class="imagem-promocao thumbnail" id="' + data[i].IdEmpresa + '">' +
+                '	<img class="imagem" src="' + data[i].UrlPromocao + '"' +
                 '	width="" height="">' +
                 '</div>' +
-                '<!--Imagem da promocao -->' +
                 '<div class="control-group">' +
                 '<div class="controls">' +
                 '<label>' +
-            //texto da promocao			
-                data.promocoes[i].Promocao +
+                data[i].DescricaoPromocao +
                 '</label>' +
                 '</div>' +
                 '</div>' +
-                '</div>' +
-                '</li>');
+                '</li>'
+            );
         }
     }
 };

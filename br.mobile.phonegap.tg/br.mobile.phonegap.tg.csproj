@@ -179,6 +179,10 @@
     <Content Include="www\img\logoVemKa.png" />
     <Content Include="www\img\logoLotus.png" />
     <Resource Include="www\img\TelaInicialVemKa.jpg" />
+    <Content Include="www\js\jquery-ui-1.10.3.min.js" />
+    <Content Include="www\js\jquery.blockUI.js" />
+    <Content Include="www\js\jquery.ui.draggable.js" />
+    <Content Include="www\js\overlay.js" />
     <Content Include="www\js\jquery-2.0.3.min.js" />
     <Content Include="www\js\gps.js" />
     <Content Include="www\js\jquery-ui-1.10.3.custom.min.js" />

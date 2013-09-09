@@ -108,13 +108,15 @@ body
 {
     padding: 0;
     text-align: center;
-    min-height: 238px;
+    /*min-height: 238px;*/
 }
 
-.conteudo
-{
-    min-height:355px;
+.conteudo{
+    /*min-height:355px;*/
 }
 
-
+.logo-promocao {
+    height:30px;
+    width:30px;
+}
 

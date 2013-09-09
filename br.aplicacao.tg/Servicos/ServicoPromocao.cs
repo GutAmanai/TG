@@ -155,8 +155,9 @@ namespace br.aplicacao.tg.Servicos
 
         public List<DTOPromocaoMobile> ObterLocalizacaoMobile(Posicao posicaoMobile)
         {
-            var distanciaMax = Convert.ToDouble(ConfigurationManager.AppSettings["Distancia"]);
-            var liClienteLocalizacao = _repositorioClienteLocalizacao.ObterTodosOnde( x => Haversine.Distance(posicaoMobile, x.Posicao, DistanceUnit.Kilometros) <= distanciaMax).ToList();
+            //var distanciaMax = Convert.ToDouble(ConfigurationManager.AppSettings["Distancia"]);
+            var distanciaMax = 100000000000;
+            var liClienteLocalizacao = _repositorioClienteLocalizacao.ObterTodos().Where(clienteLocalizacao => Haversine.Distance(posicaoMobile, clienteLocalizacao.Posicao, DistanceUnit.Kilometros) <= distanciaMax).ToList();
             return liClienteLocalizacao.SelectMany(ObterPromocaoPorClientePromocao).ToList();
         }
 

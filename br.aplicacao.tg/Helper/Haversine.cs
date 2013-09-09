@@ -2,7 +2,7 @@
 
 namespace System
 {
-    public class Haversine
+    public static class Haversine
     {
         public static double Distance(Posicao pos1, Posicao pos2, DistanceUnit distanceUnit)
         {
