@@ -3,7 +3,6 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
         <!-- Scripts -->
         <script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>    
         <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
@@ -14,9 +13,7 @@
         <script type="text/javascript" src="js/jquery.ui.draggable.js"></script>
         <script type="text/javascript" src="js/jquery.blockUI.js"></script>
         <script type="text/javascript" src="js/overlay.js"></script>
-
         <script type="text/javascript" src="js/listar-promocoes.js"></script>
-
         <!-- styles -->
         <link href="assets/css/bootstrap.css" rel="stylesheet"> 
         <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
@@ -37,46 +34,29 @@
                 <div class="navbar-inner header">
                     <a class="btn pull-right" id="atualizar-promocao"><i class="icon-refresh"></i></a>
                     <!--<a class="btn pull-right"><i class="icon-arrow-left"></i></a>-->
-                    <h class="pull-left">
-                        VemKa
-                    </h>
+                    <h class="pull-left">VemKa</h>
                 </div>
             </div>
         </div>
         <!-- NAV BAR TOPO -->
-        <!--Começo da lista -->
         <div class="container conteudo">
             <ul class="nav nav-list lista-promocoes" id="id-ul">
                 <!--Inicio dos itens -->
             </ul>
         </div>
-        <!-- FIM DA LISTA -->
         <!-- NAV BAR RODAPE -->
         <div class="navbar navbar-fixed-bottom navbar footer-promocoes">
             <div class="navbar-inner footer">
-                <img src="img/logoLotus.png"
-                     class="pull-left logo-lotus" width="47">
-                <span>Lotus Tecnologia
-                    <br>
-                    Todos os direitos reservados.</span>
+                <img src="img/logoLotus.png" class="pull-left logo-lotus" width="47">
+                <h4>Lotus Tecnologia</h4>
+                <!--<br>Todos os direitos reservados.</span>-->
             </div>
         </div>      
         <div id="place">
             <p></p>
         </div>
-    
-<!--        <div id="mensagem-carregando">
-            <p>Carregando<img  src="img/ajax-loader.gif"/> </p>    
-        </div>
-        <div id="mensagem-erro">
-            <p>Erro de comunicação com servidor!</p>    
-        </div>
-        <div id="mensagem-conexao">
-            <p>Sem conexão de internet!</p>    
-        </div>-->
-        
-        <input type="text" id="mensagem"/>
-
+        <label id="mensagem"></label>
     </body>
 </html>
+
 

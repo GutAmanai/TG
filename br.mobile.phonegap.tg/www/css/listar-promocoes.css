@@ -18,6 +18,9 @@ body
     padding-right: 10px;
     font-family: inherit;
     font-weight: bold;
+    margin: -20px -20px 10px;
+    border-radius: 5px 5px 0 0;
+    line-height: 40px;
 }
         
 .imagem-promocao
@@ -94,16 +97,11 @@ body
     padding: 0px;
 }
         
-#titulo-empresa
-{
-    margin: -20px -20px 10px;
-    border-radius: 5px 5px 0 0;
-    line-height: 40px;
-}
-#titulo-empresa img
+.titulo-empresa img
 {
     margin: 4px 0 0;
 }
+
 .thumbnail
 {
     padding: 0;
@@ -112,11 +110,14 @@ body
 }
 
 .conteudo{
-    /*min-height:355px;*/
+    min-height:355px;
 }
 
 .logo-promocao {
-    height:30px;
-    width:30px;
+    height:35px;
+    width:35px;
 }
 
+.logo-lotus {
+    margin-left: 15px;
+}
