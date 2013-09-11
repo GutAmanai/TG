@@ -209,9 +209,8 @@
     <Resource Include="www\bootstrap\img\glyphicons-halflings.png" />
     <Content Include="www\bootstrap\js\bootstrap.js" />
     <Content Include="www\bootstrap\js\bootstrap.min.js" />
-    <Content Include="www\cordova-2.5.0.js" />
+    <Content Include="www\js\cordova-2.5.0.js" />
     <Content Include="www\css\listar-promocoes.css" />
-    <Content Include="www\example.html" />
     <Content Include="www\fileReader.html" />
     <Content Include="www\js\index.js" />
     <Content Include="www\mapa.html" />
@@ -231,9 +230,6 @@
     </Content>
     <None Include="BuildManifestProcessor.js" />
     <Content Include="www\css\index.css" />
-    <Content Include="www\oldindex.html">
-      <SubType>Designer</SubType>
-    </Content>
     <None Include="cordova\debug.bat" />
     <None Include="cordova\emulate.bat" />
     <None Include="Properties\AppManifest.xml">

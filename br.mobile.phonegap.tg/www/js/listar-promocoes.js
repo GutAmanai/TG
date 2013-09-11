@@ -32,84 +32,45 @@ document.addEventListener("deviceready", function () {
 //       
 //}
 
-function statusInternet(states) {
-    var status = true;
-    var networkState = navigator.connection.type;
-    $('#place').append('status internet: ' + states[networkState]);
-    if (states[networkState] == "No network connection") {
-        status = false;
-    }
-    return status;
-}
-
-function checkConnection() {
-    var networkState = navigator.connection.type;
-
-    var states = {};
-    states[Connection.UNKNOWN] = 'Unknown connection';
-    states[Connection.ETHERNET] = 'Ethernet connection';
-    states[Connection.WIFI] = 'WiFi connection';
-    states[Connection.CELL_2G] = 'Cell 2G connection';
-    states[Connection.CELL_3G] = 'Cell 3G connection';
-    states[Connection.CELL_4G] = 'Cell 4G connection';
-    states[Connection.NONE] = 'No network connection';   
-    return states;
-}
-
-
-function recuperarPosicaoGPS() {
-        var win = function (position) {
-            window.localStorage.setItem("latitude", position.coords.latitude);
-            window.localStorage.setItem("longitude", position.coords.longitude);
-                                  
-        };
-
-        var fail = function (e) {
-            $('#place').append('FAIL GPS: ');
-        };
-
-        navigator.geolocation.getCurrentPosition(win, fail);
-}
-
-//function chamadaServidor(latitude, longitude) {
-//    var url = 'http://localhost:9999/Promocao/ListarPromocao';
-//    $(function () {
-//        $("#mensagem-carregando").dialog({
-//            height: 140,
-//            dialogClass: "no-close",
-//            modal: true
-//        });
-//    });
-//    $('li').remove();
-//    $.ajax({
-//        type: 'GET',
-//        url: url,
-//        contentType: "application/json",
-//        dataType: 'jsonp',
-//        data: { latitude: latitude, longitude: longitude },
-//        crossDomain: true,
-//        global: true,
-//        success: function (res) {
-//            $('#place').append('sucesso');
-//            $('#mensagem-carregando').dialog("destroy");
-//            $('#mensagem-carregando').css("display", "none");
-//            window.localStorage.setItem("dadosJson", JSON.stringify(res));
-//            listarPromocoes.geraLista(res);
-//        },
-//        error: function (xhr, ajaxOptions, thrownError) {
-//            $('#mensagem-carregando').dialog("destroy");
-//            $(function () {
-//                $("#mensagem-erro").dialog({
-//                    height: 140,
-//                    modal: true
-//                });
-//            });
-//        },
-//        complete: function (data) {
-//            $('#place').append('cplete');
-//        }
-//    });
+//function statusInternet(states) {
+//    var status = true;
+//    var networkState = navigator.connection.type;
+//    $('#place').append('status internet: ' + states[networkState]);
+//    if (states[networkState] == "No network connection") {
+//        status = false;
+//    }
+//    return status;
 //}
+
+//function checkConnection() {
+//    var networkState = navigator.connection.type;
+
+//    var states = {};
+//    states[Connection.UNKNOWN] = 'Unknown connection';
+//    states[Connection.ETHERNET] = 'Ethernet connection';
+//    states[Connection.WIFI] = 'WiFi connection';
+//    states[Connection.CELL_2G] = 'Cell 2G connection';
+//    states[Connection.CELL_3G] = 'Cell 3G connection';
+//    states[Connection.CELL_4G] = 'Cell 4G connection';
+//    states[Connection.NONE] = 'No network connection';   
+//    return states;
+//}
+
+
+//function recuperarPosicaoGPS() {
+//        var win = function (position) {
+//            window.localStorage.setItem("latitude", position.coords.latitude);
+//            window.localStorage.setItem("longitude", position.coords.longitude);
+//                                  
+//        };
+
+//        var fail = function (e) {
+//            $('#place').append('FAIL GPS: ');
+//        };
+
+//        navigator.geolocation.getCurrentPosition(win, fail);
+//}
+
 
 
 var listarPromocoes = {
@@ -120,7 +81,8 @@ var listarPromocoes = {
 
     bind: function () {
         $('.imagem-promocao').on('click', function () {
-            window.localStorage.setItem("promocaoSelecionado", $(this).parents(".corpo-promocoes").find(".obj-promocao").val());
+            window.localStorage.setItem("promocaoSelecionado", $(this).parents(".corpo-promocoes").eq(0).attr("id"));
+            window.location = "gps.html";
         });
 
         $("#atualizar-promocao").click(function () {
@@ -159,38 +121,17 @@ var listarPromocoes = {
 
     , geraLista: function (data) {
         for (i = 0; i < data.length; i++) {
-            $('.lista-promocoes').
-                append(
-//                '<li class="well">' +
-//                '<div class="container corpo-promocoes">' +
-//                '<div class="titulo-empresa navbar-inner" >' +
-//                '<input type="hidden" class="obj-promocao" value="' + JSON.stringify(data[i]) + '"/>' +
-//                '<img src="' + data[i].UrlEmpresa + '"' + 'class="pull-left logo-promocao">' +
-//                '<div class="container">' +
-//                '		<a class="brand" href="#">' + data[i].NomeEmpresa + '</a>' +
-//                '	</div>' +
-//                '</div>' +
-//                '<div class="imagem-promocao thumbnail" id="' + data[i].IdEmpresa + '">' +
-//                '	<img class="imagem" src="' + data[i].UrlPromocao + '"' +
-//                '	width="" height="">' +
-//                '</div>' +
-//                '<div class="control-group">' +
-//                '<div class="controls">' +
-//                '<label>' +
-//                data[i].DescricaoPromocao +
-//                '</label>' +
-//                '</div>' +
-//                '</div>' +
-//                '</li>'
+            window.localStorage.setItem(data[i].IdPromocao, JSON.stringify(data[i]));
+            $('.lista-promocoes').append(
                 '	<li class="well">																						' +
-                '		<div class="container corpo-promocoes">																' +
+                '		<div class="container corpo-promocoes" id="' + data[i].IdPromocao + '" >  							' +
                 '			<div class="titulo-empresa navbar-inner" >														' +
                 '				<img src="' + data[i].UrlEmpresa + '"' + 'class="pull-left logo-promocao">					' +
                 '				<div class="container">																		' +
                 '					<a class="brand" href="#">' + data[i].NomeEmpresa + '</a>								' +
                 '				</div>																						' +
                 '			</div>																							' +
-                '		    <input type="hidden" class="obj-promocao" value="' + JSON.stringify(data[i]) + '"/>			    ' +
+                //'		    <input type="hidden" class="obj-promocao" value="' + JSON.stringify(data[i]) + '"/>			    ' +
                 '			<div class="imagem-promocao thumbnail" id="' + data[i].IdEmpresa + '">							' +
                 '				<img class="imagem" src="' + data[i].UrlPromocao + '"/> 									' +
                 '			</div>																							' +

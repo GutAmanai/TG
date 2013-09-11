@@ -1,116 +1,45 @@
 
-$(document).ready(function () {    
-    imageFix();
-    addListeners();
-    $('.place').append('document ready');
-});
+document.addEventListener("deviceready", function () {    
+    localizacao.init();
+}, true);
 
-function onDeviceReady() {
-    /*$('.place').append('device ready');
-    var value = window.localStorage.getItem("dadosJson");
-    $('#place').append('valor:' + value.promocoes[1].Promocao);   */     
-    preencheDadosLugar();
-    CoordMapType();
-}
 
-function addListeners(){
-    document.addEventListener("deviceready", onDeviceReady, false);
-}
+var localizacao = {
+    init: function () {
+        localizacao.bind();
+        localizacao.adicionarDados();
+    },
 
-/*
-========Image size fix==================
-*/      
-function imageFix(){
-    $('.logo-url-empresa').width(40);
-    $('.logo-empresa').width(70);
-    $('.logo-lotus').width(47);
-}     
+    bind: function () {
+        $("#voltar").on("click", function () {
+            window.history.back();
+        });
+    },
 
-/*
-=========Discover actual gps coord==============
-*/
+    obterDadosPromocao: function () {
+        var idSelecionado = window.localStorage.getItem("promocaoSelecionado");
+        return JSON.parse(window.localStorage.getItem(idSelecionado));
+    },
 
-function discoverGPS() {
-    var win = function (position) {
-        localStorage.latitude = position.coords.latitude;
-        localStorage.longitude = position.coords.longitude;
-    };
-
-    var fail = function (e) {
-        alert('Can\'t retrieve position.\nError: ' + e);
-    };
-
-    navigator.geolocation.getCurrentPosition(win, fail);
-}
-
-/*
-=============Fill place information===================
-*/
-function preencheDadosLugar() {
-    var data = JSON.parse(window.localStorage.getItem("dadosJson"));        
-    var idSelec = window.localStorage.getItem("idSelecionado");    
-    for (i = 0; i < data.promocoes.length; i++) {
-        if (data.promocoes[i].IdEmpresa == idSelec) {
-            $('#imagem-empresa').attr('src', data.promocoes[i].UrlEmpresa);
-            $('#nome-empresa').replaceWith('<a class="brand titulo-empresa" id="nome-empresa" href="#">' + data.promocoes[i].NomeEmpresa + '</a>');            
-            $('#endereco').append(data.promocoes[i].Endereco);
-        }
+    adicionarDados: function () {
+        var $dados = localizacao.obterDadosPromocao();
+        $(".conteudo").append(
+            '		<div class="container corpo-promocoes well">														' +
+            '			<div class="titulo-empresa navbar-inner" >														' +
+            '				<img src="' + $dados.UrlEmpresa + '"' + 'class="pull-left logo-promocao">					' +
+            '				<div class="container">																		' +
+            '					<a class="brand" href="#">' + $dados.NomeEmpresa + '</a>								' +
+            '				</div>																						' +
+            '			</div>																							' +
+            '			<div class="imagem-promocao thumbnail" id="' + $dados.IdEmpresa + '">							' +
+            '				<img class="imagem" src="' + $dados.UrlPromocao + '"/> 									    ' +
+            '			</div>																							' +
+            '			<div class="control-group">																		' +
+            '				<div class="controls">																		' +
+            '					<label>' + $dados.DescricaoPromocao + '</label>    									    ' +
+            '				</div>																						' +
+            '			</div>																							' +
+            '	    </div>																						        '
+        );
     }
-}
-
-/*
-============google map===============
-*/
-
-function CoordMapType(tileSize) {
-    this.tileSize = tileSize;
-}
-
-CoordMapType.prototype.tileSize = new google.maps.Size(256, 256);
-CoordMapType.prototype.maxZoom = 19;
-
-CoordMapType.prototype.getTile = function (coord, zoom, ownerDocument) {
-    var div = ownerDocument.createElement('div');
-    div.innerHTML = coord;
-    div.style.width = this.tileSize.width + 'px';
-    div.style.height = this.tileSize.height + 'px';
-    div.style.fontSize = '0';
-    div.style.borderStyle = 'solid';
-    div.style.borderWidth = '0px';
-    div.style.borderColor = '#AAAAAA';
-    return div;
 };
-
-var data = localStorage.dataJSON;
-var latitude;
-var longitude;
-for (var i in data.promocoes) {
-
-    if (data.promocoes[i].IdEmpresa == localStorage.idSelecionado) {
-        longitude = data.promocoes[i].Longitude;
-        latitude = data.promocoes[i].Latitude;
-
-    }
-}
-
-
-var map;
-var chicago = new google.maps.LatLng(longitude, latitude);
-
-function initialize() {
-    var mapOptions = {
-        zoom: 15,
-        center: chicago,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-    map = new google.maps.Map(document.getElementById('map-canvas'),
-                                    mapOptions);
-
-    // Insert this overlay map type as the first overlay map type at
-    // position 0. Note that all overlay map types appear on top of
-    // their parent base map.
-    map.overlayMapTypes.insertAt(
-      0, new CoordMapType(new google.maps.Size(256, 256)));
-}
-
-google.maps.event.addDomListener(window, 'load', initialize);
