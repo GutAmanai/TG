@@ -221,6 +221,8 @@
     <Content Include="Views\Home\MenuVemKa.cshtml" />
     <Content Include="Views\Promocao\Cadastro.cshtml" />
     <Content Include="Views\Menu\Menuvemka.cshtml" />
+    <Content Include="Views\Produtos\TodosProdutos.cshtml" />
+    <Content Include="Views\Produtos\VemKa.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\br.aplicacao.tg\br.aplicacao.tg.csproj">
