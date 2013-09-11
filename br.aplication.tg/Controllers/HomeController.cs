@@ -12,5 +12,30 @@ namespace br.aplication.tg.Controllers
         {
             return View();
         }
+
+        public ActionResult FerramentasUtilizadas()
+        {
+            return View();
+        }
+
+        public ActionResult MetodosCriacao()
+        {
+            return View();
+        }
+
+        public ActionResult Seguranca()
+        {
+            return View();
+        }
+
+        public ActionResult TodosProdutos()
+        {
+            return View();
+        }
+
+        public ActionResult VemKa()
+        {
+            return View();
+        }
     }
 }
