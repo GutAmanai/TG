@@ -76,7 +76,12 @@ document.addEventListener("deviceready", function () {
 var listarPromocoes = {
     init: function () {
         listarPromocoes.bind();
-        listarPromocoes.chamadaServidor(gps.latitude, gps.longitude);
+
+        if (window.localStorage.getItem("listagemPromocao") != null) {
+            listarPromocoes.geraListaCache();
+        } else {
+            listarPromocoes.chamadaServidor(gps.latitude, gps.longitude);
+        }
     },
 
     bind: function () {
@@ -120,8 +125,9 @@ var listarPromocoes = {
     }
 
     , geraLista: function (data) {
+        window.localStorage.setItem("listagemPromocao", JSON.stringify(data));
+
         for (i = 0; i < data.length; i++) {
-            window.localStorage.setItem(data[i].IdPromocao, JSON.stringify(data[i]));
             $('.lista-promocoes').append(
                 '	<li class="well">																						' +
                 '		<div class="container corpo-promocoes" id="' + data[i].IdPromocao + '" >  							' +
@@ -131,7 +137,6 @@ var listarPromocoes = {
                 '					<a class="brand" href="#">' + data[i].NomeEmpresa + '</a>								' +
                 '				</div>																						' +
                 '			</div>																							' +
-                //'		    <input type="hidden" class="obj-promocao" value="' + JSON.stringify(data[i]) + '"/>			    ' +
                 '			<div class="imagem-promocao thumbnail" id="' + data[i].IdEmpresa + '">							' +
                 '				<img class="imagem" src="' + data[i].UrlPromocao + '"/> 									' +
                 '			</div>																							' +
@@ -144,6 +149,35 @@ var listarPromocoes = {
                 '	</li>																									'
             );
         }
+    }
+
+    , geraListaCache: function () {
+        var data = JSON.parse(window.localStorage.getItem("listagemPromocao"));
+
+        for (i = 0; i < data.length; i++) {
+            $('.lista-promocoes').append(
+                '	<li class="well">																						' +
+                '		<div class="container corpo-promocoes" id="' + data[i].IdPromocao + '" >  							' +
+                '			<div class="titulo-empresa navbar-inner" >														' +
+                '				<img src="' + data[i].UrlEmpresa + '"' + 'class="pull-left logo-promocao">					' +
+                '				<div class="container">																		' +
+                '					<a class="brand" href="#">' + data[i].NomeEmpresa + '</a>								' +
+                '				</div>																						' +
+                '			</div>																							' +
+                '			<div class="imagem-promocao thumbnail" id="' + data[i].IdEmpresa + '">							' +
+                '				<img class="imagem" src="' + data[i].UrlPromocao + '"/> 									' +
+                '			</div>																							' +
+                '			<div class="control-group">																		' +
+                '				<div class="controls">																		' +
+                '					<label>' + data[i].DescricaoPromocao + '</label>    									' +
+                '				</div>																						' +
+                '			</div>																							' +
+                '	    </div>																						        ' +
+                '	</li>																									'
+            );
+        }
+
+        listarPromocoes.bind();
     }
 };
 
