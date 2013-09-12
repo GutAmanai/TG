@@ -70,8 +70,8 @@
                                         <ul class="dropdown-menu">
                                             <li class="nav-header">Administrador</li>
                                             <li><a href="@(Url.Action("Menuvemka", "Menu", new { idCliente = dtoCliente.IdCliente}))">VemKa</a></li>
-                                        </ul>                  
-                                    </li>                                                                       
+                                        </ul>
+                                    </li>
                                     
                                     <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">@HttpContext.Current.User.Identity.Name<b class="caret"></b></a>
@@ -107,9 +107,9 @@
                         <nav>
                             <ul class="quick-links">
                                 <li><a href="@Url.Action("FerramentasUtilizadas", "Home")">Ferramentas utilizas</a></li>
-                                <li><a href="@Url.Action("MetodosCriacao", "Home")">Métodos de criação</a></li>
+                                <li><a href="@Url.Action("MetodologiasCriacao", "Home")">Metodologias</a></li>
                             </ul>
-                        </nav>          
+                        </nav>
                     </div>
 
                     <div class="span2">
@@ -118,27 +118,28 @@
                             <ul class="quick-links">
                                 <li><a href="@Url.Action("Seguranca", "Home")">Segurança</a></li>      
                             </ul>
-                        </nav>            
+                        </nav>
                     </div>
 
                     <div class="span3">
                         <h4>Entre em contato</h4>
-                        <div class="social-icons-row">
+                        <nav>
+                            <ul class="quick-links">
+                                <li><i class="icon-phone icon-large"></i>(11) 98199-2080</li>
+                                <li><i class="icon-envelope icon-large"></i> <a class="contact-mail" href="mailto:contato@lotustechbr.com">contato@lotustechbr.com</a></li>
+                            </ul>
+                        </nav>
+                        <div class="social-icons-row icones-contato">
                             <a href="#"><i class="icon-twitter"></i></a>
                             <a href="#"><i class="icon-facebook"></i></a>
                         </div>
-                        <div class="social-icons-row">
-                            <i class="icon-phone icon-large phone-number"></i> (11) 12345-1254
-                            <i class="icon-phone icon-large contact-mail"></i> contato@lotustechbr.com
-                        </div>
                     </div>
-
                 </div>
             </div>
             <hr class="footer-divider">
             <div class="container">
                 <p>
-                    Todos direitos reservados.
+                    Todos os direitos reservados.
                 </p>
             </div>
         </footer>

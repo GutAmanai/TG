@@ -17,7 +17,7 @@ namespace br.aplication.tg.Controllers
 
         public LoginController()
         {
-            _servicoCliente = Fabrica.Instancia.Obter<ServicoCliente>(); 
+            _servicoCliente = Fabrica.Instancia.Obter<ServicoCliente>();
         }
 
         public ActionResult Index()
@@ -30,14 +30,12 @@ namespace br.aplication.tg.Controllers
             if (_servicoCliente.ValidarCliente(email, senha))
             {
                 var cliente = _servicoCliente.ObterDTOCliente(email);
-                Session.Add("DTOCliente",cliente);
+                Session.Add("DTOCliente", cliente);
                 FormsAuthentication.SetAuthCookie(cliente.Nome, false);
                 return Json(new { IdCliente = cliente.IdCliente, autorizado = true });
             }
             else
-            {
                 return Json(new { IdCliente = 0, autorizado = false });
-            }
         }
 
         public ActionResult LogOff()

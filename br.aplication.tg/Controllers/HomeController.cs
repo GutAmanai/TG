@@ -18,7 +18,7 @@ namespace br.aplication.tg.Controllers
             return View();
         }
 
-        public ActionResult MetodosCriacao()
+        public ActionResult MetodologiasCriacao()
         {
             return View();
         }
