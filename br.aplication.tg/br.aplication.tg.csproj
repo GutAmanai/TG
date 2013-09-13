@@ -223,7 +223,7 @@
     <Content Include="Views\Menu\Menuvemka.cshtml" />
     <Content Include="Views\Home\TodosProdutos.cshtml" />
     <Content Include="Views\Home\VemKa.cshtml" />
-    <Content Include="Views\Home\MetodologiasCriacao.cshtml" />
+    <Content Include="Views\Home\MetodologiaDesenvolvimento.cshtml" />
     <Content Include="Views\Home\FerramentasUtilizadas.cshtml" />
     <Content Include="Views\Home\Seguranca.cshtml" />
   </ItemGroup>

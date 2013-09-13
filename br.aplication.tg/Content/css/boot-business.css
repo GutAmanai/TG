@@ -242,7 +242,7 @@
 .contact-mail a,
 .contact-mail:hover a,
 .contact-mail:hover {
-  color: black;
+  color: gray;
   text-decoration: none;
   font-size: medium !important;
 }
