@@ -1,85 +1,81 @@
 ﻿@model dynamic
-
 @{
     ViewBag.Title = "Home";
     Layout = "../Shared/_Layout.cshtml";
 }
-
 @section head
 {
     <script type="text/javascript" language="javascript" src="@Url.Content("~/Scripts/jquery-2.0.0.min.js")"></script>
 }
-
 <div class="content">
     <div class="slider">
         <div class="container-fluid">
             <div id="heroSlider" class="carousel slide">
                 <div class="carousel-inner home">
-                  
                     <div class="active item">
                         <div class="hero-unit">
                             <div class="row-fluid">
                                 <div class="span7 marketting-info">
-                                    <h1>VemKa</h1>
+                                    <h1>
+                                        VemKa</h1>
                                     <p>
                                         Conheça a plataforma que vai te 'mostrar' como um diferencial no mercado!
+                                        <br />
+                                        Levamos o cliente até você, pois é ele quem está precisando de você e isto vamos mostrar a ele!
                                     </p>
                                     <h3>
                                         <a href="@Url.Action("VemKa", "Home")" class="btn">Ler mais</a>
-                                    </h3>                      
+                                    </h3>
                                 </div>
                                 <div class="span5">
                                     <img src=@Url.Content("~/Content/img/breezi_placeit_Promocoes.png") class="thumbnail">
                                 </div>
-                            </div>                  
+                            </div>
                         </div>
                     </div>
-
                     <div class="item">
                         <div class="hero-unit">
                             <div class="row-fluid">
                                 <div class="span7 marketting-info">
-                                    <h1>A Lotus Tecnologia</h1>
+                                    <h1>
+                                        A Lotus Tecnologia</h1>
                                     <p>
-                                        É claro que a estrutura atual da organização agrega 
-                                        valor ao estabelecimento dos procedimentos normalmente adotados.
+                                        Nós da Lotus Tecnologia estamos prontos para uma parceria de sucesso.
                                     </p>
                                     <h3>
                                         <a href="#" class="btn">Ler mais</a>
-                                    </h3>                      
+                                    </h3>
                                 </div>
                                 <div class="span5">
                                     <img src=@Url.Content("~/Content/img/LogoLotusTecnologia.jpg") class="thumbnail">
                                 </div>
-                            </div>                  
+                            </div>
                         </div>
                     </div>
-                    
                     <div class="item">
                         <div class="hero-unit">
                             <div class="row-fluid">
                                 <div class="span7 marketting-info">
-                                    <h1>Métodologias de criação</h1>
+                                    <h1>
+                                        Métodologias de criação</h1>
                                     <p>
-                                        O empenho em analisar a contínua expansão de nossa atividade 
-                                        estende o alcance e a importância das formas de ação.
+                                        O empenho em analisar a contínua expansão de nossa atividade estende o alcance e
+                                        a importância das formas de ação.
                                     </p>
                                     <h3>
                                         <a href="#" class="btn">Ler mais</a>
-                                    </h3>                      
+                                    </h3>
                                 </div>
                                 <div class="span5">
                                     <img src=@Url.Content("~/Content/img/scrum.jpg")  class="thumbnail">
                                 </div>
-                            </div>                  
+                            </div>
                         </div>
                     </div>
- 
                 </div>
-                <a class="left carousel-control" href="#heroSlider" data-slide="prev">‹</a>
-                <a class="right carousel-control" href="#heroSlider" data-slide="next">›</a>
+                <a class="left carousel-control" href="#heroSlider" data-slide="prev">‹</a> <a class="right carousel-control"
+                    href="#heroSlider" data-slide="next">›</a>
             </div>
-
         </div>
     </div>
 </div>
