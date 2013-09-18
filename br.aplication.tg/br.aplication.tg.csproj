@@ -99,6 +99,7 @@
     <Content Include="Content\img\breezi_placeit_Promocoes.png" />
     <Content Include="Content\img\content.png" />
     <Content Include="Content\img\LotusTecnologia.png" />
+    <Content Include="Content\img\scrum-logo.jpg" />
     <Content Include="Content\img\scrum.jpg" />
     <Content Include="Content\img\vemka.jpg" />
     <Content Include="Content\img\glyphicons-halflings-white.png" />
@@ -226,6 +227,7 @@
     <Content Include="Views\Home\MetodologiaDesenvolvimento.cshtml" />
     <Content Include="Views\Home\FerramentasUtilizadas.cshtml" />
     <Content Include="Views\Home\Seguranca.cshtml" />
+    <Content Include="Views\Home\QuemSomos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\br.aplicacao.tg\br.aplicacao.tg.csproj">

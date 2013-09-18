@@ -23,6 +23,11 @@ namespace br.aplication.tg.Controllers
             return View();
         }
 
+        public ActionResult QuemSomos()
+        {
+            return View();
+        }
+
         public ActionResult Seguranca()
         {
             return View();
