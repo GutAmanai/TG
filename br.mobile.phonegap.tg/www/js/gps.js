@@ -8,7 +8,7 @@ document.addEventListener("deviceready", function () {
 var localizacao = {
     init: function () {
         localizacao.bind();
-        localizacao.adicionarRota();
+        localizacao.promocaoAcesso();
     },
 
     bind: function () {
@@ -28,11 +28,27 @@ var localizacao = {
             }
         });
         return dataReturn;
-    },
+    }
 
-    adicionarRota: function () {
-        var $dado = localizacao.obterDadosPromocao();        
-        //googleMaps.calculaRotaByLatLng(parseFloat($dado.Latitude), parseFloat($dado.Longitude));        
+    , promocaoAcesso: function () {
+        var idSelecionado = parseInt(window.localStorage.getItem("promocaoSelecionado"));
+        var url = 'http://localhost:9999/Promocao/PromocaoAcesso';
+
+        $.ajax({
+            type: 'GET',
+            url: url,
+            contentType: "application/json",
+            dataType: 'jsonp',
+            data: { idPromocao: idSelecionado },
+            crossDomain: true,
+            global: true,
+            success: function (res) {
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+            },
+            complete: function (data) {
+            }
+        });
     }
 };
 
@@ -53,7 +69,7 @@ var mapaPromocao = {
             var $dado = localizacao.obterDadosPromocao();
             googleMaps.calculaRotaByLatLng(parseFloat($dado.Latitude), parseFloat($dado.Longitude));
         });
-    }
+    }   
 };
 
 var googleMaps = {

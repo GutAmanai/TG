@@ -17,6 +17,7 @@ namespace br.aplicacao.tg.Servicos
         private readonly IRepositorioCliente _repositorioCliente;
         private readonly IRepositorioClientePromocao _repositorioClientePromocao;
         private readonly IRepositorioClienteLocalizacao _repositorioClienteLocalizacao;
+        private readonly IRepositorioPromocaoAcesso _repositorioPromocaoAcesso;
         private readonly ServicoImagem ServicoImagem;
 
         public ServicoPromocao(
@@ -24,7 +25,8 @@ namespace br.aplicacao.tg.Servicos
                                 IRepositorioPromocao repositorioPromocao,
                                 IRepositorioCliente repositorioCliente,
                                 IRepositorioClientePromocao repositorioClientePromocao,
-                                IRepositorioClienteLocalizacao repositorioClienteLocalizacao
+                                IRepositorioClienteLocalizacao repositorioClienteLocalizacao,
+                                IRepositorioPromocaoAcesso repositorioPromocaoAcesso
                              )
         {
 
@@ -33,6 +35,7 @@ namespace br.aplicacao.tg.Servicos
             _repositorioCliente = repositorioCliente;
             _repositorioClientePromocao = repositorioClientePromocao;
             _repositorioClienteLocalizacao = repositorioClienteLocalizacao;
+            _repositorioPromocaoAcesso = repositorioPromocaoAcesso;
             ServicoImagem = new ServicoImagem(); 
         }
 
@@ -76,16 +79,6 @@ namespace br.aplicacao.tg.Servicos
             }
         }
 
-        private Promocao ObterPromocaoPorId(int id)
-        {
-            return _repositorioPromocao.ObterPorId(id);
-        }
-        
-        private Cliente ObterClientePorId(int id)
-        {
-            return _repositorioCliente.ObterPorId(id);
-        }
-
         public DTORetornoPesquisaPromocao ObterDTOPromocao(DTOPesquisaPromocao pesquisaPromocao)
         {
             int NPaginas = 0;
@@ -111,19 +104,6 @@ namespace br.aplicacao.tg.Servicos
             clientePromocao.Localizacoes = listaPromocoes.SelectMany(x => ObterLocalizacao(x.Cliente.ClienteLocalizacao)).ToList();
             clientePromocao.Promocao = listaPromocoes.Select(ObterPromocaoPorClientePromocao).ToList();
             return clientePromocao;
-        }
-
-        private IEnumerable<DTOLocalizacao> ObterLocalizacao(IEnumerable<ClienteLocalizacao> clienteLocalizacao)
-        {
-            foreach (var localizacao in clienteLocalizacao)
-            {
-                yield return new DTOLocalizacao
-                                 {
-                                     IdLocalizacao = localizacao.Id,
-                                     Latitude = localizacao.Latitude,
-                                     Longitude = localizacao.Longitude
-                                 };
-            }
         }
 
         public DTOPromocao ObterPromocaoPorClientePromocao(ClientePromocao clientePromocao)
@@ -153,12 +133,28 @@ namespace br.aplicacao.tg.Servicos
             };
         }
 
-        public List<DTOPromocaoMobile> ObterLocalizacaoMobile(Posicao posicaoMobile)
+        public List<DTOPromocaoMobile> ObterPromocaoPorLocalizacao(Posicao posicaoMobile)
         {
             //var distanciaMax = Convert.ToDouble(ConfigurationManager.AppSettings["Distancia"]);
             var distanciaMax = 100000000000;
             var liClienteLocalizacao = _repositorioClienteLocalizacao.ObterTodos().Where(clienteLocalizacao => Haversine.Distance(posicaoMobile, clienteLocalizacao.Posicao, DistanceUnit.Kilometros) <= distanciaMax).ToList();
             return liClienteLocalizacao.SelectMany(ObterPromocaoPorClientePromocao).ToList();
+        }
+
+        public bool SalvarPromocaAcesso (int idPromocao)
+        {
+            try
+            {
+                var promocao = _repositorioPromocao.ObterPorId(idPromocao);
+                promocao.AdicionarAcesso(new PromocaoAcesso(promocao));
+                _repositorioPromocao.Alterar(promocao);
+                //_repositorioPromocaoAcesso.Adicionar(promocaoAcesso);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         private List<DTOPromocaoMobile> ObterPromocaoPorClientePromocao(ClienteLocalizacao clienteLocalizacao)
@@ -178,6 +174,24 @@ namespace br.aplicacao.tg.Servicos
                                                                            Latitude = clienteLocalizacao.Latitude,
                                                                            Longitude = clienteLocalizacao.Longitude
                                                                        }).ToList();
+        }
+
+        private IEnumerable<DTOLocalizacao> ObterLocalizacao(IEnumerable<ClienteLocalizacao> clienteLocalizacao)
+        {
+            foreach (var localizacao in clienteLocalizacao)
+            {
+                yield return new DTOLocalizacao
+                {
+                    IdLocalizacao = localizacao.Id,
+                    Latitude = localizacao.Latitude,
+                    Longitude = localizacao.Longitude
+                };
+            }
+        }
+        
+        private Promocao ObterPromocaoPorId(int id)
+        {
+            return _repositorioPromocao.ObterPorId(id);
         }
     }
 }

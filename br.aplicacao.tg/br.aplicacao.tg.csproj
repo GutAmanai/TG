@@ -52,6 +52,8 @@
     <Compile Include="DTO\DTOLocalizacao.cs" />
     <Compile Include="DTO\DTOPesquisaPromocao.cs" />
     <Compile Include="DTO\DTOPromocaoMobile.cs" />
+    <Compile Include="DTO\DTORelatorioAcesso\DTOAcessos.cs" />
+    <Compile Include="DTO\DTORelatorioAcesso\DTOPromocaoQuantidade.cs" />
     <Compile Include="DTO\DTORetornoPesquisaPromocao.cs" />
     <Compile Include="DTO\DTOUsuario.cs" />
     <Compile Include="DTO\DTOPromocao.cs" />
@@ -65,6 +67,7 @@
     <Compile Include="Servicos\ServicoImagem.cs" />
     <Compile Include="Servicos\ServicoLocalizacao.cs" />
     <Compile Include="Servicos\ServicoPromocao.cs" />
+    <Compile Include="Servicos\ServicoRelatorio.cs" />
     <Compile Include="Servicos\ServicoUsuario.cs" />
   </ItemGroup>
   <ItemGroup />
@@ -72,6 +75,10 @@
     <ProjectReference Include="..\br.dominio.tg\br.dominio.tg.csproj">
       <Project>{26F49F89-5A1A-4CFA-A790-801CAE64100B}</Project>
       <Name>br.dominio.tg</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\br.infra.tg\br.infra.tg.csproj">
+      <Project>{B15F1FA2-7C48-483D-9DC2-255174783CDA}</Project>
+      <Name>br.infra.tg</Name>
     </ProjectReference>
     <ProjectReference Include="..\br.persistencia.tg\br.persistencia.tg.csproj">
       <Project>{EAFE708B-6C6C-445C-BB8F-D6C7CD0B82E1}</Project>

@@ -70,6 +70,7 @@
     <Compile Include="Mapeamentos\ClientePromocaoMap.cs" />
     <Compile Include="Mapeamentos\ConsumidorMap.cs" />
     <Compile Include="Mapeamentos\EntidadeBaseMap.cs" />
+    <Compile Include="Mapeamentos\PromocaoAcessoMap.cs" />
     <Compile Include="Mapeamentos\PromocaoMap.cs" />
     <Compile Include="Mapeamentos\QualificacaoPromocaoMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="Repositorios\IUnidadeDeTrabalho.cs" />
     <Compile Include="Repositorios\RepositorioBase.cs" />
     <Compile Include="Repositorios\RepositorioCliente.cs" />
+    <Compile Include="Repositorios\RepositorioPromocaoAcesso.cs" />
     <Compile Include="Repositorios\RepositorioUsuario.cs" />
     <Compile Include="Repositorios\UnidadeDeTrabalho.cs" />
   </ItemGroup>

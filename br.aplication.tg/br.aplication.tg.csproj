@@ -67,6 +67,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\PromocaoController.cs" />
+    <Compile Include="Controllers\RelatorioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -177,6 +178,7 @@
     <Content Include="Scripts\Overlay\jquery.blockUI.js" />
     <Content Include="Scripts\Overlay\overlay.js" />
     <Content Include="Scripts\Promocao\cadastro-promocao.js" />
+    <Content Include="Scripts\Relatorio\RelatorioAcessos.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -228,6 +230,7 @@
     <Content Include="Views\Home\FerramentasUtilizadas.cshtml" />
     <Content Include="Views\Home\Seguranca.cshtml" />
     <Content Include="Views\Home\QuemSomos.cshtml" />
+    <Content Include="Views\Relatorio\QuantidadeAcesso.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\br.aplicacao.tg\br.aplicacao.tg.csproj">

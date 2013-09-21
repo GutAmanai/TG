@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using br.dominio.tg.Entidades;
+﻿using br.dominio.tg.Entidades;
 
 namespace br.persistencia.tg.Mapeamentos
 {
@@ -18,6 +14,7 @@ namespace br.persistencia.tg.Mapeamentos
             Map(x => x.ImagemUrl).Nullable();
 
             HasMany(x => x.ClientePromocao).Cascade.AllDeleteOrphan();
+            HasMany(x => x.PromocaoAcessos).Cascade.SaveUpdate();
         }
     }
 }

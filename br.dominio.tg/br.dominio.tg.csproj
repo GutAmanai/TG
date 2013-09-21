@@ -47,6 +47,7 @@
     <Compile Include="Entidades\EntidadeBase.cs" />
     <Compile Include="Entidades\Interfaces\IEntidadeBase.cs" />
     <Compile Include="Entidades\Promocao.cs" />
+    <Compile Include="Entidades\PromocaoAcesso.cs" />
     <Compile Include="Entidades\QualificacaoPromocao.cs" />
     <Compile Include="ObjetoValor\Posicao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -55,6 +56,7 @@
     <Compile Include="Repositorios\IRepositorioPromocao.cs" />
     <Compile Include="Repositorios\IRepositorioBase.cs" />
     <Compile Include="Repositorios\IRepositorioCliente.cs" />
+    <Compile Include="Repositorios\IRepositorioPromocaoAcesso.cs" />
     <Compile Include="Repositorios\IRepositorioUsuario.cs" />
     <Compile Include="Repositorios\IUnidadeTrabalho.cs" />
   </ItemGroup>

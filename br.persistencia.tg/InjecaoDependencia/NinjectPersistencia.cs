@@ -14,6 +14,7 @@ namespace br.persistencia.tg.InjecaoDependencia
             Bind<IRepositorioPromocao>().To<RepositorioPromocao>();
             Bind<IRepositorioClientePromocao>().To<RepositorioClientePromocao>();
             Bind<IRepositorioClienteLocalizacao>().To<RepositorioClienteLocalizacao>();
+            Bind<IRepositorioPromocaoAcesso>().To<RepositorioPromocaoAcesso>();
         }
     }
 }
