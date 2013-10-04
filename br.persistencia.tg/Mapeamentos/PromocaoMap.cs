@@ -10,7 +10,7 @@ namespace br.persistencia.tg.Mapeamentos
             
             Map(x => x.Nome);
             Map(x => x.DataEntrada);
-            Map(x => x.Descricao);
+            Map(x => x.Descricao).Length(500);
             Map(x => x.ImagemUrl).Nullable();
 
             HasMany(x => x.ClientePromocao).Cascade.AllDeleteOrphan();

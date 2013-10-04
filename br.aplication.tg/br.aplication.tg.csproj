@@ -99,9 +99,15 @@
     <Content Include="Content\img\adicionar.png" />
     <Content Include="Content\img\breezi_placeit_Promocoes.png" />
     <Content Include="Content\img\content.png" />
+    <Content Include="Content\img\github.jpg" />
+    <Content Include="Content\img\GoogleDrive.jpg" />
+    <Content Include="Content\img\hand.jpg" />
     <Content Include="Content\img\LotusTecnologia.png" />
+    <Content Include="Content\img\pango.png" />
+    <Content Include="Content\img\prezi.png" />
     <Content Include="Content\img\scrum-logo.jpg" />
     <Content Include="Content\img\scrum.jpg" />
+    <Content Include="Content\img\scrumy.png" />
     <Content Include="Content\img\vemka.jpg" />
     <Content Include="Content\img\glyphicons-halflings-white.png" />
     <Content Include="Content\img\glyphicons-halflings.png" />
@@ -110,6 +116,7 @@
     <Content Include="Content\img\placeholder-360x200.jpg" />
     <Content Include="Content\img\placeholder.jpg" />
     <Content Include="Content\img\relatorio.png" />
+    <Content Include="Content\img\VisualStudio2010.jpg" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />

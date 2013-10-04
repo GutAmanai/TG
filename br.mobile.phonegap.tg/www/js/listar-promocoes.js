@@ -47,7 +47,8 @@ var listarPromocoes = {
                 listarPromocoes.bind();
             },
             error: function (xhr, ajaxOptions, thrownError) {
-                $('.lista-promocoes').append("<div class='row'> <h1>Erro: De acesso, verifique a sua conex&atildeo de dados.</h1></div>");
+                $('.lista-promocoes').empty();
+                $('.lista-promocoes').append("<div class='row'> <h4>Erro: De acesso, verifique a sua conex&atildeo de dados.</h4></div>");
             },
             complete: function (data) {
                 overlay.close();
@@ -56,7 +57,12 @@ var listarPromocoes = {
     }
 
     , geraLista: function (data) {
+        $('.lista-promocoes').empty();
         window.localStorage.setItem("listagemPromocao", JSON.stringify(data));
+
+        if(data.length == 0) {
+            $('.lista-promocoes').append("<div class='row'> <h4>N&atildeo foi encontrado nenhuma promoc&atildeo.</h4></div>");
+        }
 
         for (i = 0; i < data.length; i++) {
             $('.lista-promocoes').append(
@@ -74,6 +80,8 @@ var listarPromocoes = {
                 '			<div class="control-group">																		' +
                 '				<div class="controls">																		' +
                 '					<label>' + data[i].DescricaoPromocao + '</label>    									' +
+                '                   <br/ >                                                                                  ' +
+                '					<label> Validade: ' + data[i].Validade + '</label>    									' +
                 '				</div>																						' +
                 '			</div>																							' +
                 '	    </div>																						        ' +
@@ -83,7 +91,12 @@ var listarPromocoes = {
     }
 
     , geraListaCache: function () {
+        $('.lista-promocoes').empty();
         var data = JSON.parse(window.localStorage.getItem("listagemPromocao"));
+
+        if (data.length == 0) {
+            $('.lista-promocoes').append("<div class='row'> <h4>N&atildeo foi encontrado nenhuma promoc&atildeo.</h4></div>");
+        }
 
         for (i = 0; i < data.length; i++) {
             $('.lista-promocoes').append(
@@ -101,6 +114,8 @@ var listarPromocoes = {
                 '			<div class="control-group">																		' +
                 '				<div class="controls">																		' +
                 '					<label>' + data[i].DescricaoPromocao + '</label>    									' +
+                '                   <br/ >                                                                                  ' +
+                '					<label> Validade: ' + data[i].Validade + '</label>    									' +
                 '				</div>																						' +
                 '			</div>																							' +
                 '	    </div>																						        ' +

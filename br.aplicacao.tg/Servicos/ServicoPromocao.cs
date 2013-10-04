@@ -135,8 +135,7 @@ namespace br.aplicacao.tg.Servicos
 
         public List<DTOPromocaoMobile> ObterPromocaoPorLocalizacao(Posicao posicaoMobile)
         {
-            //var distanciaMax = Convert.ToDouble(ConfigurationManager.AppSettings["Distancia"]);
-            var distanciaMax = 100000000000;
+            var distanciaMax = Convert.ToDouble(ConfigurationManager.AppSettings["Distancia"]);
             var liClienteLocalizacao = _repositorioClienteLocalizacao.ObterTodos().Where(clienteLocalizacao => Haversine.Distance(posicaoMobile, clienteLocalizacao.Posicao, DistanceUnit.Kilometros) <= distanciaMax).ToList();
             return liClienteLocalizacao.SelectMany(ObterPromocaoPorClientePromocao).ToList();
         }
@@ -162,18 +161,23 @@ namespace br.aplicacao.tg.Servicos
             if(!clienteLocalizacao.Cliente.ClientePromocao.Any())
                 return new List<DTOPromocaoMobile>();
 
-            return clienteLocalizacao.Cliente.ClientePromocao.Select(x => new DTOPromocaoMobile()
-                                                                       {
-                                                                           IdEmpresa = x.Cliente.Id,
-                                                                           IdPromocao = x.Promocao.Id,
-                                                                           UrlEmpresa = ServicoImagem.RecuperaImagemCliente(x.Cliente.Id),
-                                                                           UrlPromocao = ServicoImagem.RecuperaImagemPromocao(x.Cliente.Id, x.Promocao.Id),
-                                                                           NomeEmpresa = x.Cliente.Nome,
-                                                                           NomePromocao = x.Promocao.Nome,
-                                                                           DescricaoPromocao = x.Promocao.Descricao,
-                                                                           Latitude = clienteLocalizacao.Latitude,
-                                                                           Longitude = clienteLocalizacao.Longitude
-                                                                       }).ToList();
+            return clienteLocalizacao
+                        .Cliente
+                        .ClientePromocao
+                        .Where(x => x.DataLiberacao <= DateTime.Now && x.DataExpiracao > DateTime.Now )
+                        .Select(x => new DTOPromocaoMobile()
+                            {
+                                IdEmpresa = x.Cliente.Id,
+                                IdPromocao = x.Promocao.Id,
+                                UrlEmpresa = ServicoImagem.RecuperaImagemCliente(x.Cliente.Id),
+                                UrlPromocao = ServicoImagem.RecuperaImagemPromocao(x.Cliente.Id, x.Promocao.Id),
+                                NomeEmpresa = x.Cliente.Nome,
+                                NomePromocao = x.Promocao.Nome,
+                                DescricaoPromocao = x.Promocao.Descricao,
+                                Latitude = clienteLocalizacao.Latitude,
+                                Longitude = clienteLocalizacao.Longitude,
+                                Validade = x.DataExpiracao.ToString("dd/MM/yyyy HH:mm:ss")
+                            }).ToList();
         }
 
         private IEnumerable<DTOLocalizacao> ObterLocalizacao(IEnumerable<ClienteLocalizacao> clienteLocalizacao)
