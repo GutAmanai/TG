@@ -48,7 +48,7 @@ var listarPromocoes = {
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 $('.lista-promocoes').empty();
-                $('.lista-promocoes').append("<div class='row'> <h4>Erro: De acesso, verifique a sua conex&atildeo de dados.</h4></div>");
+                $('.lista-promocoes').append("<div class='row'> <h4>Erro: De acesso, verifique a sua conex&atilde;o de internet.</h4></div>");
             },
             complete: function (data) {
                 overlay.close();
@@ -61,7 +61,7 @@ var listarPromocoes = {
         window.localStorage.setItem("listagemPromocao", JSON.stringify(data));
 
         if(data.length == 0) {
-            $('.lista-promocoes').append("<div class='row'> <h4>N&atildeo foi encontrado nenhuma promoc&atildeo.</h4></div>");
+            $('.lista-promocoes').append("<div class='row'> <h4>N&atilde;o foram encontradas promo&ccedil;&otilde;es.</h4></div>");
         }
 
         for (i = 0; i < data.length; i++) {
@@ -95,7 +95,7 @@ var listarPromocoes = {
         var data = JSON.parse(window.localStorage.getItem("listagemPromocao"));
 
         if (data.length == 0) {
-            $('.lista-promocoes').append("<div class='row'> <h4>N&atildeo foi encontrado nenhuma promoc&atildeo.</h4></div>");
+            $('.lista-promocoes').append("<div class='row'> <h4>N&atilde;o foram encontradas promo&ccedil;&otilde;es.</h4></div>");
         }
 
         for (i = 0; i < data.length; i++) {

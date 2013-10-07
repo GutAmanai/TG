@@ -28,7 +28,7 @@ namespace br.aplicacao.tg.DTO
 
         public string AtivoToString
         {
-            get { return Ativo ? "Ativo" : "Desativado"; }
+            get { return Ativo ? "Ativo" : "Desativo"; }
         }
 
         public string DataLiberacaoFormatada

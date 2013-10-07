@@ -142,6 +142,7 @@ var cadastroPromocao = {
             showMonthAfterYear: false,
             yearSuffix: '',
             timeText: 'Tempo',
+            showTime: false,
             hourText: 'Hora',
             minuteText: 'Minuto',
             timeFormat: 'HH:mm:ss',
