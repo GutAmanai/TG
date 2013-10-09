@@ -185,6 +185,8 @@
     <Content Include="Scripts\Overlay\jquery.blockUI.js" />
     <Content Include="Scripts\Overlay\overlay.js" />
     <Content Include="Scripts\Promocao\cadastro-promocao.js" />
+    <Content Include="Scripts\Relatorio\exporting.js" />
+    <Content Include="Scripts\Relatorio\highcharts.js" />
     <Content Include="Scripts\Relatorio\RelatorioAcessos.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

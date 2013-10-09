@@ -32,7 +32,8 @@ namespace br.aplicacao.tg.Servicos
                             Nome = x.Promocao.Nome,
                             Acessos = x.Promocao.PromocaoAcessos
                                                     .GroupBy(y => y.DataEntrada.Date)
-                                                    .Select(y => new DTOAcessos( y.Count(), y.Key)).ToList()
+                                                    .Select(y => new DTOAcessos( y.Count(), y.Key))
+                                                    .OrderBy(y => y.Data).ToList()
                         }
                 )
                 .ToList();
