@@ -334,10 +334,10 @@ var cadastroPromocao = {
                 }
             },
             failure: function (msg, status) {
-                jAlert("Não possivel fazer a pesquisa!", "Atenção");
+                jAlert("Não foi possível fazer a pesquisa!", "Atenção");
             },
             error: function (msg, status) {
-                jAlert("Não possivel fazer a pesquisa!", "Atenção");
+                jAlert("Não foi possível fazer a pesquisa!", "Atenção");
             },
             complete: function () {
                 overlay.close();

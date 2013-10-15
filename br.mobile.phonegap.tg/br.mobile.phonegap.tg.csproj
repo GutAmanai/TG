@@ -173,7 +173,6 @@
     <Content Include="www\css\gps.css" />
     <Content Include="www\css\jquery-ui-1.10.3.custom.min.css" />
     <Content Include="www\css\mapa.css" />
-    <Content Include="www\data.txt" />
     <Content Include="www\gps.html" />
     <Content Include="www\img\ajax-loader.gif" />
     <Content Include="www\img\logoVemKa.png" />
@@ -187,8 +186,6 @@
     <Content Include="www\js\gps.js" />
     <Content Include="www\js\jquery-ui-1.10.3.custom.min.js" />
     <Content Include="www\js\listar-promocoes.js" />
-    <Content Include="www\post.html" />
-    <Content Include="www\tela.html" />
     <Content Include="www\index.html" />
     <Content Include="config.xml" />
     <Content Include="resources\notification-beep.wav" />
@@ -211,11 +208,8 @@
     <Content Include="www\bootstrap\js\bootstrap.min.js" />
     <Content Include="www\js\cordova-2.5.0.js" />
     <Content Include="www\css\listar-promocoes.css" />
-    <Content Include="www\fileReader.html" />
     <Content Include="www\js\index.js" />
     <Content Include="www\mapa.html" />
-    <Content Include="www\readme.txt" />
-    <Content Include="www\scanner.html" />
     <Content Include="www\splashscreen.html" />
     <None Include="VERSION" />
     <Resource Include="cordovalib\Images\appbar.back.rest.png" />
