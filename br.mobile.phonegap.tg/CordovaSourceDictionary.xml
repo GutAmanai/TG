@@ -8,6 +8,8 @@
     <FilePath Value="www\img\ajax-loader.gif"/>
     <FilePath Value="www\img\logoVemKa.png"/>
     <FilePath Value="www\img\logoLotus.png"/>
+    <FilePath Value="www\js\maps.api-3.js"/>
+    <FilePath Value="www\js\jquery.mobile-1.2.0.min.js"/>
     <FilePath Value="www\js\jquery-ui-1.10.3.min.js"/>
     <FilePath Value="www\js\jquery.blockUI.js"/>
     <FilePath Value="www\js\jquery.ui.draggable.js"/>

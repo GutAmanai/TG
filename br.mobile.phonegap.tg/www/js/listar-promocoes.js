@@ -27,7 +27,9 @@ var listarPromocoes = {
 
     , chamadaServidor: function (latitude, longitude) {
 
-        var url = 'http://localhost:9999/Promocao/ListarPromocao';
+        var url = 'http://www.lotustg.com.br/Promocao/PromocaoAcesso';
+        //online  http://www.lotustg.com.br/Promocao/PromocaoAcesso
+        //offline http://localhost:9999/Promocao/PromocaoAcesso
 
         $('li').remove();
 
@@ -126,7 +128,6 @@ var listarPromocoes = {
         listarPromocoes.bind();
     }
 };
-
 
 var gps = {
     latitude: 0.0,

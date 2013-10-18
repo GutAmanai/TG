@@ -78,10 +78,6 @@
   <ItemGroup>
     <Content Include="Arquivos\Cliente\cliente-default.png" />
     <Content Include="Arquivos\Promocao\icon_image.png" />
-    <Content Include="Arquivos\Promocao\Min\10.jpg" />
-    <Content Include="Arquivos\Promocao\Min\9.jpg" />
-    <Content Include="Arquivos\Promocao\Normal\10.jpg" />
-    <Content Include="Arquivos\Promocao\Normal\9.jpg" />
     <Content Include="Content\css\boot-business.css" />
     <Content Include="Content\css\bootstrap-responsive.css" />
     <Content Include="Content\css\bootstrap-responsive.min.css" />
@@ -90,7 +86,9 @@
     <Content Include="Content\css\crop.css" />
     <Content Include="Content\css\DT_bootstrap.css" />
     <Content Include="Content\css\font-awesome-ie7.css" />
+    <Content Include="Content\css\font-awesome-ie7.min.css" />
     <Content Include="Content\css\font-awesome.css" />
+    <Content Include="Content\css\font-awesome.min.css" />
     <Content Include="Content\css\geral.css" />
     <Content Include="Content\css\jqpagination.css" />
     <Content Include="Content\css\jquery-ui.css" />
@@ -102,6 +100,7 @@
     <Content Include="Content\img\github.jpg" />
     <Content Include="Content\img\GoogleDrive.jpg" />
     <Content Include="Content\img\hand.jpg" />
+    <Content Include="Content\img\LogoLotusTecnologia.jpg" />
     <Content Include="Content\img\LotusTecnologia.png" />
     <Content Include="Content\img\pango.png" />
     <Content Include="Content\img\prezi.png" />
@@ -215,6 +214,8 @@
   <ItemGroup>
     <Folder Include="Arquivos\Cliente\Min\" />
     <Folder Include="Arquivos\Cliente\Normal\" />
+    <Folder Include="Arquivos\Promocao\Min\" />
+    <Folder Include="Arquivos\Promocao\Normal\" />
     <Folder Include="Arquivos\Temp\Promocao\" />
     <Folder Include="Models\" />
     <Folder Include="Scripts\Home\" />
@@ -240,6 +241,25 @@
     <Content Include="Views\Home\Seguranca.cshtml" />
     <Content Include="Views\Home\QuemSomos.cshtml" />
     <Content Include="Views\Relatorio\QuantidadeAcesso.cshtml" />
+    <None Include="Content\font\FontAwesome.otf" />
+    <None Include="Content\less\bootstrap.less" />
+    <None Include="Content\less\core.less" />
+    <None Include="Content\less\extras.less" />
+    <None Include="Content\less\font-awesome-ie7.less" />
+    <None Include="Content\less\font-awesome.less" />
+    <None Include="Content\less\icons.less" />
+    <None Include="Content\less\mixins.less" />
+    <None Include="Content\less\path.less" />
+    <None Include="Content\less\variables.less" />
+    <None Include="Content\scss\font-awesome-ie7.scss" />
+    <None Include="Content\scss\font-awesome.scss" />
+    <None Include="Content\scss\_bootstrap.scss" />
+    <None Include="Content\scss\_core.scss" />
+    <None Include="Content\scss\_extras.scss" />
+    <None Include="Content\scss\_icons.scss" />
+    <None Include="Content\scss\_mixins.scss" />
+    <None Include="Content\scss\_path.scss" />
+    <None Include="Content\scss\_variables.scss" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\br.aplicacao.tg\br.aplicacao.tg.csproj">

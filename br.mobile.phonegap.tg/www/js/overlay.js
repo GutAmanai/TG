@@ -5,7 +5,7 @@ var overlay = {
             border: 'none',
             padding: '15px',
             backgroundColor: '#000', '-webkit-border-radius': '10px', '-moz-border-radius': '10px',
-            opacity: .5,
+            opacity: .8,
             color: '#fff'
         },
         message: '<h4>Por favor, aguarde...</h4>'
