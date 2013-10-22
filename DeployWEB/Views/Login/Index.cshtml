@@ -1,0 +1,44 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "../Shared/_Layout.cshtml";
+}
+
+@section head
+{
+    <script src="@Url.Content("~/Scripts/Login/login-cliente.js")" type="text/javascript"></script>
+}
+
+<div class="content">
+    <div class="container">
+        <div class="page-header">
+            <h1>Identificação :D</h1>
+        </div>
+        <div class="row">
+            <div class="span6 offset3">
+                <h4 class="widget-header">
+                    <i class=" icon-thumbs-up"></i> Login
+                </h4>
+                <div class="widget-body">
+                    <div class="center-align">
+                        <form class="form-horizontal form-signin-signup">
+                            <input type="text" name="email" placeholder="Email" class="email">
+                            <input type="password" name="password" placeholder="Password" class="senha">
+                            <div class="remember-me">
+                                <div class="pull-right">
+                                    <a href="#">Esqueci minha senha</a>
+                                </div>
+                                <br />
+                                <div class="clearfix"></div>
+                            </div>
+                            <a class="btn btn-primary btn-large logar">Logar</a>
+                        </form>                        
+                        <a href="@Url.Action("Cadastro", "Cliente")" class="btn btn-large bottom-space">Cadastre-se</a>                       
+                    </div>                           
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
