@@ -95,7 +95,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\20130816_Script.txt" />
-    <Content Include="Scripts\20131024_Script.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
