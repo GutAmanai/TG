@@ -30,8 +30,9 @@ namespace br.aplicacao.tg.Servicos
                 }
                 return urlSistema + "/Arquivos/Promocao/icon_image.png";
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                ExceptionCustom.Log(ex);
                 return urlSistema + "/Arquivos/Promocao/icon_image.png";
             }
         }
@@ -52,8 +53,9 @@ namespace br.aplicacao.tg.Servicos
                 }
                 return urlSistema + "/Arquivos/Cliente/cliente-default.png";
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                ExceptionCustom.Log(ex);
                 return urlSistema + "~/Arquivos/Cliente/cliente-default.png";
             }
         }

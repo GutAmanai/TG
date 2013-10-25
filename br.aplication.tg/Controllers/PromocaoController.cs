@@ -47,8 +47,9 @@ namespace br.aplication.tg.Controllers
                 }
                 return Json(false);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                ExceptionCustom.Log(ex);
                 return Json(false);
             }
         }
@@ -82,7 +83,7 @@ namespace br.aplication.tg.Controllers
         {
             if (Request.Files.Count > 0)
             {
-                string tempPath = Server.MapPath("~/Arquivos/Promocao/Temp/");
+                string tempPath = Server.MapPath("/Arquivos/Promocao/Temp/");
 
                 var stream = Request.Files[0].InputStream;
                 byte[] file = new byte[stream.Length];

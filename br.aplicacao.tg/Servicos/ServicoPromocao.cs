@@ -73,8 +73,9 @@ namespace br.aplicacao.tg.Servicos
 
                 return ObterPromocaoPorClientePromocao(clientePromocao);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                ExceptionCustom.Log(ex);
                 return null;
             }
         }
@@ -150,8 +151,9 @@ namespace br.aplicacao.tg.Servicos
                 //_repositorioPromocaoAcesso.Adicionar(promocaoAcesso);
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                ExceptionCustom.Log(ex);
                 return false;
             }
         }

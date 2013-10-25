@@ -58,6 +58,7 @@
     <Compile Include="DTO\DTOUsuario.cs" />
     <Compile Include="DTO\DTOPromocao.cs" />
     <Compile Include="DTO\DTOQualificacaoPromocao.cs" />
+    <Compile Include="Helper\ExceptionCustom.cs" />
     <Compile Include="Helper\Haversine.cs" />
     <Compile Include="Helper\PageExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

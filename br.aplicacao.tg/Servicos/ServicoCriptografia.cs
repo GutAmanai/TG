@@ -68,7 +68,8 @@ namespace br.aplicacao.tg.Servicos
             }
             catch (Exception ex)
             {
-                // Se algum erro ocorrer, dispara a exceção            
+                // Se algum erro ocorrer, dispara a exceção
+                ExceptionCustom.Log(ex);
                 throw new ApplicationException("Erro ao criptografar", ex);
             }
         }
@@ -124,6 +125,7 @@ namespace br.aplicacao.tg.Servicos
             catch (Exception ex)
             {
                 // Se algum erro ocorrer, dispara a exceção            
+                ExceptionCustom.Log(ex);
                 throw new ApplicationException("Erro ao descriptografar", ex);
             }
         }

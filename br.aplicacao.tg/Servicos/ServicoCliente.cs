@@ -87,8 +87,9 @@ namespace br.aplicacao.tg.Servicos
                 }
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                ExceptionCustom.Log(ex);
                 return false;
             }
         }

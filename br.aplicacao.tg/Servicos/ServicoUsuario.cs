@@ -49,9 +49,9 @@ namespace br.aplicacao.tg.Servicos
 
                 return ObterUsuario(objUsuario.Email);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                
+                ExceptionCustom.Log(ex);
                 throw;
             }    
         }

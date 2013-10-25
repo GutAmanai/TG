@@ -9,6 +9,8 @@ using System.Web.Script.Serialization;
 using br.aplicacao.tg.DTO;
 using br.aplicacao.tg.Servicos;
 using br.infra.tg.InjecaoDependencia;
+using System.Web.Services;
+using System.Web.Script.Services;
 
 namespace br.aplication.tg.Controllers
 {
@@ -19,7 +21,7 @@ namespace br.aplication.tg.Controllers
 
         public ClienteController()
         {
-            ServicoCliente = Fabrica.Instancia.Obter<ServicoCliente>();
+            ServicoCliente = Fabrica.Instancia.Obter<ServicoCliente>();         
         }
 
         public ActionResult Cadastro()
@@ -34,7 +36,7 @@ namespace br.aplication.tg.Controllers
         {
             ViewBag.Alterar = true;
             ViewBag.FotoCliente = RecuperaFotoCliente(id);
-            return View("Cadastro",ServicoCliente.ObterDTOCliente(id));
+            return View("Cadastro", ServicoCliente.ObterDTOCliente(id));
         }
 
         public ActionResult Salvar(string configuracao)
@@ -50,8 +52,9 @@ namespace br.aplication.tg.Controllers
                 }
                 return Json(false);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                ExceptionCustom.Log(ex);
                 return Json(false);
             }
         }
@@ -64,14 +67,14 @@ namespace br.aplication.tg.Controllers
         #region Salvar Imagem
         private bool SalvarImagemFinal(int idCliente, string tempImg, string extension)
         {
-            if(!string.IsNullOrEmpty(tempImg))
+            if (!string.IsNullOrEmpty(tempImg))
             {
                 var caminhoFotosMin = Server.MapPath("~/Arquivos/Cliente/Min/");
                 var caminhoFotosNormal = Server.MapPath("~/Arquivos/Cliente/Normal/");
                 var caminhoFotosTemp = Server.MapPath("~/Arquivos/Temp/");
-                
+
                 var arquivos = Directory.GetFiles(caminhoFotosTemp);
-            
+
                 var filePath = "";
                 if (arquivos.Count(a => Path.GetFileNameWithoutExtension(a) == tempImg) > 0)
                     filePath = arquivos.FirstOrDefault(a => Path.GetFileNameWithoutExtension(a) == tempImg);
@@ -101,10 +104,10 @@ namespace br.aplication.tg.Controllers
                     stream.CopyTo(memoryStream);
                     file = memoryStream.ToArray();
                 }
-                if (!Directory.Exists(tempPath)) 
+                if (!Directory.Exists(tempPath))
                     Directory.CreateDirectory(tempPath);
 
-                if (string.IsNullOrEmpty(tempName) || tempName.ToLower() == "undefined".ToLower()) 
+                if (string.IsNullOrEmpty(tempName) || tempName.ToLower() == "undefined".ToLower())
                     tempName = Convert.ToString(Guid.NewGuid());
 
                 string extension = "." + ext;
@@ -124,8 +127,9 @@ namespace br.aplication.tg.Controllers
             {
                 return SalvarImagem(imagem, maxLargura, maxAltura, RecuperaFormatoImagem(formatoImagem), pastaDestino);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                ExceptionCustom.Log(ex);
                 throw new Exception("Erro ao redimensionar a imagem");
             }
         }
@@ -187,8 +191,9 @@ namespace br.aplication.tg.Controllers
                 }
                 return VirtualPathUtility.ToAbsolute("~/Arquivos/Cliente/cliente-default.png");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                ExceptionCustom.Log(ex);
                 return VirtualPathUtility.ToAbsolute("~/Arquivos/Cliente/cliente-default.png");
             }
         }
