@@ -71,7 +71,7 @@ namespace br.persistencia.tg.Infra
         {
             if (instance.OtherSide != null)
                 if (string.IsNullOrWhiteSpace(((IKeyInspector)instance.Key).ForeignKey))
-                    instance.Key.ForeignKey(string.Format("FK_{0}_{1}", instance.OtherSide.EntityType.Name, instance.EntityType.Name));
+                    instance.Key.ForeignKey(string.Format("fk_{0}_{1}", instance.OtherSide.EntityType.Name, instance.EntityType.Name));
         }
     }
 
@@ -93,7 +93,7 @@ namespace br.persistencia.tg.Infra
         {
             if (instance.OtherSide != null)
                 if (string.IsNullOrWhiteSpace(((IKeyInspector)instance.Key).ForeignKey))
-                    instance.Key.ForeignKey(string.Format("FK_{0}_{1}", instance.OtherSide.EntityType.Name, instance.EntityType.Name));
+                    instance.Key.ForeignKey(string.Format("fk_{0}_{1}", instance.OtherSide.EntityType.Name, instance.EntityType.Name));
         }
     }
 

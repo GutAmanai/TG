@@ -6,7 +6,7 @@ namespace br.persistencia.tg.Mapeamentos
     {
         public PromocaoAcessoMap()
         {
-            Table("PromocaoAcesso");
+            Table("promocaoacesso");
             Map(x => x.DataEntrada);
             References(x => x.Promocao).Cascade.SaveUpdate();
         }

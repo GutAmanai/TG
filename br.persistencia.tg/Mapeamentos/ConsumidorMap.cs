@@ -10,7 +10,7 @@ namespace br.persistencia.tg.Mapeamentos
     {
         public UsuarioMap()
         {
-            Table("Usuario");
+            Table("usuario");
             Map(x => x.Nome);
             Map(x => x.DataEntrada);
             Map(x => x.Email).Unique();

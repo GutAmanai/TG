@@ -1,0 +1,47 @@
+﻿body {
+}
+
+header {
+    padding-bottom: 35px;
+}
+
+/* ---------------------------- Error ---------------------------------- */
+.error 
+{
+    display: none;
+    font-weight: lighter;
+    padding-bottom: 0px;
+    color: #b86056;
+}
+
+.menu .thumbnail img {
+    width: 50%;
+}
+
+/* ---------------------------- Google Maps ---------------------------------- */
+#map_canvas{
+    height: 80%;
+}
+        
+.mapa{
+    height: 400px;
+}
+
+.foto{
+    float: right;
+}
+
+.btn-group .btn {
+    width: 100px;
+}
+
+.page-header.segundo {
+    margin-top: 50px;
+}
+
+.logo-ferramenta {
+    width: 60px; 
+    height: 60px;
+    float: left;
+    margin-right: 30px;
+}

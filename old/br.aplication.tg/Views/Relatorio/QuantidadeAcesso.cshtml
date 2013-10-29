@@ -1,0 +1,31 @@
+﻿@model int
+
+@{
+    ViewBag.Title = "Relatórios";
+    Layout = "../Shared/_Layout.cshtml";
+}
+
+@section head{
+
+    <script type="text/javascript" src="@Url.Content("~/Scripts/Relatorio/highcharts.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/Relatorio/exporting.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/Relatorio/RelatorioAcessos.js")"></script>
+    
+
+    <script id="container-relatorio-template" type="text/x-jsrender">
+        <div class="row well" style="min-width: 310px; height: 400px; margin: 20px 0px auto" id="{{:IdPromocao}}">
+        </div>
+    </script>    
+}
+
+
+<div class="container">
+    <input type="hidden" id="id-cliente" value="@Model"/>
+    
+    <div class="page-header">
+        <h1>Retatórios das Promoções</h1>
+    </div>
+    
+    <div class="relatorios">
+    </div>
+</div>

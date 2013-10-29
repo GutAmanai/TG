@@ -6,7 +6,7 @@ namespace br.persistencia.tg.Mapeamentos
     {
         public ClientePromocaoMap()
         {
-            Table("ClientePromocao");
+            Table("clientepromocao");
             
             Map(x => x.DataLiberacao);
             Map(x => x.DataExpiracao);

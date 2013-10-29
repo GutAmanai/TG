@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="br.dominio.tg.Entidades.Cliente">
+    <Position X="3.75" Y="3.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAQCAAEAAAgAAAAAAAACgAgAACIAAAAAEAAAA=</HashCode>
+      <FileName>Entidades\Cliente.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="_clientePromocao" />
+      <Property Name="ClientePromocao" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="br.dominio.tg.Entidades.ClientePromocao">
+    <Position X="9" Y="3.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAEAAAAAAAAAGAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entidades\ClientePromocao.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="br.dominio.tg.Entidades.Consumidor">
+    <Position X="15" Y="3.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQCgAEAAAAAAAAAAAACAAAAAIAAAAAAEAAAA=</HashCode>
+      <FileName>Entidades\Consumidor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="br.dominio.tg.Entidades.EntidadeBase">
+    <Position X="10" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAgAAAAAAAAAAAAIAAAAAAAAAABiA=</HashCode>
+      <FileName>Entidades\EntidadeBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="br.dominio.tg.Entidades.Promocao">
+    <Position X="6.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAQEABAAAAAAAIAAAAAAAAgAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Entidades\Promocao.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="_clientePromocao" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="br.dominio.tg.Entidades.QualificacaoPromocao">
+    <Position X="12.25" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAAAAAAAAAAAgAAAAAgAAAABAAA=</HashCode>
+      <FileName>Entidades\QualificacaoPromocao.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ClientePromocao" />
+      <Property Name="Consumidor" />
+    </ShowAsAssociation>
+  </Class>
+  <Interface Name="br.dominio.tg.Entidades.Interfaces.IEntidadeBase">
+    <Position X="14" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAgAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entidades\Interfaces\IEntidadeBase.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="br.dominio.tg.Repositorios.IRepositorioBase&lt;T&gt;">
+    <Position X="4.5" Y="7.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>IAAAASQAAAAAAAAgAAFABAQAAAAAAAAAAAAAAIAQAAA=</HashCode>
+      <FileName>Repositorios\IRepositorioBase.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="br.dominio.tg.Repositorios.IRepositorioCliente">
+    <Position X="3.25" Y="11.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositorios\IRepositorioCliente.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="br.dominio.tg.Repositorios.IRepositorioConsumidor">
+    <Position X="5.75" Y="11.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositorios\IRepositorioConsumidor.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="br.dominio.tg.Repositorios.IUnidadeTrabalho">
+    <Position X="15.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositorios\IUnidadeTrabalho.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

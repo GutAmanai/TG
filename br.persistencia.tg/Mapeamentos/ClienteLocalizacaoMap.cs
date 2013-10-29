@@ -6,7 +6,7 @@ namespace br.persistencia.tg.Mapeamentos
     {
         public ClienteLocalizacaoMap()
         {
-            Table("ClienteLocalizacao");
+            Table("clientelocalizacao");
             Map(x => x.DataEntrada);
             Map(x => x.Latitude);
             Map(x => x.Longitude);

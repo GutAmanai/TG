@@ -10,7 +10,7 @@ namespace br.persistencia.tg.Mapeamentos
     {
         public QualificacaoPromocaoMap()
         {
-            Table("QualificacaoPromocao");
+            Table("qualificacaopromocao");
             Map(x => x.Gostou);
             Map(x => x.DataEntrada);
             References(x => x.ClientePromocao);

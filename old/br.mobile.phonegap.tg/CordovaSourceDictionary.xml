@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This file is auto-generated, do not edit! -jm -->
+<CordovaSourceDictionary>
+    <FilePath Value="www\css\gps.css"/>
+    <FilePath Value="www\css\jquery-ui-1.10.3.custom.min.css"/>
+    <FilePath Value="www\css\mapa.css"/>
+    <FilePath Value="www\gps.html"/>
+    <FilePath Value="www\img\ajax-loader.gif"/>
+    <FilePath Value="www\img\logoVemKa.png"/>
+    <FilePath Value="www\img\logoLotus.png"/>
+    <FilePath Value="www\js\maps.api-3.js"/>
+    <FilePath Value="www\js\jquery.mobile-1.2.0.min.js"/>
+    <FilePath Value="www\js\jquery-ui-1.10.3.min.js"/>
+    <FilePath Value="www\js\jquery.blockUI.js"/>
+    <FilePath Value="www\js\jquery.ui.draggable.js"/>
+    <FilePath Value="www\js\overlay.js"/>
+    <FilePath Value="www\js\jquery-2.0.3.min.js"/>
+    <FilePath Value="www\js\gps.js"/>
+    <FilePath Value="www\js\jquery-ui-1.10.3.custom.min.js"/>
+    <FilePath Value="www\js\listar-promocoes.js"/>
+    <FilePath Value="www\index.html"/>
+    <FilePath Value="www\arquivos\readme.txt"/>
+    <FilePath Value="www\assets\css\bootstrap-responsive.css"/>
+    <FilePath Value="www\assets\css\bootstrap-responsive.min.css"/>
+    <FilePath Value="www\assets\css\bootstrap.css"/>
+    <FilePath Value="www\assets\css\bootstrap.min.css"/>
+    <FilePath Value="www\assets\img\glyphicons-halflings-white.png"/>
+    <FilePath Value="www\assets\img\glyphicons-halflings.png"/>
+    <FilePath Value="www\assets\js\bootstrap.js"/>
+    <FilePath Value="www\assets\js\bootstrap.min.js"/>
+    <FilePath Value="www\bootstrap\css\bootstrap-responsive.css"/>
+    <FilePath Value="www\bootstrap\css\bootstrap-responsive.min.css"/>
+    <FilePath Value="www\bootstrap\css\bootstrap.css"/>
+    <FilePath Value="www\bootstrap\css\bootstrap.min.css"/>
+    <FilePath Value="www\bootstrap\js\bootstrap.js"/>
+    <FilePath Value="www\bootstrap\js\bootstrap.min.js"/>
+    <FilePath Value="www\js\cordova-2.5.0.js"/>
+    <FilePath Value="www\css\listar-promocoes.css"/>
+    <FilePath Value="www\js\index.js"/>
+    <FilePath Value="www\mapa.html"/>
+    <FilePath Value="www\splashscreen.html"/>
+    <FilePath Value="www\css\index.css"/>
+</CordovaSourceDictionary>

@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <!-- Scripts -->
+        <script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>    
+        <script type="text/javascript" src="js/jquery.mobile-1.2.0.min.js"></script>
+        <script type="text/javascript" src="js/maps.api-3.js"></script>
+        <script type="text/javascript" src="assets/js/bootstrap.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/cordova-2.5.0.js"></script>
+        <script type="text/javascript" src="js/jquery-ui-1.10.3.min.js"></script>
+        <script type="text/javascript" src="js/jquery.ui.draggable.js"></script>
+        <script type="text/javascript" src="js/jquery.blockUI.js"></script>
+        <script type="text/javascript" src="js/overlay.js"></script>
+        <script type="text/javascript" src="js/listar-promocoes.js"></script>
+        <!-- styles -->
+        <link href="assets/css/bootstrap.css" rel="stylesheet"> 
+        <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+        <link href="css/listar-promocoes.css" rel="stylesheet">
+        <link href="css/jquery-ui-1.10.3.custom.min.css" rel="stylesheet">
+
+        <link rel="shortcut icon" href="assets/ico/favicon.ico">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+    </head>
+    <body onload="inicio()">
+        <div id="header" class="">
+            <img class="logo-app" src="img/logoVemKa.png"
+                 width="70">
+            <div class="navbar navbar-fixed-top navbar menu-promocoes">
+                <div class="navbar-inner header">
+                    <a class="btn pull-right" id="atualizar-promocao"><i class="icon-refresh"></i></a>
+                    <!--<a class="btn pull-right"><i class="icon-arrow-left"></i></a>-->
+                    <h class="pull-left">VemKa</h>
+                </div>
+            </div>
+        </div>
+        <!-- NAV BAR TOPO -->
+        <div class="container conteudo">
+            <ul class="nav nav-list lista-promocoes" id="id-ul">
+                <!--Inicio dos itens -->
+            </ul>
+        </div>
+        <!-- NAV BAR RODAPE -->
+        <div class="navbar navbar-fixed-bottom navbar footer-promocoes">
+            <div class="navbar-inner footer">
+                <img src="img/logoLotus.png" class="pull-left logo-lotus" width="47">
+                <h4>Lotus Tecnologia</h4>
+                <!--<br>Todos os direitos reservados.</span>-->
+            </div>
+        </div>      
+        <div id="place">
+            <p></p>
+        </div>
+        <label id="mensagem"></label>
+    </body>
+</html>
+
+

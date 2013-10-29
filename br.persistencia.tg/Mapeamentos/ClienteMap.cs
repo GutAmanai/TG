@@ -10,7 +10,7 @@ namespace br.persistencia.tg.Mapeamentos
     {
         public ClienteMap()
         {
-            Table("Cliente");
+            Table("cliente");
             Map(x => x.Nome);
             Map(x => x.DataEntrada);
             Map(x => x.Documento);

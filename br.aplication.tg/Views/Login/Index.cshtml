@@ -4,12 +4,6 @@
     ViewBag.Title = "Login";
     Layout = "../Shared/_Layout.cshtml";
 }
-
-@section head
-{
-    <script src="@Url.Content("~/Scripts/Login/login-cliente.js")" type="text/javascript"></script>
-}
-
 <div class="content">
     <div class="container">
         <div class="page-header">
@@ -41,4 +35,9 @@
         </div>
     </div>
 </div>
+@section footer
+{
+    <script src="@Url.Content("~/Scripts/Login/login-cliente.js")" type="text/javascript"></script>
+}
+
 
