@@ -3,89 +3,60 @@
     ViewBag.Title = "Cadastro";
     Layout = "../Shared/_Layout.cshtml";
 }
-@section head
-{
-    <script src="@Url.Content("~/Scripts/Promocao/cadastro-promocao.js")" type="text/javascript"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/ajaxupload.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.Jcrop.min.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/crop.js")"></script>
-    
-    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/css/jquery.Jcrop.css")" />
-    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/css/crop.css")" />
-    
-    <script id="promocao-pesquisa-template" type="text/x-jsrender">
-        <tr rel="{{:IdPromocao}}">
-            <td class="nome">{{:Nome}}</td>
-            <td class="ativo" rel="{{:Ativo}}" >{{:AtivoToString}}</td>
-            <td class="descricao">{{:Descricao}}</td>
-            <td class="data-liberacao">{{:DataLiberacaoFormatada}}</td>
-            <td class="data-expiracao">{{:DataExpiracaoFormatada}}</td>            
-            <td class="imagem">
-                <img src="{{:ImagemUrl}}" width="30" height="30" alt="Imagem da Promoção" name="Imagem da Promoção" class="imagem-preview" style="text-align:center;" />
-            </td>
-            <td><a href="#" class="alterar">Alterar</a></td>
-        </tr>
-    </script>
-    
-    <script id="promocao-pesquisa-sem-registro-template" type="text/x-jsrender">
-        <tr>
-            <td>Você não possui promoção, adicione!</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-    </script>
-}
-
 <div class="container">
     <input type="hidden" id="id-cliente" value="@Model"/>
-    <input type="hidden" id="id-promocao" value="0"/>
-    <input type="hidden" id="alteracao" value="0"/>
-    
+    <input type="hidden" id="id-promocao" value="0" />
+    <input type="hidden" id="alteracao" value="0" />
     <div class="page-header">
-        <h1>Cadastro de Promoção</h1>
+        <h1>
+            Cadastro de Promoção</h1>
     </div>
-
     <div class="row">
         <div class="cadastro">
-            
             <div class="span6">
                 <div>
-                    <label>Status</label>                    
-                    <div class="btn-group" data-toggle-name="promocao-ativa" data-toggle="buttons-radio" >                    
-                        <button type="button" value="1" class="btn ativo" data-toggle="promocao-ativa">Ativo</button>
-                        <button type="button" value="0" class="btn desativado" data-toggle="promocao-ativa">Desativo</button>                        
+                    <label>
+                        Status</label>
+                    <div class="btn-group" data-toggle-name="promocao-ativa" data-toggle="buttons-radio">
+                        <button type="button" value="1" class="btn ativo" data-toggle="promocao-ativa">
+                            Ativo</button>
+                        <button type="button" value="0" class="btn desativado" data-toggle="promocao-ativa">
+                            Desativo</button>
                     </div>
                     <input type="hidden" id="promocao-ativa" name="promocao-ativa" value="1" />
                     <span class="error error-promocao-ativa alert alert-error"></span>
-                </div>      
+                </div>
                 <div>
-                    <label>Nome</label>
-                    <input type="text" class="input-xxlarge" id="nome" name="nome" placeholder="Nome" value=""/>
+                    <label>
+                        Nome</label>
+                    <input type="text" class="input-xxlarge" id="nome" name="nome" placeholder="Nome"
+                        value="" />
                     <span class="error error-nome alert alert-error"></span>
                 </div>
                 <div>
-                    <label>Descrição</label>
+                    <label>
+                        Descrição</label>
                     <textarea class="input-xxlarge" id="descricao" name="descricao" placeholder="Descrição"></textarea>
                     <span class="error error-descricao alert alert-error"></span>
                 </div>
                 <div>
-                    <label>Data de Liberação</label>
-                    <input type="text" class="input-xxlarge" id="dataliberacao" name="dataliberacao" placeholder="Data de Liberação" value=""/>
+                    <label>
+                        Data de Liberação</label>
+                    <input type="text" class="input-xxlarge" id="dataliberacao" name="dataliberacao"
+                        placeholder="Data de Liberação" value="" />
                     <span class="error error-data-liberacao alert alert-error"></span>
                 </div>
                 <div>
-                    <label>Data de Expiração</label>
-                    <input type="text" class="input-xxlarge" id="dataexpiracao" name="dataexpiracao" placeholder="Data de Expiração" value=""/>
+                    <label>
+                        Data de Expiração</label>
+                    <input type="text" class="input-xxlarge" id="dataexpiracao" name="dataexpiracao"
+                        placeholder="Data de Expiração" value="" />
                     <span class="error error-data-expiracao alert alert-error"></span>
                 </div>
             </div>
-
             <div class="span5 well">
-                <h4>Imagem da Promoção</h4>
+                <h4>
+                    Imagem da Promoção</h4>
                 <hr />
                 <div class="row">
                     <div class="row center-align">
@@ -103,42 +74,84 @@
                     </div>
                 </div>
             </div>
-           
         </div>
-        
         <div class="span12">
             <input value="Salvar" class="btn btn-primary btn-small pull-right salvar-cadastro" />
         </div>
     </div>
-        
-    <div class="row-fluid">                
+    <div class="row-fluid">
         <div class="page-header segundo">
-            <h1>Minhas Promoções</h1>
+            <h1>
+                Minhas Promoções</h1>
         </div>
-
         <table class="table promocao">
             <thead>
                 <tr>
-                    <th>Nome</th>
-                    <th>Status</th>
-                    <th>Descrição</th>
-                    <th>Data Liberação</th>
-                    <th>Data Expiração</th>                    
-                    <th>Imagem</th> 
-                    <th>Ações</th> 
+                    <th>
+                        Nome
+                    </th>
+                    <th>
+                        Status
+                    </th>
+                    <th>
+                        Descrição
+                    </th>
+                    <th>
+                        Data Liberação
+                    </th>
+                    <th>
+                        Data Expiração
+                    </th>
+                    <th>
+                        Imagem
+                    </th>
+                    <th>
+                        Ações
+                    </th>
                 </tr>
             </thead>
             <tbody>
             </tbody>
         </table>
-            
         <div class="pagination min">
-            <a href="#" class="first" data-action="first">«</a>
-            <a href="#" class="previous" data-action="previous">‹</a>
+            <a href="#" class="first" data-action="first">«</a> <a href="#" class="previous"
+                data-action="previous">‹</a>
             <input type="text" readonly="readonly" data-max-page="40" />
-            <a href="#" class="next" data-action="next">›</a>
-            <a href="#" class="last" data-action="last">»</a>
+            <a href="#" class="next" data-action="next">›</a> <a href="#" class="last" data-action="last">
+                »</a>
         </div>
     </div>
-
 </div>
+@section footer
+{
+    <script src="@Url.Content("~/Scripts/Promocao/cadastro-promocao.js")" type="text/javascript"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/ajaxupload.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.Jcrop.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/crop.js")"></script>
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/css/jquery.Jcrop.css")" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/css/crop.css")" />
+    <script id="promocao-pesquisa-template" type="text/x-jsrender">
+        <tr rel="{{:IdPromocao}}">
+            <td class="nome">{{:Nome}}</td>
+            <td class="ativo" rel="{{:Ativo}}" >{{:AtivoToString}}</td>
+            <td class="descricao">{{:Descricao}}</td>
+            <td class="data-liberacao">{{:DataLiberacaoFormatada}}</td>
+            <td class="data-expiracao">{{:DataExpiracaoFormatada}}</td>            
+            <td class="imagem">
+                <img src="{{:ImagemUrl}}" width="30" height="30" alt="Imagem da Promoção" name="Imagem da Promoção" class="imagem-preview" style="text-align:center;" />
+            </td>
+            <td><a href="#" class="alterar">Alterar</a></td>
+        </tr>
+    </script>
+    <script id="promocao-pesquisa-sem-registro-template" type="text/x-jsrender">
+        <tr>
+            <td>Você não possui promoção, adicione!</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </script>
+}

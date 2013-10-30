@@ -32,7 +32,7 @@ var localizacao = {
 
     , promocaoAcesso: function () {
         var idSelecionado = parseInt(window.localStorage.getItem("promocaoSelecionado"));
-        var url = 'http://www.lotustg.com.br/Promocao/PromocaoAcesso';
+        var url = 'http://localhost:9999/Promocao/PromocaoAcesso';
         //online  http://www.lotustg.com.br/Promocao/PromocaoAcesso
         //offline http://localhost:9999/Promocao/PromocaoAcesso
         $.ajax({
