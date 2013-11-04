@@ -81,7 +81,50 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Arquivos\Cliente\cliente-default.png" />
+    <Content Include="Arquivos\Cliente\Min\1.jpg" />
+    <Content Include="Arquivos\Cliente\Min\1.png" />
+    <Content Include="Arquivos\Cliente\Min\2.jpg" />
+    <Content Include="Arquivos\Cliente\Min\2.png" />
+    <Content Include="Arquivos\Cliente\Min\3.jpg" />
+    <Content Include="Arquivos\Cliente\Min\3.png" />
+    <Content Include="Arquivos\Cliente\Min\4.jpg" />
+    <Content Include="Arquivos\Cliente\Min\5.jpg" />
+    <Content Include="Arquivos\Cliente\Min\6.jpg" />
+    <Content Include="Arquivos\Cliente\Min\7.jpg" />
+    <Content Include="Arquivos\Cliente\Min\8.jpg" />
+    <Content Include="Arquivos\Cliente\Normal\1.jpg" />
+    <Content Include="Arquivos\Cliente\Normal\1.png" />
+    <Content Include="Arquivos\Cliente\Normal\2.jpg" />
+    <Content Include="Arquivos\Cliente\Normal\2.png" />
+    <Content Include="Arquivos\Cliente\Normal\3.jpg" />
+    <Content Include="Arquivos\Cliente\Normal\3.png" />
+    <Content Include="Arquivos\Cliente\Normal\4.jpg" />
+    <Content Include="Arquivos\Cliente\Normal\5.jpg" />
+    <Content Include="Arquivos\Cliente\Normal\6.jpg" />
+    <Content Include="Arquivos\Cliente\Normal\7.jpg" />
+    <Content Include="Arquivos\Cliente\Normal\8.jpg" />
     <Content Include="Arquivos\Promocao\icon_image.png" />
+    <Content Include="Arquivos\Promocao\Min\1\1.jpg" />
+    <Content Include="Arquivos\Promocao\Min\1\5.jpg" />
+    <Content Include="Arquivos\Promocao\Min\2\3.jpg" />
+    <Content Include="Arquivos\Promocao\Min\2\4.jpg" />
+    <Content Include="Arquivos\Promocao\Min\2\5.jpg" />
+    <Content Include="Arquivos\Promocao\Min\2\6.jpg" />
+    <Content Include="Arquivos\Promocao\Min\2\7.png" />
+    <Content Include="Arquivos\Promocao\Min\2\8.jpg" />
+    <Content Include="Arquivos\Promocao\Min\3\10.jpg" />
+    <Content Include="Arquivos\Promocao\Min\3\11.jpg" />
+    <Content Include="Arquivos\Promocao\Min\3\12.jpg" />
+    <Content Include="Arquivos\Promocao\Min\3\9.jpg" />
+    <Content Include="Arquivos\Promocao\Min\4\13.jpg" />
+    <Content Include="Arquivos\Promocao\Min\4\14.jpg" />
+    <Content Include="Arquivos\Promocao\Min\4\15.jpg" />
+    <Content Include="Arquivos\Promocao\Min\5\16.jpg" />
+    <Content Include="Arquivos\Promocao\Min\5\17.jpg" />
+    <Content Include="Arquivos\Promocao\Min\5\18.jpg" />
+    <Content Include="Arquivos\Promocao\Min\6\19.jpg" />
+    <Content Include="Arquivos\Promocao\Min\6\20.jpg" />
+    <Content Include="Arquivos\Promocao\Min\6\21.jpg" />
     <Content Include="Content\css\boot-business.css" />
     <Content Include="Content\css\bootstrap-responsive.css" />
     <Content Include="Content\css\bootstrap-responsive.min.css" />
@@ -219,10 +262,8 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Arquivos\Cliente\Min\" />
-    <Folder Include="Arquivos\Cliente\Normal\" />
-    <Folder Include="Arquivos\Promocao\Min\" />
     <Folder Include="Arquivos\Promocao\Normal\" />
+    <Folder Include="Arquivos\Promocao\Temp\" />
     <Folder Include="Arquivos\Temp\Promocao\" />
     <Folder Include="Models\" />
     <Folder Include="Scripts\Home\" />

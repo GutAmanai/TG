@@ -88,7 +88,7 @@ CREATE TABLE `clientelocalizacao` (
   PRIMARY KEY (`Id`),
   KEY `IdCliente` (`IdCliente`),
   CONSTRAINT `FK_ClienteLocalizacao_Cliente` FOREIGN KEY (`IdCliente`) REFERENCES `cliente` (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -97,7 +97,7 @@ CREATE TABLE `clientelocalizacao` (
 
 LOCK TABLES `clientelocalizacao` WRITE;
 /*!40000 ALTER TABLE `clientelocalizacao` DISABLE KEYS */;
-INSERT INTO `clientelocalizacao` VALUES (2,'2013-11-04 09:06:02',-23.5682885,-46.7131445,2),(3,'2013-11-04 09:06:40',-23.5700059,-46.7120534,3),(4,'2013-11-04 09:07:24',-23.5708074,-46.7133609,4),(5,'2013-11-04 09:07:53',-23.5695036,-46.715528800000016,5),(6,'2013-11-04 09:09:04',-23.58227747294,-46.712772846221924,6);
+INSERT INTO `clientelocalizacao` VALUES (4,'2013-11-04 09:07:24',-23.5708074,-46.7133609,4),(5,'2013-11-04 09:07:53',-23.5695036,-46.715528800000016,5),(7,'2013-11-04 10:30:07',-23.57356529325444,-46.710444688797,6),(8,'2013-11-04 10:30:58',-23.567940418699802,-46.70994579792023,3),(9,'2013-11-04 10:31:15',-23.570772553484,-46.7193067073822,2);
 /*!40000 ALTER TABLE `clientelocalizacao` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -178,7 +178,7 @@ CREATE TABLE `promocaoacesso` (
   PRIMARY KEY (`Id`),
   KEY `IdPromocao` (`IdPromocao`),
   CONSTRAINT `FK_PromocaoAcesso_Promocao` FOREIGN KEY (`IdPromocao`) REFERENCES `promocao` (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=98 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=107 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -187,6 +187,7 @@ CREATE TABLE `promocaoacesso` (
 
 LOCK TABLES `promocaoacesso` WRITE;
 /*!40000 ALTER TABLE `promocaoacesso` DISABLE KEYS */;
+INSERT INTO `promocaoacesso` VALUES (98,'2013-11-04 10:18:28',20),(99,'2013-11-04 10:19:55',3),(100,'2013-11-04 10:20:15',6),(101,'2013-11-04 10:20:28',17),(102,'2013-11-04 10:20:53',15),(103,'2013-11-04 10:27:32',3),(104,'2013-11-04 10:28:08',3),(105,'2013-11-04 10:28:46',9),(106,'2013-11-04 10:28:58',21);
 /*!40000 ALTER TABLE `promocaoacesso` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -218,7 +219,7 @@ CREATE TABLE `cliente` (
 
 LOCK TABLES `cliente` WRITE;
 /*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
-INSERT INTO `cliente` VALUES (2,'Lotus Tecnologia','2013-11-04 09:06:02','24.422.333/0001-77','Dhouglas Lombello','contato@lotustg.com.br','(11) 9819-92080',NULL,'tBZ2QO1w0yZw9AWjrQg+Kg=='),(3,'Editora Boas Novas','2013-11-04 09:06:40','05.131.044/0001-74','João Novaes','joao@boasnovas.com','(11) 9999-99999',NULL,'tBZ2QO1w0yZw9AWjrQg+Kg=='),(4,'Restaurante Satisfação','2013-11-04 09:07:24','50.232.541/0001-13','Maria da Graça','maria@satisfacao.com','(11) 3328-9230',NULL,'tBZ2QO1w0yZw9AWjrQg+Kg=='),(5,'Pastelaria FazMaisUm','2013-11-04 09:07:53','07.723.755/0001-63','Honda Nakombi','nakombi@fazmaisum.com','(11) 2523-9870',NULL,'tBZ2QO1w0yZw9AWjrQg+Kg=='),(6,'Restaurante DaIndia','2013-11-04 09:09:04','27.848.652/0001-37','Jaad Hindu','jaad@daindia.com','(11) 3561-0987',NULL,'tBZ2QO1w0yZw9AWjrQg+Kg==');
+INSERT INTO `cliente` VALUES (2,'Lotus Tecnologia','2013-11-04 10:31:15','24.422.333/0001-77','Dhouglas Lombello','contato@lotustg.com.br','(11) 9819-92080',NULL,'tBZ2QO1w0yZw9AWjrQg+Kg=='),(3,'Editora Boas Novas','2013-11-04 10:30:58','05.131.044/0001-74','João Novaes','joao@boasnovas.com','(11) 9999-99999',NULL,'tBZ2QO1w0yZw9AWjrQg+Kg=='),(4,'Restaurante Satisfação','2013-11-04 09:07:24','50.232.541/0001-13','Maria da Graça','maria@satisfacao.com','(11) 3328-9230',NULL,'tBZ2QO1w0yZw9AWjrQg+Kg=='),(5,'Pastelaria FazMaisUm','2013-11-04 09:07:53','07.723.755/0001-63','Honda Nakombi','nakombi@fazmaisum.com','(11) 2523-9870',NULL,'tBZ2QO1w0yZw9AWjrQg+Kg=='),(6,'Restaurante DaIndia','2013-11-04 10:30:07','27.848.652/0001-37','Jaad Hindu','jaad@daindia.com','(11) 3561-0987',NULL,'tBZ2QO1w0yZw9AWjrQg+Kg==');
 /*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -231,4 +232,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-11-04  9:42:42
+-- Dump completed on 2013-11-04 10:31:38

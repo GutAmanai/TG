@@ -123,6 +123,7 @@ var googleMaps = {
                 if (status == google.maps.DirectionsStatus.OK) {
                     googleMaps.directionsDisplay.setDirections(response);
                 } else {
+                    $(".conteudo").html();
                     $(".conteudo").append("Sem rota!");
                 }
             });

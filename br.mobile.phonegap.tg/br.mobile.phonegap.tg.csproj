@@ -191,7 +191,6 @@
     <Content Include="www\index.html" />
     <Content Include="config.xml" />
     <Content Include="resources\notification-beep.wav" />
-    <Content Include="www\arquivos\readme.txt" />
     <Content Include="www\assets\css\bootstrap-responsive.css" />
     <Content Include="www\assets\css\bootstrap-responsive.min.css" />
     <Content Include="www\assets\css\bootstrap.css" />
