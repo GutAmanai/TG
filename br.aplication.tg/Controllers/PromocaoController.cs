@@ -8,9 +8,9 @@ using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using br.aplicacao.tg.DTO;
 using br.aplicacao.tg.Servicos;
-using br.dominio.tg.ObjetoValor;
 using br.infra.tg.InjecaoDependencia;
 using br.aplication.tg.helper;
+using br.dominio.tg.ObjetoValor;
 
 namespace br.aplication.tg.Controllers
 {

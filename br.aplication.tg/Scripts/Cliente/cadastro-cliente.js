@@ -321,7 +321,7 @@ var googleMaps = {
                     jAlert('Sem resultados', 'Atenção');
                 }
             } else {
-                jAlert('Houve uma falha entre em contato ao administrador!', 'Atenção');
+                jAlert('Houve uma falha, entre em contato com o administrador!', 'Atenção');
             }
         });
     },
@@ -359,7 +359,7 @@ var googleMaps = {
                     retorno = 'Sem resultados';
                 }
             } else {
-                retorno = 'Houve uma falha entre em contato ao administrador!';
+                retorno = 'Houve uma falha, entre em contato com o administrador!';
             }
         });
 

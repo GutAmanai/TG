@@ -27,7 +27,7 @@ var listarPromocoes = {
 
     , chamadaServidor: function (latitude, longitude) {
 
-        var url = 'http://www.lotustg.com.br/Promocao/ListarPromocao';
+        var url = 'http://localhost:9999/Promocao/ListarPromocao';
         //online  http://www.lotustg.com.br/Promocao/ListarPromocao
         //offline http://localhost:9999/Promocao/ListarPromocao
 
