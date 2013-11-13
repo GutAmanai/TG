@@ -11,7 +11,6 @@ namespace br.aplicacao.tg.Servicos
     public class ServicoCliente
     {
         private readonly IUnidadeDeTrabalho _unidadeDeTrabalho;
-        private readonly ServicoCriptografia _servicoCriptografia;
         private readonly IRepositorioCliente _repositorioCliente;
 
         public ServicoCliente(
@@ -20,7 +19,6 @@ namespace br.aplicacao.tg.Servicos
                              )
         {
             _unidadeDeTrabalho = unidadeDeTrabalho;
-            _servicoCriptografia = new ServicoCriptografia();
             _repositorioCliente = repositorioCliente;
         }
 
@@ -37,7 +35,7 @@ namespace br.aplicacao.tg.Servicos
             if (consumidor == null)
                 return false;
 
-            if (consumidor.Senha.ToLower() == _servicoCriptografia.Encrypt(senha).ToLower())
+            if (consumidor.Senha.ToLower() == ServicoCriptografia.Encrypt(senha).ToLower())
                 return true;
 
             return false;
@@ -56,7 +54,7 @@ namespace br.aplicacao.tg.Servicos
                     cliente.AdicionarDataEntrada(DateTime.Now);
                     cliente.AdicionarContato(dtoCliente.Contato);
                     cliente.AdicionarResponsavel(dtoCliente.Responsavel);
-                    cliente.AdicionarSenha(_servicoCriptografia.Encrypt(dtoCliente.Senha));
+                    cliente.AdicionarSenha(ServicoCriptografia.Encrypt(dtoCliente.Senha));
 
                     // -- Adiciona Remove e adiciona Localização
                     cliente.RemoverLocalizacao();
@@ -75,7 +73,7 @@ namespace br.aplicacao.tg.Servicos
                     cliente.AdicionarDataEntrada(DateTime.Now);
                     cliente.AdicionarContato(dtoCliente.Contato);
                     cliente.AdicionarResponsavel(dtoCliente.Responsavel);
-                    cliente.AdicionarSenha(_servicoCriptografia.Encrypt(dtoCliente.Senha));
+                    cliente.AdicionarSenha(ServicoCriptografia.Encrypt(dtoCliente.Senha));
 
                     // -- Adiciona Remove e adiciona Localização
                     cliente.RemoverLocalizacao();
@@ -132,7 +130,7 @@ namespace br.aplicacao.tg.Servicos
                     FotoUrl = "",
                     Nome = cliente.Nome,
                     Responsavel = cliente.Responsavel,
-                    Senha = _servicoCriptografia.Decrypt(cliente.Senha),
+                    Senha = ServicoCriptografia.Decrypt(cliente.Senha),
                     Localizacoes = ObterLocalizacao(cliente)
                 };
             }

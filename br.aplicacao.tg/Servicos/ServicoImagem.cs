@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Web;
-using System.Web.Mvc;
 using br.aplicacao.tg.DTO;
 
 namespace br.aplicacao.tg.Servicos
@@ -16,7 +13,7 @@ namespace br.aplicacao.tg.Servicos
 
         public string RecuperaImagemPromocao(int idCliente, int idPromocao)
         {
-            var urlSistema = HttpContext.Current.Request.Url.ToString().Replace(HttpContext.Current.Request.Url.PathAndQuery, "");
+            var urlSistema = HttpContext.Current.Request.Url.OriginalString.Replace(HttpContext.Current.Request.Url.PathAndQuery, "");
 
             try
             {

@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Drawing;
-using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using br.aplicacao.tg.DTO;
@@ -30,10 +27,11 @@ namespace br.aplication.tg.Controllers
 
         #region Cadastro de Promoção
 
-        public ActionResult Cadastro(int idCliente, int idPromocao = 0)
+        public ActionResult Cadastro(string idCliente, int idPromocao = 0)
         {
-            ViewBag.Imagem = ServicoImagem.RecuperaImagemPromocao(idCliente, idPromocao);
-            return View(idCliente);
+            var id = Convert.ToInt32(ServicoCriptografia.Decrypt(idCliente));
+            ViewBag.Imagem = ServicoImagem.RecuperaImagemPromocao(id, idPromocao);
+            return View(id);
         }
 
         public ActionResult Salvar(string configuracao)

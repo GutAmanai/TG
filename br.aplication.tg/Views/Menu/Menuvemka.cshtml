@@ -1,14 +1,16 @@
-﻿@model int
+﻿@model string
 @{
     ViewBag.Title = "Menu";
-    Layout = "../Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var idCliente = (string)ViewBag.IdCliente;
 }
+
 @section head
 {
     <link href="@Url.Content("~/Content/css/geral.css")" rel="stylesheet" type="text/css" />
 }
 <div class="container">
-    <input type="hidden" id="id-cliente" value="@Model"/>
+    <input type="hidden" id="id-cliente" value="@idCliente"/>
     <div class="page-header">
         <h2>
             Menu - VemKa</h2>
@@ -29,7 +31,7 @@
                     </div>
                     <div class="widget-footer">
                         <p>
-                            <a href="@Url.Action("Cadastro", "Promocao", new { idCliente = @Model})" class="btn btn-primary">Entrar</a>&nbsp;
+                            <a href="@Url.Action("Cadastro", "Promocao", new { idCliente = @idCliente })" class="btn btn-primary">Entrar</a>&nbsp;
                         </p>
                     </div>
                 </div>
@@ -48,7 +50,7 @@
                     </div>
                     <div class="widget-footer">
                         <p>
-                            <a href="@Url.Action("QuantidadeAcesso", "Relatorio", new { idCliente = @Model})" class="btn btn-primary">Entrar</a>&nbsp;
+                            <a href="@Url.Action("QuantidadeAcesso", "Relatorio", new { idCliente = @idCliente })" class="btn btn-primary">Entrar</a>&nbsp;
                         </p>
                     </div>
                 </div>

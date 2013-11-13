@@ -26,7 +26,7 @@ namespace br.aplicacao.tg.Servicos
         /// </summary>     
         /// <param name="text">valor a ser criptografado</param>     
         /// <returns>valor criptografado</returns>
-        public string Encrypt(string text)
+        public static string Encrypt(string text)
         {
             try
             {
@@ -79,7 +79,7 @@ namespace br.aplicacao.tg.Servicos
         /// </summary>     
         /// <param name="text">texto criptografado</param>     
         /// <returns>valor descriptografado</returns>     
-        public string Decrypt(string text)
+        public static string Decrypt(string text)
         {
             try
             {

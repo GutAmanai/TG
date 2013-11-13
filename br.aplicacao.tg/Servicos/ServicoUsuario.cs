@@ -14,7 +14,6 @@ namespace br.aplicacao.tg.Servicos
     {
         private readonly IUnidadeDeTrabalho _unidadeDeTrabalho;
         private readonly IRepositorioUsuario _repositorioUsuario;
-        private readonly ServicoCriptografia _servicoCriptografia;
 
         public ServicoUsuario(
                                 IUnidadeDeTrabalho unidadeDeTrabalho,
@@ -23,7 +22,6 @@ namespace br.aplicacao.tg.Servicos
         {
             _unidadeDeTrabalho = unidadeDeTrabalho;
             _repositorioUsuario = repositorioUsuario;
-            _servicoCriptografia = new ServicoCriptografia();
         }
 
         public DTOUsuario CriarUsuario(string stDtoComunicacao)
@@ -40,7 +38,7 @@ namespace br.aplicacao.tg.Servicos
                                                         objUsuario.Nome,
                                                         objUsuario.Email,
                                                         objUsuario.Contato,
-                                                        _servicoCriptografia.Encrypt(objUsuario.Senha).ToLower() 
+                                                        ServicoCriptografia.Encrypt(objUsuario.Senha).ToLower() 
                                                     );
                     
                     _repositorioUsuario.Adicionar(consumidor);
@@ -65,7 +63,7 @@ namespace br.aplicacao.tg.Servicos
                 DataEntrada = usuario.DataEntrada,
                 Email = usuario.Email,
                 Nome = usuario.Nome,
-                Senha = _servicoCriptografia.Decrypt(usuario.Senha)
+                Senha = ServicoCriptografia.Decrypt(usuario.Senha)
             };
             return dto;
         }
@@ -83,7 +81,7 @@ namespace br.aplicacao.tg.Servicos
             if (consumidor == null)
                 return false;
 
-            if (consumidor.Senha.ToLower() == _servicoCriptografia.Encrypt(senha).ToLower())
+            if (consumidor.Senha.ToLower() == ServicoCriptografia.Encrypt(senha).ToLower())
                 return true;
 
             return false;

@@ -1,7 +1,6 @@
-﻿$(function () {
+﻿$(document).ready(function () {
     relatorioAcesso.init();
 });
-
 
 var relatorioAcesso = {
 

@@ -31,5 +31,10 @@ namespace br.aplicacao.tg.DTO
         {
             return js.Serialize(Localizacoes);
         }
+
+        public string GetIdClienteCript()
+        {
+            return Servicos.ServicoCriptografia.Encrypt(IdCliente.ToString());
+        }
     }
 }

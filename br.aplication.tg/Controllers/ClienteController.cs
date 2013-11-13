@@ -31,11 +31,12 @@ namespace br.aplication.tg.Controllers
             return View(ServicoCliente.ObterDTOCliente(0));
         }
 
-        public ActionResult Alterar(int id)
+        public ActionResult Alterar(string id)
         {
             ViewBag.Alterar = true;
-            ViewBag.FotoCliente = RecuperaFotoCliente(id);
-            return View("Cadastro", ServicoCliente.ObterDTOCliente(id));
+            var idCliente = Convert.ToInt32(ServicoCriptografia.Decrypt(id));
+            ViewBag.FotoCliente = RecuperaFotoCliente(idCliente);
+            return View("Cadastro", ServicoCliente.ObterDTOCliente(idCliente));
         }
 
         public ActionResult Salvar(string configuracao)
