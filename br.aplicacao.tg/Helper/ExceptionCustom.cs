@@ -54,7 +54,7 @@ namespace System
                                
                 return retFilePath;
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 return string.Empty;
             }
