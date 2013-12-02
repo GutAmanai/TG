@@ -1,15 +1,19 @@
 ﻿@{
-    Layout = null;
+    Layout = "../Shared/_Layout.cshtml";
 }
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Error</title>
-</head>
-<body>
-    <h2>
-        Sorry, an error occurred while processing your request.
-    </h2>
-</body>
-</html>
+@section head
+{
+    <link href="@Url.Content("~/Content/css/geral.css")" rel="stylesheet" type="text/css" />
+}
+<div class="container">
+    <div class="page-header">
+        <h2>
+            Erro</h2>
+    </div>
+    @*<img src=@Url.Content("~/Content/img/ops.jpg") alt="Erro" />*@
+    <p>
+        Desculpe-nos,<br /> 
+        ocorreu um erro enquanto processavamos sua solicitação.<br />
+        Tente novamente o acesso daqui a poucos minutos.<br /><br />
+    </p>
+</div>

@@ -88,7 +88,7 @@ namespace br.aplicacao.tg.Servicos
                 {
                     // Cria instancias de vetores de bytes com as chaves                
                     byte[] bKey = Convert.FromBase64String(cryptoKey);
-                    byte[] bText = Convert.FromBase64String(text);
+                    byte[] bText = Convert.FromBase64String(text.Replace(" ", "+"));
 
                     // Instancia a classe de criptografia Rijndael                
                     Rijndael rijndael = new RijndaelManaged();
